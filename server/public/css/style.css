@@ -58,10 +58,44 @@ html {
 }
 body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
-  font-size: 48px;
-  font-size: 3rem;
+  font-size: 25.6px;
+  font-size: 1.6rem;
   margin: 32px;
   margin: 2rem;
+}
+
+h1 {
+  font-size: 32px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 28.8px;
+  font-size: 1.8rem;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navigation li {
+  margin-left: 16px;
+  margin-left: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map*/

@@ -2,6 +2,29 @@
 
 body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
-  font-size: 3rem;
+  font-size: 1.6rem;
   margin: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation li {
+  margin-left: 1rem;
 }

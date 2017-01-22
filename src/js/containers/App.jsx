@@ -1,17 +1,25 @@
 import React from 'react';
 import {Match, BrowserRouter as Router} from 'react-router';
 
-import {Home} from '../pages/';
+import {Home, Admin, Login} from '../pages/';
 
 const App = () => {
   return (
     <Router>
-      <main>
+      <div className='main'>
         <Match
           exactly pattern='/'
           component={Home}
         />
-      </main>
+        <Match
+          exactly pattern='/admin'
+          component={Admin}
+        />
+        <Match
+          exactly pattern='/login'
+          component={Login}
+        />
+      </div>
     </Router>
   );
 };

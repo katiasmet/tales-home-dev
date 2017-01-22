@@ -3,6 +3,7 @@ const {User} = require(`mongoose`).models;
 const {omit} = require(`lodash`);
 
 const Joi = require(`joi`);
+Joi.objectId = require(`joi-objectid`)(Joi);
 const Boom = require(`boom`);
 
 const base = `/api`;
@@ -41,7 +42,7 @@ module.exports = [
         $and: [
           {
             $or: [
-              {username: login},
+              {name: login},
               {email: login}
             ]
           },
