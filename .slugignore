@@ -1,0 +1,9 @@
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.stylelintrc
+/src
+nodemon.json
+*.config.js
+README.md
