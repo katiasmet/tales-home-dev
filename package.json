@@ -1,6 +1,7 @@
 {
   "name": "tales-at-home",
   "version": "0.1.0",
+  "author": "Katia Smet and Suzan Van Dijck",
   "scripts": {
     "development": "npm run clean && nodemon . & NODE_ENV=development webpack --watch",
     "start": "npm run serve",
@@ -49,7 +50,9 @@
     "nodemon": "^1.11.0",
     "postcss-cssnext": "^2.8.0",
     "postcss-loader": "^1.0.0",
+    "postcss-nested": "^1.0.0",
     "postcss-reporter": "^1.4.1",
+    "postcss-variables": "^0.1.1",
     "postcss-will-change": "^1.1.0",
     "react": "^15.4.1",
     "react-dom": "^15.3.2",

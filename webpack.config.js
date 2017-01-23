@@ -25,7 +25,7 @@ const copy = new CopyWebpackPlugin([{
 });
 
 const config = {
-  
+
   entry: [
     `./src/css/style.css`,
     `./src/js/script.js`
@@ -116,7 +116,7 @@ const config = {
 
 };
 
-if(process.env.NODE_ENV === `production`){
+if (process.env.NODE_ENV === `production`) {
 
   //image optimizing
   config.module.rules.push({

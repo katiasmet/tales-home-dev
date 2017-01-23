@@ -1,5 +1,7 @@
 @import 'reset';
 
+$active: #773eff;
+
 body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
@@ -23,8 +25,9 @@ header {
 .navigation {
   display: flex;
   justify-content: space-between;
-}
 
-.navigation li {
-  margin-left: 1rem;
+  li {
+    margin-left: 1rem;
+    color: $active;
+  }
 }
