@@ -213,6 +213,6 @@ module.exports = [
         .catch(() => res(Boom.badRequest(`Cannot delete user.`)));
 
     }
-  },
+  }
 
 ];

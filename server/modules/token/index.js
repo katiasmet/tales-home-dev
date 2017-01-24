@@ -46,6 +46,23 @@ module.exports.register = (server, options, next) => {
 
   });
 
+  server.decorate(`request`, `getUser`, function() {
+
+    const req = this;
+
+    const {auth} = req;
+
+    if (auth.isAuthenticated) {
+
+      const {credentials} = auth;
+      return credentials;
+
+    }
+
+    return false;
+
+  });
+
   server.decorate(`reply`, `token`, function(user, {subject, audience, expiresIn = `7d`} = {}) {
 
     const reply = this;
