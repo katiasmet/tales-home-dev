@@ -103,10 +103,10 @@ module.exports = [
       const family = new Family(data);
 
       family.save()
-      .then(u => {
-        if (!u) return res(Boom.badRequest(`Cannot save family.`));
-        u = omit(u.toJSON(), [`__v`, `isActive`]);
-        return res(u);
+      .then(family => {
+        if (!family) return res(Boom.badRequest(`Cannot save family.`));
+        family = omit(family.toJSON(), [`__v`, `isActive`]);
+        return res(family);
       })
       .catch(() => res(Boom.badRequest(`Cannot save family.`)));
 
@@ -144,10 +144,10 @@ module.exports = [
       const update = {new: true};
 
       Family.findOneAndUpdate(query, data, update)
-          .then(u => {
-            if (!u) return res(Boom.badRequest(`Cannot delete family.`));
-            u = omit(u.toJSON(), [`__v`]);
-            return res(u);
+          .then(family => {
+            if (!family) return res(Boom.badRequest(`Cannot delete family.`));
+            family = omit(family.toJSON(), [`__v`]);
+            return res(family);
           })
           .catch(() => res(Boom.badRequest(`Cannot delete family.`)));
 
