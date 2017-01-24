@@ -39,17 +39,17 @@ module.exports = [
       if (_id) {
 
         FamilyMember.find({isActive, _id}, projection)
-        .then(familymember => {
-          if (!familymember) return res(Boom.notFound());
-          return res({familymember});
+        .then(familyMember => {
+          if (!familyMember) return res(Boom.notFound());
+          return res({familyMember});
         })
         .catch(() => res(Boom.badRequest()));
 
       } else {
 
         FamilyMember.find({isActive}, projection) //uit resultaten halen
-        .then(familymembers => {
-          return res({familymembers});
+        .then(familyMembers => {
+          return res({familyMembers});
         });
 
       }
@@ -104,10 +104,10 @@ module.exports = [
       const familyMember = new FamilyMember(data);
 
       familyMember.save()
-      .then(familymember => {
-        if (!familymember) return res(Boom.badRequest(`Cannot save familymember.`));
-        familymember = omit(familymember.toJSON(), [`__v`, `isActive`]);
-        return res(familymember);
+      .then(familyMember => {
+        if (!familyMember) return res(Boom.badRequest(`Cannot save familymember.`));
+        familyMember = omit(familyMember.toJSON(), [`__v`, `isActive`]);
+        return res(familyMember);
       })
       .catch(() => res(Boom.badRequest(`Cannot save familymember.`)));
 
@@ -144,10 +144,10 @@ module.exports = [
       const update = {new: true};
 
       FamilyMember.findOneAndUpdate(query, data, update)
-        .then(familymember => {
-          if (!familymember) return res(Boom.badRequest(`Cannot delete familymember.`));
-          familymember = omit(familymember.toJSON(), [`__v`]);
-          return res(familymember);
+        .then(familyMember => {
+          if (!familyMember) return res(Boom.badRequest(`Cannot delete familymember.`));
+          familyMember = omit(familyMember.toJSON(), [`__v`]);
+          return res(familyMember);
         })
         .catch(() => res(Boom.badRequest(`Cannot delete familymember.`)));
 
