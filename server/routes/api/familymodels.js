@@ -47,7 +47,7 @@ module.exports = [
 
       } else {
 
-        FamilyModel.find({isActive}, projection) //uit resultaten halen
+        FamilyModel.find({isActive}, projection)
         .then(familyModels => {
           return res({familyModels});
         });
@@ -80,8 +80,8 @@ module.exports = [
         },
 
         payload: {
-          familyId: Joi.string().min(3).required(),
-          modelId: Joi.string().min(3).required(),
+          familyId: Joi.string().alphanum().min(3).required(),
+          modelId: Joi.string().alphanum().min(3).required(),
         }
 
       }

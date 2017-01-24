@@ -137,8 +137,8 @@ module.exports = [
 
       const {_id} = req.params;
 
-      let query = {_id: _id, professionalId: req.getUser().sub};
-      if (req.hasScope(Scopes.ADMIN)) query = {_id: _id};
+      let query = {_id: _id};
+      if (req.hasScope(Scopes.PROFESSIONAL)) query = {_id: _id, professionalId: req.getUser().sub};
 
       const data = {isActive: false};
       const update = {new: true};
