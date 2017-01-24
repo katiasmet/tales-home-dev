@@ -1,7 +1,7 @@
 import React from 'react';
 import {Match, BrowserRouter as Router} from 'react-router';
 
-import {Home, Admin, Login} from '../pages/';
+import {Home, Register, Login} from '../pages/';
 
 const App = () => {
   return (
@@ -12,12 +12,12 @@ const App = () => {
           component={Home}
         />
         <Match
-          exactly pattern='/admin'
-          component={Admin}
-        />
-        <Match
           exactly pattern='/login'
           component={Login}
+        />
+        <Match
+          exactly pattern='/register'
+          component={Register}
         />
       </div>
     </Router>

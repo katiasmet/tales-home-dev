@@ -9,7 +9,6 @@ const Home = () => {
         <h1>Tales@Home</h1>
 
         <ul className='navigation'>
-          <li><Link to='/admin'>admin</Link></li>
           <li><Link to='/login'>login</Link></li>
         </ul>
 
