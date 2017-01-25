@@ -1,11 +1,10 @@
 import React from 'react';
 import {Match, BrowserRouter as Router, Redirect} from 'react-router';
 
-import {Home, Register, Login, Join, Families} from '../pages/';
+import {Home, Login, Families} from '../pages/';
+import {isLoggedIn} from '../auth';
 
 const App = () => {
-  const loggedIn = false;
-
   return (
     <Router>
       <div className='main'>
@@ -13,29 +12,41 @@ const App = () => {
         <Match
           pattern='/'
           exactly render={() => (
-            loggedIn ? (<Redirect to='/families' />)
+            isLoggedIn ? (<Redirect to='/families' />)
             : (<Home />)
           )}
         />
 
         <Match
-          exactly pattern='/login'
-          component={Login}
+          pattern='/login'
+          exactly render={() => (
+            isLoggedIn ? (<Redirect to='/families' />)
+            : (<Login />)
+          )}
         />
 
         <Match
-          exactly pattern='/register'
-          component={Register}
+          pattern='/register'
+          exactly render={() => (
+            isLoggedIn ? (<Redirect to='/families' />)
+            : (<Login />)
+          )}
         />
 
         <Match
-          exactly pattern='/join'
-          component={Join}
+          pattern='/join'
+          exactly render={() => (
+            isLoggedIn ? (<Redirect to='/families' />)
+            : (<Login />)
+          )}
         />
 
         <Match
-          exactly pattern='/families'
-          component={Families}
+          pattern='/families'
+          exactly render={() => (
+            isLoggedIn ? (<Families />)
+            : (<Login />)
+          )}
         />
       </div>
     </Router>
