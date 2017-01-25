@@ -22,6 +22,10 @@ const schema = new Schema({
     unique: true
   },
 
+  organisation: {
+    type: String
+  },
+
   scope: {
     type: String,
     default: Scopes.PROFESSIONAL
