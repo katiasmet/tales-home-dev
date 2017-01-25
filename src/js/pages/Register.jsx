@@ -2,7 +2,7 @@ import React from 'react';
 
 const Register = () => {
   return (
-    <div className='page-login'>
+    <div className='page page-register'>
 
       <header>
         <h1>Tales@Home</h1>

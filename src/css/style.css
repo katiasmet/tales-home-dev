@@ -8,6 +8,10 @@ body {
   margin: 2rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: bold;
@@ -22,7 +26,7 @@ header {
   justify-content: space-between;
 }
 
-.navigation {
+nav {
   display: flex;
   justify-content: space-between;
 
@@ -30,4 +34,46 @@ header {
     margin-left: 1rem;
     color: $active;
   }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORMS */
+form {
+  width: 40rem;
+  margin: 2rem;
+}
+
+label {
+  display: block;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+
+  margin: 1rem 0;
+  background: none;
+
+  border-radius: 1rem;
+  border: 1px solid grey;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* LOGIN */
+.user-profiles {
+  display: flex;
+}
+
+.user-profile {
+  margin: 1rem;
 }

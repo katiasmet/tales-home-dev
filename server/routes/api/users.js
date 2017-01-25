@@ -203,33 +203,15 @@ module.exports = [
         const {newpassword} = req.payload;
         if (newpassword) data.password = newpassword;
 
-        console.log(user);
-
-        /*for (const [key, value] of Object.entries(user)) {
-          console.log(`hello`);
-          for (const [dataKey, newValue] of Object.entries(data)) {
-            if (key === dataKey) {
-              console.log(key);
-              if (value !== newValue) {
-                console.log(value);
-                user[key] = newValue;
-              }
-            }
-          }
-        }*/
-
         for (const prop in user) {
           for (const dataProp in data) {
             if (prop === dataProp) {
               if (user[prop] !== data[dataProp]) {
-                console.log(`difference`);
                 user[prop] = data[dataProp];
               }
             }
           }
         }
-
-        console.log(user);
 
         user.save()
         .then(u => {
