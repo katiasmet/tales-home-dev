@@ -33,6 +33,7 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
+      const {familyId} = req.query;
       const isActive = true;
       const projection = `-__v -isActive`;
 
@@ -42,6 +43,15 @@ module.exports = [
         .then(familyModel => {
           if (!familyModel) return res(Boom.notFound());
           return res({familyModel});
+        })
+        .catch(() => res(Boom.badRequest()));
+
+      } else if (familyId) {
+
+        FamilyModel.find({isActive, familyId}, projection)
+        .then(familyModels => {
+          if (!familyModels) return res(Boom.notFound());
+          return res({familyModels});
         })
         .catch(() => res(Boom.badRequest()));
 
@@ -82,6 +92,7 @@ module.exports = [
         payload: {
           familyId: Joi.string().alphanum().min(3).required(),
           modelId: Joi.string().alphanum().min(3).required(),
+          isActive: Joi.boolean()
         }
 
       }
@@ -132,8 +143,6 @@ module.exports = [
 
     handler: (req, res) => {
 
-      /* TODO familymodel kan enkel door de professional gelinked aan de family verwijderd worden */
-
       const {_id} = req.params;
       const query = {_id: _id};
       const data = {isActive: false};
@@ -146,6 +155,8 @@ module.exports = [
           return res(familyModel);
         })
         .catch(() => res(Boom.badRequest(`Cannot delete familymodel.`)));
+
+
 
     }
   }

@@ -1,4 +1,4 @@
-const {Note} = require(`mongoose`).models;
+const {Result} = require(`mongoose`).models;
 
 const {pick, omit} = require(`lodash`);
 
@@ -13,7 +13,7 @@ module.exports = [
 
   {
     method: `GET`,
-    path: `${base}/notes/{_id?}`,
+    path: `${base}/results/{_id?}`,
 
     config: {
       validate: {
@@ -33,42 +33,33 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
-      const {familyModelId, professionalId} = req.query;
+      const {familyModelId} = req.query;
       const isActive = true;
       const projection = `-__v -isActive`;
 
       if (_id) {
 
-        Note.find({_id, isActive}, projection)
-        .then(note => {
-          if (!note) return res(Boom.notFound());
-          return res({note});
+        Result.find({_id, isActive}, projection)
+        .then(result => {
+          if (!result) return res(Boom.notFound());
+          return res({result});
         })
         .catch(() => res(Boom.badRequest()));
 
       } else if (familyModelId) {
 
-        Note.find({familyModelId, isActive}, projection)
-        .then(note => {
-          if (!note) return res(Boom.notFound());
-          return res({note});
-        })
-        .catch(() => res(Boom.badRequest()));
-
-      } else if (professionalId) {
-
-        Note.find({professionalId, isActive}, projection)
-        .then(notes => {
-          if (!notes) return res(Boom.notFound());
-          return res({notes});
+        Result.find({familyModelId, isActive}, projection)
+        .then(results => {
+          if (!results) return res(Boom.notFound());
+          return res({results});
         })
         .catch(() => res(Boom.badRequest()));
 
       } else {
 
-        Note.find({isActive}, projection)
-        .then(notes => {
-          return res({notes});
+        Result.find({isActive}, projection)
+        .then(results => {
+          return res({results});
         });
 
       }
@@ -79,7 +70,7 @@ module.exports = [
   {
 
     method: `POST`,
-    path: `${base}/notes`,
+    path: `${base}/results`,
 
     config: {
 
@@ -100,7 +91,7 @@ module.exports = [
 
         payload: {
           familyModelId: Joi.string().alphanum().min(3).required(),
-          notes: Joi.string().min(3).required(),
+          result: Joi.array().required(),
           isActive: Joi.boolean()
         }
 
@@ -110,7 +101,7 @@ module.exports = [
 
     handler: (req, res) => {
 
-      let fields = [`familyModelId`, `notes`];
+      let fields = [`familyModelId`, `result`];
 
       if (req.hasScope(Scopes.ADMIN)) {
         fields = [...fields, `isActive`];
@@ -118,13 +109,13 @@ module.exports = [
 
       const data = pick(req.payload, fields);
       data.professionalId = req.getUser().sub;
-      const note = new Note(data);
+      const result = new Result(data);
 
-      note.save()
-      .then(note => {
-        if (!note) return res(Boom.badRequest(`Cannot save note.`));
-        note = omit(note.toJSON(), [`__v`, `isActive`]);
-        return res(note);
+      result.save()
+      .then(result => {
+        if (!result) return res(Boom.badRequest(`Cannot save note.`));
+        result = omit(result.toJSON(), [`__v`, `isActive`]);
+        return res(result);
       })
       .catch(() => res(Boom.badRequest(`Cannot save note.`)));
 
@@ -135,7 +126,7 @@ module.exports = [
   {
 
     method: `PUT`,
-    path: `${base}/notes/{_id}`,
+    path: `${base}/results/{_id}`,
 
     config: {
 
@@ -155,7 +146,7 @@ module.exports = [
         },
 
         payload: {
-          notes: Joi.string().min(3).required()
+          result: Joi.array().required()
         }
 
       }
@@ -165,7 +156,7 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
-      const  fields = [`notes`];
+      const  fields = [`result`];
 
       let query = {_id: _id};
       if (req.hasScope(Scopes.PROFESSIONAL)) query = {_id: _id, professionalId: req.getUser().sub};
@@ -173,11 +164,11 @@ module.exports = [
       const data = pick(req.payload, fields);
       const update = {new: true};
 
-      Note.findOneAndUpdate(query, data, update)
-        .then(note => {
-          if (!note) return res(Boom.badRequest(`Cannot update note.`));
-          note = omit(note.toJSON(), [`__v`, `isActive`]);
-          return res(note);
+      Result.findOneAndUpdate(query, data, update)
+        .then(result => {
+          if (!result) return res(Boom.badRequest(`Cannot update note.`));
+          result = omit(result.toJSON(), [`__v`, `isActive`]);
+          return res(result);
         })
         .catch(() => res(Boom.badRequest(`Cannot update note.`)));
 
@@ -187,7 +178,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/notes/{_id}`,
+    path: `${base}/results/{_id}`,
 
     config: {
       validate: {
@@ -214,11 +205,11 @@ module.exports = [
       const data = {isActive: false};
       const update = {new: true};
 
-      Note.findOneAndUpdate(query, data, update)
-        .then(note => {
-          if (!note) return res(Boom.badRequest(`Cannot delete note.`));
-          note = omit(note.toJSON(), [`__v`]);
-          return res(note);
+      Result.findOneAndUpdate(query, data, update)
+        .then(result => {
+          if (!result) return res(Boom.badRequest(`Cannot delete note.`));
+          result = omit(result.toJSON(), [`__v`]);
+          return res(result);
         })
         .catch(() => res(Boom.badRequest(`Cannot delete note.`)));
 

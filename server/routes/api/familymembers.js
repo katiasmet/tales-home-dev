@@ -19,7 +19,8 @@ module.exports = [
       validate: {
 
         params: {
-          _id: Joi.objectId()
+          _id: Joi.objectId(),
+          familyId: Joi.objectId()
         }
 
       },
@@ -33,6 +34,7 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
+      const {familyId} = req.query;
       const isActive = true;
       const projection = `-__v -isActive`;
 
@@ -45,9 +47,17 @@ module.exports = [
         })
         .catch(() => res(Boom.badRequest()));
 
+      } else if (familyId) {
+
+        FamilyMember.find({isActive, familyId}, projection)
+        .then(familyMembers => {
+          if (!familyMembers) return res(Boom.notFound());
+          return res({familyMembers});
+        });
+
       } else {
 
-        FamilyMember.find({isActive}, projection) //uit resultaten halen
+        FamilyMember.find({isActive}, projection)
         .then(familyMembers => {
           return res({familyMembers});
         });
@@ -136,10 +146,9 @@ module.exports = [
 
     handler: (req, res) => {
 
-      /* TODO enkel familie kan familiemembers verwijderen */
-
       const {_id} = req.params;
-      const query = {_id: _id};
+      const {familyId} = req.query;
+      const query = {_id: _id, familyId: familyId};
       const data = {isActive: false};
       const update = {new: true};
 

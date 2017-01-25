@@ -33,12 +33,22 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
+      const {page} = req.query;
       const isActive = true;
       const projection = `-__v -isActive`;
 
       if (_id) {
 
         InfoText.find({_id, isActive}, projection)
+        .then(infotext => {
+          if (!infotext) return res(Boom.notFound());
+          return res({infotext});
+        })
+        .catch(() => res(Boom.badRequest()));
+
+      } else if (page) {
+
+        InfoText.find({page, isActive}, projection)
         .then(infotext => {
           if (!infotext) return res(Boom.notFound());
           return res({infotext});
@@ -81,7 +91,8 @@ module.exports = [
 
         payload: {
           page: Joi.string().alphanum().min(3).required(),
-          description: Joi.string().min(3).required()
+          description: Joi.string().min(3).required(),
+          isActive: Joi.boolean()
         }
 
       }
