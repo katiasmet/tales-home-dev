@@ -1,9 +1,24 @@
 import React  from 'react';
 
-import {Header} from '../components/';
-import {UserProfiles} from '../components/user';
+import {Header} from '../components';
+import {UserProfiles, UserLogin, UserRegister, FamilyJoin} from '../components/user';
+
+const renderLogin = () => {
+
+  if (location.pathname === `/login`) {
+    return <UserLogin />;
+  } else if (location.pathname === `/register`) {
+    return <UserRegister />;
+  } else {
+    return <FamilyJoin />;
+  }
+
+};
 
 const Login = () => {
+
+  console.log(`login main`);
+
   return (
 
     <div className='page page-login'>
@@ -14,9 +29,7 @@ const Login = () => {
 
         <UserProfiles />
 
-        {
-
-        }
+        {renderLogin()}
 
       </main>
 

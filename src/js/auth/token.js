@@ -1,10 +1,18 @@
 //import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 import timestamp from '../util/timestamp';
 
 export const get = () => localStorage.getItem(`token`);
 export const set = t => localStorage.setItem(`token`, t);
 
-//export const content = () => jwt.decode(get());
+export const content = () => {
+
+  if (get()) {
+    jwtDecode(get());
+  }
+
+  return false;
+};
 
 export const isValid = () => {
 
@@ -36,7 +44,7 @@ export const clear = () => {
 export default {
   get,
   set,
-  //content,
+  content,
   isValid,
   clear
 };

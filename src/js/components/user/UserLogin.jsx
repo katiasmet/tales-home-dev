@@ -11,7 +11,7 @@ class UserLogin extends Component {
   state = {
     email: ``,
     password: ``,
-    redirectToDashboard: false
+    redirect: false
   }
 
   componentDidMount() {
@@ -48,7 +48,6 @@ class UserLogin extends Component {
     const error = this.validate();
 
     if (!isEmpty(error)) {
-
       this.setState({error, password: ``, email: ``});
 
     } else {
@@ -56,10 +55,10 @@ class UserLogin extends Component {
       login(this.state)
         .then(d => set(d))
         .then(() => {
-          this.setState({redirectToDashboard: true});
+          //this.setState({redirect: true});
         })
         .catch(err => {
-          this.setState({error: err.error, password: ``, email: ``});
+          this.setState({error: err.message, password: ``, email: ``});
         });
 
     }
@@ -68,15 +67,12 @@ class UserLogin extends Component {
 
   render() {
 
-    const {email, password, error, redirectToDashboard} = this.state;
+    const {email, password, error, redirect} = this.state;
 
     return (
 
       <section className='login-form'>
 
-        {redirectToDashboard && (
-          <Redirect to='/families' />
-        )}
 
         <form action='' method='post'
           acceptCharset='utf-8' onSubmit={e => this.submitHandler(e)}>

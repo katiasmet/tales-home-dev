@@ -1,9 +1,9 @@
 import token from './token';
 
-export default (nextState, replace) => {
+export default () => {
 
   if (token.clear()) {
-    replace({pathname: `/login`});
+    return true;
   }
 
 };

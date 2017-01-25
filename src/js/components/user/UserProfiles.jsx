@@ -5,17 +5,17 @@ const UserProfiles = () => {
   return (
     <ul className='user-profiles'>
       <li className='user-profile'>
-        <Link to='Register'>
+        <Link to='/register'>
           new mentor
         </Link>
       </li>
       <li className='user-profile'>
-        <Link to='Login'>
+        <Link to='/login'>
           mentor
         </Link>
       </li>
       <li className='user-profile'>
-        <Link to='Join'>
+        <Link to='/join'>
           family
         </Link>
       </li>
