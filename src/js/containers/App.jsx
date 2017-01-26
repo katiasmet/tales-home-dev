@@ -10,7 +10,7 @@ import stores from '../stores';
 const App = () => {
 
   return (
-    <Provider user={stores.user}>
+    <Provider user={stores.user} formLogin={stores.formLogin}>
       <Router>
         <div className='main'>
 
