@@ -1,42 +1,31 @@
-import React, {Component}  from 'react';
+import React, {Component, PropTypes}  from 'react';
 import {Link, Redirect} from 'react-router';
+import {observer, inject} from 'mobx-react';
 
 import {login} from '../../api/auth';
-import {set, get} from '../../auth/token';
-import {isLoggedIn} from '../../auth';
+import {set} from '../../auth/token';
 
 import {isEmpty} from 'lodash';
 
+@inject(`user`) @observer
 class UserLogin extends Component {
-
-  state = {
-    email: ``,
-    password: ``,
-    redirect: false
-  }
 
   componentDidMount() {
     this.$email.focus();
     this.$password.focus();
     this.$error.focus();
-
-    console.log(`mounting`);
-    if (isLoggedIn(get)) {
-      console.log(`true`);
-      this.setState({redirect: true});
-    }
   }
 
   handleChange = () => {
-    this.setState({
-      email: this.$email.value,
-      password: this.$password.value
-    });
+
+    this.props.user.update(`userLogin`, `email`, this.$email.value);
+    this.props.user.update(`userLogin`, `password`, this.$password.value);
+
   }
 
   validate() {
 
-    const {email, password} = this.state;
+    const {email, password} = this.props.user.userLogin;
 
     let error = ``;
 
@@ -48,6 +37,12 @@ class UserLogin extends Component {
 
   }
 
+  clearForm(error) {
+    this.props.user.update(`userLogin`, `email`, ``);
+    this.props.user.update(`userLogin`, `password`, ``);
+    this.props.user.update(`userLogin`, `error`, error);
+  }
+
   submitHandler(e) {
 
     e.preventDefault();
@@ -55,17 +50,20 @@ class UserLogin extends Component {
     const error = this.validate();
 
     if (!isEmpty(error)) {
-      this.setState({error, password: ``, email: ``});
+
+      this.clearForm(error);
 
     } else {
 
-      login(this.state)
+      const {email, password} = this.props.user.userLogin;
+
+      login({email: email, password: password})
         .then(d => set(d))
         .then(() => {
-          this.setState({redirect: true});
+          this.props.user.update(`userLogin`, `redirect`, true);
         })
-        .catch(err => {
-          this.setState({error: err.message, password: ``, email: ``});
+        .catch(error => {
+          this.clearForm(error.message);
         });
 
     }
@@ -74,7 +72,7 @@ class UserLogin extends Component {
 
   render() {
 
-    const {email, password, error, redirect} = this.state;
+    const {email, password, error, redirect} = this.props.user.userLogin;
 
     return (
 
@@ -127,5 +125,9 @@ class UserLogin extends Component {
   }
 
 }
+
+UserLogin.propTypes = {
+  user: PropTypes.element
+};
 
 export default UserLogin;
