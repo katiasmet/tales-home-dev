@@ -66,14 +66,13 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
             onChange={handleChange}
             placeholder='f.e. Howest University College' />
 
-          {isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
+          {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <button type='submit' className='btn' disabled={!meta.isValid}>Register</button>
 
         </fieldset>
 
       </form>
-
     </section>
   );
 }));

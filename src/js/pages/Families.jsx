@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Header} from '../components/';
+import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/families';
 
 const Families = () => {
   return (
@@ -8,7 +9,15 @@ const Families = () => {
       <Header />
 
       <main>
-        <h1>families</h1>
+
+        <FamiliesSearch />
+
+        <section className='families-overview'>
+
+          <FamiliesBrowse />
+          <FamiliesOverview />
+
+        </section>
       </main>
     </div>
 

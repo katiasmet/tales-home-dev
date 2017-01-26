@@ -1,13 +1,8 @@
 import React from 'react';
 
-import {isLoggedIn, logout} from '../auth';
+import {isLoggedIn} from '../auth';
 
 import {NavigationItem} from './';
-
-const handleLogout = () => {
-  logout();
-  window.location.href = `/`;
-};
 
 const {handleInfo} = () => {
   console.log(`handle info`);
@@ -30,10 +25,6 @@ const Navigation = () => {
               </li>
 
               <NavigationItem link='/editprofile' icon='fa-gear' />
-
-              <li onClick={handleLogout}>
-                <i className='fa fa-sign-out'></i>
-              </li>
             </ul>
 
           ) : (

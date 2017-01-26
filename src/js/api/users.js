@@ -1,17 +1,19 @@
 import fetch from 'isomorphic-fetch';
 
+import {audience} from '../globals';
 import {checkStatus, buildBody} from '../util/';
 import {token} from '../auth/';
 
 const base = `/api/users`;
 
 const whitelist = {
-  POST: [`name`, `email`, `password`, `organisation`]
+  POST: [`name`, `email`, `password`, `organisation`],
+  UPDATE: [`name`, `email`, `password`, `newpassword`, `organisation`]
 };
 
 export const select = id => {
 
-  const headers = new Headers({Authorization: token.get()});
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
   let path;
 
   if (id) { path = `${base}/${id}`; }
@@ -32,7 +34,19 @@ export const insert = data => {
 
 };
 
+export const update = data => {
+
+  const method = `POST`; //post instead of put to hash the passwords
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
+  const body = buildBody(data, whitelist.UPDATE, {audience});
+  const id = token.content().sub;
+
+  return fetch(`${base}/${id}`, {method, headers, body})
+    .then(checkStatus);
+};
+
 export default {
   insert,
-  select
+  select,
+  update
 };

@@ -92,7 +92,8 @@ header {
           justify-content: space-between;
 }
 
-nav {
+nav,
+.form-actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,7 +102,7 @@ nav {
           justify-content: space-between;
 }
 
-nav ul {
+nav ul, .form-actions ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,7 +111,7 @@ nav ul {
   justify-content: space-between;
 }
 
-nav li {
+nav li, .form-actions li {
   margin-left: 16px;
   margin-left: 1rem;
   color: #773eff;
