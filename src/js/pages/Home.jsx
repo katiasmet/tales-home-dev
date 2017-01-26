@@ -1,10 +1,13 @@
 import React from 'react';
 
+import {Header} from '../components/';
+
 const Home = () => {
   return (
-    <header>
-      <h1>Hello Boilerplate</h1>
-    </header>
+    <div className='page page-home'>
+      <Header />
+    </div>
+
   );
 };
 

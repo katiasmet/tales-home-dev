@@ -3,6 +3,7 @@ const {User} = require(`mongoose`).models;
 const {omit} = require(`lodash`);
 
 const Joi = require(`joi`);
+Joi.objectId = require(`joi-objectid`)(Joi);
 const Boom = require(`boom`);
 
 const base = `/api`;
@@ -23,7 +24,7 @@ module.exports = [
         },
 
         payload: {
-          login: Joi.string().min(3).required(),
+          email: Joi.string().min(3).required(),
           password: Joi.string().min(3).required(),
           audience: Joi.string().min(3).required()
         }
@@ -34,17 +35,12 @@ module.exports = [
 
     handler: (req, res) => {
 
-      const {login, password, audience} = req.payload;
+      const {email, password, audience} = req.payload;
       const isActive = true;
 
       User.findOne({
         $and: [
-          {
-            $or: [
-              {username: login},
-              {email: login}
-            ]
-          },
+          {email: email},
           {isActive}
         ]
       }).then(user => {
@@ -52,7 +48,7 @@ module.exports = [
 
         if (!user) {
           return res(
-            Boom.badRequest(`user/password combination incorrect`)
+            Boom.badRequest(`Oops! Looks like your e-mail or password isn't correct.`)
           );
         }
 
@@ -60,7 +56,7 @@ module.exports = [
 
           if (err || !isValid) {
             return res(
-              Boom.badRequest(`user/password combination incorrect`)
+              Boom.badRequest(`Oops! Looks like your e-mail or password isn't correct.`)
             );
           }
 
@@ -73,7 +69,7 @@ module.exports = [
 
       }).catch(() => {
         return res(
-          Boom.badRequest(`error while authenticating user`)
+          Boom.badRequest(`Oops! Looks like we couldn't login.`)
         );
       });
 

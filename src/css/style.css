@@ -1,7 +1,79 @@
 @import 'reset';
 
+$active: #773eff;
+
 body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
-  font-size: 3rem;
+  font-size: 1.6rem;
   margin: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    margin-left: 1rem;
+    color: $active;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORMS */
+form {
+  width: 40rem;
+  margin: 2rem;
+}
+
+label {
+  display: block;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+
+  margin: 1rem 0;
+  background: none;
+
+  border-radius: 1rem;
+  border: 1px solid grey;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* LOGIN */
+.user-profiles {
+  display: flex;
+}
+
+.user-profile {
+  margin: 1rem;
 }

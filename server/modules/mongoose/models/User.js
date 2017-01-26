@@ -4,7 +4,7 @@ const Scopes = require(`../const/Scopes`);
 
 const schema = new Schema({
 
-  username: {
+  name: {
     type: String,
     required: true,
     unique: true
@@ -22,9 +22,13 @@ const schema = new Schema({
     unique: true
   },
 
+  organisation: {
+    type: String
+  },
+
   scope: {
     type: String,
-    default: Scopes.USER
+    default: Scopes.PROFESSIONAL
   },
 
   isActive: {

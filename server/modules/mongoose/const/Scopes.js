@@ -1,4 +1,4 @@
 module.exports = {
-  USER: `user`,
+  PROFESSIONAL: `professional`,
   ADMIN: `admin`
 };
