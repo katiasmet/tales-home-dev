@@ -1,0 +1,25 @@
+import React, {PropTypes} from 'react';
+import {Link} from 'react-router';
+
+import {isEmpty} from 'lodash';
+
+const NavigationItem = ({link, icon, content}) => {
+  return (
+    <li>
+      <Link to={link}>
+        {
+          !isEmpty(icon) && (<i className={`fa ${icon}`}></i>)
+        }
+        {content}
+      </Link>
+    </li>
+  );
+};
+
+NavigationItem.propTypes = {
+  link: PropTypes.string,
+  icon: PropTypes.string,
+  content: PropTypes.string
+};
+
+export default NavigationItem;

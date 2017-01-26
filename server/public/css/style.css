@@ -79,6 +79,10 @@ h2 {
   font-size: 1.8rem;
 }
 
+.error {
+  color: red;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,6 +99,15 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 nav li {

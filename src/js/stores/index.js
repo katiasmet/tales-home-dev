@@ -1,7 +1,11 @@
-import user from './User';
+import form from './Form';
+import formLogin from './FormLogin';
+import formRegister from './FormRegister';
 
 const stores = {
-  user
+  form,
+  formLogin,
+  formRegister
 };
 
 export default stores;

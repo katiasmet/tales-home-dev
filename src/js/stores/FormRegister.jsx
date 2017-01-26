@@ -1,0 +1,61 @@
+import {observable, action} from 'mobx';
+import Form from './Form';
+
+import {login} from '../api/auth';
+import {insert as register} from '../api/users';
+import {set} from '../auth/token';
+
+class FormRegister extends Form {
+  @observable form = ({
+    fields: {
+      name: {
+        value: ``,
+        error: ``,
+        rule: `required|alpha|min:3`
+      },
+      email: {
+        value: ``,
+        error: ``,
+        rule: `required|email`
+      },
+      password: {
+        value: ``,
+        error: ``,
+        rule: `required|min:3`
+      },
+      organisation: {
+        value: ``,
+        error: ``,
+        rule: `string`
+      }
+    },
+    meta: {
+      isValid: true,
+      error: ``
+    },
+    redirect: false
+  });
+
+  @action handleSubmit = e => {
+    e.preventDefault();
+
+    if (!this.form.meta.isValid) {
+      this.handleError(`Oops! Looks like your e-mail or password isn't correct.`);
+    } else {
+
+      register(this.getValues())
+        .then(() => login(this.getValues()))
+        .then(t => set(t))
+        .then(() => {
+          this.form.redirect = true;
+        })
+        .catch(error => {
+          this.handleError(error.message);
+        });
+
+    }
+
+  }
+}
+
+export default new FormRegister();

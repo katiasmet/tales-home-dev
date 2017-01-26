@@ -84,7 +84,7 @@ module.exports = [
           name: Joi.string().alphanum().min(3).required(),
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
-          organisation: Joi.string().min(3),
+          organisation: Joi.string().allow(``),
           isActive: Joi.boolean(),
           scope: Joi.string().min(3)
         }

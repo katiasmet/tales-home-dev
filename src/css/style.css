@@ -21,6 +21,10 @@ h2 {
   font-size: 1.8rem;
 }
 
+.error {
+  color: red;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -29,6 +33,11 @@ header {
 nav {
   display: flex;
   justify-content: space-between;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
 
   li {
     margin-left: 1rem;
