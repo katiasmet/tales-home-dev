@@ -1,4 +1,3 @@
-//import jwt from 'jsonwebtoken';
 import jwtDecode from 'jwt-decode';
 import timestamp from '../util/timestamp';
 
@@ -8,7 +7,7 @@ export const set = t => localStorage.setItem(`token`, t);
 export const content = () => {
 
   if (get()) {
-    jwtDecode(get());
+    return jwtDecode(get());
   }
 
   return false;

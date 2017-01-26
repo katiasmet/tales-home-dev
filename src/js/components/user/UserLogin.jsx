@@ -2,7 +2,8 @@ import React, {Component}  from 'react';
 import {Link, Redirect} from 'react-router';
 
 import {login} from '../../api/auth';
-import {set} from '../../auth/token';
+import {set, get} from '../../auth/token';
+import {isLoggedIn} from '../../auth';
 
 import {isEmpty} from 'lodash';
 
@@ -18,6 +19,12 @@ class UserLogin extends Component {
     this.$email.focus();
     this.$password.focus();
     this.$error.focus();
+
+    console.log(`mounting`);
+    if (isLoggedIn(get)) {
+      console.log(`true`);
+      this.setState({redirect: true});
+    }
   }
 
   handleChange = () => {
@@ -55,7 +62,7 @@ class UserLogin extends Component {
       login(this.state)
         .then(d => set(d))
         .then(() => {
-          //this.setState({redirect: true});
+          this.setState({redirect: true});
         })
         .catch(err => {
           this.setState({error: err.message, password: ``, email: ``});
@@ -73,6 +80,11 @@ class UserLogin extends Component {
 
       <section className='login-form'>
 
+        {
+          redirect && (
+            <Redirect to='/families' />
+          )
+        }
 
         <form action='' method='post'
           acceptCharset='utf-8' onSubmit={e => this.submitHandler(e)}>

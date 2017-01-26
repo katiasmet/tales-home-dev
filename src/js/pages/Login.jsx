@@ -17,8 +17,6 @@ const renderLogin = () => {
 
 const Login = () => {
 
-  console.log(`login main`);
-
   return (
 
     <div className='page page-login'>

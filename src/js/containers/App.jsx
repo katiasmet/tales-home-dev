@@ -1,8 +1,8 @@
 import React from 'react';
-import {Match, BrowserRouter as Router, Redirect} from 'react-router';
+import {BrowserRouter as Router} from 'react-router';
 
 import {Home, Login, Families} from '../pages/';
-import {isLoggedIn} from '../auth';
+import {RedirectWhenAuthorized, MatchWhenAuthorized} from '../util/checkRoutes';
 
 const App = () => {
 
@@ -10,56 +10,16 @@ const App = () => {
     <Router>
       <div className='main'>
 
-        <Match
-          pattern='/'
-          exactly render={() => (
-            isLoggedIn() ? (<Redirect to='/families' />)
-            : (<Home />)
-          )}
-        />
+      <RedirectWhenAuthorized pattern='/' component={Home} />
+      <RedirectWhenAuthorized pattern='/login' component={Login} />
+      <RedirectWhenAuthorized pattern='/register' component={Login} />
+      <RedirectWhenAuthorized pattern='/join' component={Login} />
 
-        <Match
-          pattern='/login'
-          exactly render={() => (
-            isLoggedIn() ? (<Redirect to='/families' />)
-            : (<Login />)
-          )}
-        />
-
-        <Match
-          pattern='/register'
-          exactly render={() => (
-            isLoggedIn() ? (<Redirect to='/families' />)
-            : (<Login />)
-          )}
-        />
-
-        <Match
-          pattern='/join'
-          exactly render={() => (
-            isLoggedIn() ? (<Redirect to='/families' />)
-            : (<Login />)
-          )}
-        />
-
-        <MatchWhenAuthorized pattern='/families' component={Families} />
+      <MatchWhenAuthorized pattern='/families' component={Families} />
 
       </div>
     </Router>
   );
 };
-
-const MatchWhenAuthorized = ({component: Component, ...rest}) => (
-
-  <Match {...rest} render={props => (
-    isLoggedIn() ? (
-      <Component {...props} />
-    ) : (
-      <Redirect to={{
-        pathname: `/login`
-      }} />
-    )
-  )} />
-);
 
 export default App;
