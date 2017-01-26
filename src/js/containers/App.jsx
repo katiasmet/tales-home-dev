@@ -10,6 +10,8 @@ const App = () => {
     <Provider
       formLogin={stores.formLogin}
       formRegister={stores.formRegister}
+      formEdit={stores.formEdit}
+      families={stores.families}
     >
 
       <Router />

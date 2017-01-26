@@ -1,11 +1,14 @@
-import form from './Form';
 import formLogin from './FormLogin';
 import formRegister from './FormRegister';
+import formEdit from './FormEdit';
+
+import families from './Families';
 
 const stores = {
-  form,
   formLogin,
-  formRegister
+  formRegister,
+  formEdit,
+  families
 };
 
 export default stores;
