@@ -101,6 +101,15 @@ nav {
           justify-content: space-between;
 }
 
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 nav li {
   margin-left: 16px;
   margin-left: 1rem;

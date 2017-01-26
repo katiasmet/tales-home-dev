@@ -34,6 +34,11 @@ nav {
   display: flex;
   justify-content: space-between;
 
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
   li {
     margin-left: 1rem;
     color: $active;
