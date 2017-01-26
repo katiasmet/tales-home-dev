@@ -27,6 +27,7 @@ class Families  {
   }
 
   handleLoading = isLoading => {
+    console.log(`handle loading`);
     this.isLoading = isLoading;
   }
 

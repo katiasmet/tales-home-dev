@@ -14,17 +14,16 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
     <section className='families families-overview'>
 
       {
-        isLoading && (<Loading />)
-      }
-
-      {
-        isEmpty(allFamilies) ? (
-          <p>Hello there! Looks like you didn't analyse any families yet. Start by <Link to='/newfamiliy'>adding a family</Link>.</p>
-        )
+        isLoading ? (<Loading />)
         : (
-          allFamilies.map((family, i) => (
-            <FamilyItem {...family} key={i} />
-          ))
+          isEmpty(allFamilies) ? (
+            <p>Hello there! Looks like you didn't analyse any families yet. Start by <Link to='/newfamiliy'>adding a family</Link>.</p>
+          )
+          : (
+            allFamilies.map((family, i) => (
+              <FamilyItem {...family} key={i} />
+            ))
+          )
         )
       }
 
