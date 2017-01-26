@@ -12,7 +12,7 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
 
   return (
 
-        <section className='login-form'>
+        <section className='form form-login'>
 
           {
             redirect && (

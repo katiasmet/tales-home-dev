@@ -21,6 +21,10 @@ h2 {
   font-size: 1.8rem;
 }
 
+.error {
+  color: red;
+}
+
 header {
   display: flex;
   justify-content: space-between;

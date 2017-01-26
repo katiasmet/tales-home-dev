@@ -2,11 +2,17 @@ import {observable, action} from 'mobx';
 import Form from './Form';
 
 import {login} from '../api/auth';
+import {insert as register} from '../api/users';
 import {set} from '../auth/token';
 
-class FormLogin extends Form {
+class FormRegister extends Form {
   @observable form = ({
     fields: {
+      name: {
+        value: ``,
+        error: ``,
+        rule: `required|alpha|min:3`
+      },
       email: {
         value: ``,
         error: ``,
@@ -16,6 +22,11 @@ class FormLogin extends Form {
         value: ``,
         error: ``,
         rule: `required|min:3`
+      },
+      organisation: {
+        value: ``,
+        error: ``,
+        rule: `string`
       }
     },
     meta: {
@@ -32,8 +43,9 @@ class FormLogin extends Form {
       this.handleError(`Oops! Looks like your e-mail or password isn't correct.`);
     } else {
 
-      login(this.getValues())
-        .then(d => set(d))
+      register(this.getValues())
+        .then(() => login(this.getValues()))
+        .then(t => set(t))
         .then(() => {
           this.form.redirect = true;
         })
@@ -46,4 +58,4 @@ class FormLogin extends Form {
   }
 }
 
-export default new FormLogin();
+export default new FormRegister();
