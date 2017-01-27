@@ -20,26 +20,24 @@ const FamilyInfoResult = () => {
   const actions = [
     {
       icon: `fa-trash`,
-      action: handleRemove
+      handleAction: handleRemove
     },
     {
-      icon: `fa-notes`,
-      action: handleNotes
+      icon: `fa-align-justify`,
+      handleAction: handleNotes
     },
     {
       icon: `fa-download`,
-      action: handleDownload
+      handleAction: handleDownload
     }
   ];
 
   return (
     <li className='family-info-result'>
       name
+      <span className='result-date'> - 20 April 2017</span>
 
-      <span className='result-date'>
-        20 April 2017
-      </span>
-
+      <Actions actionClass='result-actions' actions={actions} />
     </li>
   );
 };

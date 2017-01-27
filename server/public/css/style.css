@@ -77,6 +77,11 @@ h1 {
 h2 {
   font-size: 28.8px;
   font-size: 1.8rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-weight: bold;
 }
 
 .error {
@@ -173,6 +178,12 @@ input:focus{
 .user-profile {
   margin: 16px;
   margin: 1rem;
+}
+
+/* FAMILIES */
+.family-item {
+  margin: 32px;
+  margin: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map*/
