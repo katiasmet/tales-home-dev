@@ -5,9 +5,9 @@ import {isEmpty} from 'lodash';
 import {FormInput} from '../';
 import {logout} from '../../auth';
 
-const UserEdit = inject(`formEdit`)(observer(({formEdit}) => {
+const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
 
-  const {form, handleChange, handleSubmit} = formEdit;
+  const {form, handleChange, handleSubmit} = formEditUser;
   const {fields, meta, success} = form;
 
   return (
@@ -114,7 +114,7 @@ const handleRemoveUser = () => {
 };
 
 UserEdit.propTypes = {
-  formLogin: PropTypes.shape({
+  formEditUser: PropTypes.shape({
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     form: PropTypes.shape({
@@ -125,7 +125,8 @@ UserEdit.propTypes = {
       meta: PropTypes.shape({
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
-      }).isRequired
+      }).isRequired,
+      success: PropTypes.string
     }).isRequired
   })
 };

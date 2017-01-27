@@ -11,6 +11,7 @@ const App = () => {
       formLogin={stores.formLogin}
       formRegister={stores.formRegister}
       formEdit={stores.formEdit}
+      formAddFamily={stores.formAddFamily}
       families={stores.families}
     >
 

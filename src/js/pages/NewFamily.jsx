@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Header} from '../components/';
+import {FamilyAdd} from '../components/families/family';
 
 const NewFamily = () => {
   return (
@@ -8,7 +9,7 @@ const NewFamily = () => {
       <Header />
 
       <main>
-        <h1>New Family</h1>
+        <FamilyAdd />
       </main>
     </div>
 

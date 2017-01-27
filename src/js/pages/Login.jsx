@@ -1,7 +1,8 @@
 import React  from 'react';
 
 import {Header} from '../components';
-import {UserProfiles, UserLogin, UserRegister, FamilyJoin} from '../components/user';
+import {UserProfiles, UserLogin, UserRegister} from '../components/user';
+import {FamilyJoin} from '../components/families/family';
 
 const renderLogin = () => {
 

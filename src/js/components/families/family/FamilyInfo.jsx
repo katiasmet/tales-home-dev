@@ -1,10 +1,13 @@
 import React from 'react';
 
+import {FamilyInfoMembers, FamilyInfoResults} from './';
+
 const FamilyInfo = () => {
   return (
-    <p>
-      info
-    </p>
+    <section className='family-info'>
+      <FamilyInfoMembers />
+      <FamilyInfoResults />
+    </section>
   );
 };
 

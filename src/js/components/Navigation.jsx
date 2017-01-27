@@ -20,7 +20,7 @@ const Navigation = () => {
               <NavigationItem link='/models' icon='fa-ellipsis-h' />
               <NavigationItem link='/newfamily' icon='fa-user-plus' />
 
-              <li onClick={handleInfo}>
+              <li className='nav-item' onClick={handleInfo}>
                 <i className='fa fa-info'></i>
               </li>
 

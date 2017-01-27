@@ -77,7 +77,8 @@ UserLogin.propTypes = {
       meta: PropTypes.shape({
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
-      }).isRequired
+      }).isRequired,
+      redirect: PropTypes.bool
     }).isRequired
   })
 };

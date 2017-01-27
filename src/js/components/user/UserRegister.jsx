@@ -10,8 +10,6 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
   const {form, handleChange, handleSubmit} = formRegister;
   const {fields, meta, redirect} = form;
 
-  console.log(redirect);
-
   return (
 
     <section className='form form-register'>
@@ -80,7 +78,7 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
 }));
 
 UserRegister.propTypes = {
-  formLogin: PropTypes.shape({
+  formRegister: PropTypes.shape({
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     form: PropTypes.shape({
@@ -91,7 +89,8 @@ UserRegister.propTypes = {
       meta: PropTypes.shape({
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
-      }).isRequired
+      }).isRequired,
+      redirect: PropTypes.bool
     }).isRequired
   })
 };

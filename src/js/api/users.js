@@ -13,13 +13,14 @@ const whitelist = {
 
 export const select = id => {
 
+  const method = `GET`;
   const headers = new Headers({Authorization: `Bearer ${token.get()}`});
   let path;
 
   if (id) { path = `${base}/${id}`; }
   else { path = base; }
 
-  return fetch(path, {headers})
+  return fetch(path, {method, headers})
     .then(checkStatus);
 
 };

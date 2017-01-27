@@ -27,7 +27,6 @@ class Families  {
   }
 
   handleLoading = isLoading => {
-    console.log(`handle loading`);
     this.isLoading = isLoading;
   }
 
@@ -35,14 +34,23 @@ class Families  {
     this.activeCharacter = character;
   }
 
+  handleActiveFamilies = () => {
+    //get all objects where first letter == active character
+  }
+
+  /*handleFamilyInfo = id => {
+    //fetch familymembers, results, familymodels, notes from this family
+
+  }
+
+  handleRemoveFamily = id => {
+    //remove members, result, family, familymodels, notes
+  }*/
+
   //search by first letter
   //search through origins, location and name
   //add family
   //remove family
-
-  @action searchByFirstLetter = () => {
-
-  }
 }
 
 export default new Families();
