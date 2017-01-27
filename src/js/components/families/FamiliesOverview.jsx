@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {Link} from 'react-router';
 import {observer, inject} from 'mobx-react';
 import {isEmpty} from 'lodash';
@@ -32,5 +32,6 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
     </section>
   );
 }));
+
 
 export default FamiliesOverview;

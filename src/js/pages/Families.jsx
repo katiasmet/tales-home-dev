@@ -1,27 +1,42 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import {observer, inject} from 'mobx-react';
 
 import {Header} from '../components/';
 import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/families';
 
-const Families = () => {
-  return (
-    <div className='page page-families'>
-      <Header />
+@inject(`families`) @observer
+class Families extends Component {
 
-      <main>
+  componentDidMount() {
+    this.props.families.getFamilies();
+  }
 
-        <FamiliesSearch />
+  render() {
+    return (
+      <div className='page page-families'>
+        <Header />
 
-        <section className='families-overview'>
+        <main>
 
-          <FamiliesBrowse />
-          <FamiliesOverview />
+          <FamiliesSearch />
 
-        </section>
-      </main>
-    </div>
+          <section className='families-overview'>
 
-  );
+            <FamiliesBrowse />
+            <FamiliesOverview />
+
+          </section>
+        </main>
+      </div>
+
+    );
+  }
+}
+
+Families.propTypes = {
+  families: PropTypes.shape({
+    getFamilies: PropTypes.func
+  })
 };
 
 export default Families;

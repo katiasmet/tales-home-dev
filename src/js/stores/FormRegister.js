@@ -40,13 +40,14 @@ class FormRegister extends Form {
     e.preventDefault();
 
     if (!this.form.meta.isValid) {
-      this.handleError(`Oops! Looks like your e-mail or password isn't correct.`);
+      this.handleError(`Oops! Looks like something went wrong with the registration.`);
     } else {
 
       register(this.getValues())
         .then(() => login(this.getValues()))
         .then(t => set(t))
         .then(() => {
+          console.log(`redirect`);
           this.form.redirect = true;
         })
         .catch(error => {

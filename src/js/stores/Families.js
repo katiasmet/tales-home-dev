@@ -5,7 +5,11 @@ import {content} from '../auth/token';
 
 class Families  {
 
-  constructor() {
+  @observable isLoading = true;
+  @observable allFamilies = [];
+  @observable activeCharacter = `A`;
+
+  @action getFamilies = () => {
     this.handleLoading(true);
 
     selectByProfessionalId({professionalId: content().sub})
@@ -17,10 +21,6 @@ class Families  {
         this.handleError(err);
       });
   }
-
-  @observable isLoading = true;
-  @observable allFamilies = [];
-  @observable activeCharacter = `A`;
 
   handleError = error => {
     this.error = error;

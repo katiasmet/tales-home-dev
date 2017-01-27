@@ -33254,26 +33254,24 @@ var FamiliesOverview = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_re
       error = families.error;
 
 
-  console.log(isLoading);
-
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'section',
     { className: 'families families-overview', __source: {
         fileName: _jsxFileName,
-        lineNumber: 16
+        lineNumber: 14
       }
     },
     isLoading ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["d" /* Loading */], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 17
       }
     }) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_lodash__["isEmpty"])(allFamilies) ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'p',
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 20
         }
       },
       'Hello there! Looks like you didn\'t analyse any families yet. Start by ',
@@ -33281,7 +33279,7 @@ var FamiliesOverview = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_re
         __WEBPACK_IMPORTED_MODULE_1_react_router__["Link"],
         { to: '/newfamiliy', __source: {
             fileName: _jsxFileName,
-            lineNumber: 22
+            lineNumber: 20
           }
         },
         'adding a family'
@@ -33290,7 +33288,7 @@ var FamiliesOverview = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_re
     ) : allFamilies.map(function (family, i) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__family__["a" /* FamilyItem */], _extends({}, family, { key: i, __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 24
         }
       }));
     }),
@@ -33298,7 +33296,7 @@ var FamiliesOverview = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_re
       'div',
       { className: 'error', __source: {
           fileName: _jsxFileName,
-          lineNumber: 32
+          lineNumber: 30
         }
       },
       error
@@ -33391,6 +33389,12 @@ var FamilyItem = function FamilyItem(_ref) {
     },
     name
   );
+};
+
+FamilyItem.propTypes = {
+  name: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string.isRequired,
+  origins: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string,
+  homeLocation: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
 };
 
 /* harmony default export */ __webpack_exports__["a"] = FamilyItem;
@@ -34024,16 +34028,18 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
       redirect = form.redirect;
 
 
+  console.log(redirect);
+
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'section',
     { className: 'form form-register', __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 17
       }
     },
     redirect && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["Redirect"], { to: '/families', __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 21
       }
     }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -34044,7 +34050,7 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
         acceptCharset: 'utf-8',
         onSubmit: handleSubmit, __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 25
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -34052,7 +34058,7 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29
+            lineNumber: 31
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["e" /* FormInput */], {
@@ -34064,7 +34070,7 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
           onChange: handleChange,
           placeholder: 'f.e. Emma Johnson', __source: {
             fileName: _jsxFileName,
-            lineNumber: 31
+            lineNumber: 33
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["e" /* FormInput */], {
@@ -34077,7 +34083,7 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
           onChange: handleChange,
           placeholder: 'example@example.com', __source: {
             fileName: _jsxFileName,
-            lineNumber: 40
+            lineNumber: 42
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["e" /* FormInput */], {
@@ -34090,7 +34096,7 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
           onChange: handleChange,
           placeholder: 'your password', __source: {
             fileName: _jsxFileName,
-            lineNumber: 50
+            lineNumber: 52
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["e" /* FormInput */], {
@@ -34102,14 +34108,14 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
           onChange: handleChange,
           placeholder: 'f.e. Howest University College', __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 62
           }
         }),
         !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_lodash__["isEmpty"])(meta.error) && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'error', __source: {
               fileName: _jsxFileName,
-              lineNumber: 69
+              lineNumber: 71
             }
           },
           meta.error
@@ -34118,7 +34124,7 @@ var UserRegister = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_react_
           'button',
           { type: 'submit', className: 'btn', disabled: !meta.isValid, __source: {
               fileName: _jsxFileName,
-              lineNumber: 71
+              lineNumber: 73
             }
           },
           'Register'
@@ -34266,64 +34272,99 @@ var EditProfile = function EditProfile() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components___ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_families__ = __webpack_require__(144);
-var _jsxFileName = '/Applications/MAMP/htdocs/tales-home-dev/src/js/pages/Families.jsx';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mobx_react__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mobx_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_mobx_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components___ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_families__ = __webpack_require__(144);
+var _dec,
+    _class,
+    _jsxFileName = '/Applications/MAMP/htdocs/tales-home-dev/src/js/pages/Families.jsx';
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
 
-var Families = function Families() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    { className: 'page page-families', __source: {
-        fileName: _jsxFileName,
-        lineNumber: 8
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 9
-      }
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'main',
-      {
-        __source: {
+
+
+var Families = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["inject"])('families'), _dec(_class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["observer"])(_class = function (_Component) {
+  _inherits(Families, _Component);
+
+  function Families() {
+    _classCallCheck(this, Families);
+
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+  }
+
+  Families.prototype.componentDidMount = function componentDidMount() {
+    this.props.families.getFamilies();
+  };
+
+  Families.prototype.render = function render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'page page-families', __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 16
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_families__["a" /* FamiliesSearch */], {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components___["a" /* Header */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 17
         }
       }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'section',
-        { className: 'families-overview', __source: {
+        'main',
+        {
+          __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 19
           }
         },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_families__["b" /* FamiliesBrowse */], {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_families__["a" /* FamiliesSearch */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 21
           }
         }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_families__["c" /* FamiliesOverview */], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 18
-          }
-        })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'section',
+          { className: 'families-overview', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 23
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_families__["b" /* FamiliesBrowse */], {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 25
+            }
+          }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_families__["c" /* FamiliesOverview */], {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 26
+            }
+          })
+        )
       )
-    )
-  );
+    );
+  };
+
+  return Families;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"])) || _class) || _class);
+
+
+Families.propTypes = {
+  families: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    getFamilies: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = Families;
@@ -34797,7 +34838,7 @@ var _jsxFileName = '/Applications/MAMP/htdocs/tales-home-dev/src/js/router/index
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mobx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mobx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_families__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_token__ = __webpack_require__(18);
-var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -34860,6 +34901,8 @@ var Families = (_class = function Families() {
 
   _initDefineProp(this, 'activeCharacter', _descriptor3, this);
 
+  _initDefineProp(this, 'getFamilies', _descriptor4, this);
+
   this.handleError = function (error) {
     _this.error = error;
   };
@@ -34873,16 +34916,7 @@ var Families = (_class = function Families() {
     _this.activeCharacter = character;
   };
 
-  _initDefineProp(this, 'searchByFirstLetter', _descriptor4, this);
-
-  this.handleLoading(true);
-
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_families__["a" /* selectByProfessionalId */])({ professionalId: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__auth_token__["b" /* content */])().sub }).then(function (data) {
-    _this.allFamilies = data.families;
-    _this.handleLoading(false);
-  }).catch(function (err) {
-    _this.handleError(err);
-  });
+  _initDefineProp(this, 'searchByFirstLetter', _descriptor5, this);
 }
 
 //search by first letter
@@ -34905,7 +34939,23 @@ var Families = (_class = function Families() {
   initializer: function initializer() {
     return 'A';
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'searchByFirstLetter', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'getFamilies', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+  enumerable: true,
+  initializer: function initializer() {
+    var _this2 = this;
+
+    return function () {
+      _this2.handleLoading(true);
+
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_families__["a" /* selectByProfessionalId */])({ professionalId: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__auth_token__["b" /* content */])().sub }).then(function (data) {
+        _this2.allFamilies = data.families;
+        _this2.handleLoading(false);
+      }).catch(function (err) {
+        _this2.handleError(err);
+      });
+    };
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, 'searchByFirstLetter', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
   enumerable: true,
   initializer: function initializer() {
     return function () {};
@@ -35328,7 +35378,7 @@ var FormRegister = (_class = function (_Form) {
       e.preventDefault();
 
       if (!_this2.form.meta.isValid) {
-        _this2.handleError('Oops! Looks like your e-mail or password isn\'t correct.');
+        _this2.handleError('Oops! Looks like something went wrong with the registration.');
       } else {
 
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__api_users__["b" /* insert */])(_this2.getValues()).then(function () {
@@ -35336,6 +35386,7 @@ var FormRegister = (_class = function (_Form) {
         }).then(function (t) {
           return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__auth_token__["c" /* set */])(t);
         }).then(function () {
+          console.log('redirect');
           _this2.form.redirect = true;
         }).catch(function (error) {
           _this2.handleError(error.message);
@@ -52756,4 +52807,4 @@ module.exports = __webpack_require__(128);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.ee412964c483be617c1a.js.map
+//# sourceMappingURL=main.2f71f69d75562de16cbd.js.map

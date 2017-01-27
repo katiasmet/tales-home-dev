@@ -81,7 +81,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3).required(),
+          name: Joi.string().min(3).required(),
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
           organisation: Joi.string().allow(``),
@@ -106,11 +106,11 @@ module.exports = [
 
       user.save()
       .then(u => {
-        if (!u) return res(Boom.badRequest(`Cannot save user.`));
+        if (!u) return res(Boom.badRequest(`Oops! `));
         u = omit(u.toJSON(), [`__v`, `password`, `isActive`]);
         return res(u);
       })
-      .catch(() => res(Boom.badRequest(`Cannot save user.`)));
+      .catch(() => res(Boom.badRequest(`Oops! Looks like we couldn't save your registration.`)));
 
     }
 
@@ -183,7 +183,6 @@ module.exports = [
         ]
 
       }).then(user => {
-        console.log(user);
         if (!user) {
           return res(
               Boom.badRequest(`Oops! We couldn't find this user.`)
@@ -191,8 +190,6 @@ module.exports = [
         }
 
         user.verifyPassword(password, (err, isValid) => {
-
-          console.log(`verify password`);
 
           if (err || !isValid) {
             return res(
@@ -215,11 +212,8 @@ module.exports = [
           }
         }
 
-        console.log(user);
-
         user.save()
         .then(u => {
-          console.log(`saving`);
           if (!u) return res(Boom.badRequest(`Oops! We couldn't update your information.`));
 
           const {_id: subject} = u;
