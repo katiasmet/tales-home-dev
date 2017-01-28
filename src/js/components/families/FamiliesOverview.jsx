@@ -12,28 +12,35 @@ const renderFamilies = families => {
   });
 };
 
-const handleFamilies = families => {
+const handleFamilies = (families, activeFamilies, activeCharacter) => {
   if (isEmpty(families)) {
     return (
         <p> Hello there! Looks like you didn't analyse any families yet.
             Start by <Link to='/newfamiliy'>adding a family</Link>.</p>
     );
   } else {
-    return renderFamilies(families);
+    if (isEmpty(activeFamilies)) {
+      return (
+        <p>You've got no families starting with {activeCharacter}.</p>
+      );
+    } else {
+      return renderFamilies(activeFamilies);
+    }
+
   }
 
 };
 
 const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
-  const {allFamilies, isLoading, error} = families;
+  const {allFamilies, activeFamilies, activeCharacter, isLoading, error} = families;
 
   return (
     <section className='families families-overview'>
 
       {
         isLoading ? (<Loading />)
-        : handleFamilies(allFamilies)
+        : handleFamilies(allFamilies, activeFamilies, activeCharacter)
       }
 
       {!isEmpty(error) && <div className='error'>{error}</div>}

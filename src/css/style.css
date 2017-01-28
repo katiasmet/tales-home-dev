@@ -30,15 +30,31 @@ h3 {
   color: red;
 }
 
-header {
+header,
+.families,
+.actions {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 nav,
 .form-actions {
   display: flex;
   justify-content: space-between;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  li {
+    margin-left: 1rem;
+    color: $active;
+  }
+}
+
+.actions {
 
   ul {
     display: flex;
@@ -94,6 +110,82 @@ input {
 }
 
 /* FAMILIES */
+.families {
+  align-items: flex-start;
+  width: 100%;
+}
+
+.families-browse {
+
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+
+  li {
+    margin: 1rem;
+    background: #f1f1f2;
+    padding: 1rem;
+    border-radius: 50%;
+    text-align: center;
+
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background: #3190f5;
+    }
+
+  }
+
+  .disabled {
+    width: 2rem;
+    height: 2rem;
+    opacity: .5;
+    font-size: 1.2rem;
+
+    margin: .5rem;
+    cursor: auto;
+
+    &:hover {
+      background: #f1f1f2;
+    }
+  }
+
+  .active {
+    background: #3190f5;
+  }
+
+
+}
+
+.families-overview {
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 6;
+}
+
 .family-item {
   margin: 2rem;
+  width: 50vw;
+}
+
+.action {
+  margin: 1rem;
+  background: #f1f1f2;
+  padding: 1rem;
+  border-radius: 50%;
+  text-align: center;
+
+  width: 4rem;
+  height: 4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

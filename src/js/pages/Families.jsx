@@ -20,7 +20,7 @@ class Families extends Component {
 
           <FamiliesSearch />
 
-          <section className='families-overview'>
+          <section className='families'>
 
             <FamiliesBrowse />
             <FamiliesOverview />
