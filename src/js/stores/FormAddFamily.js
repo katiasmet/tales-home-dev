@@ -15,36 +15,38 @@ class FormUser extends Form {
       origins: {
         value: ``,
         error: ``,
-        rule: `string`
+        rule: `string|min:3`
       },
       homeLocation: {
         value: ``,
         error: ``,
-        rule: `string`
+        rule: `string|min:3`
       }
     },
     meta: {
       isValid: false,
       error: ``
     },
-    redirect: false
+    redirect: ``
   });
+
+  submitButton = ``;
+
+  @action handleSubmitButton = (e, button) => {
+    this.submitButton = button;
+  }
 
   @action handleSubmit = e => {
     e.preventDefault();
-
-    console.log(e);
-
-    //save or play ?
 
     if (!this.form.meta.isValid) {
       this.handleError(`Oops! Something went wrong.`);
     } else {
 
       insert(this.getValues())
-        .then(f => console.log(`add family in family array`))
-        .then(() => {
-          this.form.redirect = true;
+        .then(f => {
+          if (this.submitButton === `save`) this.form.redirect = `families`;
+          else this.form.redirect = `startsession`;
         })
         .catch(error => {
           this.handleError(error.message);

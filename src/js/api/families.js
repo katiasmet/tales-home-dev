@@ -40,9 +40,10 @@ export const selectByProfessionalId = query => {
 export const insert = data => {
 
   const method = `POST`;
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
   const body = buildBody(data, whitelist.POST, {});
 
-  return fetch(base, {method, body})
+  return fetch(base, {method, body, headers})
     .then(checkStatus);
 
 };

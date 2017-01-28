@@ -65,7 +65,7 @@ class Families  {
   }
 
   @action handleActiveCharacter = e => {
-    const character = e.target.innerHTML;
+    const character = e.currentTarget.innerHTML;
     this.activeCharacter = character;
 
     this.handleActiveFamilies();

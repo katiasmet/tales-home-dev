@@ -7,7 +7,7 @@ import {FormInput} from '../../';
 
 const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
 
-  const {form, handleChange, handleSubmit} = formAddFamily;
+  const {form, handleChange, handleSubmit, handleSubmitButton} = formAddFamily;
   const {fields, meta, redirect} = form;
 
   return (
@@ -15,9 +15,7 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
     <section className='form form-add-family'>
 
       {
-        redirect && (
-          <Redirect to='/families' />
-        )
+        !isEmpty(redirect) && <Redirect to={`/${redirect}`} />
       }
 
       <form
@@ -66,10 +64,10 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
 
               </li>
               <li>
-                <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-save'></i></button>
+                <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `save`)}><i className='fa fa-save'></i></button>
               </li>
               <li>
-                <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
+                <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `start`)}><i className='fa fa-caret-right'></i></button>
               </li>
             </ul>
           </div>
@@ -94,7 +92,7 @@ FamilyAdd.propTypes = {
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
       }).isRequired,
-      redirect: PropTypes.bool
+      redirect: PropTypes.string
     }).isRequired
   })
 };
