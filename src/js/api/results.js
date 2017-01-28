@@ -6,8 +6,9 @@ import {checkStatus, buildQuery, buildBody} from '../util/';
 const base = `/api/families`;
 
 const whitelist = {
-  GET: [`professionalId`],
-  POST: [`name`, `origins`, `homeLocation`]
+  GET: [`familyId`],
+  POST: [`familyId`, `firstName`, `languages`, `character`, `role`],
+  DELETE: [`id`]
 };
 
 export const select = id => {
@@ -24,7 +25,7 @@ export const select = id => {
 
 };
 
-export const selectByProfessional = query => {
+export const selectByFamily = query => {
 
   const method = `GET`;
   const qs = buildQuery(query, whitelist.GET);
@@ -60,6 +61,6 @@ export const remove = id => {
 export default {
   insert,
   select,
-  selectByProfessional,
+  selectByFamily,
   remove
 };

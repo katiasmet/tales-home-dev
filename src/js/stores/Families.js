@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import {orderBy, filter, startsWith, isEmpty, toUpper, uniq} from 'lodash';
 
-import {selectByProfessionalId} from '../api/families';
+import {selectByProfessional} from '../api/families';
 import {content} from '../auth/token';
 
 class Families  {
@@ -15,7 +15,7 @@ class Families  {
   @action getFamilies = () => {
     this.handleLoading(true);
 
-    selectByProfessionalId({professionalId: content().sub})
+    selectByProfessional({professionalId: content().sub})
       .then(data => {
         this.allFamilies = data.families;
         this.orderFamilies();
@@ -74,11 +74,12 @@ class Families  {
   /*handleFamilyInfo = id => {
     //fetch familymembers, results, familymodels, notes from this family
 
-  }
-
-  handleRemoveFamily = id => {
-    //remove members, result, family, familymodels, notes
   }*/
+
+  @action handleRemoveFamily = id => {
+    //remove members, result, family, familymodels, notes
+
+  }
 
   //search through origins, location and name
   //add family
