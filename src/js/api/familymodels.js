@@ -8,8 +8,8 @@ const base = `/api/familymodels`;
 
 const whitelist = {
   GET: [`familyId`],
-  POST: [`familyId`, `firstName`, `languages`, `character`, `role`],
-  DELETE: [`id`]
+  POST: [`familyId`, `modelId`],
+  DELETE: [`id`, `familyId`]
 };
 
 export const select = id => {
@@ -52,8 +52,6 @@ export const insert = data => {
 export const remove = query => {
 
   const method = `DELETE`;
-
-  console.log(query);
 
   let qs, id;
   if (query.familyId) qs = buildQuery(query, whitelist.GET);

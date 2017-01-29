@@ -80,7 +80,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3).required(),
+          name: Joi.string().min(3).required(),
           description: Joi.string().min(3).required(),
           image: Joi.string().min(3).required(),
           isActive: Joi.boolean()

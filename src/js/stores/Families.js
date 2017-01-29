@@ -4,6 +4,7 @@ import {orderBy, filter, startsWith, isEmpty, toUpper, uniq} from 'lodash';
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
 import {selectByFamily as selectFamilyModels, remove as removeFamilyModels} from '../api/familymodels';
+import {select as selectModel} from '../api/models';
 import {content} from '../auth/token';
 
 class Families  {
@@ -11,12 +12,16 @@ class Families  {
   @observable isLoading = true;
   allFamilies = [];
   @observable activeFamilies = [];
+
   @observable characters = [];
   @observable activeCharacter = ``;
+
   @observable activeFamily = [];
+  @observable showInfo = ``;
+  @observable isLoadingInfo = true;
 
   @action getFamilies = () => {
-    this.handleLoading(true);
+    this.isLoading = true;
 
     selectByProfessional({professionalId: content().sub})
       .then(data => {
@@ -25,7 +30,7 @@ class Families  {
         this.handleCharacters();
       }).then(() => {
         this.handleActiveFamilies();
-        this.handleLoading(false);
+        this.isLoading = false;
       }).catch(err => {
         this.handleError(err);
       });
@@ -33,10 +38,6 @@ class Families  {
 
   handleError = error => {
     this.error = error;
-  }
-
-  handleLoading = isLoading => {
-    this.isLoading = isLoading;
   }
 
   handleCharacters = () => {
@@ -75,26 +76,49 @@ class Families  {
   }
 
   @action handleFamilyInfo = id => {
-    //fetch familymembers, results, familymodels, notes from this family
-    //familymodelId is gelinked aan results en aan notes
-    console.log(id);
 
-    selectFamilyMembers({familyId: id})
-    .then(familymembers => {
-      this.activeFamily.familymembers = familymembers.familymembers;
-    }).catch(err => {
-      this.handleError(err);
-    });
+    this.isLoadingInfo = true;
 
-    selectFamilyModels({familyId: id})
-    .then(familymodels => {
-      this.activeFamily.familymodels = familymodels.familymodels;
-      console.log(this.activeFamily.familymodels);
-    }).catch(err => {
-      this.handleError(err);
-    });
+    if (!this.showInfo) {
+      selectFamilyMembers({familyId: id})
+      .then(familymembers => {
+        this.activeFamily.familymembers = familymembers.familyMembers;
+      }).catch(err => {
+        this.handleError(err);
+      });
+
+      selectFamilyModels({familyId: id})
+      .then(familymodels => {
+        this.activeFamily.familymodels = familymodels.familyModels;
+      }).then(() => {
+
+        this.activeFamily.familymodels.forEach((familymodel, i) => {
+
+          selectModel(familymodel.modelId)
+          .then(model => {
+            familymodel.name = model.model[0].name;
+          })
+          .then(() => {
+            if ((i + 1) === this.activeFamily.familymodels.length) this.isLoadingInfo = false;
+          })
+          .catch(err => {
+            this.handleError(err);
+          });
 
 
+
+        });
+
+      }).then(() => {
+        this.showInfo = id;
+      }).catch(err => {
+        this.handleError(err);
+      });
+
+    } else {
+      this.activeFamily = [];
+      this.showInfo = ``;
+    }
   }
 
   @action handleFamilySession = id => {
@@ -126,8 +150,6 @@ class Families  {
   }
 
   //search through origins, location and name
-  //add family
-  //remove family
 }
 
 export default new Families();

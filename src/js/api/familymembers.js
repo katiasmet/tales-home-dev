@@ -4,7 +4,6 @@ import {isEmpty} from 'lodash';
 import {token} from '../auth/';
 import {checkStatus, buildQuery, buildBody} from '../util/';
 
-
 const base = `/api/familymembers`;
 
 const whitelist = {

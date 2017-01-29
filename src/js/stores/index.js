@@ -5,12 +5,17 @@ import formEditUser from './FormEditUser';
 import families from './Families';
 import formAddFamily from './formAddFamily';
 
+import notes from './Notes';
+import results from './Results';
+
 const stores = {
   formLogin,
   formRegister,
   formEditUser,
   families,
-  formAddFamily
+  formAddFamily,
+  notes,
+  results
 };
 
 export default stores;

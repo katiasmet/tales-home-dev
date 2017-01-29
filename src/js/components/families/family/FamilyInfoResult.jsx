@@ -1,45 +1,63 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import {inject, observer} from 'mobx-react';
+import moment from 'moment';
 
 import {Actions} from '../../';
 
-const handleRemove = () => {
-  console.log(`remove`);
-};
+class FamilyInfoResult extends Component {
 
-const handleNotes = () => {
-  console.log(`notes`);
-};
-
-const handleDownload = () => {
-  console.log(`download`);
-};
-
-
-const FamilyInfoResult = () => {
-
-  const actions = [
+  actions = [
     {
+      id: this.props._id,
       icon: `fa-trash`,
-      handleAction: handleRemove
+      handleAction: this.handleRemove
     },
     {
+      id: this.props._id,
       icon: `fa-align-justify`,
-      handleAction: handleNotes
+      handleAction: this.handleNotes
     },
     {
+      id: this.props._id,
       icon: `fa-download`,
-      handleAction: handleDownload
+      handleAction: this.handleDownload
     }
   ];
 
-  return (
-    <li className='family-info-result'>
-      name
-      <span className='result-date'> - 20 April 2017</span>
+  handleDownload() {
+    console.log(`download`);
+  }
 
-      <Actions actionClass='result-actions' actions={actions} />
-    </li>
-  );
+  handleNotes() {
+    console.log(`notes`);
+  }
+
+  handleRemove() {
+    console.log(`remove`);
+  }
+
+  render() {
+
+    const {name, created} = this.props;
+
+    const resultDate = moment(created).format(`D MMMM YYYY`);
+
+    return (
+      <li className='family-info-result'>
+        {name}
+        <span className='result-date'> - {resultDate}</span>
+
+        <Actions actionClass='result-actions' actions={this.actions} />
+      </li>
+    );
+  }
+
+}
+
+FamilyInfoResult.propTypes = {
+  _id: PropTypes.string,
+  name: PropTypes.string,
+  created: PropTypes.string
 };
 
 export default FamilyInfoResult;

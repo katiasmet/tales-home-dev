@@ -10,9 +10,11 @@ const App = () => {
     <Provider
       formLogin={stores.formLogin}
       formRegister={stores.formRegister}
-      formEdit={stores.formEdit}
+      formEditUser={stores.formEditUser}
       formAddFamily={stores.formAddFamily}
       families={stores.families}
+      notes={stores.notes}
+      results={stores.results}
     >
 
       <Router />

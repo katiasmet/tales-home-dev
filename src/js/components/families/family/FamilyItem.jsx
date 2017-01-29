@@ -2,12 +2,12 @@ import React, {PropTypes, Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
 import {FamilyInfo} from './';
-import {Actions} from '../../';
+import {Actions, Loading} from '../../';
 
 @inject(`families`) @observer
 class FamilyItem extends Component {
 
-  show = false;
+  infoIcon = `fa-plus`
 
   actions = [
     {
@@ -17,7 +17,7 @@ class FamilyItem extends Component {
     },
     {
       _id: this.props._id,
-      icon: `fa-close`,
+      icon: `fa-plus`,
       handleAction: this.props.families.handleFamilyInfo
     },
     {
@@ -27,9 +27,19 @@ class FamilyItem extends Component {
     }
   ];
 
+  handleFamilyInfo() {
+    const {isLoadingInfo} = this.props.families;
+    if (isLoadingInfo) return <Loading />;
+    else return <FamilyInfo />;
+  }
+
   render() {
 
-    const {name, origins, homeLocation} = this.props;
+    if (this.props.families.showInfo === this.props._id) this.actions[1].icon = `fa-close`;
+    else this.actions[1].icon = `fa-plus`;
+
+    const {_id, name, origins, homeLocation} = this.props;
+    const {showInfo} = this.props.families;
 
     return (
         <section className='family-item'>
@@ -43,7 +53,9 @@ class FamilyItem extends Component {
 
           <p>Comes from {origins} - Lives in {homeLocation}</p>
 
-          {this.show && <FamilyInfo />}
+            {
+              (_id === showInfo) && this.handleFamilyInfo()
+            }
 
         </section>
     );
@@ -56,6 +68,8 @@ FamilyItem.propTypes = {
   origins: PropTypes.string,
   homeLocation: PropTypes.string,
   families: PropTypes.shape({
+    isLoadingInfo: PropTypes.bool,
+    showInfo: PropTypes.string,
     handleFamilyRemove: PropTypes.func,
     handleFamilyInfo: PropTypes.func,
     handleFamilySession: PropTypes.func
