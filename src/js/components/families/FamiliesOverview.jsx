@@ -51,7 +51,11 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
 FamiliesOverview.propTypes = {
   families: PropTypes.shape({
-
+    allFamilies: PropTypes.array,
+    activeFamilies: PropTypes.array,
+    searchInput: PropTypes.string,
+    isLoading: PropTypes.bool,
+    error: PropTypes.string
   })
 };
 

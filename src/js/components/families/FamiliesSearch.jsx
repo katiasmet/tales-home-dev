@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 
 import {FormInput} from '../';
@@ -18,5 +18,12 @@ const FamiliesSearch = inject(`families`)(observer(({families}) => {
     </section>
   );
 }));
+
+FamiliesSearch.propTypes = {
+  families: PropTypes.shape({
+    searchInput: PropTypes.string,
+    handleSearch: PropTypes.func
+  })
+};
 
 export default FamiliesSearch;

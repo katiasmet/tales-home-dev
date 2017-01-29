@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import {observer, inject} from 'mobx-react';
 import {toArray, isEmpty, includes} from 'lodash';
@@ -54,5 +54,13 @@ const FamiliesBrowse = inject(`families`)(observer(({families}) => {
     </li>
   );
 })*/
+
+FamiliesBrowse.propTypes = {
+  families: PropTypes.shape({
+    activeCharacter: PropTypes.string,
+    characters: PropTypes.array,
+    handleActiveCharacter: PropTypes.func
+  })
+};
 
 export default FamiliesBrowse;

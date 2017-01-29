@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
@@ -26,5 +26,12 @@ const FamilyInfoResults = inject(`families`)(observer(({families}) => {
     </section>
   );
 }));
+
+FamilyInfoResults.propTypes = {
+  families: PropTypes.shape({
+    activeFamily: PropTypes.array,
+    infoMessage: PropTypes.string
+  })
+};
 
 export default FamilyInfoResults;
