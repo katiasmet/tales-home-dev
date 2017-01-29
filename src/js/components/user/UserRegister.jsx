@@ -66,20 +66,19 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
             onChange={handleChange}
             placeholder='f.e. Howest University College' />
 
-          {isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
+          {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <button type='submit' className='btn' disabled={!meta.isValid}>Register</button>
 
         </fieldset>
 
       </form>
-
     </section>
   );
 }));
 
 UserRegister.propTypes = {
-  formLogin: PropTypes.shape({
+  formRegister: PropTypes.shape({
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     form: PropTypes.shape({
@@ -90,7 +89,8 @@ UserRegister.propTypes = {
       meta: PropTypes.shape({
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
-      }).isRequired
+      }).isRequired,
+      redirect: PropTypes.bool
     }).isRequired
   })
 };

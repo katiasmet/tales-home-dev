@@ -126,7 +126,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/families/{_id}`,
+    path: `${base}/families/{_id?}`,
 
     config: {
       validate: {

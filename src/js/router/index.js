@@ -1,7 +1,7 @@
 import React from 'react';
 import {Match, BrowserRouter as Router} from 'react-router';
 
-import {Home, Login, EditProfile, Families, NewFamily, Models} from '../pages/';
+import {Home, Login, EditProfile, Families, NewFamily, Models, StartSession} from '../pages/';
 import {RedirectWhenAuthorized, MatchWhenAuthorized} from './checkRoutes';
 
 export default () => (
@@ -18,6 +18,7 @@ export default () => (
 
       <MatchWhenAuthorized pattern='/families' component={Families} />
       <MatchWhenAuthorized pattern='/newfamily' component={NewFamily} />
+      <MatchWhenAuthorized pattern='/startsession' component={StartSession} />
 
       <MatchWhenAuthorized pattern='/models' component={Models} />
 

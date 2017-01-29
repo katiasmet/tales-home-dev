@@ -187,7 +187,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/notes/{_id}`,
+    path: `${base}/notes/{_id?}`,
 
     config: {
       validate: {
@@ -209,20 +209,33 @@ module.exports = [
       const {_id} = req.params;
 
       let query = {_id: _id};
-      if (req.hasScope(Scopes.PROFESSIONAL)) query = {_id: _id, professionalId: req.getUser().sub};
+      if (req.hasScope(Scopes.PROFESSIONAL)) query = {professionalId: req.getUser().sub};
 
       const data = {isActive: false};
       const update = {new: true};
 
-      Note.findOneAndUpdate(query, data, update)
-        .then(note => {
-          if (!note) return res(Boom.badRequest(`Cannot delete note.`));
-          note = omit(note.toJSON(), [`__v`]);
-          return res(note);
-        })
-        .catch(() => res(Boom.badRequest(`Cannot delete note.`)));
+      if (req.hasScope(Scopes.PROFESSIONAL)) {
 
+        Note.update(query, {$set: data}, {multi: true})
+          .then(notes => {
+            if (!notes) return res(Boom.badRequest(`Cannot delete notes.`));
+            return res(`Successfully deleted notes.`);
+          })
+          .catch(() => res(Boom.badRequest(`Cannot delete notes.`)));
+
+      } else {
+
+        Note.findOneAndUpdate(query, data, update)
+          .then(note => {
+            if (!note) return res(Boom.badRequest(`Cannot delete note.`));
+            note = omit(note.toJSON(), [`__v`]);
+            return res(note);
+          })
+          .catch(() => res(Boom.badRequest(`Cannot delete note.`)));
+
+      }
     }
+
   }
 
 ];

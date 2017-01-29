@@ -19,7 +19,7 @@ class FormLogin extends Form {
       }
     },
     meta: {
-      isValid: true,
+      isValid: false,
       error: ``
     },
     redirect: false

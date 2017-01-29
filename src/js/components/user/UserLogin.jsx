@@ -48,7 +48,7 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
                 onChange={handleChange}
                 placeholder='your password' />
 
-              {isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
+              {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
               <button type='submit' className='btn' disabled={!meta.isValid}>Log In</button>
 
@@ -77,7 +77,8 @@ UserLogin.propTypes = {
       meta: PropTypes.shape({
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
-      }).isRequired
+      }).isRequired,
+      redirect: PropTypes.bool
     }).isRequired
   })
 };

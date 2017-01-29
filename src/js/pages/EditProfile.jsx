@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Header} from '../components/';
+import {UserEdit} from '../components/user';
 
 const EditProfile = () => {
   return (
@@ -9,6 +10,8 @@ const EditProfile = () => {
 
       <main>
         <h1>Edit Profile</h1>
+
+        <UserEdit />
       </main>
     </div>
 

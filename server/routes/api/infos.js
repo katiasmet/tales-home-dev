@@ -172,7 +172,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/infotexts/{_id}`,
+    path: `${base}/infotexts/{_id?}`,
 
     config: {
       validate: {

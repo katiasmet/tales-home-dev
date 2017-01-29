@@ -33,6 +33,4 @@ const schema = new Schema({
 
 });
 
-schema.plugin(require(`mongoose-bcrypt`));
-
 module.exports = {schema};

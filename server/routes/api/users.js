@@ -81,7 +81,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3).required(),
+          name: Joi.string().min(3).required(),
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
           organisation: Joi.string().allow(``),
@@ -106,18 +106,18 @@ module.exports = [
 
       user.save()
       .then(u => {
-        if (!u) return res(Boom.badRequest(`Cannot save user.`));
+        if (!u) return res(Boom.badRequest(`Oops! `));
         u = omit(u.toJSON(), [`__v`, `password`, `isActive`]);
         return res(u);
       })
-      .catch(() => res(Boom.badRequest(`Cannot save user.`)));
+      .catch(() => res(Boom.badRequest(`Oops! Looks like we couldn't save your registration.`)));
 
     }
 
   },
 
   {
-
+    //only post method hashes password
     method: `POST`,
     path: `${base}/users/{_id}`,
 
@@ -139,11 +139,11 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3).required(),
+          name: Joi.string().min(3).required(),
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
-          newpassword: Joi.string().min(3),
-          organisation: Joi.string().min(3),
+          newpassword: Joi.string().min(3).allow(``),
+          organisation: Joi.string().allow(``),
           audience: Joi.string().min(3).required(),
           isActive: Joi.boolean(),
           scope: Joi.string().min(3)
@@ -183,10 +183,9 @@ module.exports = [
         ]
 
       }).then(user => {
-
         if (!user) {
           return res(
-              Boom.badRequest(`user/password combination incorrect`)
+              Boom.badRequest(`Oops! We couldn't find this user.`)
             );
         }
 
@@ -194,14 +193,14 @@ module.exports = [
 
           if (err || !isValid) {
             return res(
-                Boom.badRequest(`user/password combination incorrect`)
+                Boom.badRequest(`Oops! Looks like your password isn't correct.`)
               );
           }
 
         });
 
         const {newpassword} = req.payload;
-        if (newpassword) data.password = newpassword;
+        if (newpassword !== ``) data.password = newpassword;
 
         for (const prop in user) {
           for (const dataProp in data) {
@@ -215,7 +214,7 @@ module.exports = [
 
         user.save()
         .then(u => {
-          if (!u) return res(Boom.badRequest(`Cannot update user.`));
+          if (!u) return res(Boom.badRequest(`Oops! We couldn't update your information.`));
 
           const {_id: subject} = u;
           u = omit(user.toJSON(), [`__v`, `password`, `isActive`, `_id`, `created`]);
@@ -225,7 +224,7 @@ module.exports = [
 
       }).catch(() => {
         return res(
-            Boom.badRequest(`Error while updating user.`)
+            Boom.badRequest(`Oops! We couldn't update your information.`)
           );
       });
 
@@ -260,7 +259,7 @@ module.exports = [
       User.remove(query)
         .then(result => {
           if (result.writeConcernError) return res(Boom.badRequest(result.writeConcernError.errmsg));
-          return res({message: `User deleted successfully`});
+          return res({message: `User deleted successfully.`});
         })
         .catch(() => res(Boom.badRequest(`Cannot delete user.`)));
 

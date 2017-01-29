@@ -80,7 +80,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3).required(),
+          name: Joi.string().min(3).required(),
           description: Joi.string().min(3).required(),
           image: Joi.string().min(3).required(),
           isActive: Joi.boolean()
@@ -165,7 +165,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/models/{_id}`,
+    path: `${base}/models/{_id?}`,
 
     config: {
       validate: {
