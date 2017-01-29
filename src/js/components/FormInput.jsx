@@ -6,7 +6,9 @@ const FormInput = ({id, label, type = `text`, name, value, error, onChange, plac
   return (
     <span className={isEmpty(error) ? `form-input form-error` : `form-input`}>
 
-      <label htmlFor={id}>{label}</label>
+      {
+        label && <label htmlFor={id}>{label}</label>
+      }
 
       <input
         id={id}
@@ -24,7 +26,7 @@ const FormInput = ({id, label, type = `text`, name, value, error, onChange, plac
 
 FormInput.propTypes = {
   id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   type: PropTypes.oneOf([`text`, `email`, `password`]),
   name: PropTypes.string.isRequired,
   value: PropTypes.string,

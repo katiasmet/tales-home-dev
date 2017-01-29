@@ -320,4 +320,9 @@ input:focus{
           align-items: center;
 }
 
+.families-search span,
+  .families-search input {
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map*/

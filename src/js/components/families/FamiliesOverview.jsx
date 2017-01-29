@@ -12,7 +12,7 @@ const renderFamilies = families => {
   });
 };
 
-const handleFamilies = (families, activeFamilies, activeCharacter) => {
+const handleFamilies = (families, activeFamilies, searchInput) => {
   if (isEmpty(families)) {
     return (
         <p> Hello there! Looks like you didn't analyse any families yet.
@@ -21,7 +21,7 @@ const handleFamilies = (families, activeFamilies, activeCharacter) => {
   } else {
     if (isEmpty(activeFamilies)) {
       return (
-        <p>You've got no families starting with {activeCharacter}.</p>
+        <p>There are no families where the name, origins or location contain {`"${searchInput}"`}.</p>
       );
     } else {
       return renderFamilies(activeFamilies);
@@ -33,14 +33,14 @@ const handleFamilies = (families, activeFamilies, activeCharacter) => {
 
 const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
-  const {allFamilies, activeFamilies, activeCharacter, isLoading, error} = families;
+  const {allFamilies, activeFamilies, searchInput, isLoading, error} = families;
 
   return (
     <section className='families families-overview'>
 
       {
         isLoading ? (<Loading />)
-        : handleFamilies(allFamilies, activeFamilies, activeCharacter)
+        : handleFamilies(allFamilies, activeFamilies, searchInput)
       }
 
       {!isEmpty(error) && <div className='error'>{error}</div>}

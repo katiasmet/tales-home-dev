@@ -1,11 +1,22 @@
 import React from 'react';
+import {inject, observer} from 'mobx-react';
 
-const FamiliesSearch = () => {
+import {FormInput} from '../';
+
+const FamiliesSearch = inject(`families`)(observer(({families}) => {
+
+  const {searchInput, handleSearch} = families;
+
   return (
     <section className='families families-search'>
-      <p>search families</p>
+      <FormInput
+        id='search-form'
+        name='search'
+        value={searchInput}
+        onChange={handleSearch}
+        placeholder='Search family' />
     </section>
   );
-};
+}));
 
 export default FamiliesSearch;

@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {orderBy, filter, startsWith, isEmpty, toUpper, uniq} from 'lodash';
+import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes} from 'lodash';
 
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
@@ -20,6 +20,8 @@ class Families  {
   @observable infoMessage = {};
   @observable showInfo = ``;
   @observable isLoadingInfo = true;
+
+  @observable searchInput = ``;
 
   @action getFamilies = () => {
     this.isLoading = true;
@@ -157,6 +159,25 @@ class Families  {
     }).catch(err => {
       this.handleError(err);
     });
+
+  }
+
+  @action handleSearch = (field, value) => {
+    this.searchInput = value;
+
+    if (value) {
+      this.activeFamilies = filter(this.allFamilies, object => {
+        if (includes(toUpper(object.name), toUpper(value)) ||
+            includes(toUpper(object.origins), toUpper(value)) ||
+            includes(toUpper(object.homeLocation), toUpper(value))
+        ) {
+          return object;
+        }
+      });
+    } else {
+      this.handleActiveFamilies();
+    }
+
 
   }
 

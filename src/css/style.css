@@ -187,3 +187,11 @@ input {
   justify-content: center;
   align-items: center;
 }
+
+.families-search {
+
+  span,
+  input {
+    width: 100%;
+  }
+}
