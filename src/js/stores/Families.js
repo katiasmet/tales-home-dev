@@ -91,7 +91,6 @@ class Families  {
           this.infoMessage.members = `This family did not add any family members yet.`;
           this.isLoadingInfo = false;
         }
-        console.log(familymembers.familyMembers);
         this.activeFamily.familymembers = familymembers.familyMembers;
       }).catch(err => {
         this.handleError(err);
@@ -100,7 +99,6 @@ class Families  {
       selectFamilyModels({familyId: id})
       .then(familymodels => {
         if (isEmpty(familymodels.familyModels)) {
-          console.log(familymodels.familyModels);
           this.infoMessage.models = `This family did not join a session yet.`;
           this.isLoadingInfo = false;
         }
