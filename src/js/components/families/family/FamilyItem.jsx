@@ -7,7 +7,7 @@ import {Actions, Loading} from '../../';
 @inject(`families`) @observer
 class FamilyItem extends Component {
 
-  infoIcon = `fa-plus`
+  infoIcon = `fa-plus`;
 
   actions = [
     {
@@ -33,10 +33,23 @@ class FamilyItem extends Component {
     else return <FamilyInfo />;
   }
 
+  handleActionId() {
+    const {_id} = this.props;
+    this.actions.forEach(action => {
+      action._id = _id;
+    });
+  }
+
+  handleInfoIcon() {
+    const {families, _id} = this.props;
+    if (families.showInfo === _id) this.actions[1].icon = `fa-close`;
+    else this.actions[1].icon = `fa-plus`;
+  }
+
   render() {
 
-    if (this.props.families.showInfo === this.props._id) this.actions[1].icon = `fa-close`;
-    else this.actions[1].icon = `fa-plus`;
+    this.handleInfoIcon();
+    this.handleActionId();
 
     const {_id, name, origins, homeLocation} = this.props;
     const {showInfo} = this.props.families;
