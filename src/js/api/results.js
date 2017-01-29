@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 import {token} from '../auth/';
 import {checkStatus, buildQuery, buildBody} from '../util/';
 
-const base = `/api/families`;
+const base = `/api/results`;
 
 const whitelist = {
   GET: [`familyId`],

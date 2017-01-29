@@ -1,9 +1,11 @@
 import fetch from 'isomorphic-fetch';
+import {isEmpty} from 'lodash';
 
 import {token} from '../auth/';
 import {checkStatus, buildQuery, buildBody} from '../util/';
 
-const base = `/api/families`;
+
+const base = `/api/familymembers`;
 
 const whitelist = {
   GET: [`familyId`],
@@ -48,12 +50,22 @@ export const insert = data => {
 
 };
 
-export const remove = id => {
+export const remove = query => {
 
   const method = `DELETE`;
+
+  console.log(query);
+
+  let qs, id;
+  if (query.familyId) qs = buildQuery(query, whitelist.GET);
+  else id = query.id;
   const headers = new Headers({Authorization: `Bearer ${token.get()}`});
 
-  return fetch(`${base}/${id}`, {method, headers})
+  let path;
+  if (isEmpty(id)) path = `${base}?${qs}`;
+  else path = `${base}/${id}`;
+
+  return fetch(path, {method, headers})
     .then(checkStatus);
 
 };

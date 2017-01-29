@@ -1,64 +1,65 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Component} from 'react';
+import {inject, observer} from 'mobx-react';
 
 import {FamilyInfo} from './';
 import {Actions} from '../../';
 
-const handleShow = () => {
-  //switch show boolean
-  //switch icon
-  console.log(`show`);
-};
+@inject(`families`) @observer
+class FamilyItem extends Component {
 
-const handleRemove = () => {
-  console.log(`remove`);
-};
+  show = false;
 
-const handleStartSession = () => {
-  console.log(`start session`);
-};
-
-const FamilyItem = ({name, origins, homeLocation}) =>  {
-
-  const show = false;
-
-  const actions = [
+  actions = [
     {
+      _id: this.props._id,
       icon: `fa-trash`,
-      handleAction: handleRemove
+      handleAction: this.props.families.handleFamilyRemove
     },
     {
+      _id: this.props._id,
       icon: `fa-close`,
-      handleAction: handleShow
+      handleAction: this.props.families.handleFamilyInfo
     },
     {
+      _id: this.props._id,
       icon: `fa-caret-right`,
-      handleAction: handleStartSession
+      handleAction: this.props.families.handleFamilySession
     }
   ];
 
-  return (
-    <section className='family-item'>
-      <header>
+  render() {
 
-        <h2>{name}</h2>
+    const {name, origins, homeLocation} = this.props;
 
-        <Actions actionClass='family-actions' actions={actions} />
+    return (
+        <section className='family-item'>
+          <header>
 
-      </header>
+            <h2>{name}</h2>
 
-      <p>Comes from {origins} - Lives in {homeLocation}</p>
+            <Actions actionClass='family-actions' actions={this.actions} />
 
-      {show && <FamilyInfo />}
+          </header>
 
-    </section>
-  );
+          <p>Comes from {origins} - Lives in {homeLocation}</p>
 
-};
+          {this.show && <FamilyInfo />}
+
+        </section>
+    );
+  }
+}
 
 FamilyItem.propTypes = {
+  _id: PropTypes.string,
   name: PropTypes.string,
   origins: PropTypes.string,
-  homeLocation: PropTypes.string
+  homeLocation: PropTypes.string,
+  families: PropTypes.shape({
+    handleFamilyRemove: PropTypes.func,
+    handleFamilyInfo: PropTypes.func,
+    handleFamilySession: PropTypes.func
+  })
 };
 
 export default FamilyItem;

@@ -44,7 +44,7 @@ class FormUser extends Form {
     } else {
 
       insert(this.getValues())
-        .then(f => {
+        .then(() => {
           if (this.submitButton === `save`) this.form.redirect = `families`;
           else this.form.redirect = `startsession`;
         })

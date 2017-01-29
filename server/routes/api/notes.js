@@ -210,22 +210,11 @@ module.exports = [
 
       let query = {_id: _id};
       if (req.hasScope(Scopes.PROFESSIONAL)) query = {professionalId: req.getUser().sub};
-      const {familyModelId} = req.query;
 
       const data = {isActive: false};
       const update = {new: true};
 
-      if (familyModelId) {
-        query = {familyModelId: familyModelId};
-
-        Note.update(query, {$set: data}, {multi: true})
-          .then(notes => {
-            if (!notes) return res(Boom.badRequest(`Cannot delete notes.`));
-            return res(`Successfully deleted notes.`);
-          })
-          .catch(() => res(Boom.badRequest(`Cannot delete notes.`)));
-
-      } else if (req.hasScope(Scopes.PROFESSIONAL)) {
+      if (req.hasScope(Scopes.PROFESSIONAL)) {
 
         Note.update(query, {$set: data}, {multi: true})
           .then(notes => {

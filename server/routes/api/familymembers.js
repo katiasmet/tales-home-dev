@@ -148,17 +148,32 @@ module.exports = [
 
       const {_id} = req.params;
       const {familyId} = req.query;
-      const query = {_id: _id, familyId: familyId};
+
+      let query = {_id: _id};
+      if (familyId) query = {familyId: familyId};
       const data = {isActive: false};
       const update = {new: true};
 
-      FamilyMember.findOneAndUpdate(query, data, update)
-        .then(familyMember => {
-          if (!familyMember) return res(Boom.badRequest(`Cannot delete familymember.`));
-          familyMember = omit(familyMember.toJSON(), [`__v`]);
-          return res(familyMember);
-        })
-        .catch(() => res(Boom.badRequest(`Cannot delete familymember.`)));
+      if (familyId) {
+
+        FamilyMember.update(query, {$set: data}, {multi: true})
+          .then(familymembers => {
+            if (!familymembers) return res(Boom.badRequest(`Cannot delete familymembers.`));
+            return res(`Successfully deleted familymembers.`);
+          })
+          .catch(() => res(Boom.badRequest(`Cannot delete familymembers.`)));
+
+      } else {
+
+        FamilyMember.findOneAndUpdate(query, data, update)
+          .then(familyMember => {
+            if (!familyMember) return res(Boom.badRequest(`Cannot delete familymember.`));
+            familyMember = omit(familyMember.toJSON(), [`__v`]);
+            return res(familyMember);
+          })
+          .catch(() => res(Boom.badRequest(`Cannot delete familymember.`)));
+
+      }
 
     }
   }

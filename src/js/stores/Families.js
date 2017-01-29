@@ -1,7 +1,9 @@
 import {observable, action} from 'mobx';
 import {orderBy, filter, startsWith, isEmpty, toUpper, uniq} from 'lodash';
 
-import {selectByProfessional} from '../api/families';
+import {selectByProfessional, remove as removeFamily} from '../api/families';
+import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
+import {selectByFamily as selectFamilyModels, remove as removeFamilyModels} from '../api/familymodels';
 import {content} from '../auth/token';
 
 class Families  {
@@ -11,6 +13,7 @@ class Families  {
   @observable activeFamilies = [];
   @observable characters = [];
   @observable activeCharacter = ``;
+  @observable activeFamily = [];
 
   @action getFamilies = () => {
     this.handleLoading(true);
@@ -71,13 +74,54 @@ class Families  {
     this.handleActiveFamilies();
   }
 
-  /*handleFamilyInfo = id => {
+  @action handleFamilyInfo = id => {
     //fetch familymembers, results, familymodels, notes from this family
+    //familymodelId is gelinked aan results en aan notes
+    console.log(id);
 
-  }*/
+    selectFamilyMembers({familyId: id})
+    .then(familymembers => {
+      this.activeFamily.familymembers = familymembers.familymembers;
+    }).catch(err => {
+      this.handleError(err);
+    });
 
-  @action handleRemoveFamily = id => {
-    //remove members, result, family, familymodels, notes
+    selectFamilyModels({familyId: id})
+    .then(familymodels => {
+      this.activeFamily.familymodels = familymodels.familymodels;
+      console.log(this.activeFamily.familymodels);
+    }).catch(err => {
+      this.handleError(err);
+    });
+
+
+  }
+
+  @action handleFamilySession = id => {
+    console.log(id);
+  }
+
+  @action handleFamilyRemove = id => {
+    removeFamilyMembers({familyId: id})
+      .then(() => {
+        return removeFamilyModels({familyId: id})
+        .then(message => {
+          return message;
+        }).catch(err => {
+          this.handleError(err);
+        });
+      }).then(() => {
+        return removeFamily({id: id})
+        .then(() => {
+          return `Successfully removed family.`;
+        }).catch(err => {
+          this.handleError(err);
+        });
+      }).then(message => {
+        console.log(message);
+      }).catch(err => {
+        this.handleError(err);
+      });
 
   }
 
