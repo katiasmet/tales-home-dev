@@ -127,7 +127,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/familymembers/{_id}`,
+    path: `${base}/familymembers/{_id?}`,
 
     config: {
       validate: {
@@ -140,6 +140,7 @@ module.exports = [
 
       auth: {
         strategy: `token`,
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL],
         mode: `try`
       }
     },
@@ -158,6 +159,7 @@ module.exports = [
 
         FamilyMember.update(query, {$set: data}, {multi: true})
           .then(familymembers => {
+            console.log(familymembers);
             if (!familymembers) return res(Boom.badRequest(`Cannot delete familymembers.`));
             return res(`Successfully deleted familymembers.`);
           })

@@ -1,11 +1,12 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {FamilyInfoResult} from './';
 
 const FamilyInfoResults = inject(`families`)(observer(({families}) => {
 
-  const {activeFamily} = families;
+  const {activeFamily, infoMessage} = families;
 
   return (
     <section className='family-info-results'>
@@ -14,26 +15,16 @@ const FamilyInfoResults = inject(`families`)(observer(({families}) => {
       <ul>
 
         {
-          activeFamily.familymodels.slice().map((familymodel, i) => {
+          (isEmpty(activeFamily.familymodels)) ? (<li>{infoMessage.models}</li>)
+          : (activeFamily.familymodels.slice().map((familymodel, i) => {
             return <FamilyInfoResult key={i} {...familymodel} />;
-          })
+          }))
         }
-
 
       </ul>
 
     </section>
   );
 }));
-
-/*
-
-{
-  activeFamily.familymodels.slice().map((familymodel, i) => {
-    return <FamilyInfoResult key={i} {...familymodel} />;
-  })
-}
-
-*/
 
 export default FamilyInfoResults;

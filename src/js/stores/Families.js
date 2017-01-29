@@ -10,13 +10,14 @@ import {content} from '../auth/token';
 class Families  {
 
   @observable isLoading = true;
-  allFamilies = [];
+  @observable allFamilies = [];
   @observable activeFamilies = [];
 
   @observable characters = [];
   @observable activeCharacter = ``;
 
   @observable activeFamily = [];
+  @observable infoMessage = {};
   @observable showInfo = ``;
   @observable isLoadingInfo = true;
 
@@ -78,10 +79,15 @@ class Families  {
   @action handleFamilyInfo = id => {
 
     this.isLoadingInfo = true;
+    this.infoMessage = {};
 
     if (!this.showInfo) {
       selectFamilyMembers({familyId: id})
       .then(familymembers => {
+        if (isEmpty(familymembers.familyMembers)) {
+          this.infoMessage.members = `This family did not add any family members yet.`;
+          this.isLoadingInfo = false;
+        }
         this.activeFamily.familymembers = familymembers.familyMembers;
       }).catch(err => {
         this.handleError(err);
@@ -89,25 +95,29 @@ class Families  {
 
       selectFamilyModels({familyId: id})
       .then(familymodels => {
+        if (isEmpty(familymodels.familyModels)) {
+          this.infoMessage.models = `This family did not join a session yet.`;
+          this.isLoadingInfo = false;
+        }
         this.activeFamily.familymodels = familymodels.familyModels;
-      }).then(() => {
+      }).then(familymodels => {
 
-        this.activeFamily.familymodels.forEach((familymodel, i) => {
+        if (!isEmpty(this.activeFamily.familymodels)) {
+          familymodels.forEach((familymodel, i) => {
 
-          selectModel(familymodel.modelId)
-          .then(model => {
-            familymodel.name = model.model[0].name;
-          })
-          .then(() => {
-            if ((i + 1) === this.activeFamily.familymodels.length) this.isLoadingInfo = false;
-          })
-          .catch(err => {
-            this.handleError(err);
+            selectModel(familymodel.modelId)
+            .then(model => {
+              familymodel.name = model.model[0].name;
+            })
+            .then(() => {
+              if ((i + 1) === this.activeFamily.familymodels.length) this.isLoadingInfo = false;
+            })
+            .catch(err => {
+              this.handleError(err);
+            });
+
           });
-
-
-
-        });
+        }
 
       }).then(() => {
         this.showInfo = id;
@@ -127,25 +137,26 @@ class Families  {
 
   @action handleFamilyRemove = id => {
     removeFamilyMembers({familyId: id})
-      .then(() => {
-        return removeFamilyModels({familyId: id})
-        .then(message => {
-          return message;
-        }).catch(err => {
-          this.handleError(err);
-        });
-      }).then(() => {
-        return removeFamily({id: id})
-        .then(() => {
-          return `Successfully removed family.`;
-        }).catch(err => {
-          this.handleError(err);
-        });
-      }).then(message => {
-        console.log(message);
-      }).catch(err => {
-        this.handleError(err);
+    .catch(err => {
+      this.handleError(err);
+    });
+
+    removeFamilyModels({familyId: id})
+    .catch(err => {
+      this.handleError(err);
+    });
+
+    removeFamily({id: id})
+    .then(() => {
+      this.allFamilies = filter(this.allFamilies, object => {
+        return object._id !== id;
       });
+
+      this.handleCharacters();
+      this.handleActiveFamilies();
+    }).catch(err => {
+      this.handleError(err);
+    });
 
   }
 

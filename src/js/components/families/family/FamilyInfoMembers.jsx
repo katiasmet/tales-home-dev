@@ -1,11 +1,12 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {FamilyInfoMember} from './';
 
 const FamilyInfoMembers = inject(`families`)(observer(({families}) => {
 
-  const {activeFamily} = families;
+  const {activeFamily, infoMessage} = families;
 
   return (
     <section className='family-info-members'>
@@ -14,9 +15,10 @@ const FamilyInfoMembers = inject(`families`)(observer(({families}) => {
       <ul>
 
         {
-          activeFamily.familymembers.slice().map((familymember, i) => {
+          (isEmpty(activeFamily.familymembers)) ? (<li>{infoMessage.members}</li>)
+          : (activeFamily.familymembers.slice().map((familymember, i) => {
             return <FamilyInfoMember key={i} {...familymember} />;
-          })
+          }))
         }
 
       </ul>

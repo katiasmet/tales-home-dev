@@ -165,7 +165,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/models/{_id}`,
+    path: `${base}/models/{_id?}`,
 
     config: {
       validate: {

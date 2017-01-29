@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {inject, observer} from 'mobx-react';
 import moment from 'moment';
 
 import {Actions} from '../../';

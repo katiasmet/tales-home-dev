@@ -9,7 +9,7 @@ const base = `/api/familymembers`;
 const whitelist = {
   GET: [`familyId`],
   POST: [`familyId`, `firstName`, `languages`, `character`, `role`],
-  DELETE: [`id`]
+  DELETE: [`familyId`]
 };
 
 export const select = id => {
@@ -53,10 +53,8 @@ export const remove = query => {
 
   const method = `DELETE`;
 
-  console.log(query);
-
   let qs, id;
-  if (query.familyId) qs = buildQuery(query, whitelist.GET);
+  if (query.familyId) qs = buildQuery(query, whitelist.DELETE);
   else id = query.id;
   const headers = new Headers({Authorization: `Bearer ${token.get()}`});
 

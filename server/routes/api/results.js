@@ -181,7 +181,7 @@ module.exports = [
 
   {
     method: `DELETE`,
-    path: `${base}/results/{_id}`,
+    path: `${base}/results/{_id?}`,
 
     config: {
       validate: {
