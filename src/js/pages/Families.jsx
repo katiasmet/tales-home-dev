@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {observer, inject} from 'mobx-react';
 
 import {Header} from '../components/';
-import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/families';
+import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/mentor';
 
 @inject(`families`) @observer
 class Families extends Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Header} from '../components/';
-import {FamilyAdd} from '../components/families/family';
+import {FamilyAdd} from '../components/mentor/family';
 
 const NewFamily = () => {
   return (

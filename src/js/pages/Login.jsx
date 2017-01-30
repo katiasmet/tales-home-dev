@@ -2,7 +2,7 @@ import React  from 'react';
 
 import {Header} from '../components';
 import {UserProfiles, UserLogin, UserRegister} from '../components/user';
-import {FamilyJoin} from '../components/families/family';
+import {FamilyJoin} from '../components/mentor/family';
 
 const renderLogin = () => {
 
