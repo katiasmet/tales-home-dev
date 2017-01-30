@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"tales-at-home.notes"},{"v":1,"unique":true,"key":{"professionalId":1},"name":"professionalId_1","ns":"tales-at-home.notes","background":true},{"v":1,"unique":true,"key":{"familyModelId":1},"name":"familyModelId_1","ns":"tales-at-home.notes","background":true}]}
