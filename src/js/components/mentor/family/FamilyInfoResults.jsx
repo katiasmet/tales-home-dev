@@ -7,6 +7,7 @@ import {FamilyInfoResult} from './';
 const FamilyInfoResults = inject(`families`)(observer(({families}) => {
 
   const {activeFamily, infoMessage} = families;
+  const {familymodels} = activeFamily;
 
   return (
     <section className='family-info-results'>
@@ -15,8 +16,8 @@ const FamilyInfoResults = inject(`families`)(observer(({families}) => {
       <ul>
 
         {
-          (isEmpty(activeFamily.familymodels)) ? (<li>{infoMessage.models}</li>)
-          : (activeFamily.familymodels.slice().map((familymodel, i) => {
+          (isEmpty(familymodels)) ? (<li>{infoMessage.models}</li>)
+          : (familymodels.slice().map((familymodel, i) => {
             return <FamilyInfoResult key={i} {...familymodel} />;
           }))
         }

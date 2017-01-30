@@ -1,10 +1,14 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+
+import {ModelsNavigation} from './';
+import {ModelPreview} from './model';
 
 const ModelsOverview = () => {
 
   return (
     <section className='models models-overview'>
-      <p>overview</p>
+      <ModelsNavigation />
+      <ModelPreview />
     </section>
   );
 };

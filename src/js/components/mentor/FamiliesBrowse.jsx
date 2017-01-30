@@ -45,16 +45,6 @@ const FamiliesBrowse = inject(`families`)(observer(({families}) => {
   );
 }));
 
-/*characters.map((letter, i) => {
-  return (
-    <li key={i}
-        className={(letter === activeCharacter) ? `active` : ``}
-        onClick={handleActiveCharacter}>
-          {letter}
-    </li>
-  );
-})*/
-
 FamiliesBrowse.propTypes = {
   families: PropTypes.shape({
     activeCharacter: PropTypes.string,
