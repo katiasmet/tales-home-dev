@@ -5,6 +5,7 @@ module.exports = {
     require(`postcss-cssnext`),
     require(`postcss-will-change`),
     require(`postcss-nested`),
-    require(`postcss-variables`)
+    require(`postcss-variables`),
+    require(`postcss-mixins`)
   ]
 };
