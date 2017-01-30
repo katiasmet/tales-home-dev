@@ -1,20 +1,25 @@
 import React, {PropTypes} from 'react';
+import {Link} from 'react-router';
+import {kebabCase} from 'lodash';
 
 const ModelGridItem = ({image, name, passed, i}) => {
 
+  const pathname = kebabCase(name);
+
   return (
     <article className='models-overview-grid-item'>
+      <Link to={`/models/${pathname}`}>
+        <figure>
 
-      <figure>
+        </figure>
 
-      </figure>
-
-      <footer>
-        <p>Model {i + 1}: {name}</p>
-        {
-          (passed) && (<i className='fa fa-check'></i>)
-        }
-      </footer>
+        <footer>
+          <p>Model {i + 1}: {name}</p>
+          {
+            (passed) && (<i className='fa fa-check'></i>)
+          }
+        </footer>
+      </Link>
     </article>
   );
 };
