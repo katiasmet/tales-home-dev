@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 
-/* voor de preview: misschien een apart (variabel) component inladen ? <ModelPreviewDistance />  */
+/* voor de preview: misschien een apart (variabel) component inladen ? <ModelPreviewNAAMMODEL />  */
 
 const ModelPreview = inject(`models`)(observer(({models}) => {
 
@@ -23,6 +23,10 @@ const ModelPreview = inject(`models`)(observer(({models}) => {
   );
 }));
 
-
+ModelPreview.propTypes = {
+  models: PropTypes.shape({
+    modelPreview: PropTypes.object
+  })
+};
 
 export default ModelPreview;

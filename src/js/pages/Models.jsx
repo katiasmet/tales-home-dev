@@ -13,7 +13,7 @@ class Models extends Component {
 
   render() {
 
-    const {isLoading} = this.props.models;
+    const {isLoading, handleShowGrid, showGrid} = this.props.models;
 
     return (
       <div className='page page-models'>
@@ -28,6 +28,11 @@ class Models extends Component {
             : (
               <main>
                 <ModelsOverview />
+                <button className='btn btn-show-grid'
+                        onClick={handleShowGrid}
+                >
+                  <i className={showGrid ? `fa fa-close` : `fa fa-th`}></i>
+                </button>
                 <ModelsOverviewGrid />
               </main>
             )
@@ -43,7 +48,9 @@ class Models extends Component {
 Models.propTypes = {
   models: PropTypes.shape({
     getModels: PropTypes.func,
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    handleShowGrid: PropTypes.func,
+    showGrid: PropTypes.bool
   })
 };
 

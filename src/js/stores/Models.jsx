@@ -8,6 +8,7 @@ class Models  {
   @observable isLoading = true;
   @observable allModels = [];
   @observable modelPreview = {};
+  @observable showGrid = false;
 
   @action getModels = () => {
     this.isLoading = true;
@@ -34,6 +35,11 @@ class Models  {
     this.allModels.forEach(model => {
       model.passed = false;
     });
+  }
+
+  @action handleShowGrid = () => {
+    console.log(`show grid`);
+    this.showGrid = !this.showGrid;
   }
 
 }

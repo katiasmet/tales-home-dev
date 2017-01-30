@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 
 const handleNavItem = (model, i, handleModelPreview, modelPreview) => {
@@ -21,7 +21,8 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview) => {
 
 const ModelsNavigation = inject(`models`)(observer(({models}) => {
 
-  /* TODO check familymodels for active family */
+  /* TODO check familymodels for active family,
+  kun je al even testen via stores > models > handlePassedModels op true te zetten */
 
   const {allModels, handleModelPreview, modelPreview} = models;
 
@@ -37,5 +38,13 @@ const ModelsNavigation = inject(`models`)(observer(({models}) => {
     </nav>
   );
 }));
+
+ModelsNavigation.propTypes = {
+  models: PropTypes.shape({
+    allModels: PropTypes.array,
+    handleModelPreview: PropTypes.func,
+    modelPreview: PropTypes.object
+  })
+};
 
 export default ModelsNavigation;
