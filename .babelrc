@@ -20,7 +20,8 @@
     "production": {
       "plugins": [
         "lodash",
-        "transform-react-remove-prop-types"
+        "transform-react-remove-prop-types",
+        "transform-decorators-legacy"
       ]
     }
 
