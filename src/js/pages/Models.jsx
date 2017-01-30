@@ -8,7 +8,7 @@ const Models = () => {
       <Header />
 
       <main>
-        <h1>models</h1>
+        <h1>models page</h1>
       </main>
     </div>
 
