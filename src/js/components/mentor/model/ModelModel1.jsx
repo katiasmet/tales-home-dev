@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ModelNotes = () => {
+const ModelModel1 = () => {
   return (
     <section>
-      modelnotes
+      model 1
     </section>
   );
 };
 
-export default ModelNotes;
+export default ModelModel1;
