@@ -13,6 +13,7 @@ const App = () => {
       formEditUser={stores.formEditUser}
       formAddFamily={stores.formAddFamily}
       families={stores.families}
+      models={stores.models}
       notes={stores.notes}
       results={stores.results}
     >

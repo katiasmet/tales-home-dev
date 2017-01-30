@@ -8,6 +8,8 @@ import formAddFamily from './formAddFamily';
 import notes from './Notes';
 import results from './Results';
 
+import models from './Models';
+
 const stores = {
   formLogin,
   formRegister,
@@ -15,7 +17,8 @@ const stores = {
   families,
   formAddFamily,
   notes,
-  results
+  results,
+  models
 };
 
 export default stores;

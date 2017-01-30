@@ -8,6 +8,7 @@ class Notes  {
 
   @action handleNoteRemove = id => {
     console.log(`remove notes`);
+    console.log(id);
   }
 
   @action getNote = familyModelId => {

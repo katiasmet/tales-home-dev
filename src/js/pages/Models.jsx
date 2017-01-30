@@ -1,18 +1,50 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import {inject, observer} from 'mobx-react';
 
-import {Header} from '../components/';
+import {Header, Loading} from '../components/';
+import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
 
-const Models = () => {
-  return (
-    <div className='page page-models'>
-      <Header />
+@inject(`models`) @observer
+class Models extends Component {
 
-      <main>
-        <h1>models page</h1>
-      </main>
-    </div>
+  componentDidMount() {
+    this.props.models.getModels();
+  }
 
-  );
+  render() {
+
+    const {isLoading} = this.props.models;
+
+    return (
+      <div className='page page-models'>
+        <Header />
+
+          {
+            isLoading ? (
+              <main>
+                <Loading />
+              </main>
+            )
+            : (
+              <main>
+                <ModelsOverview />
+                <ModelsOverviewGrid />
+              </main>
+            )
+          }
+
+
+      </div>
+
+    );
+  }
+}
+
+Models.propTypes = {
+  models: PropTypes.shape({
+    getModels: PropTypes.func,
+    isLoading: PropTypes.bool
+  })
 };
 
 export default Models;

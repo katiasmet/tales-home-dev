@@ -8,6 +8,7 @@ class Results  {
 
   @action handleNoteRemove = id => {
     console.log(`remove results`);
+    console.log(id);
   }
 
   @action getResult = familyModelId => {

@@ -33,7 +33,7 @@ const handleFamilies = (families, activeFamilies, searchInput) => {
 
 const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
-  const {allFamilies, activeFamilies, searchInput, isLoading, error} = families;
+  const {allFamilies, activeFamilies, searchInput, isLoading} = families;
 
   return (
     <section className='families families-overview'>
@@ -42,8 +42,6 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
         isLoading ? (<Loading />)
         : handleFamilies(allFamilies, activeFamilies, searchInput)
       }
-
-      {!isEmpty(error) && <div className='error'>{error}</div>}
 
     </section>
   );

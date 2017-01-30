@@ -16,7 +16,7 @@ class Families  {
   @observable characters = [];
   @observable activeCharacter = ``;
 
-  @observable activeFamily = [];
+  @observable activeFamily = []; //for sessions and getting information (?)
   @observable infoMessage = {};
   @observable showInfo = ``;
   @observable isLoadingInfo = true;
