@@ -111,11 +111,8 @@ module.exports = [
       data.professionalId = req.getUser().sub;
       const result = new Result(data);
 
-      console.log(result);
-
       result.save()
       .then(result => {
-        console.log(`bijna saven`);
         if (!result) return res(Boom.badRequest(`Cannot save result.`));
         result = omit(result.toJSON(), [`__v`, `isActive`]);
         return res(result);

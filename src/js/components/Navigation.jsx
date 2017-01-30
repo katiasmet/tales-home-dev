@@ -1,7 +1,6 @@
 import React from 'react';
 
-import {isLoggedIn} from '../auth';
-
+import {isLoggedIn, token} from '../auth';
 import {NavigationItem} from './';
 
 const {handleInfo} = () => {
@@ -9,6 +8,9 @@ const {handleInfo} = () => {
 };
 
 const Navigation = () => {
+
+  const user = token.content().name;
+
   return (
     <nav>
         {
@@ -16,6 +18,8 @@ const Navigation = () => {
           isLoggedIn() ? (
 
             <ul>
+
+              <li>{user}</li>
 
               <NavigationItem link='/models' icon='fa-ellipsis-h' />
               <NavigationItem link='/newfamily' icon='fa-user-plus' />
