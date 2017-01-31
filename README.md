@@ -7,6 +7,7 @@
 4. terminal commando : yarn run development
 5. surf naar localhost:3000
 
+
 ## front-end
 Voor de front-end werken we met css ipv sass. We kunnen wel extra functionaliteiten toevoegen via post css. Op dit moment zijn volgende postcss uitbreidingen toegevoegd:
 
