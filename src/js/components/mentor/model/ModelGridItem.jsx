@@ -4,6 +4,8 @@ import {kebabCase} from 'lodash';
 
 const ModelGridItem = ({image, name, passed, i}) => {
 
+  console.log(image);
+
   const pathname = kebabCase(name);
 
   return (
