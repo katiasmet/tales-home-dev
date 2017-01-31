@@ -1,3 +1,4 @@
+import users from './Users';
 import formLogin from './FormLogin';
 import formRegister from './FormRegister';
 import formEditUser from './FormEditUser';
@@ -11,6 +12,7 @@ import results from './Results';
 import models from './Models';
 
 const stores = {
+  users,
   formLogin,
   formRegister,
   formEditUser,

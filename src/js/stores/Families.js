@@ -151,8 +151,8 @@ class Families  {
 
     removeFamily({id: id})
     .then(() => {
-      this.allFamilies = filter(this.allFamilies, object => {
-        return object._id !== id;
+      this.allFamilies = filter(this.allFamilies, family => {
+        return family._id !== id;
       });
 
       this.handleCharacters();
@@ -167,12 +167,12 @@ class Families  {
     this.searchInput = value;
 
     if (value) {
-      this.activeFamilies = filter(this.allFamilies, object => {
-        if (includes(toUpper(object.name), toUpper(value)) ||
-            includes(toUpper(object.origins), toUpper(value)) ||
-            includes(toUpper(object.homeLocation), toUpper(value))
+      this.activeFamilies = filter(this.allFamilies, family => {
+        if (includes(toUpper(family.name), toUpper(value)) ||
+            includes(toUpper(family.origins), toUpper(value)) ||
+            includes(toUpper(family.homeLocation), toUpper(value))
         ) {
-          return object;
+          return family;
         }
       });
     } else {
