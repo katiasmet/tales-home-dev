@@ -15,3 +15,15 @@ Voor de front-end werken we met css ipv sass. We kunnen wel extra functionalitei
 3. postcss-mixins: https://github.com/postcss/postcss-mixins
 
 Om extra's toevoegen, de plugin toevoegen via yarn en de postcss.config.js aanvullen.
+
+## back-end
+Om models toe te voegen moet je ingelogd zijn als admin. Die token kun je gebruiken om models toe te voegen of aan te passen.
+email: talesathome@gmail.com
+pass: talesathome
+
+De token kun je krijgen door in postman te surfen naar http://localhost:3000/api/auth . Userinfo invullen bij body en een extra veld audience toevoegen. Value van audience is tales-at-home.
+
+Om models toe te voegen doe je post naar  http://localhost:3000/api/models met in headers Authorization. Value = Bearer admin-token .
+Velden voor models: name (string), image (string), description (string), themes (array, niet verplicht, kan achteraf). Om een array toe te voegen moet je bij je body voor raw kiezen en json formaat toevoegen.
+Op diezelfde manier kun je ook een put doen om dingen aan te passen.
+Als het niet direct lukt > vraag voor screenshots

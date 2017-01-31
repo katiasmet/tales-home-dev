@@ -1,18 +1,57 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import {inject, observer} from 'mobx-react';
 
-import {Header} from '../components/';
+import {Header, Loading} from '../components/';
+import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
 
-const Models = () => {
-  return (
-    <div className='page page-models'>
-      <Header />
+@inject(`models`) @observer
+class Models extends Component {
 
-      <main>
-        <h1>models page</h1>
-      </main>
-    </div>
+  componentDidMount() {
+    this.props.models.getModels();
+  }
 
-  );
+  render() {
+
+    const {isLoading, handleShowGrid, showGrid} = this.props.models;
+
+    return (
+      <div className='page page-models'>
+        <Header />
+
+          {
+            isLoading ? (
+              <main>
+                <Loading />
+              </main>
+            )
+            : (
+              <main>
+                <ModelsOverview />
+                <button className='btn btn-show-grid'
+                        onClick={handleShowGrid}
+                >
+                  <i className={showGrid ? `fa fa-close` : `fa fa-th`}></i>
+                </button>
+                <ModelsOverviewGrid />
+              </main>
+            )
+          }
+
+
+      </div>
+
+    );
+  }
+}
+
+Models.propTypes = {
+  models: PropTypes.shape({
+    getModels: PropTypes.func,
+    isLoading: PropTypes.bool,
+    handleShowGrid: PropTypes.func,
+    showGrid: PropTypes.bool
+  })
 };
 
 export default Models;

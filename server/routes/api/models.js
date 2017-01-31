@@ -83,6 +83,7 @@ module.exports = [
           name: Joi.string().min(3).required(),
           description: Joi.string().min(3).required(),
           image: Joi.string().min(3).required(),
+          themes: Joi.array(),
           isActive: Joi.boolean()
         }
 
@@ -92,7 +93,7 @@ module.exports = [
 
     handler: (req, res) => {
 
-      const fields = [`name`, `description`, `image`, `isActive`];
+      const fields = [`name`, `description`, `image`, `themes`, `isActive`];
 
       const data = pick(req.payload, fields);
       const model = new Model(data);
@@ -132,9 +133,10 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3).required(),
-          description: Joi.string().min(3).required(),
-          image: Joi.string().min(3).required()
+          name: Joi.string().alphanum().min(3),
+          description: Joi.string().min(3),
+          image: Joi.string().min(3),
+          themes: Joi.array(),
         }
 
       }
@@ -145,7 +147,7 @@ module.exports = [
 
       const {_id} = req.params;
 
-      const  fields = [`name`, `description`, `image`];
+      const  fields = [`name`, `description`, `image`, `themes`];
 
       const query = {_id: _id};
       const data = pick(req.payload, fields);

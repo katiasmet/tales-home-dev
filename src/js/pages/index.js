@@ -9,3 +9,4 @@ export NewFamily from './NewFamily';
 export StartSession from './StartSession';
 
 export Models from './Models';
+export Model from './Model';

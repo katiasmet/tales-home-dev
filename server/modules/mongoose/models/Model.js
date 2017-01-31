@@ -18,6 +18,10 @@ const schema = new Schema({
     required: true
   },
 
+  themes: {
+    type: [Schema.Types.Mixed]
+  },
+
   isActive: {
     type: Boolean,
     default: true
