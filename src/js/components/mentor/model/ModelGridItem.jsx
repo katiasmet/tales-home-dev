@@ -1,12 +1,11 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {kebabCase} from 'lodash';
 
 const ModelGridItem = ({image, name, passed, i}) => {
 
-  console.log(image);
-
   const pathname = kebabCase(name);
+  console.log(image);
 
   return (
     <article className='models-overview-grid-item'>

@@ -8,16 +8,18 @@ const renderModelView = component => {
   return React.createElement(component, {});
 };
 
-const Model = ({params}) => {
+const Model = ({match}) => {
 
-  const {id} = params;
-  const component = upperFirst(camelCase(id));
+  console.log(match);
+
+  //const {id} = match.params.id;
+  const component = upperFirst(camelCase(match.params.id));
 
   return (
     <div className='page page-model '>
       <Header />
 
-      <p>{id}</p>
+      <p>{match.params.idd}</p>
 
       {
         renderModelView(component)
@@ -32,7 +34,7 @@ const Model = ({params}) => {
 };
 
 Model.propTypes = {
-  params: PropTypes.object
+  match: PropTypes.object
 };
 
 export default Model;

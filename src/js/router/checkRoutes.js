@@ -1,39 +1,45 @@
 import React, {PropTypes} from 'react';
-import {Match, Redirect} from 'react-router';
+import {Route, Redirect} from 'react-router-dom';
 
 import {isLoggedIn} from '../auth';
 
-export const MatchWhenAuthorized = ({component: Component, ...rest}) => (
+export const MatchWhenAuthorized = ({component, ...rest}) => (
 
-  <Match {...rest} exactly render={props => (
+  <Route {...rest} render={props => (
     isLoggedIn() ? (
-      <Component {...props} />
+      React.createElement(component, props)
     ) : (
       <Redirect to={{
-        pathname: `/login`
+        pathname: `/login`,
+        state: {from: props.location}
       }} />
     )
   )} />
 );
 
-export const RedirectWhenAuthorized = ({component: Component, ...rest}) => (
-  <Match {...rest} exactly render={props => (
+export const RedirectWhenAuthorized = ({component, ...rest}) => (
+
+  <Route {...rest} render={props => (
     isLoggedIn() ? (
       <Redirect to={{
-        pathname: `/families`
+        pathname: `/families`,
+        state: {from: props.location}
       }} />
     ) : (
-      <Component {...props} />
+      React.createElement(component, props)
     )
   )} />
 );
+
 
 MatchWhenAuthorized.propTypes = {
-  component: PropTypes.func
+  component: PropTypes.func,
+  location: PropTypes.func
 };
 
 RedirectWhenAuthorized.propTypes = {
-  component: PropTypes.func
+  component: PropTypes.func,
+  location: PropTypes.func
 };
 
 export default {

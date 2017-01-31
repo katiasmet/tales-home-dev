@@ -1,5 +1,5 @@
 import React from 'react';
-import {Match, BrowserRouter as Router} from 'react-router';
+import {Route, BrowserRouter as Router} from 'react-router-dom';
 
 import {Home, Login, EditProfile, Families, NewFamily, Models, Model, StartSession} from '../pages/';
 import {RedirectWhenAuthorized, MatchWhenAuthorized} from './checkRoutes';
@@ -9,19 +9,19 @@ export default () => (
   <Router>
     <div className='main'>
 
-      <RedirectWhenAuthorized pattern='/' component={Home} />
+      <RedirectWhenAuthorized path='/' component={Home} />
 
-      <RedirectWhenAuthorized pattern='/login' component={Login} />
-      <RedirectWhenAuthorized pattern='/register' component={Login} />
-      <Match exactly pattern='/join' component={Login} />
-      <MatchWhenAuthorized pattern='/editprofile' component={EditProfile} />
+      <RedirectWhenAuthorized path='/login' component={Login} />
+      <RedirectWhenAuthorized path='/register' component={Login} />
+      <Route exact path='/join' component={Login} />
+      <MatchWhenAuthorized path='/editprofile' component={EditProfile} />
 
-      <MatchWhenAuthorized pattern='/families' component={Families} />
-      <MatchWhenAuthorized pattern='/newfamily' component={NewFamily} />
-      <MatchWhenAuthorized pattern='/startsession' component={StartSession} />
+      <MatchWhenAuthorized path='/families' component={Families} />
+      <MatchWhenAuthorized path='/newfamily' component={NewFamily} />
+      <MatchWhenAuthorized path='/startsession' component={StartSession} />
 
-      <MatchWhenAuthorized pattern='/models' component={Models} />
-      <MatchWhenAuthorized pattern='/models/:id' component={Model} />
+      <MatchWhenAuthorized path='/models' component={Models} />
+      <MatchWhenAuthorized path='/models/:id' component={Model} />
 
     </div>
   </Router>
