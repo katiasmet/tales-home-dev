@@ -29,7 +29,8 @@
     "lodash": "^4.16.4",
     "mongoose": "^4.6.5",
     "mongoose-bcrypt": "^1.4.2",
-    "react-router-dom": "next"
+    "react-router-dom": "next",
+    "socket.io": "^1.7.2"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
