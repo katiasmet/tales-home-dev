@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {upperFirst, camelCase} from 'lodash';
 
 import {Header} from '../components/';
-import {ModelNotes, ModelModel1} from '../components/mentor/model';
+import {ModelNotes} from '../components/mentor/model';
 
 const renderModelView = component => {
   return React.createElement(component, {});
