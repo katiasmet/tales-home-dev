@@ -1,4 +1,3 @@
-export FamilyJoin from './FamilyJoin';
 export FamilyAdd from './FamilyAdd';
 
 export FamilyInfo from './FamilyInfo';

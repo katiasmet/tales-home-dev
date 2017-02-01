@@ -21,10 +21,10 @@ module.exports.register = (server, options, next) => {
     socket.emit(`init`, users);
     socket.broadcast.emit(`join`, user);
 
-    socket.on(`setProfessionlId`, (id, professionalId) => {
+    socket.on(`setProfessionalId`, (id, professionalId) => {
       const user = users.find(u => id === u.socketId);
       if (user) {
-        user.professsionalId = professionalId;
+        user.professionalId = professionalId;
         socket.broadcast.emit(`recheck`, users);
       }
     });

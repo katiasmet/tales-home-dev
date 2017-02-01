@@ -2,6 +2,7 @@ import users from './Users';
 import formLogin from './FormLogin';
 import formRegister from './FormRegister';
 import formEditUser from './FormEditUser';
+import formJoin from './FormJoin';
 
 import families from './Families';
 import formAddFamily from './formAddFamily';
@@ -16,6 +17,7 @@ const stores = {
   formLogin,
   formRegister,
   formEditUser,
+  formJoin,
   families,
   formAddFamily,
   notes,

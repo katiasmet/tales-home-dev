@@ -27,7 +27,7 @@ module.exports = [
 
       auth: {
         strategy: `token`,
-        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL]
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL, Scopes.FAMILY]
       }
     },
 
@@ -76,7 +76,7 @@ module.exports = [
 
       auth: {
         strategy: `token`,
-        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL]
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL, Scopes.FAMILY]
       },
 
       validate: {
@@ -140,7 +140,7 @@ module.exports = [
 
       auth: {
         strategy: `token`,
-        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL],
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL, Scopes.FAMILY],
         mode: `try`
       }
     },

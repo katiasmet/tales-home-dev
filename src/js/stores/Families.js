@@ -43,6 +43,23 @@ class Families  {
       });
   }
 
+  @action getFamilyMembers = (familyId, familySide = false) => {
+    this.isLoading = `familymembers`;
+
+    selectFamilyMembers({familyId: familyId})
+    .then(familymembers => {
+      if (isEmpty(familymembers.familyMembers)) {
+        this.infoMessage.members = `This family did not add any family members yet.`;
+        this.isLoading = ``;
+      }
+      this.activeFamily.familymembers = familymembers.familyMembers;
+      if (familySide) this.isLoading = ``;
+    }).catch(err => {
+      this.handleError(err);
+    });
+
+  }
+
   handleError = error => {
     this.error = error;
   }
@@ -91,16 +108,7 @@ class Families  {
     this.findActiveFamily(id);
 
     if (!this.showInfo) {
-      selectFamilyMembers({familyId: id})
-      .then(familymembers => {
-        if (isEmpty(familymembers.familyMembers)) {
-          this.infoMessage.members = `This family did not add any family members yet.`;
-          this.isLoading = ``;
-        }
-        this.activeFamily.familymembers = familymembers.familyMembers;
-      }).catch(err => {
-        this.handleError(err);
-      });
+      this.getFamilyMembers(id);
 
       selectFamilyModels({familyId: id})
       .then(familymodels => {
@@ -155,7 +163,7 @@ class Families  {
     this.isLoading = `session`;
 
     this.socket = io(`/`);
-    this.socket.emit(`handleSession`, users.currentSocketId, familyId, this.sessionId);
+    this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
 
   }
 

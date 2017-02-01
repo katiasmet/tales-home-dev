@@ -1,0 +1,1 @@
+export FamilyJoin from './FamilyJoin';

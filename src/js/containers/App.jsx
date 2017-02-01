@@ -14,9 +14,9 @@ class App extends Component {
 
   initSockets() {
     this.socket = io(`/`);
-    this.socket.on(`init`, this.handleWSInit); //ME
+    this.socket.on(`init`, this.handleWSInit);
     this.socket.on(`leave`, this.handleWSLeave);
-    this.socket.on(`join`, this.handleWSJoin); //OTHER USERS
+    this.socket.on(`join`, this.handleWSJoin);
     this.socket.on(`recheck`, this.handleWSRecheck);
   }
 
@@ -27,10 +27,9 @@ class App extends Component {
 
     if (isLoggedIn()) {
       const {id: socketId} = this.socket;
-      this.socket.emit(`setProfessionalId`, socketId, token.content().sub);
-
       const {handleCurrentSocketId} = stores.users;
       handleCurrentSocketId(socketId);
+      this.socket.emit(`setProfessionalId`, socketId, token.content().sub);
     }
 
   }
@@ -56,6 +55,7 @@ class App extends Component {
         formLogin={stores.formLogin}
         formRegister={stores.formRegister}
         formEditUser={stores.formEditUser}
+        formJoin={stores.formJoin}
         formAddFamily={stores.formAddFamily}
         families={stores.families}
         models={stores.models}
