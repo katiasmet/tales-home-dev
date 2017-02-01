@@ -11,7 +11,7 @@ $grey: #515151;
 body {
   font-family: 'Rubik', Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  height: 100%;
+  height: 100vh;
 }
 
 .fa {
@@ -70,6 +70,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height:90vh;
 }
 
 /*
@@ -166,6 +167,7 @@ MENTOR FAMILIES
 
 header {
   background-color: $purple;
+  height:10vh;
 }
 
 .families header {
@@ -311,7 +313,6 @@ FORMS
 }
 
 .form-add-family, .form-edit-user, .page-login-forms {
-  width: 40%;
   margin:auto;
   background-color: white;
   border-radius: 10px;

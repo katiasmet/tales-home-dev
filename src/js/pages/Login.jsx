@@ -24,11 +24,12 @@ const Login = () => {
 
       <Header />
 
-      <main className='page-login-forms'>
+      <main>
+        <section className='page-login-forms'>
+          <UserProfiles />
 
-        <UserProfiles />
-
-        {renderLogin()}
+          {renderLogin()}
+        </section>
 
       </main>
 
