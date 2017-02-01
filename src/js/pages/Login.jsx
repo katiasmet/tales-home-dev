@@ -24,7 +24,7 @@ const Login = () => {
 
       <Header />
 
-      <main>
+      <main className='page-login-forms'>
 
         <UserProfiles />
 

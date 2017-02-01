@@ -160,14 +160,12 @@ nav,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   color: white;
-  margin-right: 32px;
-  margin-right: 2rem;
-  padding: 40px;
-  padding: 2.5rem;
+  margin-top: 32px;
+  margin-top: 2rem;
 }
 
 nav ul, .form-actions ul {
@@ -191,6 +189,15 @@ nav li a:visited, .form-actions li a:visited {
   color: white;
 }
 
+nav{
+  padding-right: 48px;
+  padding-right: 3rem;
+  padding-top: 48px;
+  padding-top: 3rem;
+  padding-bottom: 32px;
+  padding-bottom: 2rem;
+}
+
 .families-search {
   background-color: #6d34c5;
   padding-left: 40px;
@@ -204,7 +211,7 @@ nav li a:visited, .form-actions li a:visited {
   width: 98%;
   background-color: #6431b9;
   border: none;
-  border-radius: 0 20px 20px;
+  border-radius: 0 10px 10px;
 }
 
 /*
@@ -238,21 +245,6 @@ input {
 
 input:focus{
   outline: none;
-}
-
-/*
-LOGIN
-*/
-
-.user-profiles {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.user-profile {
-  margin: 16px;
-  margin: 1rem;
 }
 
 /*
@@ -467,34 +459,39 @@ header {
 }
 
 /*
-FORM ADD FAMILY
+FORMS
 */
 
-.page-new-family, .page-edit-profile {
+.page-new-family, .page-edit-profile, .page-login {
   background-color: #6d34c5;
-  height: 100%;
+  height: auto;
+
 }
 
-.form-add-family, .form-edit-user {
+.form-add-family, .form-edit-user, .page-login-forms {
+  width: 40%;
+  margin:auto;
   background-color: white;
   border-radius: 10px;
-  margin: auto;
   color: #6d34c5;
-  margin-top: 10%;
-  padding: 80px;
-  padding: 5rem;
+  padding: 48px 48px 0 48px;
+  padding: 3rem 3rem 0 3rem;
 }
 
-.form-add-family input, .form-edit-user input {
+.form-add-family input, .form-edit-user input, .page-login-forms input {
   background-color: ghostwhite;
   border: none;
   margin-top: 32px;
   margin-top: 2rem;
-  margin-bottom: 64px;
-  margin-bottom: 4rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
-.form-add-family button, .form-edit-user button {
+.form-add-family input:-webkit-autofill, .form-edit-user input:-webkit-autofill, .page-login-forms input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px ghostwhite inset;
+}
+
+.form-add-family button, .form-edit-user button, .page-login-forms button {
   background-color: #6431b9;
   border: none;
   color: white;
@@ -503,6 +500,29 @@ FORM ADD FAMILY
   height: 5rem;
   width: 80px;
   width: 5rem;
+}
+
+/*login*/
+
+.user-profiles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+}
+
+.user-profile {
+  background-color: #6d34c5;
+  padding: 32px;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 16px;
+  margin: 1rem;
+  border: none;
+}
+
+.page-login-forms button {
+  border-radius: 10px;
 }
 
 /*

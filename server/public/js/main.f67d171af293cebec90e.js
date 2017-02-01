@@ -54050,7 +54050,7 @@ var FamilyInfoMember = function FamilyInfoMember(_ref) {
       }
     },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
+      'span',
       {
         __source: {
           fileName: _jsxFileName,
@@ -54260,7 +54260,7 @@ var FamilyInfoResult = function (_Component) {
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
+        'span',
         {
           __source: {
             fileName: _jsxFileName,
@@ -55140,11 +55140,19 @@ var UserEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["i
                   lineNumber: 83
                 }
               },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sign-out', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 84
-                }
-              })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 84
+                  }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sign-out', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 84
+                  }
+                })
+              )
             )
           )
         )
@@ -56093,8 +56101,7 @@ var Login = function Login() {
     }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'main',
-      {
-        __source: {
+      { className: 'page-login-forms', __source: {
           fileName: _jsxFileName,
           lineNumber: 27
         }
@@ -79595,4 +79602,4 @@ module.exports = __webpack_require__(266);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.e868f2cb6052d42102a5.js.map
+//# sourceMappingURL=main.f67d171af293cebec90e.js.map

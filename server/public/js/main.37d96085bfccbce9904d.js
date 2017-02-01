@@ -54050,7 +54050,7 @@ var FamilyInfoMember = function FamilyInfoMember(_ref) {
       }
     },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
+      'span',
       {
         __source: {
           fileName: _jsxFileName,
@@ -54260,7 +54260,7 @@ var FamilyInfoResult = function (_Component) {
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
+        'span',
         {
           __source: {
             fileName: _jsxFileName,
@@ -56101,8 +56101,7 @@ var Login = function Login() {
     }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'main',
-      {
-        __source: {
+      { className: 'page-login-forms', __source: {
           fileName: _jsxFileName,
           lineNumber: 27
         }
@@ -79603,4 +79602,4 @@ module.exports = __webpack_require__(266);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.77f250868403a97227e3.js.map
+//# sourceMappingURL=main.37d96085bfccbce9904d.js.map

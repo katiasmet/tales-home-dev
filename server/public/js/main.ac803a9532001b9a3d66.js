@@ -54050,7 +54050,7 @@ var FamilyInfoMember = function FamilyInfoMember(_ref) {
       }
     },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
+      'span',
       {
         __source: {
           fileName: _jsxFileName,
@@ -54260,7 +54260,7 @@ var FamilyInfoResult = function (_Component) {
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
+        'span',
         {
           __source: {
             fileName: _jsxFileName,
@@ -55097,11 +55097,19 @@ var UserEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["i
                   lineNumber: 77
                 }
               },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-trash', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 78
-                }
-              })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 78
+                  }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-trash', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 78
+                  }
+                })
+              )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'li',
@@ -55132,11 +55140,19 @@ var UserEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["i
                   lineNumber: 83
                 }
               },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sign-out', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 84
-                }
-              })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 84
+                  }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sign-out', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 84
+                  }
+                })
+              )
             )
           )
         )
@@ -56085,8 +56101,7 @@ var Login = function Login() {
     }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'main',
-      {
-        __source: {
+      { className: 'page-login-forms', __source: {
           fileName: _jsxFileName,
           lineNumber: 27
         }
@@ -79587,4 +79602,4 @@ module.exports = __webpack_require__(266);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.139018206d9923c1d52a.js.map
+//# sourceMappingURL=main.ac803a9532001b9a3d66.js.map
