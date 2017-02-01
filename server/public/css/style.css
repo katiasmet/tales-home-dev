@@ -56,11 +56,15 @@ html {
 *, *::before, *::after { /* stylelint-disable-line */
   box-sizing: inherit;
 }
+html {
+  height: 100%;
+}
+
 body {
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: Rubik, Helvetica, Arial, sans-serif;
   font-size: 25.6px;
   font-size: 1.6rem;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .fa {
@@ -94,6 +98,13 @@ h2 {
   font-size: 1.8rem;
   font-weight: bold;
   color: #6d34c5;
+}
+
+form h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 h3 {
@@ -135,13 +146,16 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height:90vh;
+  height: 89.9vh;
+}
+
+.page-families main {
+  height: 100%;
 }
 
 /*
 HEADER
 */
-
 header,
 .families,
 .actions {
@@ -154,6 +168,10 @@ header,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.familie-overview-header header {
+  background-color: #6d34c5;
 }
 
 nav,
@@ -190,7 +208,7 @@ nav li a:visited, .form-actions li a:visited {
   color: white;
 }
 
-nav{
+nav {
   padding-right: 48px;
   padding-right: 3rem;
   padding-top: 48px;
@@ -228,6 +246,8 @@ form {
 
 label {
   display: block;
+  margin-top: 32px;
+  margin-top: 2rem;
 }
 
 input {
@@ -253,15 +273,6 @@ MENTOR FAMILIES
 */
 
 .page-families {
-  background-color: #dbe8fe;
-}
-
-header {
-  background-color: #6d34c5;
-  height:10vh;
-}
-
-.families header {
   background-color: #dbe8fe;
 }
 
@@ -374,6 +385,11 @@ header {
 .family-item {
   color: #515151;
   width: 80vw;
+  margin-top: 32px;
+  margin-top: 2rem;
+  padding-bottom: 32px;
+  padding-bottom: 2rem;
+  border-bottom: .05px solid rgba(100, 49, 185, .1);
 }
 
 .action {
@@ -471,12 +487,12 @@ FORMS
 }
 
 .form-add-family, .form-edit-user, .page-login-forms {
-  margin:auto;
+  /*margin: auto;*/
   background-color: white;
   border-radius: 10px;
   color: #6d34c5;
-  padding: 48px 48px 0 48px;
-  padding: 3rem 3rem 0 3rem;
+  padding: 48px 48px 0;
+  padding: 3rem 3rem 0;
 }
 
 .form-add-family input, .form-edit-user input, .page-login-forms input {
@@ -489,7 +505,7 @@ FORMS
 }
 
 .form-add-family input:-webkit-autofill, .form-edit-user input:-webkit-autofill, .page-login-forms input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px ghostwhite inset;
+  box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
 .form-add-family button, .form-edit-user button, .page-login-forms button {
@@ -510,6 +526,9 @@ FORMS
   display: -ms-flexbox;
   display: flex;
   width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .user-profile {
@@ -522,8 +541,33 @@ FORMS
   border: none;
 }
 
-.page-login-forms button {
-  border-radius: 10px;
+.user-profile a {
+  color: white;
+}
+
+.page-login-img {
+  position: absolute;
+  margin-top: -240px;
+  margin-top: -15rem;
+}
+
+.info-login {
+  font-size: 20.8px;
+  font-size: 1.3rem;
+  margin-top: 32px;
+  margin-top: 2rem;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  color: #515151;
+}
+
+.info-login p {
+  margin-top: 16px;
+  margin-top: 1rem;
+}
+
+.info-login a {
+  color: #6d34c5;
 }
 
 /*

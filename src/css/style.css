@@ -4,14 +4,20 @@ $active: #773eff;
 
 $purple: #6d34c5;
 $darkpurple: #6431b9;
-$bgpurple:#dbe8fe;
 
 $grey: #515151;
 
+$lightblue: #dbe8fe;
+$accentlightblue: #cddefe;
+
+html {
+  height: 100%;
+}
+
 body {
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: Rubik, Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .fa {
@@ -43,6 +49,12 @@ h2 {
   color: $purple;
 }
 
+form h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 h3 {
   padding: 3rem 0;
   font-weight: bold;
@@ -70,19 +82,26 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height:90vh;
+  height: 89.9vh;
+}
+
+.page-families main {
+  height: 100%;
 }
 
 /*
 HEADER
 */
-
 header,
 .families,
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.familie-overview-header header {
+  background-color: $purple;
 }
 
 nav,
@@ -108,7 +127,7 @@ nav,
   }
 }
 
-nav{
+nav {
   padding-right: 3rem;
   padding-top: 3rem;
   padding-bottom: 2rem;
@@ -139,6 +158,7 @@ form {
 
 label {
   display: block;
+  margin-top: 2rem;
 }
 
 input {
@@ -162,16 +182,7 @@ MENTOR FAMILIES
 */
 
 .page-families {
-  background-color: $bgpurple;
-}
-
-header {
-  background-color: $purple;
-  height:10vh;
-}
-
-.families header {
-  background-color: $bgpurple;
+  background-color: $lightblue;
 }
 
 .families {
@@ -246,6 +257,9 @@ header {
 .family-item {
   color: $grey;
   width: 80vw;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: .05px solid rgb(100, 49, 185, .1);
 }
 
 .action {
@@ -283,7 +297,7 @@ header {
     margin-left: 3rem;
 
     li {
-      background-color: #cddefe;
+      background-color: $accentlightblue;
       padding: .8rem;
       margin-left: 1rem;
       border-radius: 1rem;
@@ -313,11 +327,11 @@ FORMS
 }
 
 .form-add-family, .form-edit-user, .page-login-forms {
-  margin:auto;
+  /*margin: auto;*/
   background-color: white;
   border-radius: 10px;
   color: $purple;
-  padding: 3rem 3rem 0 3rem;
+  padding: 3rem 3rem 0;
 
   input {
     background-color: ghostwhite;
@@ -327,7 +341,7 @@ FORMS
   }
 
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px ghostwhite inset;
+    box-shadow: 0 0 0 1000px ghostwhite inset;
   }
 
   button {
@@ -345,6 +359,7 @@ FORMS
 .user-profiles {
   display: flex;
   width: auto;
+  justify-content: center;
 }
 
 .user-profile {
@@ -353,11 +368,29 @@ FORMS
   border-radius: 10px;
   margin: 1rem;
   border: none;
+
+  a {
+    color: white;
+  }
 }
 
-.page-login-forms {
-  button {
-    border-radius: 10px;
+.page-login-img {
+  position: absolute;
+  margin-top: -15rem;
+}
+
+.info-login {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: $grey;
+
+  p {
+    margin-top: 1rem;
+  }
+
+  a {
+    color: $purple;
   }
 }
 

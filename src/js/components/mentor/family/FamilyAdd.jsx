@@ -25,6 +25,10 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
         onSubmit={handleSubmit}>
 
         <fieldset>
+          <h2>Add a family</h2>
+        </fieldset>
+
+        <fieldset>
 
           <FormInput
             id='family-form-name'

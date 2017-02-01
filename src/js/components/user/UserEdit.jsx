@@ -20,6 +20,8 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
 
+        <h2> Edit your profile </h2>
+
         <fieldset>
 
           <FormInput
