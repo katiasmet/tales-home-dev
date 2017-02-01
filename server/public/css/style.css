@@ -571,11 +571,74 @@ FORMS
 }
 
 /*
-MODELS
+MODELSOVERVIEW
 */
+.page-models {
+  background-color: #26e2e9;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-image:
+    url(/assets/img/bg/bg_ground_blue.png),
+    url(/assets/img/bg/bg_gradient.png);
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+  background-position: 0% 170%, top;
+}
+.page-models h2 {
+  color: white;
+  font-size: 48px;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 48px;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+.page-models p {
+  color: white;
+  text-align: center;
+}
+
+.btn-show-grid {
+  position: fixed;
+  bottom: 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIsAAAAkCAYAAAC5U8nEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqxJREFUeNrsmoFxmzAUhhHXAegGZIKkE9TdIJkgeAInEzidwO4EeIM4E0AmsDOB6QR1JyB6ze876sMCEywQ/N+dDtnWnRF8PElPeB4hhLSNGlNn8zyfoHqjS4D6daFexV6Xt0J9K0el1JayuCtFqA8ihhy/H8lxKTKUV0i01RJllKWfctxCjIkFMc4RKIVAay3PnrJ0I4hEi3tIEjpy2iLOC8TJKAsFqctaxNHSrChLe4IEkGOGucfQkKFJhPnV92ijeiyJRI45RAm8cSDD1E8tTUpZ6i9vZ5BkrGwRaVaUpVySyOJQIzfhd8n390dzoaUuf0vazSxFuwyRZuWNHZmP6PKgyy63x0PF+fxBu8g0ROZ22ZnOZ+iSyMV+KtwYm0wqzi2RRjX6kHRw7p1K43cgSayrO0xeA4+cgwyRcVfS+JYkuZUnEZJEvOetSZNURUonZCnOR/THZ+8jDU/aRa5pYksa/0KiPCGKLDz3Mq1BIc9T9XT3URo3Epdit+WVTROekRUuXb4X2sWmZX7P+xif6mMv8iyIJnNHosfhXZTjiHJTo13oSLTcI0ez7I0sMJhzkv4isk/beEHL/6Qo8iRuHBNFLtqVKkF//1hol+ry9US7pUP9/XePEPm7iSwQJXEwV3Kn7/fa0K8NLvCVaRcYqzzXJu8p+r+3Flkkb+KoKIexvPL3Gq8LZA72XUaAXdNltt9AlAhzFGZf3STAMju6qCz4g5jXexDEpvTAp2ShKIMkOkcYf4SihBVpgLAwLzO1m4xNmC8jjCgLpPLTkrF8XpApRruypNxsgBFGJvXTxktnh5fHpBkrkzCKopC6wvgUhZQMSYtakYWiEDA9flFcURRi4L+tEUVRiAHZ+vhx2LFWFIVUkOnyTTYffeRRNhSFnCD0PvaSgncBBgAd2YLW6yOanwAAAABJRU5ErkJggg==);
+  border: none;
+  width: 139px;
+  height: 36px;
+  background-color: transparent;
+}
+
+.btn-show-grid .fa {
+  color: red;
+}
+
+.models-overview-grid {
+  position: fixed;
+  padding: 20px 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 80%;
+  background-color: white;
+  text-align: center;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+}
 
 .show-grid {
-  background: red;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  padding-top: 20%;
+  background: white;
+}
+
+.models-overview-grid-item p {
+  color: #515151;
 }
 
 /*# sourceMappingURL=style.css.map*/

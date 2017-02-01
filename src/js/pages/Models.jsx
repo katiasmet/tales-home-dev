@@ -29,9 +29,8 @@ class Models extends Component {
               <main>
                 <ModelsOverview />
                 <button className='btn btn-show-grid'
-                        onClick={handleShowGrid}
+                  onClick={handleShowGrid}
                 >
-                  <i className={showGrid ? `fa fa-close` : `fa fa-th`}></i>
                 </button>
                 <ModelsOverviewGrid />
               </main>

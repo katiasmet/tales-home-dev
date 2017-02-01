@@ -395,9 +395,69 @@ FORMS
 }
 
 /*
-MODELS
+MODELSOVERVIEW
 */
+.page-models {
+  background-color: #26e2e9;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-image:
+    url(../assets/img/bg/bg_ground_blue.png),
+    url(../assets/img/bg/bg_gradient.png);
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+  background-position: 0% 170%, top;
+
+  h2 {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+  }
+}
+
+.btn-show-grid {
+  position: fixed;
+  bottom: 0;
+  background-image: url(../assets/img/btn-show-grid.png);
+  border: none;
+  width: 139px;
+  height: 36px;
+  background-color: transparent;
+
+  .fa {
+    color: red;
+  }
+}
+
+.models-overview-grid {
+  position: fixed;
+  padding: 20px 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 80%;
+  background-color: white;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform .6s ease-in-out;
+}
 
 .show-grid {
-  background: red;
+  transform: translateY(0%);
+  padding-top: 20%;
+  background: white;
+}
+
+.models-overview-grid-item {
+  p {
+    color: $grey;
+  }
 }
