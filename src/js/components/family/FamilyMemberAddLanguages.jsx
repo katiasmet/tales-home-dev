@@ -1,14 +1,23 @@
 import React from 'react';
+import {inject, observer} from 'mobx-react';
 
-const FamilyMemberAddLanguages = () => {
+import {Languages} from '../';
+
+const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
+
+  const {getLanguages, showDropDown} = languages;
 
   return (
     <section className='form-roles'>
 
       <header>
         <h3 className='label'>What languages do you speak?</h3>
-        <button className='btn'><i className='fa fa-plus'></i></button>
+        <button className='btn' onClick={() => getLanguages(true)}><i className='fa fa-plus'></i></button>
       </header>
+
+      {
+        showDropDown && <Languages />
+      }
 
       <div className='member-languages'>
 
@@ -32,6 +41,6 @@ const FamilyMemberAddLanguages = () => {
 
     </section>
   );
-};
+}));
 
 export default FamilyMemberAddLanguages;

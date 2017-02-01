@@ -62,6 +62,7 @@ class App extends Component {
         models={stores.models}
         notes={stores.notes}
         results={stores.results}
+        languages={stores.languages}
       >
 
         <Router />

@@ -14,6 +14,7 @@ class Families  {
 
   @observable isLoading = ``;
   @observable allFamilies = [];
+  error = ``;
   @observable activeFamilies = [];
 
   @observable characters = [];

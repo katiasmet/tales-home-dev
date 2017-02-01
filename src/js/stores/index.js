@@ -13,6 +13,8 @@ import results from './Results';
 
 import models from './Models';
 
+import languages from './Languages';
+
 const stores = {
   users,
   formLogin,
@@ -24,7 +26,8 @@ const stores = {
   formAddFamilyMember,
   notes,
   results,
-  models
+  models,
+  languages
 };
 
 export default stores;
