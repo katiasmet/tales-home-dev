@@ -57,7 +57,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
+  font-family: 'Rubik', Helvetica, Arial, sans-serif;
   font-size: 25.6px;
   font-size: 1.6rem;
   height: 100%;
@@ -84,8 +84,6 @@ h1 {
   background-image: url(/assets/logo_talesathome.png);
   background-repeat: no-repeat;
 }
-
-/*background-position: center;*/
 
 h1 span {
   display: none;

@@ -9,7 +9,7 @@ $bgpurple:#dbe8fe;
 $grey: #515151;
 
 body {
-  font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
+  font-family: 'Rubik', Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   height: 100%;
 }
@@ -31,7 +31,6 @@ h1 {
   margin-left: 2.5rem;
   background-image: url(../assets/logo_talesathome.png);
   background-repeat: no-repeat;
-  /*background-position: center;*/
 
   span {
     display: none;
