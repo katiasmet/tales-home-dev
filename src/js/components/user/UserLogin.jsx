@@ -1,5 +1,5 @@
 import React, {PropTypes}  from 'react';
-import {Link, Redirect} from 'react-router';
+import {Link, Redirect} from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
 import {isEmpty} from 'lodash';
 

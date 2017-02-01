@@ -3,9 +3,10 @@ import React, {PropTypes} from 'react';
 const FamilyInfoMember = ({firstName, languages, role}) => {
   return (
     <li className='family-info-member'>
-      {firstName}
-
-      <span className='role'> - {role}</span>
+      <div>
+        {firstName}
+        <span className='role'> - {role}</span>
+      </div>
 
       <ul className='languages'>
 

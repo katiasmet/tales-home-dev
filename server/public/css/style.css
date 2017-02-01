@@ -60,8 +60,10 @@ body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
   font-size: 25.6px;
   font-size: 1.6rem;
-  margin: 32px;
-  margin: 2rem;
+}
+
+.fa {
+  color: white;
 }
 
 a {
@@ -72,59 +74,29 @@ h1 {
   font-size: 32px;
   font-size: 2rem;
   font-weight: bold;
+  height: 38px;
+  width: 69px;
+  padding: 40px;
+  padding: 2.5rem;
+  /*background-image: url ('./assets/logo_talesathome.png');*/
+  background-color: red;
 }
 
 h2 {
   font-size: 28.8px;
   font-size: 1.8rem;
   font-weight: bold;
+  color: #6d34c5;
 }
 
 h3 {
+  padding: 48px 0px;
+  padding: 3rem 0rem;
   font-weight: bold;
 }
 
 .error {
   color: red;
-}
-
-header,
-.families,
-.actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-nav,
-.form-actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-nav ul, .form-actions ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-nav li, .form-actions li {
-  margin-left: 16px;
-  margin-left: 1rem;
-  color: #773eff;
 }
 
 .actions ul {
@@ -158,7 +130,80 @@ main {
           align-items: center;
 }
 
-/* FORMS */
+/*
+HEADER
+*/
+
+header,
+.families,
+.actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav,
+.form-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  margin-right: 32px;
+  margin-right: 2rem;
+  padding: 40px;
+  padding: 2.5rem;
+}
+
+nav ul, .form-actions ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-left: 1rem;
+}
+
+nav li, .form-actions li {
+  margin-left: 32px;
+  margin-left: 2rem;
+  color: white;
+}
+
+nav li a:visited, .form-actions li a:visited {
+  color: white;
+}
+
+.families-search {
+  background-color: #6d34c5;
+  padding-left: 40px;
+  padding-left: 2.5rem;
+  padding-bottom: 32px;
+  padding-bottom: 2rem;
+}
+
+.families-search span,
+  .families-search input {
+  width: 98%;
+  background-color: #6431b9;
+  border: none;
+  border-radius: 0 20px 20px;
+}
+
+/*
+FORMS
+*/
+
 form {
   width: 640px;
   width: 40rem;
@@ -188,7 +233,10 @@ input:focus{
   outline: none;
 }
 
-/* LOGIN */
+/*
+LOGIN
+*/
+
 .user-profiles {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -200,7 +248,22 @@ input:focus{
   margin: 1rem;
 }
 
-/* FAMILIES */
+/*
+MENTOR FAMILIES
+*/
+
+.page-families {
+  background-color: #dbe8fe;
+}
+
+header {
+  background-color: #6d34c5;
+}
+
+.families header {
+  background-color: #dbe8fe;
+}
+
 .families {
   -webkit-box-align: start;
       -ms-flex-align: start;
@@ -220,23 +283,28 @@ input:focus{
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  margin-top: 80px;
+  margin-top: 5rem;
 }
 
 .families-browse li {
   margin: 16px;
   margin: 1rem;
-  background: #f1f1f2;
   padding: 16px;
   padding: 1rem;
+  margin-left: 64px;
+  margin-left: 4rem;
   border-radius: 50%;
   text-align: center;
-  width: 64px;
-  width: 4rem;
-  height: 64px;
-  height: 4rem;
+  color: white;
+  width: 48px;
+  width: 3rem;
+  height: 48px;
+  height: 3rem;
+  background: #6d34c5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,7 +318,11 @@ input:focus{
 }
 
 .families-browse li:hover{
-  background: #3190f5;
+  background: #6431b9;
+  width: 64px;
+  width: 4rem;
+  height: 64px;
+  height: 4rem;
 }
 
 .families-browse .disabled {
@@ -261,17 +333,27 @@ input:focus{
   opacity: .5;
   font-size: 19.2px;
   font-size: 1.2rem;
+  background: none;
   margin: 8px;
   margin: .5rem;
-  cursor: auto
+  cursor: auto;
+  color: #6d34c5
+  /*HOVER CLASSES NAKIJKEN*/
 }
 
 .families-browse .disabled:hover{
-  background: #f1f1f2;
+  background-color: none;
+  width: 32px;
+  width: 2rem;
+  height: 32px;
+  height: 2rem;
 }
 
 .families-browse .active {
-  background: #3190f5;
+  width: 64px;
+  width: 4rem;
+  height: 64px;
+  height: 4rem;
 }
 
 .families-overview {
@@ -288,17 +370,18 @@ input:focus{
 }
 
 .family-item {
-  margin: 32px;
-  margin: 2rem;
-  width: 50vw;
+  color: #515151;
+  margin-top: 80px;
+  margin-top: 5rem;
+  width: 80vw;
 }
 
 .action {
   margin: 16px;
   margin: 1rem;
-  background: #f1f1f2;
-  padding: 16px;
-  padding: 1rem;
+  background: #6d34c5;
+  padding: 8px;
+  padding: .5rem;
   border-radius: 50%;
   text-align: center;
 
@@ -318,14 +401,56 @@ input:focus{
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+
 }
 
-.families-search span,
-  .families-search input {
-  width: 100%;
+.family-info-members .family-info-member {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
-/*  models */
+.family-info-members ul .languages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.family-info-members ul .languages li {
+  background-color: #cddefe;
+  padding: 16px;
+  padding: 1rem;
+  margin-left: 16px;
+  margin-left: 1rem;
+  border-radius: 1rem;
+}
+
+.family-info-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.family-info-result .action {
+  width: 48px;
+  width: 3rem;
+  height: 48px;
+  height: 3rem;
+}
+
+/*
+MODELS
+*/
+
 .show-grid {
   background: red;
 }
