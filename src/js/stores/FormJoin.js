@@ -3,10 +3,9 @@ import {filter} from 'lodash';
 
 import Form from './Form';
 import users from './Users';
-import families from './Families';
 
 import {familyLogin} from '../api/auth';
-import {set, content} from '../auth/token';
+import {set} from '../auth/token';
 
 class FormJoin extends Form {
   @observable form = ({

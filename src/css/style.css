@@ -2,10 +2,20 @@
 
 $active: #773eff;
 
+$purple: #6d34c5;
+$darkpurple: #6431b9;
+$bgpurple:#dbe8fe;
+
+$grey: #515151;
+
 body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  margin: 2rem;
+  height: 100%;
+}
+
+.fa {
+  color: white;
 }
 
 a {
@@ -15,43 +25,32 @@ a {
 h1 {
   font-size: 2rem;
   font-weight: bold;
+  height: 30px;
+  width: 69px;
+  padding: 2.5rem;
+  margin-left: 2.5rem;
+  background-image: url(../assets/logo_talesathome.png);
+  background-repeat: no-repeat;
+  /*background-position: center;*/
+
+  span {
+    display: none;
+  }
 }
 
 h2 {
   font-size: 1.8rem;
   font-weight: bold;
+  color: $purple;
 }
 
 h3 {
+  padding: 3rem 0;
   font-weight: bold;
 }
 
 .error {
   color: red;
-}
-
-header,
-.families,
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav,
-.form-actions {
-  display: flex;
-  justify-content: space-between;
-
-  ul {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  li {
-    margin-left: 1rem;
-    color: $active;
-  }
 }
 
 .actions {
@@ -74,7 +73,60 @@ main {
   align-items: center;
 }
 
-/* FORMS */
+/*
+HEADER
+*/
+
+header,
+.families,
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav,
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  margin-right: 2rem;
+  padding: 2.5rem;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+  }
+
+  li {
+    margin-left: 2rem;
+    color: white;
+  }
+
+  li a:visited {
+    color: white;
+  }
+}
+
+.families-search {
+  background-color: $purple;
+  padding-left: 2.5rem;
+  padding-bottom: 2rem;
+
+  span,
+  input {
+    width: 98%;
+    background-color: $darkpurple;
+    border: none;
+    border-radius: 0 20px 20px;
+  }
+}
+
+/*
+FORMS
+*/
+
 form {
   width: 40rem;
   margin: 2rem;
@@ -100,7 +152,10 @@ input {
   }
 }
 
-/* LOGIN */
+/*
+LOGIN
+*/
+
 .user-profiles {
   display: flex;
 }
@@ -109,7 +164,22 @@ input {
   margin: 1rem;
 }
 
-/* FAMILIES */
+/*
+MENTOR FAMILIES
+*/
+
+.page-families {
+  background-color: $bgpurple;
+}
+
+header {
+  background-color: $purple;
+}
+
+.families header {
+  background-color: $bgpurple;
+}
+
 .families {
   align-items: flex-start;
   width: 100%;
@@ -119,17 +189,20 @@ input {
 
   flex-direction: column;
   flex: 1;
-  align-items: center;
+  align-items: left;
+  margin-top: 5rem;
 
   li {
     margin: 1rem;
-    background: #f1f1f2;
     padding: 1rem;
+    margin-left: 4rem;
     border-radius: 50%;
     text-align: center;
+    color: white;
 
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
+    background: $purple;
 
     display: flex;
     justify-content: center;
@@ -138,7 +211,9 @@ input {
     cursor: pointer;
 
     &:hover {
-      background: #3190f5;
+      background: $darkpurple;
+      width: 4rem;
+      height: 4rem;
     }
 
   }
@@ -148,17 +223,22 @@ input {
     height: 2rem;
     opacity: .5;
     font-size: 1.2rem;
+    background: none;
 
     margin: .5rem;
     cursor: auto;
+    color: $purple;
 
     &:hover {
-      background: #f1f1f2;
+      background-color: none;
+      width: 2rem;
+      height: 2rem;
     }
   }
 
   .active {
-    background: #3190f5;
+    width: 4rem;
+    height: 4rem;
   }
 }
 
@@ -166,17 +246,18 @@ input {
   flex-direction: column;
   justify-content: flex-start;
   flex: 6;
+  padding-top: 5rem;
 }
 
 .family-item {
-  margin: 2rem;
-  width: 50vw;
+  color: $grey;
+  width: 80vw;
 }
 
 .action {
   margin: 1rem;
-  background: #f1f1f2;
-  padding: 1rem;
+  background: $purple;
+  padding: .5rem;
   border-radius: 50%;
   text-align: center;
 
@@ -186,17 +267,85 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
-.families-search {
+.family-info {
+  margin-left: 4rem;
+}
 
-  span,
-  input {
-    width: 100%;
+.family-info-members {
+
+  .family-info-member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  ul .languages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 3rem;
+
+    li {
+      background-color: #cddefe;
+      padding: .8rem;
+      margin-left: 1rem;
+      border-radius: 1rem;
+    }
   }
 }
 
-/*  models */
+.family-info-result {
+  display: flex;
+  justify-content: space-between;
+
+  .action {
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: $darkpurple;
+  }
+}
+
+/*
+FORM ADD FAMILY
+*/
+
+.page-new-family, .page-edit-profile {
+  background-color: $purple;
+  height: 100%;
+}
+
+.form-add-family, .form-edit-user {
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  color: $purple;
+  margin-top: 10%;
+  padding: 5rem;
+
+  input {
+    background-color: ghostwhite;
+    border: none;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  button {
+    background-color: $darkpurple;
+    border: none;
+    color: white;
+    border-radius: 100px;
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+/*
+MODELS
+*/
+
 .show-grid {
   background: red;
 }

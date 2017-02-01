@@ -6,7 +6,7 @@ import {Navigation} from './';
 const Header = () => {
   return (
     <header>
-      <h1><Link to='/'>Tales@Home</Link></h1>
+      <Link to='/'><h1><span>Tales@Home</span></h1></Link>
       <Navigation />
     </header>
   );
