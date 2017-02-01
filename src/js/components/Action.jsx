@@ -2,8 +2,6 @@ import React, {PropTypes} from 'react';
 
 const Action = ({_id, icon, handleAction}) => {
 
-  console.log(handleAction);
-
   return (
     <li className='action' onClick={() => handleAction(_id)}>
         <i className={`fa ${icon}`}></i>

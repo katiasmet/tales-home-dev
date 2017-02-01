@@ -4,7 +4,7 @@ import Form from './Form';
 import {update} from '../api/users';
 import {set, content} from '../auth/token';
 
-class FormUser extends Form {
+class FormEditUser extends Form {
 
   @observable form = ({
     fields: {
@@ -69,4 +69,4 @@ class FormUser extends Form {
   }
 }
 
-export default new FormUser();
+export default new FormEditUser();

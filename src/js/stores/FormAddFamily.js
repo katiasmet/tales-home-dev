@@ -4,7 +4,7 @@ import Form from './Form';
 import {insert} from '../api/families';
 import families from './Families';
 
-class FormUser extends Form {
+class FormAddFamily extends Form {
 
   @observable form = ({
     fields: {
@@ -58,4 +58,4 @@ class FormUser extends Form {
   }
 }
 
-export default new FormUser();
+export default new FormAddFamily();

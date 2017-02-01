@@ -57,6 +57,7 @@ class App extends Component {
         formEditUser={stores.formEditUser}
         formJoin={stores.formJoin}
         formAddFamily={stores.formAddFamily}
+        formAddFamilyMember={stores.formAddFamilyMember}
         families={stores.families}
         models={stores.models}
         notes={stores.notes}

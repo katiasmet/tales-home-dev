@@ -8,6 +8,8 @@ const FamilyMembers = inject(`families`)(observer(({families}) => {
   const {activeFamily} = families;
   const {familymembers} = activeFamily;
 
+  console.log(familymembers);
+
   return (
     <section className='family-members'>
       {

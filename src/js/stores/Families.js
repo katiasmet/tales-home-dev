@@ -19,7 +19,14 @@ class Families  {
   @observable characters = [];
   @observable activeCharacter = ``;
 
-  @observable activeFamily = {}; //for sessions and getting information (?)
+  @observable activeFamily = {
+    _id: ``,
+    name: ``,
+    origins: ``,
+    homeLocation: ``,
+    familymembers: {},
+    familymodels: {}
+  }; //for sessions and getting information (?)
   @observable infoMessage = {};
   @observable showInfo = ``;
 
@@ -213,13 +220,19 @@ class Families  {
   }
 
   @action handleConfirmation = () => {
-    console.log(`handle confirmation`);
     this.confirmation = !this.confirmation;
-    console.log(this.confirmation);
   }
 
   @action handleFamilyMemberRemove = id => {
-    console.log(`weg ermee`);
+    removeFamilyMembers({id: id})
+    .catch(err => {
+      this.handleError(err);
+    });
+
+    this.activeFamily.familymembers = filter(this.activeFamily.familymembers, familymember => {
+      return familymember._id !== id;
+    });
+
   }
 
   @action handleSearch = (field, value) => {
