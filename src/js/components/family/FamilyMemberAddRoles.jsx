@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 const FamilyMemberAddRoles = ({handleChange}) => {
 
@@ -39,6 +39,10 @@ const FamilyMemberAddRoles = ({handleChange}) => {
 
     </section>
   );
+};
+
+FamilyMemberAddRoles.propTypes = {
+  handleChange: PropTypes.func
 };
 
 export default FamilyMemberAddRoles;

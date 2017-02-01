@@ -16,7 +16,7 @@ const FamilyMemberAdd = inject(`formAddFamilyMember`)(observer(({formAddFamilyMe
     <section className='form form-add-family-member'>
 
       {
-        !isEmpty(redirect) && <Redirect to={`/${redirect}`} />
+        redirect && <Redirect to={`/family`} />
       }
 
       <form
@@ -78,7 +78,7 @@ FamilyMemberAdd.propTypes = {
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
       }).isRequired,
-      redirect: PropTypes.string
+      redirect: PropTypes.bool
     }).isRequired
   })
 };

@@ -5,15 +5,11 @@ class Form {
 
   @action handleChange = (field, value) => {
 
-    console.log(`handleChange`);
-
     this.form.fields[field].value = value;
     const validation = new Validator(
       this.getValues(`value`),
       this.getValues(`rule`));
     this.form.meta.isValid = validation.passes();
-
-    console.log(this.form);
 
     if (validation.errors.first(field)) {
       this.form.fields[field].error = validation.errors.first(field);

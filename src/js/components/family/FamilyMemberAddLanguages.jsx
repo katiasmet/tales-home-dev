@@ -2,17 +2,18 @@ import React from 'react';
 import {inject, observer} from 'mobx-react';
 
 import {Languages} from '../';
+import {FamilyMemberAddLanguage} from './';
 
 const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
 
-  const {handleShowLanguages, showDropDown} = languages;
+  const {handleShowLanguages, showDropDown, selectedLanguages} = languages;
 
   return (
     <section className='form-roles'>
 
       <header>
         <h3 className='label'>What languages do you speak?</h3>
-        <button className='btn' onClick={handleShowLanguages}><i className='fa fa-plus'></i></button>
+        <a className='btn' onClick={handleShowLanguages}><i className='fa fa-plus'></i></a>
       </header>
 
       {
@@ -21,21 +22,11 @@ const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
 
       <div className='member-languages'>
 
-        <span className='form-input'>
-          <label htmlFor='language-engels' className='member-language'>Engels</label>
-          <input  id='language-engels'
-                  className='hidden'
-                  name='languages[]'
-                  defaultValue='engels' />
-        </span>
-
-        <span className='form-input'>
-          <label  htmlFor='language-frans' className='member-language'>Frans</label>
-          <input  id='language-frans'
-                  className='hidden'
-                  name='languages[]'
-                  defaultValue='frans' />
-        </span>
+        {
+          selectedLanguages.slice().map((language, i) => {
+            return <FamilyMemberAddLanguage {...language} key={i} />;
+          })
+        }
 
       </div>
 

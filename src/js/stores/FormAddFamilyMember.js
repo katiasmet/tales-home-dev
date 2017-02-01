@@ -1,8 +1,8 @@
 import {observable, action} from 'mobx';
 import Form from './Form';
 
-// import {insert} from '../api/familymembers';
-// import {content} from '../auth/token';
+import {insert} from '../api/familymembers';
+import {content} from '../auth/token';
 
 class FormAddFamilyMember extends Form {
 
@@ -16,7 +16,7 @@ class FormAddFamilyMember extends Form {
       languages: {
         value: ``,
         error: ``,
-        rule: ``
+        rule: `required|array`
       },
       character: {
         value: ``,
@@ -33,7 +33,7 @@ class FormAddFamilyMember extends Form {
       isValid: false,
       error: ``
     },
-    redirect: ``
+    redirect: false
   });
 
   submitButton = ``;
@@ -45,21 +45,21 @@ class FormAddFamilyMember extends Form {
   @action handleSubmit = e => {
     e.preventDefault();
 
-    console.log(e);
 
     if (!this.form.meta.isValid) {
       this.handleError(`Oops! Something went wrong.`);
     } else {
 
-      console.log(this.getValues());
+      const familymember = this.getValues();
+      familymember.familyId = content().sub;
 
-      /*insert(this.getValues())
+      insert(familymember)
         .then(() => {
-          this.form.redirect = `family`;
+          this.form.redirect = true;
         })
         .catch(error => {
           this.handleError(error.message);
-        });*/
+        });
 
     }
 
