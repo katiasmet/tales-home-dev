@@ -75,13 +75,13 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
           <div className='form-actions'>
             <ul>
               <li onClick={handleRemoveUser}>
-                <i className='fa fa-trash'></i>
+                <button className='btn'><i className='fa fa-trash'></i></button>
               </li>
               <li>
                 <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
               </li>
               <li onClick={handleLogout}>
-                <i className='fa fa-sign-out'></i>
+                <button className='btn'><i className='fa fa-sign-out'></i></button>
               </li>
             </ul>
           </div>
