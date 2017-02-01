@@ -126,6 +126,62 @@ module.exports = [
   },
 
   {
+
+    method: `PUT`,
+    path: `${base}/familymembers/{_id}`,
+
+    config: {
+
+      auth: {
+        strategy: `token`,
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL, Scopes.FAMILY]
+      },
+
+      validate: {
+
+        params: {
+          _id: Joi.objectId()
+        },
+
+        options: {
+          abortEarly: false
+        },
+
+        payload: {
+          firstName: Joi.string().alphanum().min(3),
+          languages: Joi.array().items(Joi.string()),
+          character: Joi.string().min(3),
+          role: Joi.string().min(3).alphanum()
+        }
+
+      }
+
+    },
+
+    handler: (req, res) => {
+
+      const {_id} = req.params;
+      const  fields = [`firstName`, `languages`, `character`, `role`];
+
+      let query = {_id: _id};
+      if (req.hasScope(Scopes.FAMILY)) query = {_id: _id, familyId: req.getUser().sub};
+
+      const data = pick(req.payload, fields);
+      const update = {new: true};
+
+      FamilyMember.findOneAndUpdate(query, data, update)
+        .then(familymember => {
+          if (!familymember) return res(Boom.badRequest(`Cannot update family member.`));
+          familymember = omit(familymember.toJSON(), [`__v`, `isActive`]);
+          return res(familymember);
+        })
+        .catch(() => res(Boom.badRequest(`Cannot update family member.`)));
+
+    }
+
+  },
+
+  {
     method: `DELETE`,
     path: `${base}/familymembers/{_id?}`,
 

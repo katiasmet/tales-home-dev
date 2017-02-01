@@ -49,6 +49,8 @@ export const insert = data => {
 
 };
 
+
+
 export const remove = query => {
 
   const method = `DELETE`;
