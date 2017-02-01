@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 
-const Language = ({name, code}) => {
+const Language = ({name, code, handleSelectLanguage}) => {
   return (
-    <li className='language'>
+    <li className='language' onClick={handleSelectLanguage}>
       {name}
     </li>
   );
@@ -10,7 +10,8 @@ const Language = ({name, code}) => {
 
 Language.propTypes = {
   name: PropTypes.string,
-  code: PropTypes.string
+  code: PropTypes.string,
+  handleSelectLanguage: PropTypes.func
 };
 
 export default Language;

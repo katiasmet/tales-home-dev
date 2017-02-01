@@ -1,4 +1,5 @@
 import {observable, action} from 'mobx';
+import {filter} from 'lodash';
 
 import {select} from '../api/languages';
 
@@ -8,18 +9,15 @@ class Languages  {
   @observable allLanguages = [];
   error = ``;
   @observable showDropDown = false;
+  @observable selectedLanguages = [];
 
 
-  @action getLanguages = (showDropDown = false) => {
+  @action getLanguages = () => {
+
     this.isLoading = true;
-    this.showDropDown = showDropDown;
-
-    console.log(`get languages`);
 
     select()
     .then(languages => {
-      console.log(`get them`);
-      console.log(languages);
       this.allLanguages = languages;
       this.isLoading = false;
     }).catch(err => {
@@ -30,6 +28,22 @@ class Languages  {
 
   handleError = error => {
     this.error = error;
+  }
+
+  @action handleShowLanguages = () => {
+    this.showDropDown = !this.showDropDown;
+  }
+
+  @action handleSelectLanguage = e => {
+    e.preventDefault();
+
+    this.selectedLanguages.push(
+      filter(this.allLanguages, language => {
+        return language.name === e.currentTarget.innerHTML;
+      })
+    );
+
+    console.log(this.selectedLanguages);
   }
 
 }

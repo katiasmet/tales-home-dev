@@ -6,12 +6,15 @@ import {FamilyOverview} from '../components/family';
 import {content} from '../auth/token';
 
 //families.
-@inject(`families`) @observer
+@inject(`families`, `languages`) @observer
 class Family extends Component {
 
   componentDidMount() {
     const {getFamilyMembers} = this.props.families;
     getFamilyMembers(content().sub, true);
+
+    const {getLanguages} = this.props.languages;
+    getLanguages();
   }
 
   render() {
@@ -35,6 +38,9 @@ Family.propTypes = {
   families: PropTypes.shape({
     isLoading: PropTypes.string,
     getFamilyMembers: PropTypes.func
+  }),
+  languages: PropTypes.shape({
+    getLanguages: PropTypes.func
   })
 };
 

@@ -5,14 +5,14 @@ import {Languages} from '../';
 
 const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
 
-  const {getLanguages, showDropDown} = languages;
+  const {handleShowLanguages, showDropDown} = languages;
 
   return (
     <section className='form-roles'>
 
       <header>
         <h3 className='label'>What languages do you speak?</h3>
-        <button className='btn' onClick={() => getLanguages(true)}><i className='fa fa-plus'></i></button>
+        <button className='btn' onClick={handleShowLanguages}><i className='fa fa-plus'></i></button>
       </header>
 
       {

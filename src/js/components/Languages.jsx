@@ -5,7 +5,7 @@ import {Language} from './';
 
 const Languages = inject(`languages`)(observer(({languages}) => {
 
-  const {allLanguages} = languages;
+  const {allLanguages, handleSelectLanguage} = languages;
 
   return (
     <ul className='languages'>
@@ -13,7 +13,7 @@ const Languages = inject(`languages`)(observer(({languages}) => {
       {
 
         allLanguages.slice().map((language, i) => {
-          return <Language {...language} key={i} />;
+          return <Language {...language} key={i} handleSelectLanguage={handleSelectLanguage} />;
         })
 
       }
