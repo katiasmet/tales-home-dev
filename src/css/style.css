@@ -11,6 +11,7 @@ $grey: #515151;
 body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
+  height: 100%;
 }
 
 .fa {
@@ -27,7 +28,7 @@ h1 {
   height: 30px;
   width: 69px;
   padding: 2.5rem;
-  margin-left:2.5rem;
+  margin-left: 2.5rem;
   background-image: url(../assets/logo_talesathome.png);
   background-repeat: no-repeat;
   /*background-position: center;*/
@@ -44,7 +45,7 @@ h2 {
 }
 
 h3 {
-  padding: 3rem 0rem;
+  padding: 3rem 0;
   font-weight: bold;
 }
 
@@ -228,7 +229,6 @@ header {
     cursor: auto;
     color: $purple;
 
-    /*HOVER CLASSES NAKIJKEN*/
     &:hover {
       background-color: none;
       width: 2rem;
@@ -246,11 +246,11 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   flex: 6;
+  padding-top: 5rem;
 }
 
 .family-item {
   color: $grey;
-  margin-top: 5rem;
   width: 80vw;
 }
 
@@ -270,21 +270,27 @@ header {
 
 }
 
+.family-info {
+  margin-left: 4rem;
+}
+
 .family-info-members {
 
   .family-info-member {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2rem;
   }
 
   ul .languages {
     display: flex;
     justify-content: space-between;
-    margin: 3rem;
+    align-items: center;
+    margin-left: 3rem;
 
     li {
       background-color: #cddefe;
-      padding: .3rem;
+      padding: .8rem;
       margin-left: 1rem;
       border-radius: 1rem;
     }
@@ -296,8 +302,43 @@ header {
   justify-content: space-between;
 
   .action {
-    width: 3rem;
-    height: 3rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: $darkpurple;
+  }
+}
+
+/*
+FORM ADD FAMILY
+*/
+
+.page-new-family, .page-edit-profile {
+  background-color: $purple;
+  height: 100%;
+}
+
+.form-add-family, .form-edit-user {
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  color: $purple;
+  margin-top: 10%;
+  padding: 5rem;
+
+  input {
+    background-color: ghostwhite;
+    border: none;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  button {
+    background-color: $darkpurple;
+    border: none;
+    color: white;
+    border-radius: 100px;
+    height: 5rem;
+    width: 5rem;
   }
 }
 

@@ -9,7 +9,6 @@ const EditProfile = () => {
       <Header />
 
       <main>
-        <h1>Edit Profile</h1>
 
         <UserEdit />
       </main>

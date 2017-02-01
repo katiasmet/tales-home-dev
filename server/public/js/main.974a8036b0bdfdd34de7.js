@@ -50560,20 +50560,10 @@ var EditProfile = function EditProfile() {
           lineNumber: 11
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h1',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 12
-          }
-        },
-        'Edit Profile'
-      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["a" /* UserEdit */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 13
         }
       })
     )
@@ -69533,4 +69523,4 @@ module.exports = __webpack_require__(242);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.fce4eb58f31ceb934a4e.js.map
+//# sourceMappingURL=main.974a8036b0bdfdd34de7.js.map

@@ -47976,16 +47976,16 @@ var Header = function Header() {
       }
     },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'h1',
-      {
-        __source: {
+      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+      { to: '/', __source: {
           fileName: _jsxFileName,
           lineNumber: 9
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-        { to: '/', __source: {
+        'h1',
+        {
+          __source: {
             fileName: _jsxFileName,
             lineNumber: 9
           }
@@ -50560,20 +50560,10 @@ var EditProfile = function EditProfile() {
           lineNumber: 11
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h1',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 12
-          }
-        },
-        'Edit Profile'
-      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["a" /* UserEdit */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 13
         }
       })
     )
@@ -69533,4 +69523,4 @@ module.exports = __webpack_require__(242);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.8ed93bee930f068599a4.js.map
+//# sourceMappingURL=main.269535da3779f2e47197.js.map

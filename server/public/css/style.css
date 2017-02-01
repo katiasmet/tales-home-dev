@@ -60,6 +60,7 @@ body {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
   font-size: 25.6px;
   font-size: 1.6rem;
+  height: 100%;
 }
 
 .fa {
@@ -79,7 +80,7 @@ h1 {
   padding: 40px;
   padding: 2.5rem;
   margin-left: 40px;
-  margin-left:2.5rem;
+  margin-left: 2.5rem;
   background-image: url(/assets/logo_talesathome.png);
   background-repeat: no-repeat;
 }
@@ -98,8 +99,8 @@ h2 {
 }
 
 h3 {
-  padding: 48px 0px;
-  padding: 3rem 0rem;
+  padding: 48px 0;
+  padding: 3rem 0;
   font-weight: bold;
 }
 
@@ -346,8 +347,6 @@ header {
   margin: .5rem;
   cursor: auto;
   color: #6d34c5
-
-  /*HOVER CLASSES NAKIJKEN*/
 }
 
 .families-browse .disabled:hover{
@@ -376,12 +375,12 @@ header {
   -webkit-box-flex: 6;
       -ms-flex: 6;
           flex: 6;
+  padding-top: 80px;
+  padding-top: 5rem;
 }
 
 .family-item {
   color: #515151;
-  margin-top: 80px;
-  margin-top: 5rem;
   width: 80vw;
 }
 
@@ -413,6 +412,11 @@ header {
 
 }
 
+.family-info {
+  margin-left: 64px;
+  margin-left: 4rem;
+}
+
 .family-info-members .family-info-member {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -420,6 +424,8 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .family-info-members ul .languages {
@@ -429,14 +435,17 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin: 48px;
-  margin: 3rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 48px;
+  margin-left: 3rem;
 }
 
 .family-info-members ul .languages li {
   background-color: #cddefe;
-  padding: 4.8px;
-  padding: .3rem;
+  padding: 12.8px;
+  padding: .8rem;
   margin-left: 16px;
   margin-left: 1rem;
   border-radius: 1rem;
@@ -452,10 +461,50 @@ header {
 }
 
 .family-info-result .action {
-  width: 48px;
-  width: 3rem;
-  height: 48px;
-  height: 3rem;
+  width: 44.8px;
+  width: 2.8rem;
+  height: 44.8px;
+  height: 2.8rem;
+  background-color: #6431b9;
+}
+
+/*
+FORM ADD FAMILY
+*/
+
+.page-new-family, .page-edit-profile {
+  background-color: #6d34c5;
+  height: 100%;
+}
+
+.form-add-family, .form-edit-user {
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  color: #6d34c5;
+  margin-top: 10%;
+  padding: 80px;
+  padding: 5rem;
+}
+
+.form-add-family input, .form-edit-user input {
+  background-color: ghostwhite;
+  border: none;
+  margin-top: 32px;
+  margin-top: 2rem;
+  margin-bottom: 64px;
+  margin-bottom: 4rem;
+}
+
+.form-add-family button, .form-edit-user button {
+  background-color: #6431b9;
+  border: none;
+  color: white;
+  border-radius: 100px;
+  height: 80px;
+  height: 5rem;
+  width: 80px;
+  width: 5rem;
 }
 
 /*
