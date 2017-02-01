@@ -30,7 +30,7 @@ const FamilyInfoResults = inject(`families`)(observer(({families}) => {
 
 FamilyInfoResults.propTypes = {
   families: PropTypes.shape({
-    activeFamily: PropTypes.array,
+    activeFamily: PropTypes.object,
     infoMessage: PropTypes.string
   })
 };

@@ -1,27 +1,32 @@
 import {observable, action} from 'mobx';
 import Form from './Form';
 
-import {insert} from '../api/families';
-import families from './Families';
+// import {insert} from '../api/familymembers';
+// import {content} from '../auth/token';
 
-class FormAddFamily extends Form {
+class FormAddFamilyMember extends Form {
 
   @observable form = ({
     fields: {
-      name: {
+      firstName: {
         value: ``,
         error: ``,
         rule: `required|min:3`
       },
-      origins: {
+      languages: {
         value: ``,
         error: ``,
-        rule: `string|min:3`
+        rule: ``
       },
-      homeLocation: {
+      character: {
         value: ``,
         error: ``,
-        rule: `string|min:3`
+        rule: `required|min:3`
+      },
+      role: {
+        value: ``,
+        error: ``,
+        rule: `required|min:3`
       }
     },
     meta: {
@@ -40,22 +45,25 @@ class FormAddFamily extends Form {
   @action handleSubmit = e => {
     e.preventDefault();
 
+    console.log(e);
+
     if (!this.form.meta.isValid) {
       this.handleError(`Oops! Something went wrong.`);
     } else {
 
-      insert(this.getValues())
-        .then(family => {
-          if (this.submitButton === `start`) families.handleFamilySession(family._id);
-          this.form.redirect = `families`;
+      console.log(this.getValues());
+
+      /*insert(this.getValues())
+        .then(() => {
+          this.form.redirect = `family`;
         })
         .catch(error => {
           this.handleError(error.message);
-        });
+        });*/
 
     }
 
   }
 }
 
-export default new FormAddFamily();
+export default new FormAddFamilyMember();

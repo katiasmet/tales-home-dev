@@ -39,7 +39,7 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
     <section className='families families-overview'>
 
       {
-        isLoading ? (<Loading />)
+        (isLoading === `families`) ? (<Loading />)
         : handleFamilies(allFamilies, activeFamilies, searchInput)
       }
 
@@ -52,7 +52,7 @@ FamiliesOverview.propTypes = {
     allFamilies: PropTypes.array,
     activeFamilies: PropTypes.array,
     searchInput: PropTypes.string,
-    isLoading: PropTypes.bool,
+    isLoading: PropTypes.string,
     error: PropTypes.string
   })
 };

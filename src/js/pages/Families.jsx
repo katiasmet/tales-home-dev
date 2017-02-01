@@ -1,8 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {observer, inject} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {Header} from '../components/';
 import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/mentor';
+import {FamilyStartSession} from '../components/mentor/family';
 
 @inject(`families`) @observer
 class Families extends Component {
@@ -12,8 +14,11 @@ class Families extends Component {
   }
 
   render() {
+
+    const {sessionId} = this.props.families;
+
     return (
-      <div className='page page-families'>
+      <div className={!isEmpty(sessionId) ? `page page-families page-pop-up` : `page page-families`}>
         <Header />
 
         <main>
@@ -21,6 +26,10 @@ class Families extends Component {
           <FamiliesSearch />
 
           <section className='families'>
+
+            {
+              !isEmpty(sessionId) && <FamilyStartSession />
+            }
 
             <FamiliesBrowse />
             <FamiliesOverview />
@@ -35,7 +44,8 @@ class Families extends Component {
 
 Families.propTypes = {
   families: PropTypes.shape({
-    getFamilies: PropTypes.func
+    getFamilies: PropTypes.func,
+    sessionId: PropTypes.string
   })
 };
 

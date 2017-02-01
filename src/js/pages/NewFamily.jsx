@@ -4,6 +4,7 @@ import {Header} from '../components/';
 import {FamilyAdd} from '../components/mentor/family';
 
 const NewFamily = () => {
+
   return (
     <div className='page page-new-family'>
       <Header />
@@ -15,5 +16,6 @@ const NewFamily = () => {
 
   );
 };
+
 
 export default NewFamily;
