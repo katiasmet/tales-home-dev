@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 
 import Router from '../router/';
 import stores from '../stores';
-import {isLoggedIn} from '../auth';
+import {isLoggedIn, token} from '../auth';
 
 class App extends Component {
 
@@ -27,8 +27,12 @@ class App extends Component {
 
     if (isLoggedIn()) {
       const {id: socketId} = this.socket;
-      this.socket.emit(`setProfessionalId`, socketId, `blub`);
+      this.socket.emit(`setProfessionalId`, socketId, token.content().sub);
+
+      const {handleCurrentSocketId} = stores.users;
+      handleCurrentSocketId(socketId);
     }
+
   }
 
   handleWSJoin = user => {

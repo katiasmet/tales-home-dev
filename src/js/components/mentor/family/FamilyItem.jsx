@@ -28,8 +28,8 @@ class FamilyItem extends Component {
   ];
 
   handleFamilyInfo() {
-    const {isLoadingInfo} = this.props.families;
-    if (isLoadingInfo) return <Loading />;
+    const {isLoading} = this.props.families;
+    if (isLoading === `info`) return <Loading />;
     else return <FamilyInfo />;
   }
 
@@ -81,7 +81,7 @@ FamilyItem.propTypes = {
   origins: PropTypes.string,
   homeLocation: PropTypes.string,
   families: PropTypes.shape({
-    isLoadingInfo: PropTypes.bool,
+    isLoading: PropTypes.string,
     showInfo: PropTypes.string,
     handleFamilyRemove: PropTypes.func,
     handleFamilyInfo: PropTypes.func,

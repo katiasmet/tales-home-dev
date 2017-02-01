@@ -1,5 +1,6 @@
 import {observable, action} from 'mobx';
-import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes} from 'lodash';
+import io from 'socket.io-client';
+import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes, toString} from 'lodash';
 
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
@@ -7,24 +8,27 @@ import {selectByFamily as selectFamilyModels, remove as removeFamilyModels} from
 import {select as selectModel} from '../api/models';
 import {content} from '../auth/token';
 
+import users from './Users';
+
 class Families  {
 
-  @observable isLoading = true;
+  @observable isLoading = ``;
   @observable allFamilies = [];
   @observable activeFamilies = [];
 
   @observable characters = [];
   @observable activeCharacter = ``;
 
-  @observable activeFamily = []; //for sessions and getting information (?)
+  @observable activeFamily = {}; //for sessions and getting information (?)
   @observable infoMessage = {};
   @observable showInfo = ``;
-  @observable isLoadingInfo = true;
 
   @observable searchInput = ``;
 
+  @observable sessionId = ``;
+
   @action getFamilies = () => {
-    this.isLoading = true;
+    this.isLoading = `families`;
 
     selectByProfessional({professionalId: content().sub})
       .then(data => {
@@ -33,7 +37,7 @@ class Families  {
         this.handleCharacters();
       }).then(() => {
         this.handleActiveFamilies();
-        this.isLoading = false;
+        this.isLoading = ``;
       }).catch(err => {
         this.handleError(err);
       });
@@ -78,18 +82,20 @@ class Families  {
     this.handleActiveFamilies();
   }
 
-  @action handleFamilyInfo = id => {
+  @action handleFamilyInfo = (id, showInfo = true) => {
 
-    this.activeFamily = [];
-    this.isLoadingInfo = true;
+    this.activeFamily = {};
+    this.isLoading = `info`;
     this.infoMessage = {};
+
+    this.findActiveFamily(id);
 
     if (!this.showInfo) {
       selectFamilyMembers({familyId: id})
       .then(familymembers => {
         if (isEmpty(familymembers.familyMembers)) {
           this.infoMessage.members = `This family did not add any family members yet.`;
-          this.isLoadingInfo = false;
+          this.isLoading = ``;
         }
         this.activeFamily.familymembers = familymembers.familyMembers;
       }).catch(err => {
@@ -100,7 +106,7 @@ class Families  {
       .then(familymodels => {
         if (isEmpty(familymodels.familyModels)) {
           this.infoMessage.models = `This family did not join a session yet.`;
-          this.isLoadingInfo = false;
+          this.isLoading = ``;
         }
         this.activeFamily.familymodels = familymodels.familyModels;
       }).then(() => {
@@ -113,7 +119,7 @@ class Families  {
               familymodel.name = model.model[0].name;
             })
             .then(() => {
-              if ((i + 1) === this.activeFamily.familymodels.length) this.isLoadingInfo = false;
+              if ((i + 1) === this.activeFamily.familymodels.length) this.isLoading = ``;
             })
             .catch(err => {
               this.handleError(err);
@@ -123,19 +129,52 @@ class Families  {
         }
 
       }).then(() => {
-        this.showInfo = id;
+        if (showInfo) this.showInfo = id;
       }).catch(err => {
         this.handleError(err);
       });
 
     } else {
-      this.activeFamily = [];
+      this.activeFamily = {};
       this.showInfo = ``;
     }
   }
 
-  @action handleFamilySession = id => {
-    console.log(id);
+  findActiveFamily = id => {
+
+    this.activeFamily = filter(this.allFamilies, family => {
+      return family._id === id;
+    })[0];
+
+  };
+
+  @action handleFamilySession = familyId => {
+
+    this.generateSessionId();
+    this.handleFamilyInfo(familyId, false);
+    this.isLoading = `session`;
+
+    this.socket = io(`/`);
+    this.socket.emit(`handleSession`, users.currentSocketId, familyId, this.sessionId);
+
+  }
+
+  generateSessionId = () => {
+
+    const sessionId = toString(Math.floor(1000 + Math.random() * 9000));
+
+    if (this.checkInUse(sessionId)) this.sessionId = sessionId;
+    else this.generateSessionId();
+
+  }
+
+  checkInUse = sessionId => {
+    const used = filter(users.allUsers, user => {
+      return user.sessionId === sessionId;
+    });
+
+    if (used.length === 0) return true;
+    else return false;
   }
 
   @action handleFamilyRemove = id => {
@@ -179,10 +218,8 @@ class Families  {
       this.handleActiveFamilies();
     }
 
-
   }
 
-  //search through origins, location and name
 }
 
 export default new Families();

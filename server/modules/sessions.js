@@ -21,10 +21,19 @@ module.exports.register = (server, options, next) => {
     socket.emit(`init`, users);
     socket.broadcast.emit(`join`, user);
 
-    socket.on(`setFirefly`, (id, professionalId) => {
+    socket.on(`setProfessionlId`, (id, professionalId) => {
       const user = users.find(u => id === u.socketId);
       if (user) {
         user.professsionalId = professionalId;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`setSession`, (id, familyId, sessionId) => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.familyId = familyId;
+        user.sessionId = sessionId;
         socket.broadcast.emit(`recheck`, users);
       }
     });
