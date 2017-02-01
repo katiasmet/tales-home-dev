@@ -100,7 +100,7 @@ header,
   align-items: center;
 }
 
-.familie-overview-header header {
+.page-families .familie-overview-header header {
   background-color: $purple;
 }
 
@@ -397,6 +397,7 @@ FORMS
 /*
 MODELSOVERVIEW
 */
+
 .page-models {
   background-color: #26e2e9;
   height: 100%;
@@ -437,6 +438,13 @@ MODELSOVERVIEW
   }
 }
 
+.models-overview {
+
+  nav{
+    margin-top: -10rem;
+  }
+}
+
 .models-overview-grid {
   position: fixed;
   padding: 20px 0;
@@ -457,6 +465,7 @@ MODELSOVERVIEW
 }
 
 .models-overview-grid-item {
+
   p {
     color: $grey;
   }

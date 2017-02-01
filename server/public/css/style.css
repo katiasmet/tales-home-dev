@@ -170,7 +170,7 @@ header,
           align-items: center;
 }
 
-.familie-overview-header header {
+.page-families .familie-overview-header header {
   background-color: #6d34c5;
 }
 
@@ -573,6 +573,7 @@ FORMS
 /*
 MODELSOVERVIEW
 */
+
 .page-models {
   background-color: #26e2e9;
   height: 100%;
@@ -585,6 +586,7 @@ MODELSOVERVIEW
   background-size: contain, cover;
   background-position: 0% 170%, top;
 }
+
 .page-models h2 {
   color: white;
   font-size: 48px;
@@ -594,6 +596,7 @@ MODELSOVERVIEW
   margin-bottom: 3rem;
   text-transform: uppercase;
 }
+
 .page-models p {
   color: white;
   text-align: center;
@@ -611,6 +614,11 @@ MODELSOVERVIEW
 
 .btn-show-grid .fa {
   color: red;
+}
+
+.models-overview nav{
+  margin-top: -160px;
+  margin-top: -10rem;
 }
 
 .models-overview-grid {
