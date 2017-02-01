@@ -1,12 +1,13 @@
 import React, {PropTypes} from 'react';
 import {Route, Redirect} from 'react-router-dom';
+import {isEmpty} from 'lodash';
 
 import {isLoggedIn} from '../auth';
 
 export const MatchWhenAuthorized = ({component, ...rest}) => (
 
   <Route {...rest} render={props => (
-    isLoggedIn() ? (
+    (isLoggedIn() === `professional`) ? (
       React.createElement(component, props)
     ) : (
       <Redirect to={{
@@ -17,12 +18,32 @@ export const MatchWhenAuthorized = ({component, ...rest}) => (
   )} />
 );
 
+export const MatchWhenFamily = ({component, ...rest}) => (
+
+  <Route {...rest} render={props => (
+    (isLoggedIn() === `family`) ? (
+      React.createElement(component, props)
+    ) : (
+      <Redirect to={{
+        pathname: `/login`,
+        state: {from: props.location}
+      }} />
+    )
+  )} />
+);
+
+
+const redirectPath = () => {
+  if (isLoggedIn() === `professional`) return `/families`;
+  else return `/family`;
+};
+
 export const RedirectWhenAuthorized = ({component, ...rest}) => (
 
   <Route {...rest} render={props => (
-    isLoggedIn() ? (
+    (!isEmpty(isLoggedIn())) ? (
       <Redirect to={{
-        pathname: `/families`,
+        pathname: redirectPath(),
         state: {from: props.location}
       }} />
     ) : (
@@ -37,6 +58,11 @@ MatchWhenAuthorized.propTypes = {
   location: PropTypes.func
 };
 
+MatchWhenFamily.propTypes = {
+  component: PropTypes.func,
+  location: PropTypes.func
+};
+
 RedirectWhenAuthorized.propTypes = {
   component: PropTypes.func,
   location: PropTypes.func
@@ -44,5 +70,6 @@ RedirectWhenAuthorized.propTypes = {
 
 export default {
   MatchWhenAuthorized,
+  MatchWhenFamily,
   RedirectWhenAuthorized
 };

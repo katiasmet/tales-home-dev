@@ -1,23 +1,41 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 
 import {Header, Loading} from '../components/';
+import {FamilyOverview} from '../components/family';
+import {content} from '../auth/token';
 
-const Family = inject(`families`)(observer(({families}) => {
+//families.
+@inject(`families`) @observer
+class Family extends Component {
 
-  const {isLoading} = families;
+  componentDidMount() {
+    const {getFamilyMembers} = this.props.families;
+    getFamilyMembers(content().sub, true);
+  }
 
-  return (
-    <div className='page page-family'>
-      <Header />
+  render() {
+    const {isLoading} = this.props.families;
+    return (
+      <div className='page page-family'>
+        <Header />
 
         {
           (isLoading === `familymembers`) ? (<Loading />)
-          : <p>yes yes joepie</p>
+          : <FamilyOverview />
         }
-    </div>
 
-  );
-}));
+      </div>
+
+    );
+  }
+}
+
+Family.propTypes = {
+  families: PropTypes.shape({
+    isLoading: PropTypes.string,
+    getFamilyMembers: PropTypes.func
+  })
+};
 
 export default Family;

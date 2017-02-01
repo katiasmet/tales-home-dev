@@ -41,9 +41,6 @@ class FormJoin extends Form {
           .then(() => {
             this.form.redirect = true;
           })
-          .then(() => {
-            families.getFamilyMembers(content().sub, true);
-          })
           .catch(error => {
             this.handleError(error.message);
           });

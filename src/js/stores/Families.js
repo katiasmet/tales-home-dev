@@ -27,6 +27,8 @@ class Families  {
 
   @observable sessionId = ``;
 
+  @observable confirmation = false;
+
   @action getFamilies = () => {
     this.isLoading = `families`;
 
@@ -208,6 +210,16 @@ class Families  {
       this.handleError(err);
     });
 
+  }
+
+  @action handleConfirmation = () => {
+    console.log(`handle confirmation`);
+    this.confirmation = !this.confirmation;
+    console.log(this.confirmation);
+  }
+
+  @action handleFamilyMemberRemove = id => {
+    console.log(`weg ermee`);
   }
 
   @action handleSearch = (field, value) => {

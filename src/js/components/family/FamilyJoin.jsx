@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Redirect} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {isEmpty} from 'lodash';
@@ -48,5 +48,23 @@ const FamilyJoin = inject(`formJoin`)(observer(({formJoin}) => {
     </section>
   );
 }));
+
+FamilyJoin.propTypes = {
+  formJoin: PropTypes.shape({
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    form: PropTypes.shape({
+      fields: PropTypes.objectOf(PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        error: PropTypes.any,
+      })).isRequired,
+      meta: PropTypes.shape({
+        isValid: PropTypes.bool.isRequired,
+        error: PropTypes.any
+      }).isRequired,
+      redirect: PropTypes.bool
+    }).isRequired
+  })
+};
 
 export default FamilyJoin;
