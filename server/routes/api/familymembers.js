@@ -93,7 +93,7 @@ module.exports = [
           familyId: Joi.string().alphanum().min(3).required(),
           firstName: Joi.string().alphanum().min(3).required(),
           languages: Joi.array().items(Joi.string()).required(),
-          character: Joi.string().alphanum().min(3).required(),
+          character: Joi.string().min(3).required(),
           role: Joi.string().min(3).alphanum().required(),
           isActive: Joi.boolean()
         }

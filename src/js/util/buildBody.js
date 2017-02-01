@@ -1,4 +1,4 @@
-import {pick, assign} from 'lodash';
+import {pick, assign, isArray} from 'lodash';
 
 export default (data, values, extend) => {
 
@@ -10,7 +10,8 @@ export default (data, values, extend) => {
 
   const fd = new FormData();
   for (const key in data) {
-    fd.append(key, data[key]);
+    if (isArray(data[key])) fd.append(key, JSON.stringify(data[key]));
+    else fd.append(key, data[key]);
   }
 
   return fd;
