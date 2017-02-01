@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const FamilyMemberAddCharacters = ({handleChange}) => {
+const FamilyMemberAddCharacters = ({handleChange, value}) => {
 
   return (
     <section className='form-characters'>
@@ -15,7 +15,8 @@ const FamilyMemberAddCharacters = ({handleChange}) => {
               className='hidden'
               type='radio'
               name='character'
-              value='charactername-1' />
+              value='charactername-1'
+              defaultChecked={(value === `charactername-1`) ? `true` : `false`} />
 
       <label  htmlFor='charactername-2'
               className='charactername-2'
@@ -26,7 +27,8 @@ const FamilyMemberAddCharacters = ({handleChange}) => {
               className='hidden'
               type='radio'
               name='character'
-              value='charactername-2' />
+              value='charactername-2'
+              defaultChecked={(value === `charactername-2`) ? `true` : `false`} />
 
       <label  htmlFor='charactername-3'
               className='charactername-3'
@@ -37,14 +39,16 @@ const FamilyMemberAddCharacters = ({handleChange}) => {
               className='hidden'
               type='radio'
               name='character'
-              value='charactername-3' />
+              value='charactername-3'
+              defaultChecked={(value === `charactername-3`) ? `true` : `false`} />
 
     </section>
   );
 };
 
 FamilyMemberAddCharacters.propTypes = {
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func,
+  value: PropTypes.string
 };
 
 export default FamilyMemberAddCharacters;

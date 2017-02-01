@@ -13,3 +13,4 @@ export Model from './Model';
 //family-side
 export Family from './Family';
 export NewFamilyMember from './NewFamilyMember';
+export EditFamilyMember from './EditFamilyMember';

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 
 import {Actions} from '../';
@@ -47,17 +48,19 @@ class FamilyMember extends Component {
 
   render() {
 
-    const {character, firstName} = this.props;
+    const {character, firstName, _id} = this.props;
     this.handleActions();
 
     return (
       <article className='family-member'>
 
-        <figure className={character}>
+        <Link to={`/editfamilymember?id=${_id}`}>
+          <figure className={character}>
 
-        </figure>
+          </figure>
 
-        <h2>{firstName}</h2>
+          <h2>{firstName}</h2>
+        </Link>
 
         <Actions actionClass='familymember-actions' actions={this.actions} />
 

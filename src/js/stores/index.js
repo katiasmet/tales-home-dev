@@ -7,6 +7,7 @@ import formJoin from './FormJoin';
 import families from './Families';
 import formAddFamily from './formAddFamily';
 import formAddFamilyMember from './formAddFamilyMember';
+import formEditFamilyMember from './formEditFamilyMember';
 
 import notes from './Notes';
 import results from './Results';
@@ -24,6 +25,7 @@ const stores = {
   families,
   formAddFamily,
   formAddFamilyMember,
+  formEditFamilyMember,
   notes,
   results,
   models,

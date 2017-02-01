@@ -9,6 +9,7 @@ const base = `/api/familymembers`;
 const whitelist = {
   GET: [`familyId`],
   POST: [`familyId`, `firstName`, `languages`, `character`, `role`],
+  PUT: [`firstName`, `languages`, `character`, `role`],
   DELETE: [`familyId`]
 };
 
@@ -49,7 +50,18 @@ export const insert = data => {
 
 };
 
+export const update = (data, id) => {
 
+  const method = `PUT`;
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
+  const body = buildBody(data, whitelist.PUT, {});
+
+  console.log(id);
+
+  return fetch(`${base}/${id}`, {method, body, headers})
+    .then(checkStatus);
+
+};
 
 export const remove = query => {
 
@@ -71,6 +83,7 @@ export const remove = query => {
 
 export default {
   insert,
+  update,
   select,
   selectByFamily,
   remove

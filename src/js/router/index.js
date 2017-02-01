@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 
-import {Home, Login, EditProfile, Families, NewFamily, Models, Model, Family, NewFamilyMember} from '../pages/';
+import {Home, Login, EditProfile, Families, NewFamily, Models, Model, Family, NewFamilyMember, EditFamilyMember} from '../pages/';
 import {RedirectWhenAuthorized, MatchWhenFamily, MatchWhenAuthorized} from './checkRoutes';
 
 export default () => (
@@ -24,6 +24,7 @@ export default () => (
 
       <MatchWhenFamily exact path='/family' component={Family} />
       <MatchWhenFamily exact path='/newfamilymember' component={NewFamilyMember} />
+      <MatchWhenFamily exact path='/editfamilymember' component={EditFamilyMember} />
 
     </div>
   </Router>

@@ -135,7 +135,8 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height:90vh;
+
+  /* max hoogte geven op main gaat niet voor elke pagina lukken en kan voor problemen zorgen*/
 }
 
 /*
@@ -258,7 +259,9 @@ MENTOR FAMILIES
 
 header {
   background-color: #6d34c5;
-  height:10vh;
+  height: 160px;
+  height: 10rem;
+  /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
 .families header {

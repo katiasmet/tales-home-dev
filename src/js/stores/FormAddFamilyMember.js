@@ -1,10 +1,11 @@
 import {observable, action} from 'mobx';
-import Form from './Form';
 
+import Form from './Form';
 import {insert} from '../api/familymembers';
 import {content} from '../auth/token';
 
 class FormAddFamilyMember extends Form {
+
 
   @observable form = ({
     fields: {
@@ -36,15 +37,9 @@ class FormAddFamilyMember extends Form {
     redirect: false
   });
 
-  submitButton = ``;
-
-  @action handleSubmitButton = (e, button) => {
-    this.submitButton = button;
-  }
 
   @action handleSubmit = e => {
     e.preventDefault();
-
 
     if (!this.form.meta.isValid) {
       this.handleError(`Oops! Something went wrong.`);
@@ -60,7 +55,6 @@ class FormAddFamilyMember extends Form {
         .catch(error => {
           this.handleError(error.message);
         });
-
     }
 
   }
