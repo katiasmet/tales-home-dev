@@ -9,13 +9,10 @@ import {content} from '../auth/token';
 //familieside
 @inject(`families`, `languages`) @observer
 class Family extends Component {
-
-  componentWillMount() {
+  componentDidMount() {
     const {handleFamilyMembersVisites} = this.props.families;
     handleFamilyMembersVisites();
-  }
 
-  componentDidMount() {
     const {getFamilyMembers} = this.props.families;
     getFamilyMembers(content().sub, true);
 

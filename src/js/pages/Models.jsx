@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
+import {Redirect} from 'mobx-react';
 import {inject, observer} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {Header, Loading} from '../components/';
 import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
@@ -17,10 +19,38 @@ class Models extends Component {
     }
   }
 
+  renderModels() {
+
+    if (token.content().scope === `family`) {
+      const {activeFamily} = this.props.families;
+
+      if (isEmpty(activeFamily.familymodel.name)) {
+        return (
+          <main>
+            <Loading />
+          </main>
+        );
+      } else {
+        return (
+          <Redirect to={`/models/${activeFamily.familymodel.name}`} />
+        );
+      }
+    } else {
+      return (
+        <main>
+          <Loading />
+        </main>
+      );
+    }
+
+  }
+
   render() {
 
     const {pathname} = this.props.location;
     const {isLoading, handleShowGrid} = this.props.models;
+
+    console.log(`render models`);
 
     return (
       <div className='page page-models'>
@@ -36,11 +66,7 @@ class Models extends Component {
               </button>
               <ModelsOverviewGrid />
             </main>
-          ) : (
-            <main>
-              <Loading />
-            </main>
-          )
+          ) : this.renderModels()
         }
 
       </div>
@@ -57,7 +83,8 @@ Models.propTypes = {
     showGrid: PropTypes.bool
   }),
   families: PropTypes.shape({
-    handleFamilyMembersVisites: PropTypes.func
+    handleFamilyMembersVisites: PropTypes.func,
+    activeFamily: PropTypes.object
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string

@@ -47,6 +47,14 @@ module.exports.register = (server, options, next) => {
       }
     });
 
+    socket.on(`setModel`, id => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.modelId = id;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
     socket.on(`stopSession`, id => {
       const user = users.find(u => id === u.socketId);
       if (user) {
