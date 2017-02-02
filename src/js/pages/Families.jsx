@@ -27,10 +27,11 @@ class Families extends Component {
           <FamiliesSearch />
 
           <section className='families'>
-
+              <section className='popup-overlay'>
               {
                 !isEmpty(sessionId) && <FamilyStartSession />
               }
+            </section>
             <FamiliesBrowse />
             <section>
               <h2 className='familie-head'>Families</h2>
