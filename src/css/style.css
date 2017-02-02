@@ -193,7 +193,7 @@ MENTOR FAMILIES
 }
 
 header {
-  height: 10rem;
+  /*height: 10rem;*/
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
@@ -204,6 +204,11 @@ header {
 .families {
   align-items: flex-start;
   width: 100%;
+
+  .familie-head {
+    margin-top: 8rem;
+    text-transform: uppercase;
+  }
 }
 
 .families-browse {
@@ -267,7 +272,6 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   flex: 6;
-  padding-top: 5rem;
 }
 
 .family-item {
