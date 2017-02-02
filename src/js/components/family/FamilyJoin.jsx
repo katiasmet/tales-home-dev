@@ -26,6 +26,10 @@ const FamilyJoin = inject(`formJoin`)(observer(({formJoin}) => {
         onSubmit={handleSubmit}>
 
         <fieldset>
+          <h2>Start family session</h2>
+        </fieldset>
+
+        <fieldset>
 
           <FormInput
             id='join-form-code'

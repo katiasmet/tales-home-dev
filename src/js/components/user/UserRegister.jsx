@@ -27,6 +27,10 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
         onSubmit={handleSubmit}>
 
         <fieldset>
+          <h2> Register </h2>
+        </fieldset>
+
+        <fieldset>
 
           <FormInput
             id='register-form-name'
@@ -68,7 +72,7 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
-          <button type='submit' className='btn' disabled={!meta.isValid}>Register</button>
+          <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
 
         </fieldset>
 

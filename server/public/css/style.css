@@ -56,11 +56,15 @@ html {
 *, *::before, *::after { /* stylelint-disable-line */
   box-sizing: inherit;
 }
+html {
+  height: 100%;
+}
+
 body {
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: Rubik, Helvetica, Arial, sans-serif;
   font-size: 25.6px;
   font-size: 1.6rem;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .fa {
@@ -94,6 +98,13 @@ h2 {
   font-size: 1.8rem;
   font-weight: bold;
   color: #6d34c5;
+}
+
+form h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 h3 {
@@ -135,14 +146,16 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 89.9vh;
+}
 
-  /* max hoogte geven op main gaat niet voor elke pagina lukken en kan voor problemen zorgen*/
+.page-families main {
+  height: 100%;
 }
 
 /*
 HEADER
 */
-
 header,
 .families,
 .actions {
@@ -155,6 +168,10 @@ header,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.page-families .familie-overview-header header {
+  background-color: #6d34c5;
 }
 
 nav,
@@ -191,7 +208,7 @@ nav li a:visited, .form-actions li a:visited {
   color: white;
 }
 
-nav{
+nav {
   padding-right: 48px;
   padding-right: 3rem;
   padding-top: 48px;
@@ -229,6 +246,8 @@ form {
 
 label {
   display: block;
+  margin-top: 32px;
+  margin-top: 2rem;
 }
 
 input {
@@ -265,7 +284,7 @@ header {
 }
 
 .families header {
-  background-color: #dbe8fe;
+  background-color: $bgpurple;
 }
 
 .families {
@@ -377,6 +396,11 @@ header {
 .family-item {
   color: #515151;
   width: 80vw;
+  margin-top: 32px;
+  margin-top: 2rem;
+  padding-bottom: 32px;
+  padding-bottom: 2rem;
+  border-bottom: .05px solid rgba(100, 49, 185, .1);
 }
 
 .action {
@@ -474,12 +498,12 @@ FORMS
 }
 
 .form-add-family, .form-edit-user, .page-login-forms {
-  margin:auto;
+  /*margin: auto;*/
   background-color: white;
   border-radius: 10px;
   color: #6d34c5;
-  padding: 48px 48px 0 48px;
-  padding: 3rem 3rem 0 3rem;
+  padding: 48px 48px 0;
+  padding: 3rem 3rem 0;
 }
 
 .form-add-family input, .form-edit-user input, .page-login-forms input {
@@ -492,7 +516,7 @@ FORMS
 }
 
 .form-add-family input:-webkit-autofill, .form-edit-user input:-webkit-autofill, .page-login-forms input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px ghostwhite inset;
+  box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
 .form-add-family button, .form-edit-user button, .page-login-forms button {
@@ -513,6 +537,9 @@ FORMS
   display: -ms-flexbox;
   display: flex;
   width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .user-profile {
@@ -525,16 +552,112 @@ FORMS
   border: none;
 }
 
-.page-login-forms button {
-  border-radius: 10px;
+.user-profile a {
+  color: white;
+}
+
+.page-login-img {
+  position: absolute;
+  margin-top: -240px;
+  margin-top: -15rem;
+}
+
+.info-login {
+  font-size: 20.8px;
+  font-size: 1.3rem;
+  margin-top: 32px;
+  margin-top: 2rem;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  color: #515151;
+}
+
+.info-login p {
+  margin-top: 16px;
+  margin-top: 1rem;
+}
+
+.info-login a {
+  color: #6d34c5;
 }
 
 /*
-MODELS
+MODELSOVERVIEW
 */
 
+.page-models {
+  background-color: #26e2e9;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-image:
+    url(/assets/img/bg/bg_ground_blue.png),
+    url(/assets/img/bg/bg_gradient.png);
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+  background-position: 0% 170%, top;
+}
+
+.page-models h2 {
+  color: white;
+  font-size: 48px;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 48px;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.page-models p {
+  color: white;
+  text-align: center;
+}
+
+.btn-show-grid {
+  position: fixed;
+  bottom: 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIsAAAAkCAYAAAC5U8nEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqxJREFUeNrsmoFxmzAUhhHXAegGZIKkE9TdIJkgeAInEzidwO4EeIM4E0AmsDOB6QR1JyB6ze876sMCEywQ/N+dDtnWnRF8PElPeB4hhLSNGlNn8zyfoHqjS4D6daFexV6Xt0J9K0el1JayuCtFqA8ihhy/H8lxKTKUV0i01RJllKWfctxCjIkFMc4RKIVAay3PnrJ0I4hEi3tIEjpy2iLOC8TJKAsFqctaxNHSrChLe4IEkGOGucfQkKFJhPnV92ijeiyJRI45RAm8cSDD1E8tTUpZ6i9vZ5BkrGwRaVaUpVySyOJQIzfhd8n390dzoaUuf0vazSxFuwyRZuWNHZmP6PKgyy63x0PF+fxBu8g0ROZ22ZnOZ+iSyMV+KtwYm0wqzi2RRjX6kHRw7p1K43cgSayrO0xeA4+cgwyRcVfS+JYkuZUnEZJEvOetSZNURUonZCnOR/THZ+8jDU/aRa5pYksa/0KiPCGKLDz3Mq1BIc9T9XT3URo3Epdit+WVTROekRUuXb4X2sWmZX7P+xif6mMv8iyIJnNHosfhXZTjiHJTo13oSLTcI0ez7I0sMJhzkv4isk/beEHL/6Qo8iRuHBNFLtqVKkF//1hol+ry9US7pUP9/XePEPm7iSwQJXEwV3Kn7/fa0K8NLvCVaRcYqzzXJu8p+r+3Flkkb+KoKIexvPL3Gq8LZA72XUaAXdNltt9AlAhzFGZf3STAMju6qCz4g5jXexDEpvTAp2ShKIMkOkcYf4SihBVpgLAwLzO1m4xNmC8jjCgLpPLTkrF8XpApRruypNxsgBFGJvXTxktnh5fHpBkrkzCKopC6wvgUhZQMSYtakYWiEDA9flFcURRi4L+tEUVRiAHZ+vhx2LFWFIVUkOnyTTYffeRRNhSFnCD0PvaSgncBBgAd2YLW6yOanwAAAABJRU5ErkJggg==);
+  border: none;
+  width: 139px;
+  height: 36px;
+  background-color: transparent;
+}
+
+.btn-show-grid .fa {
+  color: red;
+}
+
+.models-overview nav {
+  margin-top: -160px;
+  margin-top: -10rem;
+}
+
+.models-overview-grid {
+  position: fixed;
+  padding: 20px 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 80%;
+  background-color: white;
+  text-align: center;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+}
+
 .show-grid {
-  background: red;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  padding-top: 20%;
+  background: white;
+}
+
+.models-overview-grid-item p {
+  color: #515151;
 }
 
 /*# sourceMappingURL=style.css.map*/

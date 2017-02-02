@@ -27,6 +27,10 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
             onSubmit={handleSubmit}>
 
             <fieldset>
+              <h2>Log in</h2>
+            </fieldset>
+
+            <fieldset>
 
               <FormInput
                 id='login-form-email'
@@ -50,16 +54,16 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
 
               {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
-              <button type='submit' className='btn' disabled={!meta.isValid}>Log In</button>
+              <section className='info info-login'>
+                <p>Don't have a profile on Tales@Home? <Link to='/register'>Register today!</Link> </p>
+                <p><Link to='/'>Forgotten your password? </Link></p>
+              </section>
+
+              <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
 
             </fieldset>
 
           </form>
-
-          <section className='info info-login'>
-            <p>Don't have a profile on Tales@Home? <Link to='/register'>Register today!</Link> </p>
-            <p><Link to='/'>Forgotten your password?</Link></p>
-          </section>
 
         </section>
   );

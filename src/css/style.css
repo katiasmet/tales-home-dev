@@ -4,14 +4,20 @@ $active: #773eff;
 
 $purple: #6d34c5;
 $darkpurple: #6431b9;
-$bgpurple:#dbe8fe;
 
 $grey: #515151;
 
+$lightblue: #dbe8fe;
+$accentlightblue: #cddefe;
+
+html {
+  height: 100%;
+}
+
 body {
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: Rubik, Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .fa {
@@ -43,6 +49,12 @@ h2 {
   color: $purple;
 }
 
+form h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 h3 {
   padding: 3rem 0;
   font-weight: bold;
@@ -70,20 +82,26 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 89.9vh;
+}
 
-  /* max hoogte geven op main gaat niet voor elke pagina lukken en kan voor problemen zorgen*/
+.page-families main {
+  height: 100%;
 }
 
 /*
 HEADER
 */
-
 header,
 .families,
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.page-families .familie-overview-header header {
+  background-color: $purple;
 }
 
 nav,
@@ -109,7 +127,7 @@ nav,
   }
 }
 
-nav{
+nav {
   padding-right: 3rem;
   padding-top: 3rem;
   padding-bottom: 2rem;
@@ -140,6 +158,7 @@ form {
 
 label {
   display: block;
+  margin-top: 2rem;
 }
 
 input {
@@ -163,7 +182,7 @@ MENTOR FAMILIES
 */
 
 .page-families {
-  background-color: $bgpurple;
+  background-color: $lightblue;
 }
 
 header {
@@ -248,6 +267,9 @@ header {
 .family-item {
   color: $grey;
   width: 80vw;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: .05px solid rgb(100, 49, 185, .1);
 }
 
 .action {
@@ -285,7 +307,7 @@ header {
     margin-left: 3rem;
 
     li {
-      background-color: #cddefe;
+      background-color: $accentlightblue;
       padding: .8rem;
       margin-left: 1rem;
       border-radius: 1rem;
@@ -315,11 +337,11 @@ FORMS
 }
 
 .form-add-family, .form-edit-user, .page-login-forms {
-  margin:auto;
+  /*margin: auto;*/
   background-color: white;
   border-radius: 10px;
   color: $purple;
-  padding: 3rem 3rem 0 3rem;
+  padding: 3rem 3rem 0;
 
   input {
     background-color: ghostwhite;
@@ -329,7 +351,7 @@ FORMS
   }
 
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px ghostwhite inset;
+    box-shadow: 0 0 0 1000px ghostwhite inset;
   }
 
   button {
@@ -347,6 +369,7 @@ FORMS
 .user-profiles {
   display: flex;
   width: auto;
+  justify-content: center;
 }
 
 .user-profile {
@@ -355,18 +378,105 @@ FORMS
   border-radius: 10px;
   margin: 1rem;
   border: none;
+
+  a {
+    color: white;
+  }
 }
 
-.page-login-forms {
-  button {
-    border-radius: 10px;
+.page-login-img {
+  position: absolute;
+  margin-top: -15rem;
+}
+
+.info-login {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: $grey;
+
+  p {
+    margin-top: 1rem;
+  }
+
+  a {
+    color: $purple;
   }
 }
 
 /*
-MODELS
+MODELSOVERVIEW
 */
 
+.page-models {
+  background-color: #26e2e9;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-image:
+    url(../assets/img/bg/bg_ground_blue.png),
+    url(../assets/img/bg/bg_gradient.png);
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+  background-position: 0% 170%, top;
+
+  h2 {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+  }
+}
+
+.btn-show-grid {
+  position: fixed;
+  bottom: 0;
+  background-image: url(../assets/img/btn-show-grid.png);
+  border: none;
+  width: 139px;
+  height: 36px;
+  background-color: transparent;
+
+  .fa {
+    color: red;
+  }
+}
+
+.models-overview {
+
+  nav {
+    margin-top: -10rem;
+  }
+}
+
+.models-overview-grid {
+  position: fixed;
+  padding: 20px 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 80%;
+  background-color: white;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform .6s ease-in-out;
+}
+
 .show-grid {
-  background: red;
+  transform: translateY(0%);
+  padding-top: 20%;
+  background: white;
+}
+
+.models-overview-grid-item {
+
+  p {
+    color: $grey;
+  }
 }
