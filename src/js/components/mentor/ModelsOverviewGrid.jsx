@@ -10,6 +10,10 @@ const ModelsOverviewGrid = inject(`models`, `families`)(observer(({models, famil
 
   return (
     <section className={showGrid ? `models models-overview-grid show-grid` : `models models-overview-grid`}>
+      <button className='btn btn-show-grid'
+        onClick={handleShowGrid}
+      >
+      </button>
 
       {
         allModels.slice().map((model, i) => {

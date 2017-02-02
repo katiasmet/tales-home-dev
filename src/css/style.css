@@ -29,7 +29,10 @@ a {
 }
 
 .btn {
+  color: white;
+  border: none;
   background: $darkpurple;
+  border-radius: 100px;
 }
 
 h1 {
@@ -190,12 +193,11 @@ MENTOR FAMILIES
 }
 
 header {
-  background-color: $purple;
   height: 10rem;
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
-.families header {
+.familie-overview-header {
   background-color: $purple;
 }
 
@@ -334,7 +336,12 @@ header {
 FORMS
 */
 
-.page-new-family, .page-edit-profile, .page-login {
+.page-new-family {
+  height: auto;
+  background: $lightblue;
+}
+
+.page-edit-profile, .page-login {
   background-color: $purple;
   height: auto;
 
@@ -409,6 +416,62 @@ FORMS
 }
 
 /*
+STARTSESSION POP-UP
+*/
+
+/*.popup-overlay {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;;
+  align-items: center;
+}*/
+
+.popup-overlay {
+  position: absolute;
+  width: 100%;
+}
+
+.pop-up {
+  margin: auto;
+  margin-top: 10%;
+  text-align: center;
+  background-color: white;
+  padding: 2rem;
+  width: auto;
+  max-width: 40rem;
+  border-radius: 10px;
+
+  .btn {
+    position: absolute;
+    height: 4rem;
+    width: 4rem;
+    margin-top: -4rem;
+    margin-left: 18rem;
+    outline: none;
+  }
+
+  h2 {
+    color: $purple;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    line-height: 4rem;
+    text-transform: uppercase;
+    margin: auto;
+  }
+
+  .session-code {
+    display: block;
+    background-color: $purple;
+    border-radius: 10px;
+    color: white;
+    width: 20rem;
+    padding: 1.5rem;
+    margin: auto;
+    margin-bottom: 4rem;
+  }
+}
+
+/*
 MODELSOVERVIEW
 */
 
@@ -470,6 +533,12 @@ MODELSOVERVIEW
   text-align: center;
   transform: translateY(100%);
   transition: transform .6s ease-in-out;
+
+  .btn-showed-grid {
+    background-color: red;
+    transform: translateY(100%);
+    transition: transform .6s ease-in-out;
+  }
 }
 
 .show-grid {

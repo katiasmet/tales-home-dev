@@ -76,7 +76,10 @@ a {
 }
 
 .btn {
+  color: white;
+  border: none;
   background: #6431b9;
+  border-radius: 100px;
 }
 
 h1 {
@@ -281,13 +284,12 @@ MENTOR FAMILIES
 }
 
 header {
-  background-color: #6d34c5;
   height: 160px;
   height: 10rem;
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
-.families header {
+.familie-overview-header {
   background-color: #6d34c5;
 }
 
@@ -495,7 +497,12 @@ header {
 FORMS
 */
 
-.page-new-family, .page-edit-profile, .page-login {
+.page-new-family {
+  height: auto;
+  background: #dbe8fe;
+}
+
+.page-edit-profile, .page-login {
   background-color: #6d34c5;
   height: auto;
 
@@ -586,6 +593,74 @@ FORMS
 }
 
 /*
+STARTSESSION POP-UP
+*/
+
+/*.popup-overlay {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;;
+  align-items: center;
+}*/
+
+.popup-overlay {
+  position: absolute;
+  width: 100%;
+}
+
+.pop-up {
+  margin: auto;
+  margin-top: 10%;
+  text-align: center;
+  background-color: white;
+  padding: 32px;
+  padding: 2rem;
+  width: auto;
+  max-width: 640px;
+  max-width: 40rem;
+  border-radius: 10px;
+}
+
+.pop-up .btn {
+  position: absolute;
+  height: 64px;
+  height: 4rem;
+  width: 64px;
+  width: 4rem;
+  margin-top: -64px;
+  margin-top: -4rem;
+  margin-left: 288px;
+  margin-left: 18rem;
+  outline: none;
+}
+
+.pop-up h2 {
+  color: #6d34c5;
+  font-size: 32px;
+  font-size: 2rem;
+  margin-bottom: 64px;
+  margin-bottom: 4rem;
+  line-height: 64px;
+  line-height: 4rem;
+  text-transform: uppercase;
+  margin: auto;
+}
+
+.pop-up .session-code {
+  display: block;
+  background-color: #6d34c5;
+  border-radius: 10px;
+  color: white;
+  width: 320px;
+  width: 20rem;
+  padding: 24px;
+  padding: 1.5rem;
+  margin: auto;
+  margin-bottom: 64px;
+  margin-bottom: 4rem;
+}
+
+/*
 MODELSOVERVIEW
 */
 
@@ -647,6 +722,16 @@ MODELSOVERVIEW
   text-align: center;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+}
+
+.models-overview-grid .btn-showed-grid {
+  background-color: red;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
   -webkit-transition: -webkit-transform .6s ease-in-out;
   transition: -webkit-transform .6s ease-in-out;
   transition: transform .6s ease-in-out;
