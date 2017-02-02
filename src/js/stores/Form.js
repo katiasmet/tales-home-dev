@@ -38,6 +38,10 @@ class Form {
     this.form.meta.error = error;
   }
 
+  @action resetRedirect = () => {
+    this.form.redirect = false;
+  }
+
 }
 
 export default Form;

@@ -6,9 +6,8 @@ import {select, update} from '../api/familymembers';
 import {content} from '../auth/token';
 import families from './Families';
 import languages from './Languages';
-import {getUrlParameter} from '../util/getUrlParameter';
 
-class FormAddFamilyMember extends Form {
+class FormEditFamilyMember extends Form {
 
   error = ``;
   @observable activeMember = {
@@ -61,7 +60,7 @@ class FormAddFamilyMember extends Form {
           this.setValues();
         })
         .catch(err => {
-          this.handleFormError(err);
+          this.handleError(err);
         });
     } else {
 
@@ -74,13 +73,7 @@ class FormAddFamilyMember extends Form {
     }
   }
 
-  handleFormError = error => {
-    this.error = error;
-  }
-
   setValues = () => {
-
-    console.log(this.activeMember);
 
     this.form.fields.firstName.value = this.activeMember.firstName;
     this.form.fields.character.value = this.activeMember.character;
@@ -102,7 +95,7 @@ class FormAddFamilyMember extends Form {
       const familymember = this.getValues();
       familymember.familyId = content().sub;
 
-      update(familymember, getUrlParameter(`id`))
+      update(familymember, this.activeMember._id)
         .then(() => {
           this.form.redirect = true;
         })
@@ -114,4 +107,4 @@ class FormAddFamilyMember extends Form {
   }
 }
 
-export default new FormAddFamilyMember();
+export default new FormEditFamilyMember();

@@ -24,7 +24,7 @@ export default () => (
 
       <MatchWhenFamily exact path='/family' component={Family} />
       <MatchWhenFamily exact path='/newfamilymember' component={NewFamilyMember} />
-      <MatchWhenFamily exact path='/editfamilymember' component={EditFamilyMember} />
+      <MatchWhenFamily exact path='/editfamilymember/:id' component={EditFamilyMember} />
 
     </div>
   </Router>

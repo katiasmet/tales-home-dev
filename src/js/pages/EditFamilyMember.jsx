@@ -4,21 +4,22 @@ import {isEmpty} from 'lodash';
 
 import {Header, Loading} from '../components/';
 import {FamilyMemberAdd} from '../components/family/';
-import {getUrlParameter} from '../util/getUrlParameter';
 
 @inject(`languages`, `formEditFamilyMember`)
 @observer
 class EditFamilyMember extends Component {
+
+  componentWillMount() {
+    const {resetRedirect} = this.props.formEditFamilyMember;
+    resetRedirect();
+  }
 
   componentDidMount() {
     const {allLanguages, getLanguages} = this.props.languages;
     if (isEmpty(allLanguages)) getLanguages();
 
     const {getFamilyMember} = this.props.formEditFamilyMember;
-    console.log(getUrlParameter(`id`));
-    console.log(location.search);
-
-    getFamilyMember(getUrlParameter(`id`));
+    getFamilyMember(this.props.match.params.id);
   }
 
   render() {
@@ -50,8 +51,10 @@ EditFamilyMember.propTypes = {
     allLanguages: PropTypes.array,
     getLanguages: PropTypes.func
   }),
+  match: PropTypes.object,
   formEditFamilyMember: PropTypes.shape({
     isLoading: PropTypes.bool,
+    resetRedirect: PropTypes.func,
     getFamilyMember: PropTypes.func,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,

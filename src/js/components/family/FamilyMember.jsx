@@ -54,7 +54,7 @@ class FamilyMember extends Component {
     return (
       <article className='family-member'>
 
-        <Link to={`/editfamilymember?id=${_id}`}>
+        <Link to={`/editfamilymember/${_id}`}>
           <figure className={character}>
 
           </figure>

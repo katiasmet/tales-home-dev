@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const FamilyMemberAddLanguage = ({name, code}) => {
-
-  console.log(code);
+const FamilyMemberAddLanguage = ({name}) => {
 
   return (
     <span className='form-input'>

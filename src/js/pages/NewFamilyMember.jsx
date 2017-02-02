@@ -9,6 +9,11 @@ import {FamilyMemberAdd} from '../components/family/';
 @observer
 class NewFamilyMember extends Component {
 
+  componentWillMount() {
+    const {resetRedirect} = this.props.formAddFamilyMember;
+    resetRedirect();
+  }
+
   componentDidMount() {
     const {allLanguages, getLanguages} = this.props.languages;
     if (isEmpty(allLanguages)) getLanguages();
@@ -24,7 +29,7 @@ class NewFamilyMember extends Component {
 
         <main>
           <h1>Add a new family member</h1>
-          <FamilyMemberAdd fomr={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+          <FamilyMemberAdd form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
         </main>
       </div>
 
@@ -39,6 +44,7 @@ NewFamilyMember.propTypes = {
     getLanguages: PropTypes.func
   }),
   formAddFamilyMember: PropTypes.shape({
+    resetRedirect: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     form: PropTypes.shape({

@@ -6,7 +6,6 @@ import {content} from '../auth/token';
 
 class FormAddFamilyMember extends Form {
 
-
   @observable form = ({
     fields: {
       firstName: {
@@ -31,7 +30,7 @@ class FormAddFamilyMember extends Form {
       }
     },
     meta: {
-      isValid: false,
+      isValid: true,
       error: ``
     },
     redirect: false
