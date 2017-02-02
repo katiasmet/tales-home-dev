@@ -281,13 +281,12 @@ MENTOR FAMILIES
 }
 
 header {
-  background-color: #6d34c5;
   height: 160px;
   height: 10rem;
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
-.families header {
+.familie-overview-header{
   background-color: #6d34c5;
 }
 
@@ -495,7 +494,12 @@ header {
 FORMS
 */
 
-.page-new-family, .page-edit-profile, .page-login {
+.page-new-family {
+  height: auto;
+  background: #dbe8fe;
+}
+
+.page-edit-profile, .page-login {
   background-color: #6d34c5;
   height: auto;
 

@@ -190,12 +190,11 @@ MENTOR FAMILIES
 }
 
 header {
-  background-color: $purple;
   height: 10rem;
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
-.families header {
+.familie-overview-header{
   background-color: $purple;
 }
 
@@ -334,7 +333,12 @@ header {
 FORMS
 */
 
-.page-new-family, .page-edit-profile, .page-login {
+.page-new-family {
+  height: auto;
+  background: $lightblue;
+}
+
+.page-edit-profile, .page-login {
   background-color: $purple;
   height: auto;
 
