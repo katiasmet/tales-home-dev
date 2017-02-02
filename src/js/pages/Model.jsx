@@ -4,17 +4,14 @@ import {upperFirst, camelCase} from 'lodash';
 import {Header} from '../components/';
 import {ModelNotes} from '../components/mentor/model';
 
-const renderModelView = component => {
-  return React.createElement(component, {});
-};
+const Model = ({match, location}) => {
 
-const Model = ({match}) => {
-
+  const {pathname} = location;
   const component = upperFirst(camelCase(match.params.id));
 
   return (
     <div className='page page-model '>
-      <Header />
+      <Header pathname={pathname} />
 
       {
         renderModelView(component)
@@ -27,8 +24,15 @@ const Model = ({match}) => {
   );
 };
 
+const renderModelView = component => {
+  return React.createElement(component, {});
+};
+
 Model.propTypes = {
-  match: PropTypes.object
+  match: PropTypes.object,
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 };
 
 export default Model;

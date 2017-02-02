@@ -25,10 +25,11 @@ class EditFamilyMember extends Component {
   render() {
 
     const {form, handleChange, handleSubmit, isLoading} = this.props.formEditFamilyMember;
+    const {pathname} = this.props.location;
 
     return (
       <div className='page page-edit-family-member'>
-        <Header />
+        <Header pathname={pathname} />
 
         <main>
           <h1>Edit a family member</h1>
@@ -69,6 +70,9 @@ EditFamilyMember.propTypes = {
       }).isRequired,
       redirect: PropTypes.bool
     }).isRequired
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string
   })
 };
 

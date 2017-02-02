@@ -197,15 +197,23 @@ class Families  {
   }
 
   @action handleFamilyMembersVisites = () => {
-    console.log(`handle visites`);
     this.activeFamily.overviewVisites++;
     console.log(this.activeFamily.overviewVisites);
   }
 
   @action handleStartSession = () => {
 
+    console.log(`start a session`);
+
     const familyId = content().sub;
     this.socket.emit(`startSession`, familyId);
+
+  }
+
+  @action handleStopSession = () => {
+
+    this.socket.emit(`stopSession`, users.currentSocketId);
+    window.location.href = `/`;
 
   }
 

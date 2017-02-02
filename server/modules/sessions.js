@@ -47,6 +47,17 @@ module.exports.register = (server, options, next) => {
       }
     });
 
+    socket.on(`stopSession`, id => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.familyId = ``;
+        user.sessionId = ``;
+        user.modelId = ``;
+        user.isSessionStarted = false;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
     socket.on(`disconnect`, () => {
       users = users.filter(s => s.socketId !== socketId);
       socket.broadcast.emit(`leave`, socketId);

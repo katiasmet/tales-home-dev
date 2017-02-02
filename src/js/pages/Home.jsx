@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import {Header} from '../components/';
 
-const Home = () => {
+const Home = ({location}) => {
+
+  const {pathname} = location;
+
   return (
     <div className='page page-home'>
-      <Header />
+      <Header pathname={pathname} />
     </div>
 
   );
+};
+
+Home.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 };
 
 export default Home;

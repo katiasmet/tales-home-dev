@@ -1,50 +1,99 @@
-import React from 'react';
-import {isEmpty} from 'lodash';
+import React, {Component, PropTypes} from 'react';
+import {inject, observer} from 'mobx-react';
+import {isEmpty, includes} from 'lodash';
 
 import {isLoggedIn, token} from '../auth';
 import {NavigationItem} from './';
 
-const renderNavigation = user => {
-  if (token.content().scope === `professional`) {
-    return (
-      <ul className='navigation'>
-        <NavigationItem link='/newfamily' icon='fa-user-plus' />
+@inject(`families`) @observer
+class Navigation extends Component {
 
-        <li>{user}</li>
-        <NavigationItem link='/editprofile' icon='fa-gear' />
-      </ul>
-    );
-  } else {
-    return (
-      <ul className='navigation'>
-        <NavigationItem link='/newfamilymember' icon='fa-plus' />
-      </ul>
-    );
+  renderNavigation() {
+    if (token.content().scope === `professional`) {
+      return this.renderProfessionalNavigation();
+    } else {
+      return this.renderFamilyNavigation();
+    }
   }
 
+  renderProfessionalNavigation() {
 
-};
+    const {pathname} = this.props;
 
-const Navigation = () => {
+    if (includes(pathname, `models`)) {
 
-  const user = token.content().name;
+      const {handleStopSession} = this.props.families;
 
-  return (
-    <nav>
-        {
+      return (
+        <ul className='navigation'>
+          <li onClick={handleStopSession} >
+            <i className='fa fa-sign-out'></i>
+          </li>
+        </ul>
+      );
 
-          (!isEmpty(isLoggedIn())) ? (renderNavigation(user))
-          : (
+    } else {
 
-            <ul className='navigation'>
-              <NavigationItem link='/login' icon='fa-lock' content='login' />
-            </ul>
+      const {user} = token.content().name;
 
-          )
+      return (
+        <ul className='navigation'>
+          <NavigationItem link='/newfamily' icon='fa-user-plus' pathname={pathname} />
 
-        }
-    </nav>
-  );
+          <li>{user}</li>
+          <NavigationItem link='/editprofile' icon='fa-gear' pathname={pathname} />
+        </ul>
+      );
+    }
+
+  }
+
+  renderFamilyNavigation() {
+
+    const {pathname} = this.props;
+
+    if (includes(pathname, `models`)) {
+      return (
+        <ul className='navigation'>
+          <NavigationItem link='/family' icon='fa-users' pathname={pathname} />
+        </ul>
+      );
+    } else {
+      return (
+        <ul className='navigation'>
+          <NavigationItem link='/newfamilymember' icon='fa-plus' pathname={pathname} />
+        </ul>
+      );
+    }
+
+  }
+
+  render() {
+
+    const {pathname} = this.props;
+
+    return (
+      <nav>
+          {
+
+            (!isEmpty(isLoggedIn())) ? (this.renderNavigation())
+            : (
+              <ul className='navigation'>
+                <NavigationItem link='/login' icon='fa-lock' content='login' pathname={pathname} />
+              </ul>
+            )
+
+          }
+      </nav>
+    );
+  }
+}
+
+Navigation.propTypes = {
+  pathname: PropTypes.string,
+  families: PropTypes.shape({
+    handleStopSession: PropTypes.func
+  })
 };
 
 export default Navigation;

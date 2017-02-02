@@ -10,10 +10,14 @@ import {content} from '../auth/token';
 @inject(`families`, `languages`) @observer
 class Family extends Component {
 
-  componentDidMount() {
-    const {getFamilyMembers, handleFamilyMembersVisites} = this.props.families;
-    getFamilyMembers(content().sub, true);
+  componentWillMount() {
+    const {handleFamilyMembersVisites} = this.props.families;
     handleFamilyMembersVisites();
+  }
+
+  componentDidMount() {
+    const {getFamilyMembers} = this.props.families;
+    getFamilyMembers(content().sub, true);
 
     const {getLanguages} = this.props.languages;
     getLanguages();
@@ -21,10 +25,11 @@ class Family extends Component {
 
   render() {
     const {isLoading, handleStartSession} = this.props.families;
+    const {pathname} = this.props.location;
 
     return (
       <div className='page page-family'>
-        <Header />
+        <Header pathname={pathname} />
 
         {
           (isLoading === `familymembers`) ? (<Loading />)
@@ -51,6 +56,9 @@ Family.propTypes = {
   }),
   languages: PropTypes.shape({
     getLanguages: PropTypes.func
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string
   })
 };
 

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import {Header} from '../components/';
 import {UserEdit} from '../components/user';
 
-const EditProfile = () => {
+const EditProfile = ({location}) => {
+
+  const {pathname} = location;
+
   return (
     <div className='page page-edit-profile'>
-      <Header />
+      <Header pathname={pathname} />
 
       <main>
 
@@ -15,6 +18,12 @@ const EditProfile = () => {
     </div>
 
   );
+};
+
+EditProfile.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 };
 
 export default EditProfile;
