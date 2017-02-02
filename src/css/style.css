@@ -214,6 +214,10 @@ header {
     margin-top: 8rem;
     text-transform: uppercase;
   }
+
+  header{
+    width: 90%;
+  }
 }
 
 .families-browse {
@@ -294,7 +298,7 @@ header {
 }
 
 .action {
-  margin: 1rem;
+  margin: 0.5rem;
   background: $purple;
   padding: .5rem;
   border-radius: 50%;
@@ -314,11 +318,13 @@ header {
 }
 
 .family-info-members {
+  width: 90%;
+  font-size: 1.3rem;
 
   .family-info-member {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   ul .languages {
@@ -337,8 +343,10 @@ header {
 }
 
 .family-info-result {
+  width: 90%;
   display: flex;
   justify-content: space-between;
+  font-size: 1.3rem;
 
   .action {
     width: 2.8rem;

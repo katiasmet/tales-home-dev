@@ -325,6 +325,10 @@ header {
   text-transform: uppercase;
 }
 
+.families header{
+  width: 90%;
+}
+
 .families-browse {
 
   -webkit-box-orient: vertical;
@@ -441,8 +445,8 @@ header {
 }
 
 .action {
-  margin: 16px;
-  margin: 1rem;
+  margin: 8px;
+  margin: 0.5rem;
   background: #6d34c5;
   padding: 8px;
   padding: .5rem;
@@ -473,6 +477,12 @@ header {
   margin-left: 4rem;
 }
 
+.family-info-members {
+  width: 90%;
+  font-size: 20.8px;
+  font-size: 1.3rem;
+}
+
 .family-info-members .family-info-member {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -480,8 +490,8 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 32px;
-  margin-bottom: 2rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .family-info-members ul .languages {
@@ -508,12 +518,15 @@ header {
 }
 
 .family-info-result {
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-size: 20.8px;
+  font-size: 1.3rem;
 }
 
 .family-info-result .action {
