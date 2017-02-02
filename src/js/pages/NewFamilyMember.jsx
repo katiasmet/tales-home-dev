@@ -21,11 +21,12 @@ class NewFamilyMember extends Component {
 
   render() {
 
+    const {pathname} = this.props.location;
     const {form, handleChange, handleSubmit} = this.props.formAddFamilyMember;
 
     return (
       <div className='page page-new-family-member'>
-        <Header />
+        <Header pathname={pathname} />
 
         <main>
           <h1>Add a new family member</h1>
@@ -58,6 +59,9 @@ NewFamilyMember.propTypes = {
       }).isRequired,
       redirect: PropTypes.bool
     }).isRequired
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string
   })
 };
 

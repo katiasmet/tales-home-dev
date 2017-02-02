@@ -16,10 +16,11 @@ class Families extends Component {
   render() {
 
     const {sessionId} = this.props.families;
+    const {pathname} = this.props.location;
 
     return (
       <div className={!isEmpty(sessionId) ? `page page-families page-pop-up` : `page page-families`}>
-        <Header />
+        <Header pathname={pathname} />
 
         <main>
 
@@ -47,6 +48,9 @@ Families.propTypes = {
   families: PropTypes.shape({
     getFamilies: PropTypes.func,
     sessionId: PropTypes.string
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string
   })
 };
 

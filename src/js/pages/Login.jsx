@@ -1,8 +1,32 @@
-import React  from 'react';
+import React, {PropTypes} from 'react';
 
 import {Header} from '../components';
 import {UserProfiles, UserLogin, UserRegister} from '../components/user';
 import {FamilyJoin} from '../components/family';
+
+const Login = ({location}) => {
+
+  const {pathname} = location;
+
+  return (
+
+    <div className='page page-login'>
+
+      <Header pathname={pathname} />
+
+      <main>
+        <section className='page-login-forms'>
+          {renderProfileImages()}
+          <UserProfiles />
+
+          {renderLogin()}
+        </section>
+
+      </main>
+
+    </div>
+  );
+};
 
 const renderProfileImages = () => {
 
@@ -28,26 +52,10 @@ const renderLogin = () => {
 
 };
 
-const Login = () => {
-
-  return (
-
-    <div className='page page-login'>
-
-      <Header />
-
-      <main>
-        <section className='page-login-forms'>
-          {renderProfileImages()}
-          <UserProfiles />
-
-          {renderLogin()}
-        </section>
-
-      </main>
-
-    </div>
-  );
+Login.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 };
 
 export default Login;

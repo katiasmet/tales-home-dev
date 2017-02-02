@@ -31550,7 +31550,7 @@ var remove = function remove(query) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_models__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_token__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Users__ = __webpack_require__(58);
-var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22;
+var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -31704,13 +31704,15 @@ var Families = (_class = function Families() {
 
   _initDefineProp(this, 'handleStartSession', _descriptor18, this);
 
-  _initDefineProp(this, 'handleFamilyRemove', _descriptor19, this);
+  _initDefineProp(this, 'handleStopSession', _descriptor19, this);
 
-  _initDefineProp(this, 'handleConfirmation', _descriptor20, this);
+  _initDefineProp(this, 'handleFamilyRemove', _descriptor20, this);
 
-  _initDefineProp(this, 'handleFamilyMemberRemove', _descriptor21, this);
+  _initDefineProp(this, 'handleConfirmation', _descriptor21, this);
 
-  _initDefineProp(this, 'handleSearch', _descriptor22, this);
+  _initDefineProp(this, 'handleFamilyMemberRemove', _descriptor22, this);
+
+  _initDefineProp(this, 'handleSearch', _descriptor23, this);
 } //for sessions and getting information (?)
 , (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'isLoading', [__WEBPACK_IMPORTED_MODULE_0_mobx__["observable"]], {
   enumerable: true,
@@ -31898,7 +31900,6 @@ var Families = (_class = function Families() {
     var _this7 = this;
 
     return function () {
-      console.log('handle visites');
       _this7.activeFamily.overviewVisites++;
       console.log(_this7.activeFamily.overviewVisites);
     };
@@ -31910,76 +31911,89 @@ var Families = (_class = function Families() {
 
     return function () {
 
+      console.log('start a session');
+
       var familyId = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__auth_token__["a" /* content */])().sub;
       _this8.socket.emit('startSession', familyId);
     };
   }
-}), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, 'handleFamilyRemove', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+}), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, 'handleStopSession', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
   enumerable: true,
   initializer: function initializer() {
     var _this9 = this;
 
-    return function (id) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_familymembers__["e" /* remove */])({ familyId: id }).catch(function (err) {
-        _this9.handleError(err);
-      });
+    return function () {
 
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__api_familymodels__["b" /* remove */])({ familyId: id }).catch(function (err) {
-        _this9.handleError(err);
-      });
-
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__api_families__["c" /* remove */])({ id: id }).then(function () {
-        _this9.allFamilies = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["filter"])(_this9.allFamilies, function (family) {
-          return family._id !== id;
-        });
-
-        _this9.handleCharacters();
-        _this9.handleActiveFamilies();
-      }).catch(function (err) {
-        _this9.handleError(err);
-      });
+      _this9.socket.emit('stopSession', __WEBPACK_IMPORTED_MODULE_8__Users__["a" /* default */].currentSocketId);
+      window.location.href = '/';
     };
   }
-}), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, 'handleConfirmation', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+}), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, 'handleFamilyRemove', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
   enumerable: true,
   initializer: function initializer() {
     var _this10 = this;
 
-    return function () {
-      _this10.confirmation = !_this10.confirmation;
+    return function (id) {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_familymembers__["e" /* remove */])({ familyId: id }).catch(function (err) {
+        _this10.handleError(err);
+      });
+
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__api_familymodels__["b" /* remove */])({ familyId: id }).catch(function (err) {
+        _this10.handleError(err);
+      });
+
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__api_families__["c" /* remove */])({ id: id }).then(function () {
+        _this10.allFamilies = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["filter"])(_this10.allFamilies, function (family) {
+          return family._id !== id;
+        });
+
+        _this10.handleCharacters();
+        _this10.handleActiveFamilies();
+      }).catch(function (err) {
+        _this10.handleError(err);
+      });
     };
   }
-}), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, 'handleFamilyMemberRemove', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+}), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, 'handleConfirmation', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
   enumerable: true,
   initializer: function initializer() {
     var _this11 = this;
 
-    return function (id) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_familymembers__["e" /* remove */])({ id: id }).catch(function (err) {
-        _this11.handleError(err);
-      });
-
-      _this11.activeFamily.familymembers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["filter"])(_this11.activeFamily.familymembers, function (familymember) {
-        return familymember._id !== id;
-      });
+    return function () {
+      _this11.confirmation = !_this11.confirmation;
     };
   }
-}), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, 'handleSearch', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+}), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, 'handleFamilyMemberRemove', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
   enumerable: true,
   initializer: function initializer() {
     var _this12 = this;
 
+    return function (id) {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_familymembers__["e" /* remove */])({ id: id }).catch(function (err) {
+        _this12.handleError(err);
+      });
+
+      _this12.activeFamily.familymembers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["filter"])(_this12.activeFamily.familymembers, function (familymember) {
+        return familymember._id !== id;
+      });
+    };
+  }
+}), _descriptor23 = _applyDecoratedDescriptor(_class.prototype, 'handleSearch', [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+  enumerable: true,
+  initializer: function initializer() {
+    var _this13 = this;
+
     return function (field, value) {
-      _this12.searchInput = value;
+      _this13.searchInput = value;
 
       if (value) {
-        _this12.activeFamilies = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["filter"])(_this12.allFamilies, function (family) {
+        _this13.activeFamilies = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["filter"])(_this13.allFamilies, function (family) {
           if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["toUpper"])(family.name), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["toUpper"])(value)) || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["toUpper"])(family.origins), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["toUpper"])(value)) || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["toUpper"])(family.homeLocation), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["toUpper"])(value))) {
             return family;
           }
         });
       } else {
-        _this12.handleActiveFamilies();
+        _this13.handleActiveFamilies();
       }
     };
   }
@@ -35746,11 +35760,11 @@ var update = function update(data) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserProfiles__ = __webpack_require__(317);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__UserProfiles__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__UserProfiles__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__UserLogin__ = __webpack_require__(316);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__UserLogin__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__UserLogin__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserRegister__ = __webpack_require__(318);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__UserRegister__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_2__UserRegister__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__UserEdit__ = __webpack_require__(315);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__UserEdit__["a"]; });
 
@@ -52720,7 +52734,9 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 
 
 
-var Header = function Header() {
+var Header = function Header(_ref) {
+  var pathname = _ref.pathname;
+
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'header',
     { className: 'familie-overview-header', __source: {
@@ -52755,13 +52771,16 @@ var Header = function Header() {
         )
       )
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2____["g" /* Navigation */], {
-      __source: {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2____["g" /* Navigation */], { pathname: pathname, __source: {
         fileName: _jsxFileName,
         lineNumber: 10
       }
     })
   );
+};
+
+Header.propTypes = {
+  pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
 };
 
 /* harmony default export */ __webpack_exports__["a"] = Header;
@@ -52887,90 +52906,182 @@ var Loading = function Loading() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(7);
-var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/tales-home-dev/src/js/components/Navigation.jsx';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mobx_react__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mobx_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_mobx_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(7);
+var _dec,
+    _class,
+    _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/tales-home-dev/src/js/components/Navigation.jsx';
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
 
 
-var renderNavigation = function renderNavigation(user) {
-  if (__WEBPACK_IMPORTED_MODULE_2__auth__["b" /* token */].content().scope === 'professional') {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'ul',
-      { className: 'navigation', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3____["f" /* NavigationItem */], { link: '/newfamily', icon: 'fa-user-plus', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        }
-      }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'li',
-        {
-          __source: {
+
+
+var Navigation = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["inject"])('families'), _dec(_class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["observer"])(_class = function (_Component) {
+  _inherits(Navigation, _Component);
+
+  function Navigation() {
+    _classCallCheck(this, Navigation);
+
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+  }
+
+  Navigation.prototype.renderNavigation = function renderNavigation() {
+    if (__WEBPACK_IMPORTED_MODULE_3__auth__["b" /* token */].content().scope === 'professional') {
+      return this.renderProfessionalNavigation();
+    } else {
+      return this.renderFamilyNavigation();
+    }
+  };
+
+  Navigation.prototype.renderProfessionalNavigation = function renderProfessionalNavigation() {
+    var pathname = this.props.pathname;
+
+
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(pathname, 'models')) {
+      var handleStopSession = this.props.families.handleStopSession;
+
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        { className: 'navigation', __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 28
           }
         },
-        user
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3____["f" /* NavigationItem */], { link: '/editprofile', icon: 'fa-gear', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 14
-        }
-      })
-    );
-  } else {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          { onClick: handleStopSession, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 29
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sign-out', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 30
+            }
+          })
+        )
+      );
+    } else {
+      var user = __WEBPACK_IMPORTED_MODULE_3__auth__["b" /* token */].content().name.user;
+
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        { className: 'navigation', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["f" /* NavigationItem */], { link: '/newfamily', icon: 'fa-user-plus', pathname: pathname, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 41
+          }
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 43
+            }
+          },
+          user
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["f" /* NavigationItem */], { link: '/editprofile', icon: 'fa-gear', pathname: pathname, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 44
+          }
+        })
+      );
+    }
+  };
+
+  Navigation.prototype.renderFamilyNavigation = function renderFamilyNavigation() {
+    var pathname = this.props.pathname;
+
+
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(pathname, 'models')) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        { className: 'navigation', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["f" /* NavigationItem */], { link: '/family', icon: 'fa-users', pathname: pathname, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 58
+          }
+        })
+      );
+    } else {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        { className: 'navigation', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["f" /* NavigationItem */], { link: '/newfamilymember', icon: 'fa-plus', pathname: pathname, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          }
+        })
+      );
+    }
+  };
+
+  Navigation.prototype.render = function render() {
+    var pathname = this.props.pathname;
+
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'ul',
-      { className: 'navigation', __source: {
+      'nav',
+      {
+        __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 76
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3____["f" /* NavigationItem */], { link: '/newfamilymember', icon: 'fa-plus', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 20
-        }
-      })
+      !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__auth__["a" /* isLoggedIn */])()) ? this.renderNavigation() : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        { className: 'navigation', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 81
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4____["f" /* NavigationItem */], { link: '/login', icon: 'fa-lock', content: 'login', pathname: pathname, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 82
+          }
+        })
+      )
     );
-  }
-};
+  };
 
-var Navigation = function Navigation() {
+  return Navigation;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"])) || _class) || _class);
 
-  var user = __WEBPACK_IMPORTED_MODULE_2__auth__["b" /* token */].content().name;
 
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'nav',
-    {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 33
-      }
-    },
-    !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_lodash__["isEmpty"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__auth__["a" /* isLoggedIn */])()) ? renderNavigation(user) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'ul',
-      { className: 'navigation', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        }
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3____["f" /* NavigationItem */], { link: '/login', icon: 'fa-lock', content: 'login', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 40
-        }
-      })
-    )
-  );
+Navigation.propTypes = {
+  pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string,
+  families: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    handleStopSession: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = Navigation;
@@ -52995,11 +53106,12 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 var NavigationItem = function NavigationItem(_ref) {
   var link = _ref.link,
       icon = _ref.icon,
-      content = _ref.content;
+      content = _ref.content,
+      pathname = _ref.pathname;
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'li',
-    { className: 'nav-item', __source: {
+    { className: 'nav-item ' + setActive(link, pathname), __source: {
         fileName: _jsxFileName,
         lineNumber: 8
       }
@@ -53021,10 +53133,15 @@ var NavigationItem = function NavigationItem(_ref) {
   );
 };
 
+var setActive = function setActive(link, pathname) {
+  return link === pathname ? 'active' : '';
+};
+
 NavigationItem.propTypes = {
   link: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string,
   icon: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string,
-  content: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  content: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string,
+  pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
 };
 
 /* harmony default export */ __webpack_exports__["a"] = NavigationItem;
@@ -56583,19 +56700,19 @@ var EditFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1
         handleChange = _props$formEditFamily.handleChange,
         handleSubmit = _props$formEditFamily.handleSubmit,
         isLoading = _props$formEditFamily.isLoading;
+    var pathname = this.props.location.pathname;
 
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'page page-edit-family-member', __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 31
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], {
-        __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], { pathname: pathname, __source: {
           fileName: _jsxFileName,
-          lineNumber: 31
+          lineNumber: 32
         }
       }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56603,7 +56720,7 @@ var EditFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 33
+            lineNumber: 34
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56611,7 +56728,7 @@ var EditFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 34
+              lineNumber: 35
             }
           },
           'Edit a family member'
@@ -56619,11 +56736,11 @@ var EditFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1
         isLoading ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["b" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 37
+            lineNumber: 38
           }
         }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_family___["a" /* FamilyMemberAdd */], { form: form, handleChange: handleChange, handleSubmit: handleSubmit, __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 39
           }
         })
       )
@@ -56657,6 +56774,9 @@ EditFamilyMember.propTypes = {
       }).isRequired,
       redirect: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].bool
     }).isRequired
+  }),
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
   })
 };
 
@@ -56677,18 +56797,21 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 
 
 
-var EditProfile = function EditProfile() {
+var EditProfile = function EditProfile(_ref) {
+  var location = _ref.location;
+  var pathname = location.pathname;
+
+
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
     { className: 'page page-edit-profile', __source: {
         fileName: _jsxFileName,
-        lineNumber: 8
+        lineNumber: 11
       }
     },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], {
-      __source: {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], { pathname: pathname, __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 12
       }
     }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56696,17 +56819,23 @@ var EditProfile = function EditProfile() {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 14
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["a" /* UserEdit */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 16
         }
       })
     )
   );
+};
+
+EditProfile.propTypes = {
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = EditProfile;
@@ -56758,19 +56887,19 @@ var Families = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_re
 
   Families.prototype.render = function render() {
     var sessionId = this.props.families.sessionId;
+    var pathname = this.props.location.pathname;
 
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"])(sessionId) ? 'page page-families page-pop-up' : 'page page-families', __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 22
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], {
-        __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], { pathname: pathname, __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 23
         }
       }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -56778,46 +56907,46 @@ var Families = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_re
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 24
+            lineNumber: 25
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_mentor__["d" /* FamiliesSearch */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 27
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'section',
           { className: 'families', __source: {
               fileName: _jsxFileName,
-              lineNumber: 28
+              lineNumber: 29
             }
           },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'section',
             { className: 'popup-overlay', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 30
+                lineNumber: 31
               }
             },
             !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["isEmpty"])(sessionId) && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_mentor_family__["h" /* FamilyStartSession */], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 32
+                lineNumber: 33
               }
             })
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_mentor__["e" /* FamiliesBrowse */], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 35
+              lineNumber: 36
             }
           }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_mentor__["f" /* FamiliesOverview */], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 36
+              lineNumber: 37
             }
           })
         )
@@ -56833,6 +56962,9 @@ Families.propTypes = {
   families: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
     getFamilies: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func,
     sessionId: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  }),
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
   })
 };
 
@@ -56880,13 +57012,16 @@ var Family = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_reac
     return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
+  Family.prototype.componentWillMount = function componentWillMount() {
+    var handleFamilyMembersVisites = this.props.families.handleFamilyMembersVisites;
+
+    handleFamilyMembersVisites();
+  };
+
   Family.prototype.componentDidMount = function componentDidMount() {
-    var _props$families = this.props.families,
-        getFamilyMembers = _props$families.getFamilyMembers,
-        handleFamilyMembersVisites = _props$families.handleFamilyMembersVisites;
+    var getFamilyMembers = this.props.families.getFamilyMembers;
 
     getFamilyMembers(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__auth_token__["a" /* content */])().sub, true);
-    handleFamilyMembersVisites();
 
     var getLanguages = this.props.languages.getLanguages;
 
@@ -56894,52 +57029,52 @@ var Family = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_mobx_reac
   };
 
   Family.prototype.render = function render() {
-    var _props$families2 = this.props.families,
-        isLoading = _props$families2.isLoading,
-        handleStartSession = _props$families2.handleStartSession;
+    var _props$families = this.props.families,
+        isLoading = _props$families.isLoading,
+        handleStartSession = _props$families.handleStartSession;
+    var pathname = this.props.location.pathname;
 
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'page page-family', __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 31
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], {
-        __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], { pathname: pathname, __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 32
         }
       }),
       isLoading === 'familymembers' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["b" /* Loading */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 35
         }
       }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_family__["h" /* FamilyOverview */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 31
+          lineNumber: 36
         }
       }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { onClick: handleStartSession, __source: {
             fileName: _jsxFileName,
-            lineNumber: 34
+            lineNumber: 39
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
           { to: '/models', className: 'btn', __source: {
               fileName: _jsxFileName,
-              lineNumber: 35
+              lineNumber: 40
             }
           },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-caret-right', __source: {
               fileName: _jsxFileName,
-              lineNumber: 36
+              lineNumber: 41
             }
           })
         )
@@ -56960,6 +57095,9 @@ Family.propTypes = {
   }),
   languages: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
     getLanguages: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func
+  }),
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
   })
 };
 
@@ -56978,21 +57116,30 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 
 
 
-var Home = function Home() {
+var Home = function Home(_ref) {
+  var location = _ref.location;
+  var pathname = location.pathname;
+
+
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
     { className: 'page page-home', __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 10
       }
     },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], {
-      __source: {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], { pathname: pathname, __source: {
         fileName: _jsxFileName,
-        lineNumber: 8
+        lineNumber: 11
       }
     })
   );
+};
+
+Home.propTypes = {
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = Home;
@@ -57014,24 +57161,69 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 
 
 
+var Login = function Login(_ref) {
+  var location = _ref.location;
+  var pathname = location.pathname;
+
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'page page-login', __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      }
+    },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components__["a" /* Header */], { pathname: pathname, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      }
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'main',
+      {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        }
+      },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { className: 'page-login-forms', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          }
+        },
+        renderProfileImages(),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["b" /* UserProfiles */], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          }
+        }),
+        renderLogin()
+      )
+    )
+  );
+};
+
 var renderProfileImages = function renderProfileImages() {
 
   if (location.pathname === '/login') {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'assets/img/UserProfiles_professional.png', alt: 'Smiley face', height: '151', width: '162', className: 'page-login-img', __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 34
       }
     });
   } else if (location.pathname === '/register') {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'assets/img/UserProfiles_newprofessional.png', alt: 'Smiley face', height: '151', width: '162', className: 'page-login-img', __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 36
       }
     });
   } else {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'assets/img/UserProfiles_family.png', alt: 'Smiley face', height: '151', width: '162', className: 'page-login-img', __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 38
       }
     });
   }
@@ -57040,70 +57232,33 @@ var renderProfileImages = function renderProfileImages() {
 var renderLogin = function renderLogin() {
 
   if (location.pathname === '/login') {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["b" /* UserLogin */], {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["c" /* UserLogin */], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 46
       }
     });
   } else if (location.pathname === '/register') {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["c" /* UserRegister */], {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["d" /* UserRegister */], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 48
       }
     });
   } else {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_family__["i" /* FamilyJoin */], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 50
       }
     });
   }
 };
 
-var Login = function Login() {
-
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    { className: 'page page-login', __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components__["a" /* Header */], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 37
-      }
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'main',
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        }
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'section',
-        { className: 'page-login-forms', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 40
-          }
-        },
-        renderProfileImages(),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_user__["d" /* UserProfiles */], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 42
-          }
-        }),
-        renderLogin()
-      )
-    )
-  );
+Login.propTypes = {
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = Login;
@@ -57126,13 +57281,10 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 
 
 
-var renderModelView = function renderModelView(component) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(component, {});
-};
-
 var Model = function Model(_ref) {
-  var match = _ref.match;
-
+  var match = _ref.match,
+      location = _ref.location;
+  var pathname = location.pathname;
 
   var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_lodash__["upperFirst"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_lodash__["camelCase"])(match.params.id));
 
@@ -57140,27 +57292,33 @@ var Model = function Model(_ref) {
     'div',
     { className: 'page page-model ', __source: {
         fileName: _jsxFileName,
-        lineNumber: 16
+        lineNumber: 13
       }
     },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components___["a" /* Header */], {
-      __source: {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components___["a" /* Header */], { pathname: pathname, __source: {
         fileName: _jsxFileName,
-        lineNumber: 17
+        lineNumber: 14
       }
     }),
     renderModelView(component),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_mentor_model__["a" /* ModelNotes */], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 20
       }
     })
   );
 };
 
+var renderModelView = function renderModelView(component) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(component, {});
+};
+
 Model.propTypes = {
-  match: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].object
+  match: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].object,
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = Model;
@@ -57194,7 +57352,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Models = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["inject"])('models'), _dec(_class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["observer"])(_class = function (_Component) {
+var Models = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["inject"])('models', 'families'), _dec(_class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_react__["observer"])(_class = function (_Component) {
   _inherits(Models, _Component);
 
   function Models() {
@@ -57204,10 +57362,17 @@ var Models = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_reac
   }
 
   Models.prototype.componentDidMount = function componentDidMount() {
-    if (__WEBPACK_IMPORTED_MODULE_4__auth__["b" /* token */].content().scope === 'professional') this.props.models.getModels();
+    if (__WEBPACK_IMPORTED_MODULE_4__auth__["b" /* token */].content().scope === 'professional') {
+      this.props.models.getModels();
+    } else {
+      var handleFamilyMembersVisites = this.props.families.handleFamilyMembersVisites;
+
+      handleFamilyMembersVisites();
+    }
   };
 
   Models.prototype.render = function render() {
+    var pathname = this.props.location.pathname;
     var _props$models = this.props.models,
         isLoading = _props$models.isLoading,
         handleShowGrid = _props$models.handleShowGrid;
@@ -57217,13 +57382,12 @@ var Models = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_reac
       'div',
       { className: 'page page-models', __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 26
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components___["a" /* Header */], {
-        __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components___["a" /* Header */], { pathname: pathname, __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 27
         }
       }),
       __WEBPACK_IMPORTED_MODULE_4__auth__["b" /* token */].content().scope === 'professional' && !isLoading ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -57231,26 +57395,26 @@ var Models = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_reac
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 25
+            lineNumber: 31
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_mentor__["a" /* ModelsOverview */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 32
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button', { className: 'btn btn-show-grid',
           onClick: handleShowGrid,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27
+            lineNumber: 33
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_mentor__["b" /* ModelsOverviewGrid */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 31
+            lineNumber: 37
           }
         })
       ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -57258,13 +57422,13 @@ var Models = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_mobx_reac
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 34
+            lineNumber: 40
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components___["b" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 35
+            lineNumber: 41
           }
         })
       )
@@ -57281,6 +57445,12 @@ Models.propTypes = {
     isLoading: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].bool,
     handleShowGrid: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func,
     showGrid: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].bool
+  }),
+  families: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    handleFamilyMembersVisites: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func
+  }),
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
   })
 };
 
@@ -57301,19 +57471,21 @@ var _jsxFileName = '/Users/SVD/Documents/school/Devine_2016-2017/Bachelorproef/t
 
 
 
-var NewFamily = function NewFamily() {
+var NewFamily = function NewFamily(_ref) {
+  var location = _ref.location;
+  var pathname = location.pathname;
+
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
     { className: 'page page-new-family', __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 11
       }
     },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], {
-      __source: {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components___["a" /* Header */], { pathname: pathname, __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 12
       }
     }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -57321,17 +57493,23 @@ var NewFamily = function NewFamily() {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 14
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_mentor_family__["g" /* FamilyAdd */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 15
         }
       })
     )
   );
+};
+
+NewFamily.propTypes = {
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
+  })
 };
 
 /* harmony default export */ __webpack_exports__["a"] = NewFamily;
@@ -57390,6 +57568,7 @@ var NewFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_
   };
 
   NewFamilyMember.prototype.render = function render() {
+    var pathname = this.props.location.pathname;
     var _props$formAddFamilyM = this.props.formAddFamilyMember,
         form = _props$formAddFamilyM.form,
         handleChange = _props$formAddFamilyM.handleChange,
@@ -57400,13 +57579,12 @@ var NewFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_
       'div',
       { className: 'page page-new-family-member', __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 28
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], {
-        __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components___["a" /* Header */], { pathname: pathname, __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 29
         }
       }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -57414,7 +57592,7 @@ var NewFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 30
+            lineNumber: 31
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -57422,14 +57600,14 @@ var NewFamilyMember = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 31
+              lineNumber: 32
             }
           },
           'Add a new family member'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_family___["a" /* FamilyMemberAdd */], { form: form, handleChange: handleChange, handleSubmit: handleSubmit, __source: {
             fileName: _jsxFileName,
-            lineNumber: 32
+            lineNumber: 33
           }
         })
       )
@@ -57460,6 +57638,9 @@ NewFamilyMember.propTypes = {
       }).isRequired,
       redirect: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].bool
     }).isRequired
+  }),
+  location: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].shape({
+    pathname: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string
   })
 };
 
@@ -80354,4 +80535,4 @@ module.exports = __webpack_require__(270);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.ff393ab135b8ecdf2905.js.map
+//# sourceMappingURL=main.4b1061f5d8edb7879495.js.map

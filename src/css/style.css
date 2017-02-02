@@ -197,7 +197,7 @@ header {
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
-.familie-overview-header{
+.familie-overview-header {
   background-color: $purple;
 }
 
@@ -431,7 +431,7 @@ STARTSESSION POP-UP
   width: 100%;
 }
 
-.pop-up{
+.pop-up {
   margin: auto;
   margin-top: 10%;
   text-align: center;
@@ -459,7 +459,7 @@ STARTSESSION POP-UP
     margin: auto;
   }
 
-  .session-code{
+  .session-code {
     display: block;
     background-color: $purple;
     border-radius: 10px;
@@ -534,7 +534,7 @@ MODELSOVERVIEW
   transform: translateY(100%);
   transition: transform .6s ease-in-out;
 
-  .btn-showed-grid{
+  .btn-showed-grid {
     background-color: red;
     transform: translateY(100%);
     transition: transform .6s ease-in-out;
