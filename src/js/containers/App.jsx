@@ -25,7 +25,8 @@ class App extends Component {
     const {handleUsers} = stores.users;
     handleUsers(users);
 
-    if (isLoggedIn === `professional`) {
+    if (isLoggedIn() === `professional`) {
+
       const {id: socketId} = this.socket;
       const {handleCurrentSocketId} = stores.users;
       handleCurrentSocketId(socketId);
@@ -58,6 +59,7 @@ class App extends Component {
         formJoin={stores.formJoin}
         formAddFamily={stores.formAddFamily}
         formAddFamilyMember={stores.formAddFamilyMember}
+        formEditFamilyMember={stores.formEditFamilyMember}
         families={stores.families}
         models={stores.models}
         notes={stores.notes}

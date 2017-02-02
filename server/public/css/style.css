@@ -146,11 +146,16 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+<<<<<<< HEAD
   height: 89.9vh;
 }
 
 .page-families main {
   height: 100%;
+=======
+
+  /* max hoogte geven op main gaat niet voor elke pagina lukken en kan voor problemen zorgen*/
+>>>>>>> cc9163e014f70fe64e4323d845f27e7973d7da32
 }
 
 /*
@@ -276,6 +281,20 @@ MENTOR FAMILIES
   background-color: #dbe8fe;
 }
 
+<<<<<<< HEAD
+=======
+header {
+  background-color: #6d34c5;
+  height: 160px;
+  height: 10rem;
+  /* ook header geen max hoogte geven in vh!!! > tablet ?? */
+}
+
+.families header {
+  background-color: #dbe8fe;
+}
+
+>>>>>>> cc9163e014f70fe64e4323d845f27e7973d7da32
 .families {
   -webkit-box-align: start;
       -ms-flex-align: start;

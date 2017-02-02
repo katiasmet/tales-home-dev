@@ -5,7 +5,7 @@ import {Header, Loading} from '../components/';
 import {FamilyOverview} from '../components/family';
 import {content} from '../auth/token';
 
-//families.
+//familieside
 @inject(`families`, `languages`) @observer
 class Family extends Component {
 

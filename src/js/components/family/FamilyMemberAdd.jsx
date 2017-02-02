@@ -1,14 +1,12 @@
 import React, {PropTypes}  from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import {observer, inject} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
 import {FormInput} from '../';
 import {FamilyMemberAddCharacters, FamilyMemberAddLanguages, FamilyMemberAddRoles} from './';
 
-const FamilyMemberAdd = inject(`formAddFamilyMember`)(observer(({formAddFamilyMember}) => {
+const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
 
-  const {form, handleChange, handleSubmit} = formAddFamilyMember;
   const {fields, meta, redirect} = form;
 
   return (
@@ -27,7 +25,7 @@ const FamilyMemberAdd = inject(`formAddFamilyMember`)(observer(({formAddFamilyMe
 
         <fieldset>
 
-          <FamilyMemberAddCharacters handleChange={handleChange} />
+          <FamilyMemberAddCharacters handleChange={handleChange} value={fields.character.value} />
 
           <FormInput
             id='familymember-form-name'
@@ -38,7 +36,7 @@ const FamilyMemberAdd = inject(`formAddFamilyMember`)(observer(({formAddFamilyMe
             onChange={handleChange}
             placeholder='f.e. Harry' />
 
-          <FamilyMemberAddRoles handleChange={handleChange} />
+          <FamilyMemberAddRoles handleChange={handleChange} value={fields.role.value} />
 
           <FamilyMemberAddLanguages />
 
@@ -63,23 +61,21 @@ const FamilyMemberAdd = inject(`formAddFamilyMember`)(observer(({formAddFamilyMe
       </form>
     </section>
   );
-}));
+};
 
 FamilyMemberAdd.propTypes = {
-  formAddFamilyMember: PropTypes.shape({
-    handleChange: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    form: PropTypes.shape({
-      fields: PropTypes.objectOf(PropTypes.shape({
-        value: PropTypes.string.isRequired,
-        error: PropTypes.any,
-      })).isRequired,
-      meta: PropTypes.shape({
-        isValid: PropTypes.bool.isRequired,
-        error: PropTypes.any
-      }).isRequired,
-      redirect: PropTypes.bool
-    }).isRequired
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  form: PropTypes.shape({
+    fields: PropTypes.objectOf(PropTypes.shape({
+      value: PropTypes.any.isRequired,
+      error: PropTypes.any,
+    })).isRequired,
+    meta: PropTypes.shape({
+      isValid: PropTypes.bool.isRequired,
+      error: PropTypes.any
+    }).isRequired,
+    redirect: PropTypes.bool
   })
 };
 

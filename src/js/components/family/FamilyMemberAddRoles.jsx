@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const FamilyMemberAddRoles = ({handleChange}) => {
+const FamilyMemberAddRoles = ({handleChange, value}) => {
 
   return (
     <section className='form-roles'>
@@ -15,7 +15,8 @@ const FamilyMemberAddRoles = ({handleChange}) => {
               className='hidden'
               type='radio'
               name='role'
-              value='father' />
+              value='father'
+              defaultChecked={(value === `father`) ? `true` : `false`} />
 
       <label  htmlFor='child'
               className='father'
@@ -25,7 +26,8 @@ const FamilyMemberAddRoles = ({handleChange}) => {
       <input  id='child'
               type='radio'
               name='role'
-              value='child' />
+              value='child'
+              defaultChecked={(value === `child`) ? `true` : `false`} />
 
       <label  htmlFor='mother'
               className='mother'
@@ -35,14 +37,16 @@ const FamilyMemberAddRoles = ({handleChange}) => {
       <input  id='mother'
               type='radio'
               name='role'
-              value='mother' />
+              value='mother'
+              defaultChecked={(value === `mother`) ? `true` : `false`} />
 
     </section>
   );
 };
 
 FamilyMemberAddRoles.propTypes = {
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func,
+  value: PropTypes.string
 };
 
 export default FamilyMemberAddRoles;

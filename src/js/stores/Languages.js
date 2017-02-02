@@ -3,6 +3,7 @@ import {filter, capitalize} from 'lodash';
 
 import {select} from '../api/languages';
 import formAddFamilyMember from './formAddFamilyMember';
+import formEditFamilyMember from './formEditFamilyMember';
 
 class Languages  {
 
@@ -56,6 +57,14 @@ class Languages  {
     this.handleShowLanguages();
   }
 
+  @action handleSelectedLanguages = languages => {
+    languages.forEach(language => {
+      this.selectedLanguages = filter(this.allLanguages, availableLanguage => {
+        return availableLanguage.name === language;
+      });
+    });
+  }
+
   handleChangeLanguagesInput = () => {
 
     const languages = [];
@@ -64,6 +73,7 @@ class Languages  {
     });
 
     formAddFamilyMember.handleChange(`languages`, languages);
+    formEditFamilyMember.handleChange(`languages`, languages);
 
   }
 
