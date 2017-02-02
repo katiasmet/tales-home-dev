@@ -34,10 +34,10 @@ class Families extends Component {
               }
             </section>
             <FamiliesBrowse />
-            <div>
+            <section>
               <h2 className='familie-head'>Families</h2>
               <FamiliesOverview />
-            </div>
+            </section>
           </section>
         </main>
       </div>

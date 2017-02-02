@@ -152,6 +152,11 @@ nav {
     border: none;
     border-radius: 0 10px 10px;
   }
+
+  input::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
 }
 
 /*
@@ -244,22 +249,28 @@ header {
 
   }
 
+  .disabled::after {
+    /*VARIABELE INVULLEN*/
+    content: 'B';
+    opacity: .08;
+    font-size: 2.5rem;
+    position: relative;
+    margin-left: -1rem;
+    margin-bottom: 1rem;
+  }
+
   .disabled {
     width: 2rem;
     height: 2rem;
-    opacity: .5;
     font-size: 1.2rem;
     background: none;
 
     margin: .5rem;
+    margin-left: 1rem;
     cursor: auto;
     color: $purple;
+    font-weight: bold;
 
-    &:hover {
-      background-color: none;
-      width: 2rem;
-      height: 2rem;
-    }
   }
 
   .active {

@@ -240,6 +240,26 @@ nav {
   border-radius: 0 10px 10px;
 }
 
+.families-search input::-webkit-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.families-search input::-moz-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.families-search input:-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.families-search input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
 /*
 FORMS
 */
@@ -359,27 +379,35 @@ header {
   height: 4rem;
 }
 
+.families-browse .disabled::after {
+
+  /*VARIABELE INVULLEN*/
+  content: 'B';
+  opacity: .08;
+  font-size: 40px;
+  font-size: 2.5rem;
+  position: relative;
+  margin-left: -16px;
+  margin-left: -1rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
 .families-browse .disabled {
   width: 32px;
   width: 2rem;
   height: 32px;
   height: 2rem;
-  opacity: .5;
   font-size: 19.2px;
   font-size: 1.2rem;
   background: none;
   margin: 8px;
   margin: .5rem;
+  margin-left: 16px;
+  margin-left: 1rem;
   cursor: auto;
-  color: #6d34c5
-}
-
-.families-browse .disabled:hover{
-  background-color: none;
-  width: 32px;
-  width: 2rem;
-  height: 32px;
-  height: 2rem;
+  color: #6d34c5;
+  font-weight: bold;
 }
 
 .families-browse .active {
