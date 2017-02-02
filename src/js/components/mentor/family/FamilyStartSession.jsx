@@ -8,10 +8,9 @@ const StartSession = inject(`families`, `users`)(observer(({families, users}) =>
 
   const {activeFamily, sessionId} = families;
   const {isSessionStarted} = users;
-  console.log(isSessionStarted);
 
   return (
-    <section className='startsession pop-up'>
+    <section className='startsession pop-up-overlay'>
       <button className='btn'><i className='fa fa-close'></i></button>
 
       <header>

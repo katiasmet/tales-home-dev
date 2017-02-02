@@ -8,10 +8,12 @@ class Users  {
   @observable allUsers = [];
   @observable currentSocketId = ``;
   @observable isSessionStarted = false;
+  @observable currentModel = ``;
 
   @action handleUsers = users => {
     this.allUsers = users;
     this.handleSessionStarted();
+    this.handleCurrentModel();
     this.handleFamilyLogOut();
   }
 
@@ -19,6 +21,14 @@ class Users  {
     this.allUsers.forEach(user => {
       if (user.socketId === this.currentSocketId) {
         this.isSessionStarted = user.isSessionStarted;
+      }
+    });
+  }
+
+  handleCurrentModel = () => {
+    this.allUsers.forEach(user => {
+      if (user.socketId === this.currentSocketId) {
+        if (user.modelId) this.currentModel = user.modelId;
       }
     });
   }

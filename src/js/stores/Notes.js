@@ -14,8 +14,7 @@ class Notes  {
 
   @action getNote = familyModelId => {
 
-    //family id uit localstorage ?
-    //model door klik
+    console.log(`get note`);
 
     selectByFamilyModelId({familyModelId: familyModelId})
     .then(notes => {
@@ -26,8 +25,11 @@ class Notes  {
   }
 
   @action handleNotes = (field, value) => {
-    console.log(value);
-    //opslaan bij stop session ?
+    this.notesInput = value;
+  }
+
+  @action handleSubmit = () => {
+
   }
 
 }

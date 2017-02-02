@@ -3,9 +3,10 @@ import {inject, observer} from 'mobx-react';
 
 import {ModelGridItem} from './model';
 
-const ModelsOverviewGrid = inject(`models`)(observer(({models}) => {
+const ModelsOverviewGrid = inject(`models`, `families`)(observer(({models, families}) => {
 
-  const {allModels, showGrid} = models;
+  const {allModels, showGrid, handleIsPassed} = models;
+  const {handleStartModel} = families;
 
   return (
     <section className={showGrid ? `models models-overview-grid show-grid` : `models models-overview-grid`}>
@@ -16,7 +17,7 @@ const ModelsOverviewGrid = inject(`models`)(observer(({models}) => {
 
       {
         allModels.slice().map((model, i) => {
-          return <ModelGridItem {...model} i={i} key={i} />;
+          return <ModelGridItem {...model} i={i} key={i} handleStartSession={handleStartModel} handleIsPassed={handleIsPassed} />;
         })
       }
 
@@ -26,8 +27,12 @@ const ModelsOverviewGrid = inject(`models`)(observer(({models}) => {
 
 ModelsOverviewGrid.propTypes = {
   models: PropTypes.shape({
+    handleIsPassed: PropTypes.func,
     allModels: PropTypes.array,
     showGrid: PropTypes.bool
+  }),
+  families: PropTypes.shape({
+    handleStartModel: PropTypes.func
   })
 };
 

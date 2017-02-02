@@ -34,7 +34,7 @@ class Navigation extends Component {
 
     } else {
 
-      const {user} = token.content().name;
+      const user = token.content().name;
 
       return (
         <ul className='navigation'>
