@@ -12,6 +12,8 @@ import users from './Users';
 
 class Families  {
 
+  socket = io(`/`);
+
   @observable isLoading = ``;
   @observable allFamilies = [];
   error = ``;
@@ -32,9 +34,7 @@ class Families  {
   @observable showInfo = ``;
 
   @observable searchInput = ``;
-
   @observable sessionId = ``;
-
   @observable confirmation = false;
 
   @action getFamilies = () => {
@@ -172,7 +172,7 @@ class Families  {
     this.handleFamilyInfo(familyId, false);
     this.isLoading = `session`;
 
-    this.socket = io(`/`);
+
     this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
 
   }
@@ -193,6 +193,14 @@ class Families  {
 
     if (used.length === 0) return true;
     else return false;
+  }
+
+  @action handleStartSession = () => {
+
+    console.log(`handle start session`);
+    const familyId = content().sub;
+    this.socket.emit(`startSession`, familyId);
+
   }
 
   @action handleFamilyRemove = id => {

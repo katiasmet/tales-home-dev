@@ -28,6 +28,10 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  background: $darkpurple;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: bold;
@@ -192,7 +196,7 @@ header {
 }
 
 .families header {
-  background-color: $bgpurple;
+  background-color: $purple;
 }
 
 .families {

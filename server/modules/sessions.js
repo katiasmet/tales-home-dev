@@ -39,8 +39,8 @@ module.exports.register = (server, options, next) => {
       }
     });
 
-    socket.on(`startSession`, sessionId => {
-      const user = users.find(u => sessionId === u.sessionId);
+    socket.on(`startSession`, familyId => {
+      const user = users.find(u => familyId === u.familyId);
       if (user) {
         user.isSessionStarted = true;
         socket.broadcast.emit(`recheck`, users);

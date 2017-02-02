@@ -4,24 +4,13 @@ import {isEmpty} from 'lodash';
 import {isLoggedIn, token} from '../auth';
 import {NavigationItem} from './';
 
-const {handleInfo} = () => {
-  console.log(`handle info`);
-};
-
 const renderNavigation = user => {
   if (token.content().scope === `professional`) {
     return (
       <ul className='navigation'>
-
-        <li>{user}</li>
-
-        <NavigationItem link='/models' icon='fa-ellipsis-h' />
         <NavigationItem link='/newfamily' icon='fa-user-plus' />
 
-        <li className='nav-item' onClick={handleInfo}>
-          <i className='fa fa-info'></i>
-        </li>
-
+        <li>{user}</li>
         <NavigationItem link='/editprofile' icon='fa-gear' />
       </ul>
     );

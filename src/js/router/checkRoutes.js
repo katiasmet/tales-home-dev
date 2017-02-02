@@ -7,6 +7,20 @@ import {isLoggedIn} from '../auth';
 export const MatchWhenAuthorized = ({component, ...rest}) => (
 
   <Route {...rest} render={props => (
+    (!isEmpty(isLoggedIn())) ? (
+      React.createElement(component, props)
+    ) : (
+      <Redirect to={{
+        pathname: `/login`,
+        state: {from: props.location}
+      }} />
+    )
+  )} />
+);
+
+export const MatchWhenProfessional = ({component, ...rest}) => (
+
+  <Route {...rest} render={props => (
     (isLoggedIn() === `professional`) ? (
       React.createElement(component, props)
     ) : (
@@ -31,7 +45,6 @@ export const MatchWhenFamily = ({component, ...rest}) => (
     )
   )} />
 );
-
 
 const redirectPath = () => {
   if (isLoggedIn() === `professional`) return `/families`;
@@ -58,6 +71,11 @@ MatchWhenAuthorized.propTypes = {
   location: PropTypes.func
 };
 
+MatchWhenProfessional.propTypes = {
+  component: PropTypes.func,
+  location: PropTypes.func
+};
+
 MatchWhenFamily.propTypes = {
   component: PropTypes.func,
   location: PropTypes.func
@@ -70,6 +88,7 @@ RedirectWhenAuthorized.propTypes = {
 
 export default {
   MatchWhenAuthorized,
+  MatchWhenProfessional,
   MatchWhenFamily,
   RedirectWhenAuthorized
 };

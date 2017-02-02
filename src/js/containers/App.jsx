@@ -53,6 +53,7 @@ class App extends Component {
   render() {
     return (
       <Provider
+        users={stores.users}
         formLogin={stores.formLogin}
         formRegister={stores.formRegister}
         formEditUser={stores.formEditUser}

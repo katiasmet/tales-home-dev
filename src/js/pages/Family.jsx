@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 
 import {Header, Loading} from '../components/';
@@ -18,7 +19,8 @@ class Family extends Component {
   }
 
   render() {
-    const {isLoading} = this.props.families;
+    const {isLoading, handleStartSession} = this.props.families;
+
     return (
       <div className='page page-family'>
         <Header />
@@ -28,8 +30,13 @@ class Family extends Component {
           : <FamilyOverview />
         }
 
-      </div>
+        <div onClick={handleStartSession} >
+          <Link to='/models' className='btn'>
+            <i className='fa fa-caret-right'></i>
+          </Link>
+        </div>
 
+      </div>
     );
   }
 }
@@ -37,7 +44,8 @@ class Family extends Component {
 Family.propTypes = {
   families: PropTypes.shape({
     isLoading: PropTypes.string,
-    getFamilyMembers: PropTypes.func
+    getFamilyMembers: PropTypes.func,
+    handleStartSession: PropTypes.func
   }),
   languages: PropTypes.shape({
     getLanguages: PropTypes.func

@@ -1,9 +1,14 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 
-const StartSession = inject(`families`)(observer(({families}) => {
+import {Loading} from '../../';
+
+const StartSession = inject(`families`, `users`)(observer(({families, users}) => {
 
   const {activeFamily, sessionId} = families;
+  const {isSessionStarted} = users;
+  console.log(isSessionStarted);
 
   return (
     <section className='startsession pop-up'>
@@ -17,6 +22,11 @@ const StartSession = inject(`families`)(observer(({families}) => {
       <p className='session-code'>
         {sessionId}
       </p>
+
+      {
+        (!isSessionStarted) ? <Loading />
+        : <Redirect to='/models' />
+      }
 
 
     </section>

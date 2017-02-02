@@ -75,6 +75,10 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  background: #6431b9;
+}
+
 h1 {
   font-size: 32px;
   font-size: 2rem;
@@ -284,7 +288,7 @@ header {
 }
 
 .families header {
-  background-color: $bgpurple;
+  background-color: #6d34c5;
 }
 
 .families {
