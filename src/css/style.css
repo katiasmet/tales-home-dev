@@ -82,16 +82,11 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
   height: 89.9vh;
 }
 
 .page-families main {
   height: 100%;
-=======
-
-  /* max hoogte geven op main gaat niet voor elke pagina lukken en kan voor problemen zorgen*/
->>>>>>> cc9163e014f70fe64e4323d845f27e7973d7da32
 }
 
 /*
@@ -187,10 +182,7 @@ MENTOR FAMILIES
 */
 
 .page-families {
-<<<<<<< HEAD
   background-color: $lightblue;
-=======
-  background-color: $bgpurple;
 }
 
 header {
@@ -201,7 +193,6 @@ header {
 
 .families header {
   background-color: $bgpurple;
->>>>>>> cc9163e014f70fe64e4323d845f27e7973d7da32
 }
 
 .families {
