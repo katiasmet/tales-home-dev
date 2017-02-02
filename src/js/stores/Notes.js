@@ -25,8 +25,11 @@ class Notes  {
   }
 
   @action handleNotes = (field, value) => {
-    console.log(value);
-    //opslaan bij stop session ?
+    this.notesInput = value;
+  }
+
+  @action handleSubmit = () => {
+
   }
 
 }
