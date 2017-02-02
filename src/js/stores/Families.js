@@ -27,6 +27,7 @@ class Families  {
     name: ``,
     origins: ``,
     homeLocation: ``,
+    overviewVisites: 0,
     familymembers: {},
     familymodels: {}
   }; //for sessions and getting information (?)
@@ -195,9 +196,14 @@ class Families  {
     else return false;
   }
 
+  @action handleFamilyMembersVisites = () => {
+    console.log(`handle visites`);
+    this.activeFamily.overviewVisites++;
+    console.log(this.activeFamily.overviewVisites);
+  }
+
   @action handleStartSession = () => {
 
-    console.log(`handle start session`);
     const familyId = content().sub;
     this.socket.emit(`startSession`, familyId);
 

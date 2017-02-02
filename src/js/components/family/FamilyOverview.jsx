@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
@@ -8,14 +8,19 @@ import {FamilyMembers} from './';
 
 const FamilyOverview = inject(`families`)(observer(({families}) => {
 
-  const {activeFamily} = families;
-  const {familymembers} = activeFamily;
+  const {activeFamily, handleStartSession} = families;
+  const {familymembers, overviewVisites} = activeFamily;
 
   const name = token.content().name;
 
+  if (!isEmpty(familymembers) && overviewVisites === 1) handleStartSession();
 
   return (
     <section className='family-overview'>
+
+      {
+        (!isEmpty(familymembers) && overviewVisites === 1) && (<Redirect to='/models' />)
+      }
 
       {
 

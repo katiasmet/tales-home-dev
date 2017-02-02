@@ -11,8 +11,9 @@ import {content} from '../auth/token';
 class Family extends Component {
 
   componentDidMount() {
-    const {getFamilyMembers} = this.props.families;
+    const {getFamilyMembers, handleFamilyMembersVisites} = this.props.families;
     getFamilyMembers(content().sub, true);
+    handleFamilyMembersVisites();
 
     const {getLanguages} = this.props.languages;
     getLanguages();
@@ -45,6 +46,7 @@ Family.propTypes = {
   families: PropTypes.shape({
     isLoading: PropTypes.string,
     getFamilyMembers: PropTypes.func,
+    handleFamilyMembersVisites: PropTypes.func,
     handleStartSession: PropTypes.func
   }),
   languages: PropTypes.shape({
