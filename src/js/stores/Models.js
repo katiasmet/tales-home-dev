@@ -22,6 +22,8 @@ class Models  {
       this.allModels = models.models;
       this.handlePassedModels();
       this.modelPreview = this.allModels[Math.round((this.allModels.length - 1) / 2)];
+
+      this.isLoading = false;
     }).catch(err => {
       this.handleError(err);
     });
@@ -35,9 +37,9 @@ class Models  {
     .then(models => {
       users.currentModelId = models.model[0]._id;
       families.activeFamilyModel.name = kebabCase(models.model[0].name);
+      this.isLoading = false;
     }).catch(err => {
       this.handleError(err);
-      this.isLoading = false;
     });
   }
 
@@ -49,6 +51,8 @@ class Models  {
   }
 
   handlePassedModels = () => {
+
+    this.isLoading = true;
 
     selectByFamily({familyId: families.activeFamily._id})
       .then(familymodels => {

@@ -33,13 +33,22 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
-      const {familyId} = req.query;
+      const {familyId, modelId} = req.query;
       const isActive = true;
       const projection = `-__v -isActive`;
 
       if (_id) {
 
         FamilyModel.find({isActive, _id}, projection)
+        .then(familyModel => {
+          if (!familyModel) return res(Boom.notFound());
+          return res({familyModel});
+        })
+        .catch(() => res(Boom.badRequest()));
+
+      } else if (familyId && modelId) {
+
+        FamilyModel.find({isActive, familyId, modelId}, projection)
         .then(familyModel => {
           if (!familyModel) return res(Boom.notFound());
           return res({familyModel});

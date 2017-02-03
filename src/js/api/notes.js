@@ -8,6 +8,7 @@ const base = `/api/notes`;
 const whitelist = {
   GET: [`familyModelId`],
   POST: [`familyModelId`, `notes`],
+  PUT: [`notes`],
   DELETE: [`id`]
 };
 
@@ -42,6 +43,17 @@ export const insert = data => {
   const body = buildBody(data, whitelist.POST, {});
 
   return fetch(base, {method, body, headers})
+    .then(checkStatus);
+
+};
+
+export const update = (data, id) => {
+
+  const method = `PUT`;
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
+  const body = buildBody(data, whitelist.PUT, {});
+
+  return fetch(`${base}/${id}`, {method, body, headers})
     .then(checkStatus);
 
 };

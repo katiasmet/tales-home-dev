@@ -14,6 +14,7 @@ class Models extends Component {
     if (token.content().scope === `professional`) {
       this.props.models.getModels();
       this.props.notes.getNotes();
+      this.props.notes.handleRedirect();
     } else {
       const {handleFamilyMembersVisites} = this.props.families;
       handleFamilyMembersVisites();
@@ -89,7 +90,8 @@ Models.propTypes = {
     activeFamilyModel: PropTypes.object
   }),
   notes: PropTypes.shape({
-    getNotes: PropTypes.func
+    getNotes: PropTypes.func,
+    handleRedirect: PropTypes.func
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string

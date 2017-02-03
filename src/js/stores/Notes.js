@@ -1,8 +1,8 @@
 import {observable, action} from 'mobx';
-import {filter} from 'lodash';
+import {filter, isEmpty} from 'lodash';
 import io from 'socket.io-client';
 
-import {selectByProfessional, insert} from '../api/notes';
+import {selectByProfessional, insert, update} from '../api/notes';
 import {token} from '../auth';
 import families from './Families';
 import users from './Users';
@@ -11,11 +11,11 @@ class Notes  {
 
   socket = io(`/`);
   @observable allNotes = [];
-  @observable activeNote = [];
   @observable notesInput = ``;
   @observable redirect = false;
   @observable error = ``;
   @observable isLoadingNotes = false;
+  @observable activeNote = ``;
 
   @action handleNoteRemove = id => {
     console.log(`remove notes`);
@@ -38,18 +38,18 @@ class Notes  {
 
     this.isLoadingNotes = true;
 
-    /*selectByFamilyModelId({familyModelId: families.activeFamilyModel._id})
-    .then(notes => {
-      this.activeNote = notes.note;
-      this.isLoadingNotes = false;
-    }).catch(err => {
-      this.handleError(err);
-    });*/
-
-    this.activeNote = filter(this.allNotes, note => {
+    const note = filter(this.allNotes, note => {
       return note.familyModelId === families.activeFamilyModel._id;
-    })[0];
+    })[0][0];
 
+    if (note) {
+      this.activeNote = note._id;
+      this.notesInput = note.notes;
+    }
+
+    console.log(note);
+
+    //id;
     this.isLoadingNotes = false;
 
   }
@@ -62,16 +62,32 @@ class Notes  {
 
     e.preventDefault();
 
-    insert({familyModelId: families.activeFamilyModel._id, notes: this.notesInput})
-      .then(() => {
-        this.redirect = true;
-      })
-      .catch(error => {
-        this.handleError(error.message);
-      });
+    if (isEmpty(this.activeNote)) {
+      insert({familyModelId: families.activeFamilyModel._id, notes: this.notesInput})
+        .then(() => {
+          this.redirect = true;
+        })
+        .catch(error => {
+          this.handleError(error.message);
+        });
+    } else {
+
+      update({notes: this.notesInput}, this.activeNote)
+        .then(() => {
+          this.redirect = true;
+        })
+        .catch(error => {
+          this.handleError(error.message);
+        });
+
+    }
 
     this.socket.emit(`stopModel`, users.currentSocketId);
 
+  }
+
+  @action handleRedirect = () => {
+    if (this.redirect) this.redirect = false;
   }
 
   @action handleError = error => {

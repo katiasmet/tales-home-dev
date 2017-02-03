@@ -11,17 +11,7 @@ import {ModelNotes} from '../components/mentor/model';
 
 class Model extends Component {
 
-  componentDidMount() {
-
-    if (token.content().scope === `professional`) {
-      const {getNote} = this.props.notes;
-      getNote();
-    }
-
-  }
-
   renderModelView(component) {
-    console.log(`render model view`);
     return React.createElement(component, {});
   }
 
@@ -44,7 +34,11 @@ class Model extends Component {
       const {activeFamilyModel} = this.props.families;
       const {isLoading} = this.props.models;
 
-      if (isEmpty(activeFamilyModel.name) && !isLoading) {
+      console.log(`handle family redirect`);
+      console.log(isLoading);
+
+      if (isEmpty(activeFamilyModel.name) && (!isLoading)) {
+        console.log(`redirect`);
         return <Redirect to='/models' />;
       }
     }

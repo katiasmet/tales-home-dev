@@ -4,11 +4,12 @@ import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes, toString}
 
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
-import {selectByFamily as selectFamilyModels, insert, remove as removeFamilyModels} from '../api/familymodels';
+import {selectByFamily as selectFamilyModels, selectFamilyModel, insert, remove as removeFamilyModels} from '../api/familymodels';
 import {select as selectModel} from '../api/models';
 import {content} from '../auth/token';
 
 import users from './Users';
+import notes from './Notes';
 
 class Families  {
 
@@ -225,16 +226,31 @@ class Families  {
     this.isLoading = `model`;
 
     this.socket.emit(`setModel`, users.currentSocketId, id);
-    insert({familyId: this.activeFamily._id, modelId: id})
+
+    //get familymodelid else insert
+    selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
-        console.log(`handle start model`);
-        this.activeFamilyModel._id = familymodel._id;
-        this.isLoading = ``;
+        if (familymodel) {
+          console.log(familymodel);
+          this.activeFamilyModel._id = familymodel.familyModel._id;
+          this.isLoading = ``;
+          notes.getNote();
+        } else {
+          insert({familyId: this.activeFamily._id, modelId: id})
+            .then(familymodel => {
+              console.log(familymodel);
+              this.activeFamilyModel._id = familymodel._id;
+              this.isLoading = ``;
+              notes.getNote();
+            })
+            .catch(err => {
+              this.handleError(err);
+            });
+        }
       })
       .catch(err => {
         this.handleError(err);
       });
-
   }
 
   @action handleFamilyRemove = id => {
