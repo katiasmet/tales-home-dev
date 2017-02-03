@@ -73,6 +73,7 @@ body {
 
 a {
   text-decoration: none;
+  outline: none;
 }
 
 .btn {
@@ -80,6 +81,18 @@ a {
   border: none;
   background: #6431b9;
   border-radius: 100px;
+}
+
+button {
+  background-color: #6431b9;
+  border: none;
+  color: white;
+  border-radius: 100px;
+  height: 80px;
+  height: 5rem;
+  width: 80px;
+  width: 5rem;
+  outline: none;
 }
 
 h1 {
@@ -98,13 +111,6 @@ h2 {
   font-size: 1.8rem;
   font-weight: bold;
   color: #6d34c5;
-}
-
-form h2 {
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 32px;
-  margin-bottom: 2rem;
 }
 
 h3 {
@@ -170,7 +176,7 @@ header,
           align-items: center;
 }
 
-.page-families .familie-overview-header header {
+.main-header {
   background-color: #6d34c5;
 }
 
@@ -277,6 +283,13 @@ form {
   margin: 2rem;
 }
 
+form h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+}
+
 label {
   display: block;
   margin-top: 32px;
@@ -307,15 +320,6 @@ MENTOR FAMILIES
 
 .page-families {
   background-color: #dbe8fe;
-}
-
-header {
-  /*height: 10rem;*/
-  /* ook header geen max hoogte geven in vh!!! > tablet ?? */
-}
-
-.familie-overview-header {
-  background-color: #6d34c5;
 }
 
 .families {
@@ -553,14 +557,16 @@ FORMS
   background: #dbe8fe;
 }
 
-.page-edit-profile, .page-login {
+.page-edit-profile,
+.page-login {
   background-color: #6d34c5;
   height: auto;
 
 }
 
-.form-add-family, .form-edit-user, .page-login-forms {
-  /*margin: auto;*/
+.form-add-family,
+.form-edit-user,
+.page-login-forms {
   background-color: white;
   border-radius: 10px;
   color: #6d34c5;
@@ -577,19 +583,8 @@ FORMS
   margin-bottom: 1rem;
 }
 
-.form-add-family input:-webkit-autofill, .form-edit-user input:-webkit-autofill, .page-login-forms input:-webkit-autofill {
+input:-webkit-autofill {
   box-shadow: 0 0 0 1000px ghostwhite inset;
-}
-
-.form-add-family button, .form-edit-user button, .page-login-forms button {
-  background-color: #6431b9;
-  border: none;
-  color: white;
-  border-radius: 100px;
-  height: 80px;
-  height: 5rem;
-  width: 80px;
-  width: 5rem;
 }
 
 /*login*/
@@ -647,13 +642,6 @@ FORMS
 STARTSESSION POP-UP
 */
 
-/*.popup-overlay {
-  height: 100%;
-  display: flex;
-  justify-content: space-around;;
-  align-items: center;
-}*/
-
 .pop-up {
   text-align: center;
   background-color: white;
@@ -686,7 +674,6 @@ STARTSESSION POP-UP
   margin-top: -4rem;
   margin-left: 288px;
   margin-left: 18rem;
-  outline: none;
 }
 
 .pop-up h2 {
@@ -754,10 +741,6 @@ MODELSOVERVIEW
   width: 139px;
   height: 36px;
   background-color: transparent;
-}
-
-.btn-show-grid .fa {
-  color: red;
 }
 
 .models-overview nav {

@@ -26,6 +26,7 @@ body {
 
 a {
   text-decoration: none;
+  outline: none;
 }
 
 .btn {
@@ -33,6 +34,16 @@ a {
   border: none;
   background: $darkpurple;
   border-radius: 100px;
+}
+
+button {
+  background-color: $darkpurple;
+  border: none;
+  color: white;
+  border-radius: 100px;
+  height: 5rem;
+  width: 5rem;
+  outline: none;
 }
 
 h1 {
@@ -49,12 +60,6 @@ h2 {
   font-size: 1.8rem;
   font-weight: bold;
   color: $purple;
-}
-
-form h2 {
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 2rem;
 }
 
 h3 {
@@ -102,7 +107,7 @@ header,
   align-items: center;
 }
 
-.page-families .familie-overview-header header {
+.main-header {
   background-color: $purple;
 }
 
@@ -174,6 +179,12 @@ form {
   margin: 2rem;
 }
 
+form h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 label {
   display: block;
   margin-top: 2rem;
@@ -201,15 +212,6 @@ MENTOR FAMILIES
 
 .page-families {
   background-color: $lightblue;
-}
-
-header {
-  /*height: 10rem;*/
-  /* ook header geen max hoogte geven in vh!!! > tablet ?? */
-}
-
-.familie-overview-header {
-  background-color: $purple;
 }
 
 .families {
@@ -371,14 +373,16 @@ FORMS
   background: $lightblue;
 }
 
-.page-edit-profile, .page-login {
+.page-edit-profile,
+.page-login {
   background-color: $purple;
   height: auto;
 
 }
 
-.form-add-family, .form-edit-user, .page-login-forms {
-  /*margin: auto;*/
+.form-add-family,
+.form-edit-user,
+.page-login-forms {
   background-color: white;
   border-radius: 10px;
   color: $purple;
@@ -390,19 +394,10 @@ FORMS
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
+}
 
-  input:-webkit-autofill {
-    box-shadow: 0 0 0 1000px ghostwhite inset;
-  }
-
-  button {
-    background-color: $darkpurple;
-    border: none;
-    color: white;
-    border-radius: 100px;
-    height: 5rem;
-    width: 5rem;
-  }
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
 /*login*/
@@ -449,13 +444,6 @@ FORMS
 STARTSESSION POP-UP
 */
 
-/*.popup-overlay {
-  height: 100%;
-  display: flex;
-  justify-content: space-around;;
-  align-items: center;
-}*/
-
 .pop-up {
   text-align: center;
   background-color: white;
@@ -479,7 +467,6 @@ STARTSESSION POP-UP
     width: 4rem;
     margin-top: -4rem;
     margin-left: 18rem;
-    outline: none;
   }
 
   h2 {
@@ -540,10 +527,6 @@ MODELSOVERVIEW
   width: 139px;
   height: 36px;
   background-color: transparent;
-
-  .fa {
-    color: red;
-  }
 }
 
 .models-overview {
