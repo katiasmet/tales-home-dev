@@ -7,12 +7,23 @@ import {Header, Loading} from '../components/';
 import {token} from '../auth';
 import {ModelNotes} from '../components/mentor/model';
 
+import {ModelDistance, ModelModel1, ModelModel3} from '../components/models';
+
 @inject(`families`, `notes`, `models`) @observer
 
 class Model extends Component {
 
-  renderModelView(component) {
-    return React.createElement(component, {});
+  renderModelView() {
+    const model = upperFirst(camelCase(this.props.match.params.id));
+
+    switch (model) {
+    case `Distance`:
+      return <ModelDistance />;
+    case `Model1`:
+      return <ModelModel1 />;
+    case `Model3`:
+      return <ModelModel3 />;
+    }
   }
 
   renderNotes() {
@@ -34,11 +45,7 @@ class Model extends Component {
       const {activeFamilyModel} = this.props.families;
       const {isLoading} = this.props.models;
 
-      console.log(`handle family redirect`);
-      console.log(isLoading);
-
       if (isEmpty(activeFamilyModel.name) && (!isLoading)) {
-        console.log(`redirect`);
         return <Redirect to='/models' />;
       }
     }
@@ -47,8 +54,6 @@ class Model extends Component {
 
   render() {
     const {pathname} = this.props.location;
-    const component = upperFirst(camelCase(this.props.match.params.id));
-
     const {isLoading} = this.props.families;
 
     return (
@@ -57,7 +62,7 @@ class Model extends Component {
 
         {
           (!isEmpty(isLoading)) ? <Loading />
-          : this.renderModelView(component)
+          : this.renderModelView()
         }
 
         {
