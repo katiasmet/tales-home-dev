@@ -2,13 +2,14 @@ import {observable, action} from 'mobx';
 import {filter} from 'lodash';
 
 import {token, logout} from '../auth';
+import models from './Models';
 
 class Users  {
 
   @observable allUsers = [];
   @observable currentSocketId = ``;
   @observable isSessionStarted = false;
-  @observable currentModel = ``;
+  @observable currentModelId = ``;
 
   @action handleUsers = users => {
     this.allUsers = users;
@@ -28,7 +29,10 @@ class Users  {
   handleCurrentModel = () => {
     this.allUsers.forEach(user => {
       if (user.socketId === this.currentSocketId) {
-        if (user.modelId) this.currentModel = user.modelId;
+        if (user.modelId) this.currentModelId = user.modelId;
+      } else if (token.content().scope === `family` && user.familyId === token.content().sub) {
+        if (user.modelId) models.getModel(user.modelId);
+        else models.handleCleanModel();
       }
     });
   }

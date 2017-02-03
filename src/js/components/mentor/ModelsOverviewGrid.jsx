@@ -5,7 +5,7 @@ import {ModelGridItem} from './model';
 
 const ModelsOverviewGrid = inject(`models`, `families`)(observer(({models, families}) => {
 
-  const {allModels, showGrid, handleIsPassed} = models;
+  const {allModels, showGrid, handleShowGrid, handleIsPassed} = models;
   const {handleStartModel} = families;
 
   return (

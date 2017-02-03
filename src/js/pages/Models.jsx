@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Redirect} from 'mobx-react';
+import {Redirect} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
@@ -7,12 +7,13 @@ import {Header, Loading} from '../components/';
 import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
 import {token} from '../auth';
 
-@inject(`models`, `families`) @observer
+@inject(`models`, `families`, `notes`) @observer
 class Models extends Component {
 
   componentDidMount() {
     if (token.content().scope === `professional`) {
       this.props.models.getModels();
+      this.props.notes.getNotes();
     } else {
       const {handleFamilyMembersVisites} = this.props.families;
       handleFamilyMembersVisites();
@@ -22,9 +23,9 @@ class Models extends Component {
   renderModels() {
 
     if (token.content().scope === `family`) {
-      const {activeFamily} = this.props.families;
+      const {activeFamilyModel} = this.props.families;
 
-      if (isEmpty(activeFamily.familymodel.name)) {
+      if (isEmpty(activeFamilyModel.name)) {
         return (
           <main>
             <Loading />
@@ -32,8 +33,11 @@ class Models extends Component {
         );
       } else {
         return (
-          <Redirect to={`/models/${activeFamily.familymodel.name}`} />
+          <main>
+            <Redirect to={`/models/${activeFamilyModel.name}`} />
+          </main>
         );
+
       }
     } else {
       return (
@@ -49,8 +53,6 @@ class Models extends Component {
 
     const {pathname} = this.props.location;
     const {isLoading, handleShowGrid} = this.props.models;
-
-    console.log(`render models`);
 
     return (
       <div className='page page-models'>
@@ -84,7 +86,10 @@ Models.propTypes = {
   }),
   families: PropTypes.shape({
     handleFamilyMembersVisites: PropTypes.func,
-    activeFamily: PropTypes.object
+    activeFamilyModel: PropTypes.object
+  }),
+  notes: PropTypes.shape({
+    getNotes: PropTypes.func
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string

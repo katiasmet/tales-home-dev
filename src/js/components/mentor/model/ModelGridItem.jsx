@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router-dom';
 import {kebabCase} from 'lodash';
 
-const ModelGridItem = ({_id, image, name, passed, i, handleStartModel, handleIsPassed}) => {
+const ModelGridItem = ({_id, image, name, i, handleStartModel, handleIsPassed}) => {
 
   const pathname = kebabCase(name);
   console.log(image);

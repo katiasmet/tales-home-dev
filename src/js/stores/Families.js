@@ -1,6 +1,6 @@
 import {observable, action} from 'mobx';
 import io from 'socket.io-client';
-import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes, toString, kebabCase} from 'lodash';
+import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes, toString} from 'lodash';
 
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
@@ -9,7 +9,6 @@ import {select as selectModel} from '../api/models';
 import {content} from '../auth/token';
 
 import users from './Users';
-import notes from './Notes';
 
 class Families  {
 
@@ -29,13 +28,15 @@ class Families  {
     origins: ``,
     homeLocation: ``,
     overviewVisites: 0,
-    familymodel: {
-      _id: ``,
-      name: ``
-    },
     familymembers: {},
     familymodels: {}
   };
+
+  @observable activeFamilyModel = {
+    _id: ``,
+    name: ``
+  }
+
   @observable infoMessage = {};
   @observable showInfo = ``;
 
@@ -203,12 +204,9 @@ class Families  {
 
   @action handleFamilyMembersVisites = () => {
     this.activeFamily.overviewVisites++;
-    console.log(this.activeFamily.overviewVisites);
   }
 
   @action handleStartSession = () => {
-
-    console.log(`start a session`);
 
     const familyId = content().sub;
     this.socket.emit(`startSession`, familyId);
@@ -224,14 +222,14 @@ class Families  {
 
   @action handleStartModel = id => {
 
+    this.isLoading = `model`;
+
     this.socket.emit(`setModel`, users.currentSocketId, id);
-    console.log(this.activeFamily);
     insert({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
-        this.activeFamily.familymodel._id = familymodel._id;
-        this.activeFamily.familymodel.name = kebabCase(familymodel.name);
-        console.log(this.activeFamily.familymodel);
-        notes.getNote(this.activeFamily.familymodel);
+        console.log(`handle start model`);
+        this.activeFamilyModel._id = familymodel._id;
+        this.isLoading = ``;
       })
       .catch(err => {
         this.handleError(err);

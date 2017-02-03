@@ -1,6 +1,6 @@
 import {observable, action} from 'mobx';
 
-import {selectByFamilyModelId} from '../api/notes';
+import {selectByFamilyModelId} from '../api/results';
 
 class Results  {
 

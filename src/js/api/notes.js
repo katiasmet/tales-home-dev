@@ -25,8 +25,7 @@ export const select = id => {
 
 };
 
-export const selectByFamilyModelId = query => {
-
+export const selectByProfessional = query => {
   const method = `GET`;
   const qs = buildQuery(query, whitelist.GET);
   if (!qs) return select();
@@ -34,7 +33,6 @@ export const selectByFamilyModelId = query => {
 
   return fetch(`${base}?${qs}`, {method, headers})
     .then(checkStatus);
-
 };
 
 export const insert = data => {
@@ -61,6 +59,6 @@ export const remove = id => {
 export default {
   insert,
   select,
-  selectByFamilyModelId,
+  selectByProfessional,
   remove
 };

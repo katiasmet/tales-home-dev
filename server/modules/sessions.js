@@ -47,10 +47,10 @@ module.exports.register = (server, options, next) => {
       }
     });
 
-    socket.on(`setModel`, id => {
+    socket.on(`setModel`, (id, modelId) => {
       const user = users.find(u => id === u.socketId);
       if (user) {
-        user.modelId = id;
+        user.modelId = modelId;
         socket.broadcast.emit(`recheck`, users);
       }
     });
@@ -62,6 +62,14 @@ module.exports.register = (server, options, next) => {
         user.sessionId = ``;
         user.modelId = ``;
         user.isSessionStarted = false;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`stopModel`, id => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.modelId = ``;
         socket.broadcast.emit(`recheck`, users);
       }
     });
