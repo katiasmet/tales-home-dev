@@ -1,15 +1,15 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {kebabCase} from 'lodash';
 
-const handleNavItem = (model, i, handleModelPreview, modelPreview) => {
+const handleNavItem = (model, i, handleModelPreview, modelPreview, handleStartModel, handleIsPassed) => {
   if (model._id === modelPreview._id) {
 
     const pathname = kebabCase(model.name);
 
     return (
-      <li className='model-nav-item active' key={i}>
+      <li className='model-nav-item active' key={i} onClick={() => handleStartModel(model._id)}>
         <Link to={`/models/${pathname}`}>
           <i className='fa fa-play'></i>
         </Link>
@@ -19,7 +19,7 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview) => {
   } else {
 
     return (
-      <li className={model.passed ? `model-nav-item done` : `model-nav-item`}
+      <li className={handleIsPassed(model._id) ? `model-nav-item done` : `model-nav-item`}
           key={i}
           onClick={() => handleModelPreview(model._id)}>
         {model.name}
@@ -29,19 +29,17 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview) => {
   }
 };
 
-const ModelsNavigation = inject(`models`)(observer(({models}) => {
+const ModelsNavigation = inject(`models`, `families`)(observer(({models, families}) => {
 
-  /* TODO check familymodels for active family,
-  kun je al even testen via stores > models > handlePassedModels op true te zetten */
-
-  const {allModels, handleModelPreview, modelPreview} = models;
+  const {allModels, handleIsPassed, handleModelPreview, modelPreview} = models;
+  const {handleStartModel} = families;
 
   return (
     <nav>
       <ul className='models-navigation'>
         {
           allModels.slice().map((model, i) => {
-            return handleNavItem(model, i, handleModelPreview, modelPreview);
+            return handleNavItem(model, i, handleModelPreview, modelPreview, handleStartModel, handleIsPassed);
           })
         }
       </ul>
@@ -53,7 +51,11 @@ ModelsNavigation.propTypes = {
   models: PropTypes.shape({
     allModels: PropTypes.array,
     handleModelPreview: PropTypes.func,
-    modelPreview: PropTypes.object
+    modelPreview: PropTypes.object,
+    handleIsPassed: PropTypes.func
+  }),
+  families: PropTypes.shape({
+    handleStartModel: PropTypes.func
   })
 };
 

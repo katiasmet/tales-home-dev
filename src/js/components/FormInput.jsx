@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {isEmpty} from 'lodash';
 
-const FormInput = ({id, label, type = `text`, name, value, error, onChange, placeholder}) => {
+const FormInput = ({id, label, type = `text`, name, value, error, onChange, placeholder, maxlength}) => {
 
   return (
     <span className={isEmpty(error) ? `form-input form-error` : `form-input`}>
@@ -16,7 +16,8 @@ const FormInput = ({id, label, type = `text`, name, value, error, onChange, plac
         name={name}
         value={value}
         placeholder={placeholder}
-        onChange={e => onChange(e.target.name, e.target.value)} />
+        onChange={e => onChange(e.target.name, e.target.value)}
+        maxLength={maxlength ? maxlength : `524288`} />
 
       {isEmpty(error) ? null : <p className='error'>{error}</p>}
     </span>
@@ -32,7 +33,8 @@ FormInput.propTypes = {
   value: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  maxlength: PropTypes.string
 };
 
 export default FormInput;

@@ -8,6 +8,7 @@ const base = `/api/notes`;
 const whitelist = {
   GET: [`familyModelId`],
   POST: [`familyModelId`, `notes`],
+  PUT: [`notes`],
   DELETE: [`id`]
 };
 
@@ -25,8 +26,7 @@ export const select = id => {
 
 };
 
-export const selectByFamilyModelId = query => {
-
+export const selectByProfessional = query => {
   const method = `GET`;
   const qs = buildQuery(query, whitelist.GET);
   if (!qs) return select();
@@ -34,7 +34,6 @@ export const selectByFamilyModelId = query => {
 
   return fetch(`${base}?${qs}`, {method, headers})
     .then(checkStatus);
-
 };
 
 export const insert = data => {
@@ -44,6 +43,17 @@ export const insert = data => {
   const body = buildBody(data, whitelist.POST, {});
 
   return fetch(base, {method, body, headers})
+    .then(checkStatus);
+
+};
+
+export const update = (data, id) => {
+
+  const method = `PUT`;
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
+  const body = buildBody(data, whitelist.PUT, {});
+
+  return fetch(`${base}/${id}`, {method, body, headers})
     .then(checkStatus);
 
 };
@@ -61,6 +71,6 @@ export const remove = id => {
 export default {
   insert,
   select,
-  selectByFamilyModelId,
+  selectByProfessional,
   remove
 };

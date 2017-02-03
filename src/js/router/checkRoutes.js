@@ -1,42 +1,94 @@
 import React, {PropTypes} from 'react';
-import {Match, Redirect} from 'react-router';
+import {Route, Redirect} from 'react-router-dom';
+import {isEmpty} from 'lodash';
 
 import {isLoggedIn} from '../auth';
 
-export const MatchWhenAuthorized = ({component: Component, ...rest}) => (
+export const MatchWhenAuthorized = ({component, ...rest}) => (
 
-  <Match {...rest} exactly render={props => (
-    isLoggedIn() ? (
-      <Component {...props} />
+  <Route {...rest} render={props => (
+    (!isEmpty(isLoggedIn())) ? (
+      React.createElement(component, props)
     ) : (
       <Redirect to={{
-        pathname: `/login`
+        pathname: `/login`,
+        state: {from: props.location}
       }} />
     )
   )} />
 );
 
-export const RedirectWhenAuthorized = ({component: Component, ...rest}) => (
-  <Match {...rest} exactly render={props => (
-    isLoggedIn() ? (
-      <Redirect to={{
-        pathname: `/families`
-      }} />
+export const MatchWhenProfessional = ({component, ...rest}) => (
+
+  <Route {...rest} render={props => (
+    (isLoggedIn() === `professional`) ? (
+      React.createElement(component, props)
     ) : (
-      <Component {...props} />
+      <Redirect to={{
+        pathname: `/login`,
+        state: {from: props.location}
+      }} />
     )
   )} />
 );
+
+export const MatchWhenFamily = ({component, ...rest}) => (
+
+  <Route {...rest} render={props => (
+    (isLoggedIn() === `family`) ? (
+      React.createElement(component, props)
+    ) : (
+      <Redirect to={{
+        pathname: `/login`,
+        state: {from: props.location}
+      }} />
+    )
+  )} />
+);
+
+const redirectPath = () => {
+  if (isLoggedIn() === `professional`) return `/families`;
+  else return `/family`;
+};
+
+export const RedirectWhenAuthorized = ({component, ...rest}) => (
+
+  <Route {...rest} render={props => (
+    (!isEmpty(isLoggedIn())) ? (
+      <Redirect to={{
+        pathname: redirectPath(),
+        state: {from: props.location}
+      }} />
+    ) : (
+      React.createElement(component, props)
+    )
+  )} />
+);
+
 
 MatchWhenAuthorized.propTypes = {
-  component: PropTypes.func
+  component: PropTypes.func,
+  location: PropTypes.func
+};
+
+MatchWhenProfessional.propTypes = {
+  component: PropTypes.func,
+  location: PropTypes.func
+};
+
+MatchWhenFamily.propTypes = {
+  component: PropTypes.func,
+  location: PropTypes.func
 };
 
 RedirectWhenAuthorized.propTypes = {
-  component: PropTypes.func
+  component: PropTypes.func,
+  location: PropTypes.func
 };
 
 export default {
   MatchWhenAuthorized,
+  MatchWhenProfessional,
+  MatchWhenFamily,
   RedirectWhenAuthorized
 };

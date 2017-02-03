@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
@@ -38,8 +38,10 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
   return (
     <section className='families families-overview'>
 
+      <h1>Families</h1>
+
       {
-        isLoading ? (<Loading />)
+        (isLoading === `families`) ? (<Loading />)
         : handleFamilies(allFamilies, activeFamilies, searchInput)
       }
 
@@ -52,7 +54,7 @@ FamiliesOverview.propTypes = {
     allFamilies: PropTypes.array,
     activeFamilies: PropTypes.array,
     searchInput: PropTypes.string,
-    isLoading: PropTypes.bool,
+    isLoading: PropTypes.string,
     error: PropTypes.string
   })
 };

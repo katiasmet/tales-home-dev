@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 import {isEmpty} from 'lodash';
 
-const NavigationItem = ({link, icon, content}) => {
+const NavigationItem = ({link, icon, content, pathname}) => {
   return (
-    <li className='nav-item'>
+    <li className={`nav-item ${setActive(link, pathname)}`}>
       <Link to={link}>
         {
           !isEmpty(icon) && (<i className={`fa ${icon}`}></i>)
@@ -16,10 +16,15 @@ const NavigationItem = ({link, icon, content}) => {
   );
 };
 
+const setActive = (link, pathname) => {
+  return (link === pathname) ? `active` : ``;
+};
+
 NavigationItem.propTypes = {
   link: PropTypes.string,
   icon: PropTypes.string,
-  content: PropTypes.string
+  content: PropTypes.string,
+  pathname: PropTypes.string
 };
 
 export default NavigationItem;

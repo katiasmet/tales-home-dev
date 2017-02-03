@@ -1,5 +1,5 @@
 import React, {PropTypes}  from 'react';
-import {Redirect, Link} from 'react-router';
+import {Redirect, Link} from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
@@ -23,6 +23,10 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
         method='post'
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
+
+        <fieldset>
+          <h2>Add a family</h2>
+        </fieldset>
 
         <fieldset>
 

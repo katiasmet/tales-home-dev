@@ -28,7 +28,8 @@
     "jsonwebtoken": "^7.1.9",
     "lodash": "^4.16.4",
     "mongoose": "^4.6.5",
-    "mongoose-bcrypt": "^1.4.2"
+    "mongoose-bcrypt": "^1.4.2",
+    "socket.io": "^1.7.2"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -64,6 +65,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.3.2",
     "react-router": "next",
+    "react-router-dom": "next",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "stylelint": "^7.5.0",

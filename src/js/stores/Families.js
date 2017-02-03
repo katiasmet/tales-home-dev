@@ -1,30 +1,52 @@
 import {observable, action} from 'mobx';
-import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes} from 'lodash';
+import io from 'socket.io-client';
+import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes, toString} from 'lodash';
 
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
-import {selectByFamily as selectFamilyModels, remove as removeFamilyModels} from '../api/familymodels';
+import {selectByFamily as selectFamilyModels, selectFamilyModel, insert, remove as removeFamilyModels} from '../api/familymodels';
 import {select as selectModel} from '../api/models';
 import {content} from '../auth/token';
 
+import users from './Users';
+import notes from './Notes';
+
 class Families  {
 
-  @observable isLoading = true;
-  @observable allFamilies = [];
-  @observable activeFamilies = [];
+  socket = io(`/`);
 
-  @observable characters = [];
+  @observable isLoading = ``;
+  @observable allFamilies = [];
+  error = ``;
+  @observable activeFamilies = []; /* PRO - visible families in the overview */
+
+  @observable characters = []; /* PRO - family navigation */
   @observable activeCharacter = ``;
 
-  @observable activeFamily = []; //for sessions and getting information (?)
+  @observable activeFamily = { /* PRO AND FAMILY */
+    _id: ``,
+    name: ``,
+    origins: ``,
+    homeLocation: ``,
+    overviewVisites: 0,
+    familymembers: {},
+    familymodels: {}
+  };
+
+  @observable activeFamilyModel = {
+    _id: ``,
+    name: ``
+  }
+
   @observable infoMessage = {};
   @observable showInfo = ``;
-  @observable isLoadingInfo = true;
 
   @observable searchInput = ``;
+  @observable sessionId = ``;
+  @observable confirmation = false;
 
   @action getFamilies = () => {
-    this.isLoading = true;
+    this.isLoading = `families`;
 
     selectByProfessional({professionalId: content().sub})
       .then(data => {
@@ -33,10 +55,27 @@ class Families  {
         this.handleCharacters();
       }).then(() => {
         this.handleActiveFamilies();
-        this.isLoading = false;
+        this.isLoading = ``;
       }).catch(err => {
         this.handleError(err);
       });
+  }
+
+  @action getFamilyMembers = (familyId, familySide = false) => {
+    this.isLoading = `familymembers`;
+
+    selectFamilyMembers({familyId: familyId})
+    .then(familymembers => {
+      if (isEmpty(familymembers.familyMembers)) {
+        this.infoMessage.members = `This family did not add any family members yet.`;
+        this.isLoading = ``;
+      }
+      this.activeFamily.familymembers = familymembers.familyMembers;
+      if (familySide) this.isLoading = ``;
+    }).catch(err => {
+      this.handleError(err);
+    });
+
   }
 
   handleError = error => {
@@ -78,29 +117,22 @@ class Families  {
     this.handleActiveFamilies();
   }
 
-  @action handleFamilyInfo = id => {
+  @action handleFamilyInfo = (id, showInfo = true) => {
 
-    this.activeFamily = [];
-    this.isLoadingInfo = true;
+    this.activeFamily = {};
+    this.isLoading = `info`;
     this.infoMessage = {};
 
+    this.findActiveFamily(id);
+
     if (!this.showInfo) {
-      selectFamilyMembers({familyId: id})
-      .then(familymembers => {
-        if (isEmpty(familymembers.familyMembers)) {
-          this.infoMessage.members = `This family did not add any family members yet.`;
-          this.isLoadingInfo = false;
-        }
-        this.activeFamily.familymembers = familymembers.familyMembers;
-      }).catch(err => {
-        this.handleError(err);
-      });
+      this.getFamilyMembers(id);
 
       selectFamilyModels({familyId: id})
       .then(familymodels => {
         if (isEmpty(familymodels.familyModels)) {
           this.infoMessage.models = `This family did not join a session yet.`;
-          this.isLoadingInfo = false;
+          this.isLoading = ``;
         }
         this.activeFamily.familymodels = familymodels.familyModels;
       }).then(() => {
@@ -113,7 +145,7 @@ class Families  {
               familymodel.name = model.model[0].name;
             })
             .then(() => {
-              if ((i + 1) === this.activeFamily.familymodels.length) this.isLoadingInfo = false;
+              if ((i + 1) === this.activeFamily.familymodels.length) this.isLoading = ``;
             })
             .catch(err => {
               this.handleError(err);
@@ -123,19 +155,102 @@ class Families  {
         }
 
       }).then(() => {
-        this.showInfo = id;
+        if (showInfo) this.showInfo = id;
       }).catch(err => {
         this.handleError(err);
       });
 
     } else {
-      this.activeFamily = [];
+      this.activeFamily = {};
       this.showInfo = ``;
     }
   }
 
-  @action handleFamilySession = id => {
-    console.log(id);
+  findActiveFamily = id => {
+
+    this.activeFamily = filter(this.allFamilies, family => {
+      return family._id === id;
+    })[0];
+
+  };
+
+  @action handleFamilySession = familyId => {
+
+    this.generateSessionId();
+    this.handleFamilyInfo(familyId, false);
+    this.isLoading = `session`;
+
+
+    this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
+
+  }
+
+  generateSessionId = () => {
+
+    const sessionId = toString(Math.floor(1000 + Math.random() * 9000));
+
+    if (this.checkInUse(sessionId)) this.sessionId = sessionId;
+    else this.generateSessionId();
+
+  }
+
+  checkInUse = sessionId => {
+    const used = filter(users.allUsers, user => {
+      return user.sessionId === sessionId;
+    });
+
+    if (used.length === 0) return true;
+    else return false;
+  }
+
+  @action handleFamilyMembersVisites = () => {
+    this.activeFamily.overviewVisites++;
+  }
+
+  @action handleStartSession = () => {
+
+    const familyId = content().sub;
+    this.socket.emit(`startSession`, familyId);
+
+  }
+
+  @action handleStopSession = () => {
+
+    this.socket.emit(`stopSession`, users.currentSocketId);
+    window.location.href = `/`;
+
+  }
+
+  @action handleStartModel = id => {
+
+    this.isLoading = `model`;
+
+    this.socket.emit(`setModel`, users.currentSocketId, id);
+
+    //get familymodelid else insert
+    selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
+      .then(familymodel => {
+        if (familymodel) {
+          console.log(familymodel);
+          this.activeFamilyModel._id = familymodel.familyModel._id;
+          this.isLoading = ``;
+          notes.getNote();
+        } else {
+          insert({familyId: this.activeFamily._id, modelId: id})
+            .then(familymodel => {
+              console.log(familymodel);
+              this.activeFamilyModel._id = familymodel._id;
+              this.isLoading = ``;
+              notes.getNote();
+            })
+            .catch(err => {
+              this.handleError(err);
+            });
+        }
+      })
+      .catch(err => {
+        this.handleError(err);
+      });
   }
 
   @action handleFamilyRemove = id => {
@@ -151,8 +266,8 @@ class Families  {
 
     removeFamily({id: id})
     .then(() => {
-      this.allFamilies = filter(this.allFamilies, object => {
-        return object._id !== id;
+      this.allFamilies = filter(this.allFamilies, family => {
+        return family._id !== id;
       });
 
       this.handleCharacters();
@@ -163,26 +278,40 @@ class Families  {
 
   }
 
+  @action handleConfirmation = () => {
+    this.confirmation = !this.confirmation;
+  }
+
+  @action handleFamilyMemberRemove = id => {
+    removeFamilyMembers({id: id})
+    .catch(err => {
+      this.handleError(err);
+    });
+
+    this.activeFamily.familymembers = filter(this.activeFamily.familymembers, familymember => {
+      return familymember._id !== id;
+    });
+
+  }
+
   @action handleSearch = (field, value) => {
     this.searchInput = value;
 
     if (value) {
-      this.activeFamilies = filter(this.allFamilies, object => {
-        if (includes(toUpper(object.name), toUpper(value)) ||
-            includes(toUpper(object.origins), toUpper(value)) ||
-            includes(toUpper(object.homeLocation), toUpper(value))
+      this.activeFamilies = filter(this.allFamilies, family => {
+        if (includes(toUpper(family.name), toUpper(value)) ||
+            includes(toUpper(family.origins), toUpper(value)) ||
+            includes(toUpper(family.homeLocation), toUpper(value))
         ) {
-          return object;
+          return family;
         }
       });
     } else {
       this.handleActiveFamilies();
     }
 
-
   }
 
-  //search through origins, location and name
 }
 
 export default new Families();

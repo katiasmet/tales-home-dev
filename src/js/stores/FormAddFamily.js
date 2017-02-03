@@ -2,8 +2,9 @@ import {observable, action} from 'mobx';
 import Form from './Form';
 
 import {insert} from '../api/families';
+import families from './Families';
 
-class FormUser extends Form {
+class FormAddFamily extends Form {
 
   @observable form = ({
     fields: {
@@ -44,9 +45,9 @@ class FormUser extends Form {
     } else {
 
       insert(this.getValues())
-        .then(() => {
-          if (this.submitButton === `save`) this.form.redirect = `families`;
-          else this.form.redirect = `startsession`;
+        .then(family => {
+          if (this.submitButton === `start`) families.handleFamilySession(family._id);
+          this.form.redirect = `families`;
         })
         .catch(error => {
           this.handleError(error.message);
@@ -57,4 +58,4 @@ class FormUser extends Form {
   }
 }
 
-export default new FormUser();
+export default new FormAddFamily();

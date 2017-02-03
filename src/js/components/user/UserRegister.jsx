@@ -1,5 +1,5 @@
 import React, {PropTypes}  from 'react';
-import {Redirect} from 'react-router';
+import {Redirect} from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
 import {isEmpty} from 'lodash';
 
@@ -25,6 +25,10 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
         method='post'
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
+
+        <fieldset>
+          <h2> Register </h2>
+        </fieldset>
 
         <fieldset>
 
@@ -68,7 +72,7 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
-          <button type='submit' className='btn' disabled={!meta.isValid}>Register</button>
+          <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
 
         </fieldset>
 

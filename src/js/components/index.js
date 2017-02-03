@@ -8,3 +8,6 @@ export FormInput from './FormInput';
 
 export Actions from './Actions';
 export Action from './Action';
+
+export Languages from './Languages';
+export Language from './Language';

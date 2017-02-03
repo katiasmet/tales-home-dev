@@ -4,6 +4,7 @@ import Validator from 'validatorjs';
 class Form {
 
   @action handleChange = (field, value) => {
+
     this.form.fields[field].value = value;
     const validation = new Validator(
       this.getValues(`value`),
@@ -35,6 +36,10 @@ class Form {
 
   @action handleError = error => {
     this.form.meta.error = error;
+  }
+
+  @action resetRedirect = () => {
+    this.form.redirect = false;
   }
 
 }

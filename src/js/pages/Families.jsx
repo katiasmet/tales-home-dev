@@ -1,8 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {observer, inject} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {Header} from '../components/';
 import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/mentor';
+import {FamilyStartSession} from '../components/mentor/family';
 
 @inject(`families`) @observer
 class Families extends Component {
@@ -12,9 +14,13 @@ class Families extends Component {
   }
 
   render() {
+
+    const {sessionId} = this.props.families;
+    const {pathname} = this.props.location;
+
     return (
-      <div className='page page-families'>
-        <Header />
+      <div className={!isEmpty(sessionId) ? `page page-families page-pop-up` : `page page-families`}>
+        <Header pathname={pathname} />
 
         <main>
 
@@ -22,9 +28,12 @@ class Families extends Component {
 
           <section className='families'>
 
+            {
+              !isEmpty(sessionId) && <FamilyStartSession />
+            }
+
             <FamiliesBrowse />
             <FamiliesOverview />
-
           </section>
         </main>
       </div>
@@ -35,7 +44,11 @@ class Families extends Component {
 
 Families.propTypes = {
   families: PropTypes.shape({
-    getFamilies: PropTypes.func
+    getFamilies: PropTypes.func,
+    sessionId: PropTypes.string
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string
   })
 };
 

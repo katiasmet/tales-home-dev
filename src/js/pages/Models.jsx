@@ -1,43 +1,76 @@
 import React, {Component, PropTypes} from 'react';
+import {Redirect} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {Header, Loading} from '../components/';
 import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
+import {token} from '../auth';
 
-@inject(`models`) @observer
+@inject(`models`, `families`, `notes`) @observer
 class Models extends Component {
 
   componentDidMount() {
-    this.props.models.getModels();
+    if (token.content().scope === `professional`) {
+      this.props.models.getModels();
+      this.props.notes.getNotes();
+      this.props.notes.handleRedirect();
+    } else {
+      const {handleFamilyMembersVisites} = this.props.families;
+      handleFamilyMembersVisites();
+    }
+  }
+
+  renderModels() {
+
+    if (token.content().scope === `family`) {
+      const {activeFamilyModel} = this.props.families;
+
+      if (isEmpty(activeFamilyModel.name)) {
+        return (
+          <main>
+            <Loading />
+          </main>
+        );
+      } else {
+        return (
+          <main>
+            <Redirect to={`/models/${activeFamilyModel.name}`} />
+          </main>
+        );
+
+      }
+    } else {
+      return (
+        <main>
+          <Loading />
+        </main>
+      );
+    }
+
   }
 
   render() {
 
-    const {isLoading, handleShowGrid, showGrid} = this.props.models;
+    const {pathname} = this.props.location;
+    const {isLoading, handleShowGrid} = this.props.models;
 
     return (
       <div className='page page-models'>
-        <Header />
+        <Header pathname={pathname} />
 
-          {
-            isLoading ? (
-              <main>
-                <Loading />
-              </main>
-            )
-            : (
-              <main>
-                <ModelsOverview />
-                <button className='btn btn-show-grid'
-                        onClick={handleShowGrid}
-                >
-                  <i className={showGrid ? `fa fa-close` : `fa fa-th`}></i>
-                </button>
-                <ModelsOverviewGrid />
-              </main>
-            )
-          }
-
+        {
+          (token.content().scope === `professional` && !isLoading) ? (
+            <main>
+              <ModelsOverview />
+              <button className='btn btn-show-grid'
+                onClick={handleShowGrid}
+              >
+              </button>
+              <ModelsOverviewGrid />
+            </main>
+          ) : this.renderModels()
+        }
 
       </div>
 
@@ -51,6 +84,17 @@ Models.propTypes = {
     isLoading: PropTypes.bool,
     handleShowGrid: PropTypes.func,
     showGrid: PropTypes.bool
+  }),
+  families: PropTypes.shape({
+    handleFamilyMembersVisites: PropTypes.func,
+    activeFamilyModel: PropTypes.object
+  }),
+  notes: PropTypes.shape({
+    getNotes: PropTypes.func,
+    handleRedirect: PropTypes.func
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string
   })
 };
 

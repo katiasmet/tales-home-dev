@@ -7,7 +7,7 @@ import {checkStatus, buildQuery, buildBody} from '../util/';
 const base = `/api/familymodels`;
 
 const whitelist = {
-  GET: [`familyId`],
+  GET: [`familyId`, `modelId`],
   POST: [`familyId`, `modelId`],
   DELETE: [`id`, `familyId`]
 };
@@ -24,6 +24,16 @@ export const select = id => {
   return fetch(path, {method, headers})
     .then(checkStatus);
 
+};
+
+export const selectFamilyModel = query => {
+  const method = `GET`;
+  const qs = buildQuery(query, whitelist.GET);
+  if (!qs) return select();
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
+
+  return fetch(`${base}?${qs}`, {method, headers})
+    .then(checkStatus);
 };
 
 export const selectByFamily = query => {

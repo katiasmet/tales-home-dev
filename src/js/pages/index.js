@@ -6,7 +6,11 @@ export EditProfile from './EditProfile';
 
 export Families from './Families';
 export NewFamily from './NewFamily';
-export StartSession from './StartSession';
 
 export Models from './Models';
 export Model from './Model';
+
+//family-side
+export Family from './Family';
+export NewFamilyMember from './NewFamilyMember';
+export EditFamilyMember from './EditFamilyMember';

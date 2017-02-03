@@ -43,8 +43,10 @@ class FamilyInfoResult extends Component {
 
     return (
       <li className='family-info-result'>
-        {name}
-        <span className='result-date'> - {resultDate}</span>
+        <span>
+          {name}
+          <span className='result-date'> - {resultDate}</span>
+        </span>
 
         <Actions actionClass='result-actions' actions={this.actions} />
       </li>

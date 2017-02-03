@@ -1,38 +1,97 @@
-import React, {PropTypes} from 'react';
-import {upperFirst, camelCase} from 'lodash';
+import React, {Component, PropTypes} from 'react';
+import {Redirect} from 'react-router-dom';
+import {inject, observer} from 'mobx-react';
+import {upperFirst, camelCase, isEmpty} from 'lodash';
 
-import {Header} from '../components/';
+import {Header, Loading} from '../components/';
+import {token} from '../auth';
 import {ModelNotes} from '../components/mentor/model';
 
-const renderModelView = component => {
-  return React.createElement(component, {});
-};
+@inject(`families`, `notes`, `models`) @observer
 
-const Model = ({params}) => {
+class Model extends Component {
 
-  const {id} = params;
-  const component = upperFirst(camelCase(id));
+  renderModelView(component) {
+    return React.createElement(component, {});
+  }
 
-  return (
-    <div className='page page-model '>
-      <Header />
+  renderNotes() {
 
-      <p>{id}</p>
+    if (token.content().scope === `professional`) {
 
-      {
-        renderModelView(component)
+      const {isLoadingNotes, redirect} = this.props.notes;
+      if (isLoadingNotes) return (<Loading />);
+      if (redirect) return <Redirect to='/models' />;
+      return <ModelNotes />;
+
+    }
+
+  }
+
+  handleFamilyRedirect() {
+    //happens when professional stops a model
+    if (token.content().scope === `family`) {
+      const {activeFamilyModel} = this.props.families;
+      const {isLoading} = this.props.models;
+
+      console.log(`handle family redirect`);
+      console.log(isLoading);
+
+      if (isEmpty(activeFamilyModel.name) && (!isLoading)) {
+        console.log(`redirect`);
+        return <Redirect to='/models' />;
       }
+    }
+  }
 
 
-      <ModelNotes />
+  render() {
+    const {pathname} = this.props.location;
+    const component = upperFirst(camelCase(this.props.match.params.id));
 
-    </div>
+    const {isLoading} = this.props.families;
 
-  );
-};
+    return (
+      <div className='page page-model '>
+        <Header pathname={pathname} />
+
+        {
+          (!isEmpty(isLoading)) ? <Loading />
+          : this.renderModelView(component)
+        }
+
+        {
+          this.handleFamilyRedirect()
+        }
+
+        {
+          this.renderNotes()
+        }
+
+      </div>
+
+    );
+  }
+}
+
 
 Model.propTypes = {
-  params: PropTypes.object
+  match: PropTypes.object,
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  }),
+  families: PropTypes.shape({
+    isLoading: PropTypes.string,
+    activeFamilyModel: PropTypes.object
+  }),
+  models: PropTypes.shape({
+    isLoading: PropTypes.bool
+  }),
+  notes: PropTypes.shape({
+    isLoadingNotes: PropTypes.bool,
+    getNote: PropTypes.func,
+    redirect: PropTypes.bool
+  }),
 };
 
 export default Model;

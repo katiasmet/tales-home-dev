@@ -1,15 +1,19 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
+import {Link} from 'react-router-dom';
 
 import {Navigation} from './';
 
-const Header = () => {
+const Header = ({pathname}) => {
   return (
-    <header>
-      <h1><Link to='/'>Tales@Home</Link></h1>
-      <Navigation />
+    <header className='main-header'>
+        <Link to='/'><div className='logo'></div></Link>
+        <Navigation pathname={pathname} />
     </header>
   );
+};
+
+Header.propTypes = {
+  pathname: PropTypes.string
 };
 
 export default Header;

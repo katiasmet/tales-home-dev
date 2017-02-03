@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import {Header} from '../components/';
 import {FamilyAdd} from '../components/mentor/family';
 
-const NewFamily = () => {
+const NewFamily = ({location}) => {
+
+  const {pathname} = location;
+
   return (
     <div className='page page-new-family'>
-      <Header />
+      <Header pathname={pathname} />
 
       <main>
         <FamilyAdd />
@@ -14,6 +17,12 @@ const NewFamily = () => {
     </div>
 
   );
+};
+
+NewFamily.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 };
 
 export default NewFamily;
