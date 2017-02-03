@@ -6,7 +6,7 @@ import {Navigation} from './';
 const Header = ({pathname}) => {
   return (
     <header className='familie-overview-header'>
-        <Link to='/'><h1><span>Tales@Home</span></h1></Link>
+        <Link to='/'><div className='logo'></div></Link>
         <Navigation pathname={pathname} />
     </header>
   );

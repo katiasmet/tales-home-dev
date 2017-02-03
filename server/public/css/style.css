@@ -86,14 +86,7 @@ h1 {
   font-size: 32px;
   font-size: 2rem;
   font-weight: bold;
-  height: 30px;
-  width: 69px;
-  padding: 40px;
-  padding: 2.5rem;
-  margin-left: 40px;
-  margin-left: 2.5rem;
-  background-image: url(/assets/logo_talesathome.png);
-  background-repeat: no-repeat;
+  color: #6431b9;
 }
 
 h1 span {
@@ -181,6 +174,19 @@ header,
   background-color: #6d34c5;
 }
 
+.logo {
+  height: 30px;
+  width: 69px;
+  padding: 40px;
+  padding: 40px;
+  padding: 2.5rem;
+  margin-left: 40px;
+  margin-left: 40px;
+  margin-left: 2.5rem;
+  background-image: url(/assets/logo_talesathome.png);
+  background-repeat: no-repeat;
+}
+
 nav,
 .form-actions {
   display: -webkit-box;
@@ -240,6 +246,26 @@ nav {
   border-radius: 0 10px 10px;
 }
 
+.families-search input::-webkit-input-placeholder {
+  color: white;
+  opacity: .5;
+}
+
+.families-search input::-moz-placeholder {
+  color: white;
+  opacity: .5;
+}
+
+.families-search input:-ms-input-placeholder {
+  color: white;
+  opacity: .5;
+}
+
+.families-search input::placeholder {
+  color: white;
+  opacity: .5;
+}
+
 /*
 FORMS
 */
@@ -284,8 +310,7 @@ MENTOR FAMILIES
 }
 
 header {
-  height: 160px;
-  height: 10rem;
+  /*height: 10rem;*/
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
@@ -298,6 +323,17 @@ header {
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100%;
+  position: relative;
+}
+
+.families h1 {
+  margin-top: 128px;
+  margin-top: 8rem;
+  text-transform: uppercase;
+}
+
+.families header {
+  width: 90%;
 }
 
 .families-browse {
@@ -354,27 +390,35 @@ header {
   height: 4rem;
 }
 
+.families-browse .disabled::after {
+
+  /*VARIABELE INVULLEN*/
+  content: 'B';
+  opacity: .08;
+  font-size: 40px;
+  font-size: 2.5rem;
+  position: relative;
+  margin-left: -16px;
+  margin-left: -1rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
 .families-browse .disabled {
   width: 32px;
   width: 2rem;
   height: 32px;
   height: 2rem;
-  opacity: .5;
   font-size: 19.2px;
   font-size: 1.2rem;
   background: none;
   margin: 8px;
   margin: .5rem;
+  margin-left: 16px;
+  margin-left: 1rem;
   cursor: auto;
-  color: #6d34c5
-}
-
-.families-browse .disabled:hover{
-  background-color: none;
-  width: 32px;
-  width: 2rem;
-  height: 32px;
-  height: 2rem;
+  color: #6d34c5;
+  font-weight: bold;
 }
 
 .families-browse .active {
@@ -395,8 +439,6 @@ header {
   -webkit-box-flex: 6;
       -ms-flex: 6;
           flex: 6;
-  padding-top: 80px;
-  padding-top: 5rem;
 }
 
 .family-item {
@@ -410,8 +452,8 @@ header {
 }
 
 .action {
-  margin: 16px;
-  margin: 1rem;
+  margin: 8px;
+  margin: .5rem;
   background: #6d34c5;
   padding: 8px;
   padding: .5rem;
@@ -442,6 +484,12 @@ header {
   margin-left: 4rem;
 }
 
+.family-info-members {
+  width: 90%;
+  font-size: 20.8px;
+  font-size: 1.3rem;
+}
+
 .family-info-members .family-info-member {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -449,8 +497,8 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 32px;
-  margin-bottom: 2rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .family-info-members ul .languages {
@@ -477,12 +525,15 @@ header {
 }
 
 .family-info-result {
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-size: 20.8px;
+  font-size: 1.3rem;
 }
 
 .family-info-result .action {
@@ -603,14 +654,7 @@ STARTSESSION POP-UP
   align-items: center;
 }*/
 
-.popup-overlay {
-  position: absolute;
-  width: 100%;
-}
-
 .pop-up {
-  margin: auto;
-  margin-top: 10%;
   text-align: center;
   background-color: white;
   padding: 32px;
@@ -619,6 +663,17 @@ STARTSESSION POP-UP
   max-width: 640px;
   max-width: 40rem;
   border-radius: 10px;
+
+  position: absolute;
+  z-index: 10;
+  top: 80px;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  height: 400px;
+  height: 25rem;
 }
 
 .pop-up .btn {
@@ -638,12 +693,11 @@ STARTSESSION POP-UP
   color: #6d34c5;
   font-size: 32px;
   font-size: 2rem;
-  margin-bottom: 64px;
-  margin-bottom: 4rem;
   line-height: 64px;
   line-height: 4rem;
   text-transform: uppercase;
-  margin: auto;
+  margin: auto auto 64px;
+  margin: auto auto 4rem;
 }
 
 .pop-up .session-code {

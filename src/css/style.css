@@ -38,12 +38,7 @@ a {
 h1 {
   font-size: 2rem;
   font-weight: bold;
-  height: 30px;
-  width: 69px;
-  padding: 2.5rem;
-  margin-left: 2.5rem;
-  background-image: url(../assets/logo_talesathome.png);
-  background-repeat: no-repeat;
+  color: $darkpurple;
 
   span {
     display: none;
@@ -111,6 +106,17 @@ header,
   background-color: $purple;
 }
 
+.logo {
+  height: 30px;
+  width: 69px;
+  padding: 40px;
+  padding: 2.5rem;
+  margin-left: 40px;
+  margin-left: 2.5rem;
+  background-image: url(/assets/logo_talesathome.png);
+  background-repeat: no-repeat;
+}
+
 nav,
 .form-actions {
   display: flex;
@@ -151,6 +157,11 @@ nav {
     background-color: $darkpurple;
     border: none;
     border-radius: 0 10px 10px;
+  }
+
+  input::placeholder {
+    color: white;
+    opacity: .5;
   }
 }
 
@@ -193,7 +204,7 @@ MENTOR FAMILIES
 }
 
 header {
-  height: 10rem;
+  /*height: 10rem;*/
   /* ook header geen max hoogte geven in vh!!! > tablet ?? */
 }
 
@@ -204,6 +215,16 @@ header {
 .families {
   align-items: flex-start;
   width: 100%;
+  position: relative;
+
+  h1 {
+    margin-top: 8rem;
+    text-transform: uppercase;
+  }
+
+  header {
+    width: 90%;
+  }
 }
 
 .families-browse {
@@ -239,22 +260,28 @@ header {
 
   }
 
+  .disabled::after {
+    /*VARIABELE INVULLEN*/
+    content: 'B';
+    opacity: .08;
+    font-size: 2.5rem;
+    position: relative;
+    margin-left: -1rem;
+    margin-bottom: 1rem;
+  }
+
   .disabled {
     width: 2rem;
     height: 2rem;
-    opacity: .5;
     font-size: 1.2rem;
     background: none;
 
     margin: .5rem;
+    margin-left: 1rem;
     cursor: auto;
     color: $purple;
+    font-weight: bold;
 
-    &:hover {
-      background-color: none;
-      width: 2rem;
-      height: 2rem;
-    }
   }
 
   .active {
@@ -267,7 +294,6 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   flex: 6;
-  padding-top: 5rem;
 }
 
 .family-item {
@@ -279,7 +305,7 @@ header {
 }
 
 .action {
-  margin: 1rem;
+  margin: .5rem;
   background: $purple;
   padding: .5rem;
   border-radius: 50%;
@@ -299,11 +325,13 @@ header {
 }
 
 .family-info-members {
+  width: 90%;
+  font-size: 1.3rem;
 
   .family-info-member {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   ul .languages {
@@ -322,8 +350,10 @@ header {
 }
 
 .family-info-result {
+  width: 90%;
   display: flex;
   justify-content: space-between;
+  font-size: 1.3rem;
 
   .action {
     width: 2.8rem;
@@ -426,20 +456,22 @@ STARTSESSION POP-UP
   align-items: center;
 }*/
 
-.popup-overlay {
-  position: absolute;
-  width: 100%;
-}
-
 .pop-up {
-  margin: auto;
-  margin-top: 10%;
   text-align: center;
   background-color: white;
   padding: 2rem;
   width: auto;
   max-width: 40rem;
   border-radius: 10px;
+
+  position: absolute;
+  z-index: 10;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  height: 25rem;
 
   .btn {
     position: absolute;
@@ -453,10 +485,9 @@ STARTSESSION POP-UP
   h2 {
     color: $purple;
     font-size: 2rem;
-    margin-bottom: 4rem;
     line-height: 4rem;
     text-transform: uppercase;
-    margin: auto;
+    margin: auto auto 4rem;
   }
 
   .session-code {

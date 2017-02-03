@@ -28,12 +28,12 @@ class Families extends Component {
 
           <section className='families'>
 
-              {
-                !isEmpty(sessionId) && <FamilyStartSession />
-              }
+            {
+              !isEmpty(sessionId) && <FamilyStartSession />
+            }
+
             <FamiliesBrowse />
             <FamiliesOverview />
-
           </section>
         </main>
       </div>

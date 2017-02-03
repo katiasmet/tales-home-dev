@@ -38,6 +38,8 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
   return (
     <section className='families families-overview'>
 
+      <h1>Families</h1>
+
       {
         (isLoading === `families`) ? (<Loading />)
         : handleFamilies(allFamilies, activeFamilies, searchInput)

@@ -10,7 +10,7 @@ const StartSession = inject(`families`, `users`)(observer(({families, users}) =>
   const {isSessionStarted} = users;
 
   return (
-    <section className='startsession pop-up-overlay'>
+    <section className='startsession pop-up-overlay pop-up'>
       <button className='btn'><i className='fa fa-close'></i></button>
 
       <header>
@@ -26,8 +26,6 @@ const StartSession = inject(`families`, `users`)(observer(({families, users}) =>
         (!isSessionStarted) ? <Loading />
         : <Redirect to='/models' />
       }
-
-
     </section>
 
   );
