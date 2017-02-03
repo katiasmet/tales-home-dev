@@ -230,15 +230,14 @@ class Families  {
     //get familymodelid else insert
     selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
-        if (familymodel) {
-          console.log(familymodel);
+        if (familymodel.length !== 0) {
           this.activeFamilyModel._id = familymodel.familyModel._id;
           this.isLoading = ``;
           notes.getNote();
         } else {
+
           insert({familyId: this.activeFamily._id, modelId: id})
             .then(familymodel => {
-              console.log(familymodel);
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
               notes.getNote();

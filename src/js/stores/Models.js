@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, kebabCase} from 'lodash';
+import {filter, kebabCase, uniq} from 'lodash';
 
 import {select} from '../api/models';
 import {selectByFamily} from '../api/familymodels';
@@ -13,6 +13,10 @@ class Models  {
   @observable passedModels = [];
   @observable modelPreview = {};
   @observable showGrid = false;
+
+  /* distance */
+  @observable familyLanguages = [];
+  @observable currentLanguage = 0;
 
   @action getModels = () => {
     this.isLoading = true;
@@ -89,6 +93,23 @@ class Models  {
 
   @action handleShowGrid = () => {
     this.showGrid = !this.showGrid;
+  }
+
+  /* ModelDistance */
+  @action getFamiliesLanguages = () => {
+    console.log(`get families languages`);
+
+    const familyLanguages = [];
+    families.activeFamily.familymembers.forEach(familymember => {
+      familymember.languages.forEach(language => familyLanguages.push(language));
+    });
+
+    this.familyLanguages = uniq(familyLanguages);
+
+  }
+
+  @action handleNextLanguage = () => {
+    this.currentLanguage++;
   }
 
 }

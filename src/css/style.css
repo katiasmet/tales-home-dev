@@ -1,13 +1,16 @@
 @import 'reset';
+@import 'mixins';
 
 $active: #773eff;
 
 $purple: #6d34c5;
 $darkpurple: #6431b9;
+$lightpurple: ghostwhite;
 
 $grey: #515151;
 
 $lightblue: #dbe8fe;
+$blue: #26e2e9;
 $accentlightblue: #cddefe;
 
 html {
@@ -17,7 +20,7 @@ html {
 body {
   font-family: Rubik, Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  min-height: 100%;
+  height: 100%;
 }
 
 .fa {
@@ -47,7 +50,7 @@ button {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: $darkpurple;
 
@@ -56,7 +59,8 @@ h1 {
   }
 }
 
-h2 {
+h2,
+.model-note label {
   font-size: 1.8rem;
   font-weight: bold;
   color: $purple;
@@ -92,7 +96,9 @@ main {
   height: 89.9vh;
 }
 
-.page-families main {
+.page-families main,
+.container,
+.main {
   height: 100%;
 }
 
@@ -190,7 +196,8 @@ label {
   margin-top: 2rem;
 }
 
-input {
+input,
+textarea {
   display: block;
   width: 100%;
   padding: 1rem;
@@ -204,6 +211,12 @@ input {
   &:focus {
     outline: none;
   }
+}
+
+textarea {
+  resize: none;
+  background: $lightpurple;
+  border: none;
 }
 
 /*
@@ -493,8 +506,9 @@ STARTSESSION POP-UP
 MODELSOVERVIEW
 */
 
-.page-models {
-  background-color: #26e2e9;
+.page-models,
+.page-model {
+  background-color: $blue;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -504,6 +518,10 @@ MODELSOVERVIEW
   background-repeat: no-repeat;
   background-size: contain, cover;
   background-position: 0% 170%, top;
+
+  .main-header {
+    background: none;
+  }
 
   h2 {
     color: white;
@@ -567,3 +585,32 @@ MODELSOVERVIEW
     color: $grey;
   }
 }
+
+.page-model {
+  position: relative;
+}
+
+.model {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+}
+
+.model-notes {
+  background: white;
+  border-radius: 1rem;
+  height: calc(100vh - 3rem);
+  padding: 2rem;
+  width: 40rem;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+}
+
+@import 'model-distance';

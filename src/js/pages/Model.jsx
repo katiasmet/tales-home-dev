@@ -51,7 +51,6 @@ class Model extends Component {
     }
   }
 
-
   render() {
     const {pathname} = this.props.location;
     const {isLoading} = this.props.families;
@@ -60,18 +59,22 @@ class Model extends Component {
       <div className='page page-model '>
         <Header pathname={pathname} />
 
-        {
-          (!isEmpty(isLoading)) ? <Loading />
-          : this.renderModelView()
-        }
+        <section className='model'>
 
-        {
-          this.handleFamilyRedirect()
-        }
+          {
+            (!isEmpty(isLoading)) ? <Loading />
+            : this.renderModelView()
+          }
 
-        {
-          this.renderNotes()
-        }
+          {
+            this.handleFamilyRedirect()
+          }
+
+          {
+            this.renderNotes()
+          }
+
+        </section>
 
       </div>
 

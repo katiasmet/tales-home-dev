@@ -56,6 +56,118 @@ html {
 *, *::before, *::after { /* stylelint-disable-line */
   box-sizing: inherit;
 }
+
+.model-distance {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+
+  -webkit-box-pack: center;
+
+      -ms-flex-pack: center;
+
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: white;
+
+  width: 100%;
+  height: 100%;
+  padding-bottom: 96px;
+  padding-bottom: 6rem;
+}
+
+.timeline,
+.timeline-scene {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 90vw;
+}
+
+.timeline-scene {
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+}
+
+.flag {
+  background: white;
+  color: #00afa2;
+}
+
+.model-distance .character {
+  background: red;
+  width: 160px;
+  width: 10rem;
+  height: 160px;
+  height: 10rem;
+}
+
+.timeline {
+  position: relative;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1.6px;
+  height: .1rem;
+  border-bottom: 1.6px dashed white;
+  border-bottom: .1rem dashed white;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 0;
+}
+
+.timeline-language,
+.timeline-character {
+  position: relative;
+  z-index: 1;
+  border-radius: 1rem;
+}
+
+.timeline-language {
+  padding: 16px;
+  padding: 1rem;
+  background: #00afa2;
+  border: 4.8px solid #21cbc5;
+  border: .3rem solid #21cbc5;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.timeline-character {
+  width: 32px;
+  width: 2rem;
+  height: 32px;
+  height: 2rem;
+  border: 4.8px solid white;
+  border: .3rem solid white;
+  background: #26e2e9;
+
+  margin: 16px;
+  margin: 1rem;
+}
 html {
   height: 100%;
 }
@@ -64,7 +176,7 @@ body {
   font-family: Rubik, Helvetica, Arial, sans-serif;
   font-size: 25.6px;
   font-size: 1.6rem;
-  min-height: 100%;
+  height: 100%;
 }
 
 .fa {
@@ -96,8 +208,8 @@ button {
 }
 
 h1 {
-  font-size: 32px;
-  font-size: 2rem;
+  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #6431b9;
 }
@@ -106,7 +218,8 @@ h1 span {
   display: none;
 }
 
-h2 {
+h2,
+.model-note label {
   font-size: 28.8px;
   font-size: 1.8rem;
   font-weight: bold;
@@ -155,7 +268,9 @@ main {
   height: 89.9vh;
 }
 
-.page-families main {
+.page-families main,
+.container,
+.main {
   height: 100%;
 }
 
@@ -296,7 +411,8 @@ label {
   margin-top: 2rem;
 }
 
-input {
+input,
+textarea {
   display: block;
   width: 100%;
   padding: 16px;
@@ -310,8 +426,14 @@ input {
   border: 1px solid grey
 }
 
-input:focus{
+input:focus, textarea:focus{
   outline: none;
+}
+
+textarea {
+  resize: none;
+  background: ghostwhite;
+  border: none;
 }
 
 /*
@@ -705,7 +827,8 @@ STARTSESSION POP-UP
 MODELSOVERVIEW
 */
 
-.page-models {
+.page-models,
+.page-model {
   background-color: #26e2e9;
   height: 100%;
   width: 100%;
@@ -718,7 +841,11 @@ MODELSOVERVIEW
   background-position: 0% 170%, top;
 }
 
-.page-models h2 {
+.page-models .main-header, .page-model .main-header {
+  background: none;
+}
+
+.page-models h2, .page-model h2 {
   color: white;
   font-size: 48px;
   font-size: 3rem;
@@ -728,7 +855,7 @@ MODELSOVERVIEW
   text-transform: uppercase;
 }
 
-.page-models p {
+.page-models p, .page-model p {
   color: white;
   text-align: center;
 }
@@ -784,6 +911,41 @@ MODELSOVERVIEW
 
 .models-overview-grid-item p {
   color: #515151;
+}
+
+.page-model {
+  position: relative;
+}
+
+.model {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
+  height: 100%;
+}
+
+.model-notes {
+  background: white;
+  border-radius: 1rem;
+  height: calc(100vh - 3rem);
+  padding: 32px;
+  padding: 2rem;
+  width: 640px;
+  width: 40rem;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
 }
 
 /*# sourceMappingURL=style.css.map*/
