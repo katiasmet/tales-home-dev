@@ -15,6 +15,8 @@ class Models  {
   @observable showGrid = false;
 
   /* distance */
+  @observable isLoadingDistance = true;
+  @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
 
@@ -97,7 +99,8 @@ class Models  {
 
   /* ModelDistance */
   @action getFamiliesLanguages = () => {
-    console.log(`get families languages`);
+
+    this.isLoadingDistance = true;
 
     const familyLanguages = [];
     families.activeFamily.familymembers.forEach(familymember => {
@@ -106,10 +109,37 @@ class Models  {
 
     this.familyLanguages = uniq(familyLanguages);
 
+    this.isLoadingDistance = false;
+
   }
 
   @action handleNextLanguage = () => {
     this.currentLanguage++;
+  }
+
+  @action getDraggableCharacters = () => {
+
+    this.isLoadingDistance = true;
+
+    //push objects in array, memberid, charactername, x, y
+    families.activeFamily.familymembers.forEach(familymember => {
+      const character = {};
+      character._id = familymember._id;
+      character.name = familymember.character;
+      character.left = 0;
+      this.draggableCharacters.push(character);
+    });
+
+    this.isLoadingDistance = false;
+
+  }
+
+  @action handleMoveCharacter = (id, left) => {
+    console.log(`handle move character`);
+
+    this.draggableCharacters.forEach(character => {
+      if (character._id === id) character.left = left;
+    });
   }
 
 }

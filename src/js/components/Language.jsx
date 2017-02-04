@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const Language = ({name, code, handleSelectLanguage}) => {
-
-  //console.log(code);
+const Language = ({name, handleSelectLanguage}) => {
 
   return (
     <li className='language' onClick={handleSelectLanguage}>

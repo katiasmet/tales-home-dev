@@ -6,12 +6,11 @@ $blue: #26e2e9;
   display: flex;
   flex-direction: column;
 
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
   color: white;
 
   width: 100%;
-  height: 100%;
   padding-bottom: 6rem;
 }
 
@@ -23,6 +22,11 @@ $blue: #26e2e9;
 
 .timeline-scene {
   margin-bottom: 2.5rem;
+  border: 1px solid blue;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  position: relative;
 }
 
 .flag {
@@ -32,8 +36,20 @@ $blue: #26e2e9;
 
 .model-distance .character {
   background: red;
-  width: 10rem;
-  height: 10rem;
+  width: 5rem;
+  height: 5rem;
+  cursor: move;
+}
+
+.drag-preview-box {
+  background: green;
+  position: 'fixed';
+  cursor: 'none';
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: '100%';
+  height: '100%';
 }
 
 .timeline {
