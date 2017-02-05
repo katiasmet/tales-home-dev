@@ -4,19 +4,19 @@ import {Link} from 'react-router-dom';
 const UserProfiles = () => {
   return (
     <ul className='user-profiles'>
-      <li className='user-profile'>
-        <Link to='/register'>
-          new mentor
+      <li>
+        <Link to='/join' className='user-profile'>
+          Family
         </Link>
       </li>
-      <li className='user-profile'>
-        <Link to='/login'>
-          mentor
+      <li>
+        <Link to='/login' className='user-profile'>
+          Mentor
         </Link>
       </li>
-      <li className='user-profile'>
-        <Link to='/join'>
-          family
+      <li>
+        <Link to='/register' className='user-profile'>
+          New mentor
         </Link>
       </li>
     </ul>

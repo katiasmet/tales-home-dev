@@ -1,17 +1,35 @@
 @import 'reset';
-@import 'mixins';
+@import 'animations';
 
 $active: #773eff;
 
-$purple: #6d34c5;
-$darkpurple: #6431b9;
+$purple: #6e2bc8;
+$darkpurple: #5427aa;
 $lightpurple: ghostwhite;
+$midpurple: #dfd4f9; /* used on form focus */
 
 $grey: #515151;
 
 $lightblue: #dbe8fe;
 $blue: #26e2e9;
 $accentlightblue: #cddefe;
+
+/* MIXINS */
+@define-mixin before-after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@define-mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GENERAL */
 
 html {
   height: 100%;
@@ -23,36 +41,47 @@ body {
   height: 100%;
 }
 
-.fa {
-  color: white;
-}
-
 a {
   text-decoration: none;
   outline: none;
-}
+  transition: all .3s ease-in;
+  font-weight: 500;
 
-.btn {
-  color: white;
-  border: none;
-  background: $darkpurple;
-  border-radius: 100px;
+  &:hover {
+    opacity: .5;
+  }
 }
 
 button {
-  background-color: $darkpurple;
   border: none;
-  color: white;
-  border-radius: 100px;
-  height: 5rem;
-  width: 5rem;
   outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.btn {
+  @add-mixin flex-center;
+  color: white;
+  border: none;
+  background: $darkpurple;
+  border-radius: 5rem;
+  font-size: 3rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  text-align: center;
+
+  &:hover {
+    animation: hover .3s ease-in;
+  }
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 700;
   color: $darkpurple;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 3rem;
 
   span {
     display: none;
@@ -62,13 +91,14 @@ h1 {
 h2,
 .model-note label {
   font-size: 1.8rem;
-  font-weight: bold;
-  color: $purple;
+  font-weight: 500;
+  color: $darkpurple;
 }
 
 h3 {
   padding: 3rem 0;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 1.6rem;
 }
 
 .error {
@@ -113,8 +143,8 @@ header,
   align-items: center;
 }
 
-.main-header {
-  background-color: $purple;
+header {
+  padding: 1.5rem 2.5rem;
 }
 
 .logo {
@@ -133,28 +163,39 @@ nav,
   display: flex;
   justify-content: center;
   color: white;
-  margin-top: 2rem;
 
   ul {
     display: flex;
     justify-content: space-between;
-    padding-left: 1rem;
   }
 
   li {
     margin-left: 2rem;
-    color: white;
   }
 
-  li a:visited {
+  /*li a:visited {
     color: white;
-  }
+  }*/
 }
 
-nav {
-  padding-right: 3rem;
-  padding-top: 3rem;
-  padding-bottom: 2rem;
+.nav-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 2rem;
+  color: $purple;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  cursor: pointer;
+
+  span {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    animation: hover .3s ease-in;
+    opacity: 1;
+  }
 }
 
 .families-search {
@@ -181,35 +222,38 @@ FORMS
 */
 
 form {
-  width: 40rem;
-  margin: 2rem;
-}
-
-form h2 {
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 2rem;
+  @add-mixin flex-center;
+  flex-direction: column;
 }
 
 label {
   display: block;
   margin-top: 2rem;
+  font-weight: 500;
+  color: $purple;
+}
+
+.form-input {
+  width: 35rem;
+  display: block;
 }
 
 input,
 textarea {
   display: block;
-  width: 100%;
   padding: 1rem;
 
   margin: 1rem 0;
   background: none;
-
+  border: none;
+  width: 100%;
   border-radius: 1rem;
-  border: 1px solid grey;
+  transition: all .3s ease-in;
+  color: $darkpurple;
 
   &:focus {
     outline: none;
+    background: $midpurple;
   }
 }
 
@@ -217,6 +261,153 @@ textarea {
   resize: none;
   background: $lightpurple;
   border: none;
+}
+
+.form-add-family,
+.form-edit-user,
+.page-login-forms {
+  background-color: white;
+  border-radius: 2rem;
+  color: $purple;
+  padding: 3rem 8rem 4rem;
+
+  input {
+    background: ghostwhite;
+
+    &:focus {
+      background: $midpurple;
+    }
+  }
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px ghostwhite inset;
+}
+
+/*
+  LOGIN
+*/
+.page-home,
+.page-login {
+  background: $purple;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    @add-mixin before-after;
+    width: 55vw;
+    height: 150vh;
+    background: $darkpurple;
+    opacity: .3;
+
+    top: -10rem;
+    left: auto;
+    right: -10rem;
+    transform: rotate(20deg);
+  }
+
+  &::after {
+    @add-mixin before-after;
+    top: auto;
+    bottom: 0;
+    left: -50rem;
+    z-index: 2;
+  }
+
+  .main-header,
+  main {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.page-login.join::after {
+  bottom: -5.5rem;
+  width: 50rem;
+  height: 45rem;
+  background: url(../assets/img/login_family.png) no-repeat center center;
+  background-size: contain;
+
+  animation: join .3s ease-in forwards;
+}
+
+.page-login.register::after {
+  bottom: -13rem;
+  width: 30rem;
+  height: 50rem;
+  background: url(../assets/img/login_newmentor.png) no-repeat center center;
+  background-size: contain;
+
+  animation: register .3s ease-in forwards;
+}
+
+.page-login.login::after {
+  bottom: -15rem;
+  width: 30rem;
+  height: 52rem;
+  background: url(../assets/img/login_mentor.png) no-repeat center center;
+  background-size: contain;
+
+  animation: login .3s ease-in forwards;
+}
+
+.page-login-forms {
+  position: relative;
+  margin-top: -5rem;
+
+  .btn {
+    position: absolute;
+    top: auto;
+    bottom: -2.2rem;
+
+    &:hover {
+      animation: hover-start .3s ease-in;
+    }
+  }
+
+  &::after {
+    @add-mixin before-after;
+    width: 100%;
+    height: 100%;
+    background: $darkpurple;
+    border-radius: 2rem;
+
+    left: 1rem;
+    top: 1rem;
+    z-index: -1;
+  }
+}
+
+.user-profiles {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.user-profile {
+  background-color: $purple;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  font-weight: 500;
+  display: block;
+
+  color: white;
+  cursor: pointer;
+}
+
+.page-login-img {
+  position: absolute;
+  margin-top: -15rem;
+}
+
+.info-login {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  color: $grey;
+  line-height: 2rem;
 }
 
 /*
@@ -295,7 +486,7 @@ MENTOR FAMILIES
     margin-left: 1rem;
     cursor: auto;
     color: $purple;
-    font-weight: bold;
+    font-weight: 700;
 
   }
 
@@ -378,82 +569,6 @@ MENTOR FAMILIES
 }
 
 /*
-FORMS
-*/
-
-.page-new-family {
-  height: auto;
-  background: $lightblue;
-}
-
-.page-edit-profile,
-.page-login {
-  background-color: $purple;
-  height: auto;
-
-}
-
-.form-add-family,
-.form-edit-user,
-.page-login-forms {
-  background-color: white;
-  border-radius: 10px;
-  color: $purple;
-  padding: 3rem 3rem 0;
-
-  input {
-    background-color: ghostwhite;
-    border: none;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-}
-
-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px ghostwhite inset;
-}
-
-/*login*/
-
-.user-profiles {
-  display: flex;
-  width: auto;
-  justify-content: center;
-}
-
-.user-profile {
-  background-color: $purple;
-  padding: 2rem;
-  border-radius: 10px;
-  margin: 1rem;
-  border: none;
-
-  a {
-    color: white;
-  }
-}
-
-.page-login-img {
-  position: absolute;
-  margin-top: -15rem;
-}
-
-.info-login {
-  font-size: 1.3rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  color: $grey;
-
-  p {
-    margin-top: 1rem;
-  }
-
-  a {
-    color: $purple;
-  }
-}
-
-/*
 STARTSESSION POP-UP
 */
 
@@ -476,8 +591,6 @@ STARTSESSION POP-UP
 
   .btn {
     position: absolute;
-    height: 4rem;
-    width: 4rem;
     margin-top: -4rem;
     margin-left: 18rem;
   }

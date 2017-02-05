@@ -5,12 +5,14 @@ import {isEmpty} from 'lodash';
 
 const NavigationItem = ({link, icon, content, pathname}) => {
   return (
-    <li className={`nav-item ${setActive(link, pathname)}`}>
-      <Link to={link}>
+    <li>
+      <Link to={link} className={`nav-item ${setActive(link, pathname)}`}>
         {
           !isEmpty(icon) && (<i className={`fa ${icon}`}></i>)
         }
-        {content}
+        {
+          content && <span>{content}</span>
+        }
       </Link>
     </li>
   );

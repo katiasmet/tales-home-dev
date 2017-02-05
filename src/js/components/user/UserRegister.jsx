@@ -20,15 +20,13 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
         )
       }
 
+      <h1>Register new mentor</h1>
+
       <form
         action=''
         method='post'
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
-
-        <fieldset>
-          <h2> Register </h2>
-        </fieldset>
 
         <fieldset>
 
@@ -72,9 +70,9 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
-          <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
-
         </fieldset>
+
+        <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-play'></i></button>
 
       </form>
     </section>

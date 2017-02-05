@@ -51,6 +51,10 @@ table {
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *, *::before, *::after { /* stylelint-disable-line */
