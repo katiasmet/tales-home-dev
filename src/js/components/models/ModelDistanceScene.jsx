@@ -7,14 +7,11 @@ import {itemTypes, snapToGrid} from '../../util/';
 
 const characterTarget = {
   drop(props, monitor, component) {
-
-    console.log(`drop`);
     const delta = monitor.getDifferenceFromInitialOffset();
     const item = monitor.getItem();
 
     let left = Math.round(item.left + delta.x);
     left = snapToGrid(left);
-    console.log(item);
     component.context.mobxStores.models.handleMoveCharacter(item._id, left);
   },
 };
@@ -28,9 +25,6 @@ class ModelDistanceScene extends Component {
   render() {
     const {connectDropTarget} = this.props;
     const {familyLanguages, currentLanguage, draggableCharacters} = this.props.models;
-
-    console.log(`render distance scene`);
-    console.log(draggableCharacters);
 
     return connectDropTarget(
       <section className='timeline-scene'>
@@ -49,11 +43,6 @@ class ModelDistanceScene extends Component {
     );
   }
 }
-
-/*
-
-*/
-
 
 ModelDistanceScene.propTypes = {
   models: PropTypes.shape({

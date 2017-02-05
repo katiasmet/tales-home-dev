@@ -9,27 +9,43 @@ import {DragLayer} from 'react-dnd';
 }))
 class ModelDistanceCharacterPreview extends Component {
 
+  getWrapperStyles() {
+    return {
+      position: `fixed`,
+      pointerEvents: `none`,
+      zIndex: 100,
+      left: 0,
+      top: 0,
+      width: `100%`,
+      height: `100%`,
+    };
+  }
+
   getStyles() {
-    const {currentOffset} = this.props;
+    const {currentOffset, initialOffset} = this.props;
+
+    if (!initialOffset || !currentOffset) return {display: `none`};
     const {x, y} = currentOffset;
-    console.log(currentOffset);
+
     const transform = `translate(${x / 10}rem, ${y / 10}rem)`;
-    return {transform: transform};
+    return {
+      transform,
+      WebkitTransform: transform
+    };
 
   }
 
   render() {
 
-    const {item, isDragging, currentOffset, initialOffset} = this.props;
+    const {item, isDragging} = this.props;
+
     if (!isDragging) {
       return null;
     }
 
-    console.log(this.getStyles());
-
     return (
-      <div className='drag-preview-box'>
-        <div  className={`character ${item.name} drag-preview`}
+      <div className='drag-preview-wrapper' style={this.getWrapperStyles()}>
+        <div  className={`${item.name} drag-preview`}
               style={this.getStyles()}
         >
           {item.name}
@@ -37,14 +53,15 @@ class ModelDistanceCharacterPreview extends Component {
       </div>
 
     );
-
   }
 
 }
 
 ModelDistanceCharacterPreview.propTypes = {
   item: PropTypes.object,
-  isDragging: PropTypes.bool
+  isDragging: PropTypes.bool,
+  currentOffset: PropTypes.object,
+  initialOffset: PropTypes.object
 };
 
 export default ModelDistanceCharacterPreview;

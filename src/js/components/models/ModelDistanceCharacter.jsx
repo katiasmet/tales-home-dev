@@ -28,9 +28,16 @@ class ModelDistanceCharacter extends Component {
 
     const {name, left, connectDragSource, isDragging} = this.props;
     const transform = `translateX(${left / 10}rem)`;
+
     const style = {
-      transform: transform
+      transform,
+      WebkitTransform: transform,
+      opacity: isDragging ? 0 : 1,
+      height: isDragging ? 0 : ``,
     };
+
+    console.log(isDragging);
+    console.log(left);
 
     return connectDragSource(
       <div  className={isDragging ? `character ${name} dragging` : `character ${name}`}

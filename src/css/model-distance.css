@@ -6,7 +6,7 @@ $blue: #26e2e9;
   display: flex;
   flex-direction: column;
 
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   color: white;
 
@@ -14,8 +14,7 @@ $blue: #26e2e9;
   padding-bottom: 6rem;
 }
 
-.timeline,
-.timeline-scene {
+.timeline {
   @add-mixin flex-center;
   width: 90vw;
 }
@@ -23,8 +22,9 @@ $blue: #26e2e9;
 .timeline-scene {
   margin-bottom: 2.5rem;
   border: 1px solid blue;
-  justify-content: flex-start;
-  align-items: flex-end;
+  display: block;
+  width: 90vw;
+  min-height: 10rem;
 
   position: relative;
 }
@@ -34,23 +34,47 @@ $blue: #26e2e9;
   color: $darkblue;
 }
 
+.timeline-scene .character {
+  cursor: move;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid blue;
+}
+
+.drag-preview {
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid blue;
+}
+
+/*.drag-preview-box {
+  background: green;
+  position: fixed;
+  cursor: none;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .model-distance .character {
   background: red;
   width: 5rem;
   height: 5rem;
   cursor: move;
-}
 
-.drag-preview-box {
-  background: green;
-  position: 'fixed';
-  cursor: 'none';
-  z-index: 100;
+  position: absolute;
   left: 0;
   top: 0;
-  width: '100%';
-  height: '100%';
 }
+
+.model-distance .character .drag-preview {
+  display: inline-block;
+  transform: translate(50rem, -20rem);
+  background: purple;
+}*/
 
 .timeline {
   position: relative;

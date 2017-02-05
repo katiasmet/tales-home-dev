@@ -66,11 +66,11 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
 
-  -webkit-box-pack: end;
+  -webkit-box-pack: start;
 
-      -ms-flex-pack: end;
+      -ms-flex-pack: start;
 
-          justify-content: flex-end;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -81,8 +81,7 @@ html {
   padding-bottom: 6rem;
 }
 
-.timeline,
-.timeline-scene {
+.timeline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,12 +98,10 @@ html {
   margin-bottom: 40px;
   margin-bottom: 2.5rem;
   border: 1px solid blue;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  display: block;
+  width: 90vw;
+  min-height: 160px;
+  min-height: 10rem;
 
   position: relative;
 }
@@ -114,25 +111,51 @@ html {
   color: #00afa2;
 }
 
-.model-distance .character {
-  background: red;
+.timeline-scene .character {
+  cursor: move;
+  position: absolute;
   width: 80px;
   width: 5rem;
   height: 80px;
   height: 5rem;
-  cursor: move;
+  border: 1px solid blue;
 }
 
-.drag-preview-box {
+.drag-preview {
+  width: 80px;
+  width: 5rem;
+  height: 80px;
+  height: 5rem;
+  border: 1px solid blue;
+}
+
+/*.drag-preview-box {
   background: green;
-  position: 'fixed';
-  cursor: 'none';
+  position: fixed;
+  cursor: none;
   z-index: 100;
   left: 0;
   top: 0;
-  width: '100%';
-  height: '100%';
+  width: 100%;
+  height: 100%;
 }
+
+.model-distance .character {
+  background: red;
+  width: 5rem;
+  height: 5rem;
+  cursor: move;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.model-distance .character .drag-preview {
+  display: inline-block;
+  transform: translate(50rem, -20rem);
+  background: purple;
+}*/
 
 .timeline {
   position: relative;
