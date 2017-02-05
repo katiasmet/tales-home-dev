@@ -213,7 +213,12 @@ class Families  {
 
   }
 
-  @action handleStopSession = () => {
+  @action handleCloseSession = () => { //happens when you close the session
+    this.sessionId = ``;
+    this.socket.emit(`stopSession`, users.currentSocketId);
+  }
+
+  @action handleStopSession = () => { //happens when session is already started
 
     this.socket.emit(`stopSession`, users.currentSocketId);
     window.location.href = `/`;
