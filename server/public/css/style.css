@@ -397,7 +397,8 @@ button {
   cursor: pointer;
 }
 
-.btn {
+.btn,
+.nav-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -417,10 +418,14 @@ button {
   width: 5.5rem;
   height: 88px;
   height: 5.5rem;
-  text-align: center
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block
 }
 
-.btn:hover{
+.btn:hover, .nav-item:hover{
 
   -webkit-animation: hover .3s ease-in;
 
@@ -501,13 +506,72 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 89.9vh;
+}
+
+main > section {
+  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 .page-families main,
 .container,
 .main {
+  min-height: 100%;
+}
+
+.page-home,
+.page-login,
+.page-families {
+  background: #6e2bc8;
   height: 100%;
+  position: relative;
+}
+
+.page-home .main-header,
+  .page-home main,
+  .page-login .main-header,
+  .page-login main,
+  .page-families .main-header,
+  .page-families main {
+
+  position: relative;
+
+  z-index: 1;
+}
+
+.page-home::before, .page-login::before, .page-families::before{
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  display: block;
+
+  width: 55vw;
+
+  height: 150vh;
+
+  background: #5427aa;
+
+  opacity: .3;
+
+  top: -160px;
+
+  top: -10rem;
+
+  left: auto;
+
+  right: -160px;
+
+  right: -10rem;
+
+  -webkit-transform: rotate(20deg);
+
+          transform: rotate(20deg);
 }
 
 /*
@@ -553,6 +617,9 @@ nav,
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: white;
 
   /*li a:visited {
@@ -577,21 +644,60 @@ nav ul, .form-actions ul {
 
 nav li, .form-actions li {
 
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
+  display: flex;
+
+  -webkit-box-pack: center;
+
+  -ms-flex-pack: center;
+
+  justify-content: center;
+
+  -webkit-box-align: center;
+
+  -ms-flex-align: center;
+
+  align-items: center;
+
   margin-left: 32px;
 
   margin-left: 2rem;
+
+  color: white;
+}
+
+nav .user, .form-actions .user {
+
+  display: block;
+
+  color: white;
+
+  font-weight: 400;
+
+  text-transform: capitalize;
 }
 
 .nav-item {
   background: white;
-  padding: 16px;
-  padding: 1rem;
   border-radius: 2rem;
   color: #6e2bc8;
-  text-transform: uppercase;
-  font-weight: 700;
+  width: 48px;
+  width: 3rem;
+  height: 48px;
+  height: 3rem;
+  font-size: 25.6px;
+  font-size: 1.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-item i {
+
   display: block;
-  cursor: pointer;
 }
 
 .nav-item span {
@@ -608,54 +714,6 @@ nav li, .form-actions li {
           animation: hover .3s ease-in;
 
   opacity: 1;
-}
-
-.families-search {
-  background-color: #6e2bc8;
-  padding-left: 40px;
-  padding-left: 2.5rem;
-  padding-bottom: 32px;
-  padding-bottom: 2rem;
-}
-
-.families-search span,
-  .families-search input {
-
-  width: 98%;
-
-  background-color: #5427aa;
-
-  border: none;
-
-  border-radius: 0 10px 10px;
-}
-
-.families-search input::-webkit-input-placeholder {
-
-  color: white;
-
-  opacity: .5;
-}
-
-.families-search input::-moz-placeholder {
-
-  color: white;
-
-  opacity: .5;
-}
-
-.families-search input:-ms-input-placeholder {
-
-  color: white;
-
-  opacity: .5;
-}
-
-.families-search input::placeholder {
-
-  color: white;
-
-  opacity: .5;
 }
 
 /*
@@ -751,74 +809,29 @@ input:-webkit-autofill {
 */
 .page-home,
 .page-login {
-  background: #6e2bc8;
-  height: 100%;
-  position: relative;
   overflow: hidden;
 }
-.page-home .main-header,
-  .page-home main,
-  .page-login .main-header,
-  .page-login main {
+.page-home .nav-item, .page-login .nav-item {
 
-  position: relative;
+  width: auto;
 
-  z-index: 1;
+  height: auto;
+
+  font-size: 25.6px;
+
+  font-size: 1.6rem;
 }
-.page-home::before, .page-login::before{
 
+.page-login::after {
   content: '';
-
   position: absolute;
-
   top: 0;
-
   left: 0;
-
   display: block;
-
-  width: 55vw;
-
-  height: 150vh;
-
-  background: #5427aa;
-
-  opacity: .3;
-
-  top: -160px;
-
-  top: -10rem;
-
-  left: auto;
-
-  right: -160px;
-
-  right: -10rem;
-
-  -webkit-transform: rotate(20deg);
-
-          transform: rotate(20deg);
-}
-.page-home::after, .page-login::after{
-
-  content: '';
-
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-
-  display: block;
-
   top: auto;
-
   bottom: 0;
-
   left: -800px;
-
   left: -50rem;
-
   z-index: 2;
 }
 
@@ -967,9 +980,32 @@ input:-webkit-autofill {
 /*
 MENTOR FAMILIES
 */
+.page-families::before {
+  content: none;
+}
 
-.page-families {
-  background-color: #dbe8fe;
+.page-families main {
+  background: #dbe8fe;
+}
+
+.families-search {
+  background-color: #6e2bc8;
+  padding-bottom: 40px;
+  padding-bottom: 2.5rem;
+  display: block;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+  color: white;
+}
+
+.families-search span {
+
+  width: 100%;
+}
+
+.families-search input {
+
+  background-color: rgba(60, 35, 40, .3); /* dark purple */
 }
 
 .families {
@@ -978,20 +1014,8 @@ MENTOR FAMILIES
           align-items: flex-start;
   width: 100%;
   position: relative;
-}
-
-.families h1 {
-
-  margin-top: 128px;
-
-  margin-top: 8rem;
-
-  text-transform: uppercase;
-}
-
-.families header {
-
-  width: 90%;
+  padding: 48px 40px;
+  padding: 3rem 2.5rem;
 }
 
 .families-browse {
@@ -1009,8 +1033,6 @@ MENTOR FAMILIES
   -webkit-box-align: left;
       -ms-flex-align: left;
           align-items: left;
-  margin-top: 80px;
-  margin-top: 5rem;
 }
 
 .families-browse li {
@@ -1032,6 +1054,8 @@ MENTOR FAMILIES
   text-align: center;
 
   color: white;
+
+  font-weight: 700;
 
   width: 48px;
 
@@ -1148,19 +1172,30 @@ MENTOR FAMILIES
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
+  -webkit-box-flex: 10;
+      -ms-flex: 10;
+          flex: 10;
+}
+
+.families-overview h1 {
+
+  text-align: left;
 }
 
 .family-item {
-  color: #515151;
-  width: 80vw;
+  color: #5427aa;
   margin-top: 32px;
   margin-top: 2rem;
   padding-bottom: 32px;
   padding-bottom: 2rem;
-  border-bottom: .05px solid rgba(100, 49, 185, .1);
+  border-bottom: 0.8px solid rgba(100, 49, 185, .1);
+  border-bottom: .05rem solid rgba(100, 49, 185, .1);
+  font-weight: 300;
+}
+
+.family-item header {
+
+  padding: 0;
 }
 
 .action {

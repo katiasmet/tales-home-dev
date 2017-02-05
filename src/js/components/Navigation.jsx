@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {isEmpty, includes} from 'lodash';
 
@@ -38,10 +39,13 @@ class Navigation extends Component {
 
       return (
         <ul className='navigation'>
-          <NavigationItem link='/newfamily' icon='fa-user-plus' pathname={pathname} />
+          <li>
+            <Link to='/editprofile' className={`user ${this.setActive(`/editprofile`, pathname)}`}>
+              {user}
+            </Link>
+          </li>
 
-          <li>{user}</li>
-          <NavigationItem link='/editprofile' icon='fa-gear' pathname={pathname} />
+          <NavigationItem link='/newfamily' icon='fa-plus' pathname={pathname} />
         </ul>
       );
     }
@@ -66,6 +70,10 @@ class Navigation extends Component {
       );
     }
 
+  }
+
+  setActive(link, pathname) {
+    return (link === pathname) ? `active` : ``;
   }
 
   render() {

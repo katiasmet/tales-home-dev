@@ -59,7 +59,8 @@ button {
   cursor: pointer;
 }
 
-.btn {
+.btn,
+.nav-item {
   @add-mixin flex-center;
   color: white;
   border: none;
@@ -69,6 +70,10 @@ button {
   width: 5.5rem;
   height: 5.5rem;
   text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
 
   &:hover {
     animation: hover .3s ease-in;
@@ -123,13 +128,43 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 89.9vh;
+}
+
+main > section {
+  padding: 0 2.5rem;
 }
 
 .page-families main,
 .container,
 .main {
+  min-height: 100%;
+}
+
+.page-home,
+.page-login,
+.page-families {
+  background: $purple;
   height: 100%;
+  position: relative;
+
+  &::before {
+    @add-mixin before-after;
+    width: 55vw;
+    height: 150vh;
+    background: $darkpurple;
+    opacity: .3;
+
+    top: -10rem;
+    left: auto;
+    right: -10rem;
+    transform: rotate(20deg);
+  }
+
+  .main-header,
+  main {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 /*
@@ -162,6 +197,7 @@ nav,
 .form-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   color: white;
 
   ul {
@@ -170,7 +206,17 @@ nav,
   }
 
   li {
+    @add-mixin flex-center;
+
     margin-left: 2rem;
+    color: white;
+  }
+
+  .user {
+    display: block;
+    color: white;
+    font-weight: 400;
+    text-transform: capitalize;
   }
 
   /*li a:visited {
@@ -180,13 +226,16 @@ nav,
 
 .nav-item {
   background: white;
-  padding: 1rem;
   border-radius: 2rem;
   color: $purple;
-  text-transform: uppercase;
-  font-weight: 700;
-  display: block;
-  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.6rem;
+  display: flex;
+
+  i {
+    display: block;
+  }
 
   span {
     margin-left: 1rem;
@@ -195,25 +244,6 @@ nav,
   &:hover {
     animation: hover .3s ease-in;
     opacity: 1;
-  }
-}
-
-.families-search {
-  background-color: $purple;
-  padding-left: 2.5rem;
-  padding-bottom: 2rem;
-
-  span,
-  input {
-    width: 98%;
-    background-color: $darkpurple;
-    border: none;
-    border-radius: 0 10px 10px;
-  }
-
-  input::placeholder {
-    color: white;
-    opacity: .5;
   }
 }
 
@@ -289,37 +319,21 @@ input:-webkit-autofill {
 */
 .page-home,
 .page-login {
-  background: $purple;
-  height: 100%;
-  position: relative;
   overflow: hidden;
 
-  &::before {
-    @add-mixin before-after;
-    width: 55vw;
-    height: 150vh;
-    background: $darkpurple;
-    opacity: .3;
-
-    top: -10rem;
-    left: auto;
-    right: -10rem;
-    transform: rotate(20deg);
+  .nav-item {
+    width: auto;
+    height: auto;
+    font-size: 1.6rem;
   }
+}
 
-  &::after {
-    @add-mixin before-after;
-    top: auto;
-    bottom: 0;
-    left: -50rem;
-    z-index: 2;
-  }
-
-  .main-header,
-  main {
-    position: relative;
-    z-index: 1;
-  }
+.page-login::after {
+  @add-mixin before-after;
+  top: auto;
+  bottom: 0;
+  left: -50rem;
+  z-index: 2;
 }
 
 .page-login.join::after {
@@ -413,24 +427,36 @@ input:-webkit-autofill {
 /*
 MENTOR FAMILIES
 */
+.page-families::before {
+  content: none;
+}
 
-.page-families {
-  background-color: $lightblue;
+.page-families main {
+  background: $lightblue;
+}
+
+.families-search {
+  background-color: $purple;
+  padding-bottom: 2.5rem;
+  display: block;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+  color: white;
+
+  span {
+    width: 100%;
+  }
+
+  input {
+    background-color: rgba(60, 35, 40, .3); /* dark purple */
+  }
 }
 
 .families {
   align-items: flex-start;
   width: 100%;
   position: relative;
-
-  h1 {
-    margin-top: 8rem;
-    text-transform: uppercase;
-  }
-
-  header {
-    width: 90%;
-  }
+  padding: 3rem 2.5rem;
 }
 
 .families-browse {
@@ -438,7 +464,6 @@ MENTOR FAMILIES
   flex-direction: column;
   flex: 1;
   align-items: left;
-  margin-top: 5rem;
 
   li {
     margin: 1rem;
@@ -447,6 +472,7 @@ MENTOR FAMILIES
     border-radius: 50%;
     text-align: center;
     color: white;
+    font-weight: 700;
 
     width: 3rem;
     height: 3rem;
@@ -499,15 +525,23 @@ MENTOR FAMILIES
 .families-overview {
   flex-direction: column;
   justify-content: flex-start;
-  flex: 6;
+  flex: 10;
+
+  h1 {
+    text-align: left;
+  }
 }
 
 .family-item {
-  color: $grey;
-  width: 80vw;
+  color: $darkpurple;
   margin-top: 2rem;
   padding-bottom: 2rem;
-  border-bottom: .05px solid rgb(100, 49, 185, .1);
+  border-bottom: .05rem solid rgb(100, 49, 185, .1);
+  font-weight: 300;
+
+  header {
+    padding: 0;
+  }
 }
 
 .action {

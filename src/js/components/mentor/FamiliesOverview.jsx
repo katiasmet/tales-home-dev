@@ -36,7 +36,7 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
   const {allFamilies, activeFamilies, searchInput, isLoading} = families;
 
   return (
-    <section className='families families-overview'>
+    <section className='families-overview'>
 
       <h1>Families</h1>
 

@@ -37,7 +37,7 @@ const FamiliesBrowse = inject(`families`)(observer(({families}) => {
   const {activeCharacter, characters, handleActiveCharacter} = families;
 
   return (
-    <ul className='families families-browse'>
+    <ul className='families-browse'>
       {
         renderCharacter(activeCharacter, characters, handleActiveCharacter)
       }
