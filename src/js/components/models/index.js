@@ -5,3 +5,5 @@ export ModelDistance from './ModelDistance';
 export ModelDistanceScene from './ModelDistanceScene';
 export ModelDistanceCharacter from './ModelDistanceCharacter';
 export ModelDistanceCharacterPreview from './ModelDistanceCharacterPreview';
+export ModelDistanceTimeline from './ModelDistanceTimeline';
+export ModelDistanceTimelineCharacter from './ModelDistanceTimelineCharacter';

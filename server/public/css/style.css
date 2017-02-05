@@ -81,19 +81,6 @@ html {
   padding-bottom: 6rem;
 }
 
-.timeline {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 90vw;
-}
-
 .timeline-scene {
   margin-bottom: 40px;
   margin-bottom: 2.5rem;
@@ -109,11 +96,14 @@ html {
 .flag {
   background: white;
   color: #00afa2;
+  display: inline-block;
 }
 
 .timeline-scene .character {
+  display: inline-block;
   cursor: move;
   position: absolute;
+  left: 0;
   width: 80px;
   width: 5rem;
   height: 80px;
@@ -129,35 +119,17 @@ html {
   border: 1px solid blue;
 }
 
-/*.drag-preview-box {
-  background: green;
-  position: fixed;
-  cursor: none;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.model-distance .character {
-  background: red;
-  width: 5rem;
-  height: 5rem;
-  cursor: move;
-
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.model-distance .character .drag-preview {
-  display: inline-block;
-  transform: translate(50rem, -20rem);
-  background: purple;
-}*/
-
 .timeline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 90vw;
   position: relative;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -197,6 +169,7 @@ html {
   font-weight: 700;
 
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .timeline-character {
@@ -207,9 +180,13 @@ html {
   border: 4.8px solid white;
   border: .3rem solid white;
   background: #26e2e9;
-
   margin: 16px;
   margin: 1rem;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
 html {
   height: 100%;

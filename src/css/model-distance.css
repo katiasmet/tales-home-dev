@@ -14,11 +14,6 @@ $blue: #26e2e9;
   padding-bottom: 6rem;
 }
 
-.timeline {
-  @add-mixin flex-center;
-  width: 90vw;
-}
-
 .timeline-scene {
   margin-bottom: 2.5rem;
   border: 1px solid blue;
@@ -32,11 +27,14 @@ $blue: #26e2e9;
 .flag {
   background: white;
   color: $darkblue;
+  display: inline-block;
 }
 
 .timeline-scene .character {
+  display: inline-block;
   cursor: move;
   position: absolute;
+  left: 0;
   width: 5rem;
   height: 5rem;
   border: 1px solid blue;
@@ -48,35 +46,9 @@ $blue: #26e2e9;
   border: 1px solid blue;
 }
 
-/*.drag-preview-box {
-  background: green;
-  position: fixed;
-  cursor: none;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.model-distance .character {
-  background: red;
-  width: 5rem;
-  height: 5rem;
-  cursor: move;
-
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.model-distance .character .drag-preview {
-  display: inline-block;
-  transform: translate(50rem, -20rem);
-  background: purple;
-}*/
-
 .timeline {
+  @add-mixin flex-center;
+  width: 90vw;
   position: relative;
   justify-content: flex-start;
 
@@ -108,6 +80,7 @@ $blue: #26e2e9;
   font-weight: 700;
 
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .timeline-character {
@@ -115,6 +88,10 @@ $blue: #26e2e9;
   height: 2rem;
   border: .3rem solid white;
   background: $blue;
-
   margin: 1rem;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }

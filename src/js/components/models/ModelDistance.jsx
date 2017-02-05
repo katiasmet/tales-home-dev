@@ -3,7 +3,7 @@ import {inject, observer} from 'mobx-react';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import {ModelDistanceScene, ModelDistanceCharacterPreview} from './';
+import {ModelDistanceScene, ModelDistanceCharacterPreview, ModelDistanceTimeline} from './';
 import {Loading} from '../';
 
 @DragDropContext(HTML5Backend)
@@ -18,7 +18,7 @@ class ModelDistance extends Component {
 
   render() {
 
-    const {familyLanguages, currentLanguage, draggableCharacters, isLoadingDistance} = this.props.models;
+    const {isLoadingDistance} = this.props.models;
 
     return (
       <section className='model-distance'>
@@ -33,16 +33,7 @@ class ModelDistance extends Component {
         }
 
         {
-          !isLoadingDistance && (
-            <ul className='timeline'>
-              <li className='timeline-language'>{familyLanguages[currentLanguage]}</li>
-              {
-                draggableCharacters.slice().map((character, i) => {
-                  return <li className={`timeline-character ${character.name}`} key={i}></li>;
-                })
-              }
-            </ul>
-          )
+          !isLoadingDistance && <ModelDistanceTimeline />
         }
 
       </section>

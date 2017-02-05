@@ -36,9 +36,6 @@ class ModelDistanceCharacter extends Component {
       height: isDragging ? 0 : ``,
     };
 
-    console.log(isDragging);
-    console.log(left);
-
     return connectDragSource(
       <div  className={isDragging ? `character ${name} dragging` : `character ${name}`}
             style={style}
