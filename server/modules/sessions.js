@@ -14,6 +14,7 @@ module.exports.register = (server, options, next) => {
       professionalId: ``,
       familyId: ``,
       modelId: ``,
+      modelInfo: [],
       isSessionStarted: ``
     };
 
@@ -51,6 +52,14 @@ module.exports.register = (server, options, next) => {
       const user = users.find(u => id === u.socketId);
       if (user) {
         user.modelId = modelId;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`handleModel`, (familyId, modelInfo) => {
+      const user = users.find(u => familyId === u.familyId);
+      if (user) {
+        user.modelInfo = modelInfo;
         socket.broadcast.emit(`recheck`, users);
       }
     });

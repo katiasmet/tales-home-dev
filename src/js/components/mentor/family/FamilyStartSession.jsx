@@ -14,7 +14,7 @@ const StartSession = inject(`families`, `users`)(observer(({families, users}) =>
       <button className='btn'><i className='fa fa-close'></i></button>
 
       <header>
-        <h2>The {activeFamily.name}&#39;s SESSION</h2>
+        <h2>The {activeFamily.name}&#39;s session</h2>
       </header>
 
 

@@ -1,10 +1,10 @@
 import React, {PropTypes} from 'react';
 
-const FamilyMemberAddLanguage = ({name}) => {
+const FamilyMemberAddLanguage = ({nativeName}) => {
 
   return (
     <span className='form-input'>
-      <label htmlFor={`language-${name}`} className='member-language'>{name}</label>
+      <label htmlFor={`language-${name}`} className='member-language'>{nativeName}</label>
       <input  id={`language-${name}`}
               className='hidden'
               name='languages[]'
@@ -14,7 +14,7 @@ const FamilyMemberAddLanguage = ({name}) => {
 };
 
 FamilyMemberAddLanguage.propTypes = {
-  name: PropTypes.string,
+  nativeName: PropTypes.string,
   code: PropTypes.string
 };
 

@@ -1,13 +1,16 @@
 import {observable, action} from 'mobx';
 import {filter, kebabCase, uniq} from 'lodash';
+import io from 'socket.io-client';
 
 import {select} from '../api/models';
 import {selectByFamily} from '../api/familymodels';
 import users from './Users';
 import families from './Families';
+import {token} from '../auth';
 
 class Models  {
 
+  socket = io(`/`);
   @observable isLoading = true;
   @observable allModels = [];
   @observable passedModels = [];
@@ -140,6 +143,8 @@ class Models  {
     this.draggableCharacters.forEach(character => {
       if (character._id === id) character.left = left;
     });
+
+    this.socket.emit(`handleModel`, token.content().sub, this.draggableCharacters);
   }
 
 }

@@ -1,17 +1,16 @@
 import React, {PropTypes} from 'react';
 
-const Language = ({name, handleSelectLanguage}) => {
+const Language = ({nativeName, handleSelectLanguage}) => {
 
   return (
     <li className='language' onClick={handleSelectLanguage}>
-      {name}
+      {nativeName}
     </li>
   );
 };
 
 Language.propTypes = {
-  name: PropTypes.string,
-  code: PropTypes.string,
+  nativeName: PropTypes.string,
   handleSelectLanguage: PropTypes.func
 };
 

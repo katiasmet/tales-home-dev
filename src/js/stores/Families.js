@@ -180,7 +180,6 @@ class Families  {
     this.handleFamilyInfo(familyId, false);
     this.isLoading = `session`;
 
-
     this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
 
   }
