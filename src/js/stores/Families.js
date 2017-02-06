@@ -22,7 +22,6 @@ class Families  {
 
   @observable characters = []; /* PRO - family navigation */
   @observable activeCharacter = ``;
-
   @observable activeFamily = { /* PRO AND FAMILY */
     _id: ``,
     name: ``,
@@ -125,7 +124,8 @@ class Families  {
 
     this.findActiveFamily(id);
 
-    if (!this.showInfo) {
+    if (isEmpty(this.showInfo)) {
+
       this.getFamilyMembers(id);
 
       selectFamilyModels({familyId: id})
@@ -142,7 +142,7 @@ class Families  {
 
             selectModel(familymodel.modelId)
             .then(model => {
-              familymodel.name = model.model[0].name;
+              this.activeFamily.familymodels[i].name = model.model[0].name;
             })
             .then(() => {
               if ((i + 1) === this.activeFamily.familymodels.length) this.isLoading = ``;

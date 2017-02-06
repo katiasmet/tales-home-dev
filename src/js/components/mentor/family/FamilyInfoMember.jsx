@@ -5,7 +5,7 @@ const FamilyInfoMember = ({firstName, languages, role}) => {
     <li className='family-info-member'>
       <span className='member-name'>
         {firstName}
-        <span className='role'> ({role})</span>
+        <span className='role'>, {role}</span>
       </span>
 
       <ul className='languages'>

@@ -29,7 +29,7 @@ class FamilyItem extends Component {
 
   handleFamilyInfo() {
     const {isLoading} = this.props.families;
-    if (isLoading === `info`) return <Loading />;
+    if (isLoading === `info` || isLoading === `familymembers`) return <Loading />;
     else return <FamilyInfo />;
   }
 
@@ -41,27 +41,26 @@ class FamilyItem extends Component {
   }
 
   render() {
-
     this.handleActionId();
 
     const {_id, name, origins, homeLocation} = this.props;
     const {showInfo, handleFamilyInfo} = this.props.families;
 
     return (
-        <section className={showInfo ? `family-item active` : `family-item`}>
-          <header onClick={() => handleFamilyInfo(_id)}>
+        <section className={(showInfo === _id) ? `family-item active` : `family-item`}>
+          <header>
 
-            <h2>{name}</h2>
+            <h2 onClick={() => handleFamilyInfo(_id)}>{name}</h2>
 
             <Actions actionClass='family-actions' actions={this.actions} />
 
           </header>
 
-          <p>Comes from {origins} - Lives in {homeLocation}</p>
+          <p>Comes from {origins}, lives in {homeLocation}</p>
 
-            {
-              (_id === showInfo) && this.handleFamilyInfo()
-            }
+          {
+            (_id === showInfo) && this.handleFamilyInfo()
+          }
 
         </section>
     );

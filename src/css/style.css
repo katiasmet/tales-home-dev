@@ -327,6 +327,11 @@ input:-webkit-autofill {
   box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
+input::placeholder {
+  color: rgba(60, 35, 40, .2); /* dark purple */
+  font-family: Rubik, sans-serif;
+}
+
 /*
   LOGIN
 */
@@ -356,16 +361,16 @@ input:-webkit-autofill {
   @add-mixin before-after;
   top: auto;
   bottom: 0;
-  left: -50rem;
+  left: -40vw;
+  width: 23vw;
   z-index: 2;
 }
 
 .page-login.join::after,
 .page-new-family::after {
   bottom: -5.5rem;
-  width: 50rem;
   height: 45rem;
-  background: url(../assets/img/login_family.png) no-repeat center center;
+  background: url(../assets/img/login_family.png) no-repeat center bottom;
   background-size: contain;
 
   animation: join .3s ease-in forwards;
@@ -373,9 +378,8 @@ input:-webkit-autofill {
 
 .page-login.register::after {
   bottom: -13rem;
-  width: 30rem;
   height: 50rem;
-  background: url(../assets/img/login_newmentor.png) no-repeat center center;
+  background: url(../assets/img/login_newmentor.png) no-repeat center bottom;
   background-size: contain;
 
   animation: register .3s ease-in forwards;
@@ -384,9 +388,8 @@ input:-webkit-autofill {
 .page-login.login::after,
 .page-edit-profile::after {
   bottom: -15rem;
-  width: 30rem;
   height: 52rem;
-  background: url(../assets/img/login_mentor.png) no-repeat center center;
+  background: url(../assets/img/login_mentor.png) no-repeat center bottom;
   background-size: contain;
 
   animation: login .3s ease-in forwards;
@@ -438,18 +441,60 @@ input:-webkit-autofill {
   width: auto;
   justify-content: center;
   margin-bottom: 3rem;
+
+  li {
+    position: relative;
+    margin: 1rem;
+  }
+
+  li::after {
+    @add-mixin before-after;
+    width: 3.2rem;
+    height: 3rem;
+    right: 0;
+    margin: auto;
+    z-index: 0;
+
+    background: url(../assets/img/login_hover_family.png) no-repeat top center;
+    background-size: 3.2rem auto;
+    transition: all .3s ease-in;
+  }
+
+  .user-profile-register::after {
+    background: url(../assets/img/login_hover_newmentor.png) no-repeat top center;
+    background-size: 2.5rem auto;
+  }
+
+  .user-profile-login::after {
+    background: url(../assets/img/login_mentor.png) no-repeat top center;
+    background-size: 3.2rem auto;
+  }
+
+  li:hover::after {
+    transform: translateY(-3rem);
+  }
+
 }
 
 .user-profile {
-  background-color: $purple;
+  background: $purple;
   padding: 1rem;
   border-radius: 1rem;
-  margin: 1rem;
   font-weight: 500;
   display: block;
 
   color: white;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    background: $darkpurple;
+  }
 }
 
 .page-login-img {
@@ -516,6 +561,11 @@ MENTOR FAMILIES
     color: white;
     padding: 1.5rem;
     border-radius: 1.5rem;
+
+    &::placeholder {
+      color: white;
+      opacity: .2;
+    }
 
     &:focus {
       background-color: rgba(60, 35, 40, .5);
@@ -651,10 +701,16 @@ MENTOR FAMILIES
   h2 {
     color: $textpurple;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   &.active .action .fa-plus {
     transform: rotate(45deg);
+  }
+
+  &.active {
+    padding-bottom: 0;
+    border-bottom: none;
   }
 }
 
@@ -674,24 +730,39 @@ MENTOR FAMILIES
 }
 
 .family-info {
-  margin: 3rem 12rem 3rem 4rem;
+  padding: 3rem 12rem 3rem 4rem;
+  font-weight: 300;
+  overflow: hidden;
+  transform-origin: top center;
+
+  animation: family-info 1s ease-in forwards;
+  position: relative;
+
+  &::after {
+    @add-mixin before-after;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: .1rem;
+    border-bottom: .05rem solid rgb(100, 49, 185, .1);
+
+    animation: family-info-child 1s ease-in forwards;
+  }
 }
 
 .family-info-members {
   margin-bottom: 3rem;
+  animation: family-info-child 1s ease-in forwards;
 
   .family-info-member {
     @add-mixin flex-center;
     justify-content: flex-start;
     margin-bottom: 1rem;
+    font-weight: 300;
   }
 
   .member-name {
     flex: 1;
-  }
-
-  .role {
-    font-style: italic;
   }
 
   .languages {
@@ -711,16 +782,22 @@ MENTOR FAMILIES
   }
 }
 
-.family-info-result {
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.3rem;
+.family-info-results {
+  animation: family-info-child 1s ease-in forwards;
+  font-weight: 300;
+
+  .family-info-result {
+    @add-mixin flex-center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
 
   .action {
-    width: 2.8rem;
-    height: 2.8rem;
-    background-color: $darkpurple;
+    background: none;
+
+    .fa {
+      color: $textpurple;
+    }
   }
 }
 
@@ -728,46 +805,73 @@ MENTOR FAMILIES
 STARTSESSION POP-UP
 */
 
+.families.families-pop-up {
+
+  &::before {
+    @add-mixin before-after;
+    top: -20rem;
+    width: 100%;
+    height: calc(100% + 20rem);
+    background: $darkpurple;
+    z-index: 1;
+    opacity: .3;
+  }
+}
+
 .pop-up {
-  text-align: center;
+  @add-mixin flex-center;
+  flex-direction: column;
   background-color: white;
   padding: 2rem;
-  width: auto;
-  max-width: 40rem;
   border-radius: 10px;
+  max-width: 40rem;
 
   position: absolute;
   z-index: 10;
-  top: 5rem;
+  top: 15rem;
   left: 0;
   right: 0;
   margin: auto;
 
-  height: 25rem;
-
   .btn {
-    position: absolute;
-    margin-top: -4rem;
-    margin-left: 18rem;
-  }
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
 
-  h2 {
-    color: $purple;
-    font-size: 2rem;
-    line-height: 4rem;
-    text-transform: uppercase;
-    margin: auto auto 4rem;
+    align-self: flex-end;
+    margin-top: -3.5rem;
+    transform: translateX(3.5rem);
+
+    &:hover {
+      animation: none;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      @add-mixin before-after;
+      width: 100%;
+      height: 100%;
+      border-radius: 3rem;
+      border: .1rem solid $purple;
+      filter: blur(.05rem);
+
+      animation: radar 2s ease-in infinite;
+    }
+
+    &:hover::after {
+      animation-delay: .5s;
+    }
   }
 
   .session-code {
     display: block;
     background-color: $purple;
-    border-radius: 10px;
+    border-radius: 1rem;
     color: white;
-    width: 20rem;
-    padding: 1.5rem;
-    margin: auto;
+    padding: 1.5rem 3rem;
     margin-bottom: 4rem;
+    font-size: 2rem;
+    letter-spacing: .5rem;
   }
 }
 

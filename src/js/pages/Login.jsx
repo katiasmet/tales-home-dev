@@ -17,7 +17,7 @@ const Login = ({location}) => {
 
       <main>
         <section className='page-login-forms'>
-          <UserProfiles />
+          <UserProfiles pathname={pathname} />
           {renderLogin()}
         </section>
 

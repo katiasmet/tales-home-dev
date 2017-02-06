@@ -19,14 +19,14 @@ class Families extends Component {
     const {pathname} = this.props.location;
 
     return (
-      <div className={!isEmpty(sessionId) ? `page page-families page-pop-up` : `page page-families`}>
+      <div className='page page-families'>
         <Header pathname={pathname} />
 
         <main>
 
           <FamiliesSearch />
 
-          <section className='families'>
+          <section className={!isEmpty(sessionId) ? `families families-pop-up` : `families`}>
 
             {
               !isEmpty(sessionId) && <FamilyStartSession />
