@@ -53,7 +53,7 @@ class Models extends Component {
   render() {
 
     const {pathname} = this.props.location;
-    const {isLoading, handleShowGrid} = this.props.models;
+    const {isLoading} = this.props.models;
 
     return (
       <div className='page page-models'>
@@ -63,10 +63,6 @@ class Models extends Component {
           (token.content().scope === `professional` && !isLoading) ? (
             <main>
               <ModelsOverview />
-              <button className='btn btn-show-grid'
-                onClick={handleShowGrid}
-              >
-              </button>
               <ModelsOverviewGrid />
             </main>
           ) : this.renderModels()

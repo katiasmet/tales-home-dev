@@ -22,7 +22,6 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview, handleStartMo
       <li className={handleIsPassed(model._id) ? `model-nav-item done` : `model-nav-item`}
           key={i}
           onClick={() => handleModelPreview(model._id)}>
-        {model.name}
       </li>
     );
 

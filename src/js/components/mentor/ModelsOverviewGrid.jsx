@@ -9,18 +9,19 @@ const ModelsOverviewGrid = inject(`models`, `families`)(observer(({models, famil
   const {handleStartModel} = families;
 
   return (
-    <section className={showGrid ? `models models-overview-grid show-grid` : `models models-overview-grid`}>
+    <section className={showGrid ? `models models-overview-grid-section show-grid` : `models models-overview-grid-section`}>
       <button className='btn btn-show-grid'
         onClick={handleShowGrid}
       >
       </button>
 
-      {
-        allModels.slice().map((model, i) => {
-          return <ModelGridItem {...model} i={i} key={i} handleStartSession={handleStartModel} handleIsPassed={handleIsPassed} />;
-        })
-      }
-
+      <section className='models-overview-grid'>
+        {
+          allModels.slice().map((model, i) => {
+            return <ModelGridItem {...model} i={i} key={i} handleStartSession={handleStartModel} handleIsPassed={handleIsPassed} />;
+          })
+        }
+      </section>
     </section>
   );
 }));
