@@ -22,7 +22,7 @@ class FamilyItem extends Component {
     },
     {
       _id: this.props._id,
-      icon: `fa-caret-right`,
+      icon: `fa-play`,
       handleAction: this.props.families.handleFamilySession
     }
   ];
@@ -40,23 +40,16 @@ class FamilyItem extends Component {
     });
   }
 
-  handleInfoIcon() {
-    const {families, _id} = this.props;
-    if (families.showInfo === _id) this.actions[1].icon = `fa-close`;
-    else this.actions[1].icon = `fa-plus`;
-  }
-
   render() {
 
-    this.handleInfoIcon();
     this.handleActionId();
 
     const {_id, name, origins, homeLocation} = this.props;
-    const {showInfo} = this.props.families;
+    const {showInfo, handleFamilyInfo} = this.props.families;
 
     return (
-        <section className='family-item'>
-          <header>
+        <section className={showInfo ? `family-item active` : `family-item`}>
+          <header onClick={() => handleFamilyInfo(_id)}>
 
             <h2>{name}</h2>
 

@@ -14,13 +14,13 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
 
     <section className='form form-edit-user'>
 
+      <h1> Edit your profile </h1>
+
       <form
         action=''
         method='post'
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
-
-        <h2> Edit your profile </h2>
 
         <fieldset>
 
@@ -75,17 +75,9 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <div className='form-actions'>
-            <ul>
-              <li onClick={handleRemoveUser}>
-                <button className='btn'><i className='fa fa-trash'></i></button>
-              </li>
-              <li>
-                <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
-              </li>
-              <li onClick={handleLogout}>
-                <button className='btn'><i className='fa fa-sign-out'></i></button>
-              </li>
-            </ul>
+            <button className='btn' onClick={handleRemoveUser}><i className='fa fa-trash'></i></button>
+            <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-save'></i></button>
+            <button className='btn' onClick={handleLogout}><i className='fa fa-sign-out'></i></button>
           </div>
 
         </fieldset>

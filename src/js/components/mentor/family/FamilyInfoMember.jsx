@@ -3,9 +3,9 @@ import React, {PropTypes} from 'react';
 const FamilyInfoMember = ({firstName, languages, role}) => {
   return (
     <li className='family-info-member'>
-      <span>
+      <span className='member-name'>
         {firstName}
-        <span className='role'> - {role}</span>
+        <span className='role'> ({role})</span>
       </span>
 
       <ul className='languages'>

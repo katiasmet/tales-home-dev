@@ -44,16 +44,10 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <div className='form-actions'>
-            <ul>
-              <li>
-                <Link to='/family'>
-                  <i className='fa fa-close'></i>
-                </Link>
-              </li>
-              <li>
-                <button type='submit' className='btn'><i className='fa fa-caret-right'></i></button>
-              </li>
-            </ul>
+              <Link to='/family' className='btn'>
+                <i className='fa fa-close'></i>
+              </Link>
+              <button type='submit' className='btn'><i className='fa fa-caret-right'></i></button>
           </div>
 
         </fieldset>

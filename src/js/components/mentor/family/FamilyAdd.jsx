@@ -18,15 +18,13 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
         !isEmpty(redirect) && <Redirect to={`/${redirect}`} />
       }
 
+      <h1>Add a family</h1>
+
       <form
         action=''
         method='post'
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
-
-        <fieldset>
-          <h2>Add a family</h2>
-        </fieldset>
 
         <fieldset>
 
@@ -60,20 +58,11 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <div className='form-actions'>
-            <ul>
-              <li>
-                <Link to='/families'>
-                  <i className='fa fa-close'></i>
-                </Link>
-
-              </li>
-              <li>
-                <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `save`)}><i className='fa fa-save'></i></button>
-              </li>
-              <li>
-                <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `start`)}><i className='fa fa-caret-right'></i></button>
-              </li>
-            </ul>
+              <Link to='/families' className='btn'>
+                <i className='fa fa-close'></i>
+              </Link>
+              <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `save`)} name='save family'><i className='fa fa-save'></i></button>
+              <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `start`)} name='start a session'><i className='fa fa-play'></i></button>
           </div>
 
         </fieldset>
