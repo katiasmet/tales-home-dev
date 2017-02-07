@@ -29,6 +29,12 @@ $bluenav: #21c5cb;
 /*
 MENTOR FAMILIES
 */
+.page-families .action:hover {
+  animation: hover .3s ease-in;
+  background: $purple;
+  opacity: 1;
+}
+
 .page-families::before,
 .page-edit-profile::before,
 .page-new-family::before {
@@ -313,6 +319,11 @@ MENTOR FAMILIES
 
     .fa {
       color: $textpurple;
+    }
+
+    &:hover {
+      background: none;
+      color: $purple;
     }
   }
 }

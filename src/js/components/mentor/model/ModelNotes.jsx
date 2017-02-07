@@ -20,8 +20,8 @@ const ModelNotes = inject(`notes`, `families`)(observer(({notes, families}) => {
       <ModelNote />
 
       <footer>
-        <button onClick={handleSubmit}>stop</button>
-        <button>download</button>
+        <button onClick={handleSubmit}>stop <i className='fa fa-sign-out'></i></button>
+        <button><i className='fa fa-download'></i></button>
       </footer>
     </section>
   );

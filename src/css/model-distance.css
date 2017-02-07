@@ -2,6 +2,10 @@ $darkblue: #00afa2;
 $midblue: #21cbc5;
 $blue: #26e2e9;
 
+.page-model::after {
+  content: none;
+}
+
 .model-distance {
   display: flex;
   flex-direction: column;
@@ -15,29 +19,72 @@ $blue: #26e2e9;
 }
 
 .timeline-scene {
+  /*display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;*/
   margin-bottom: 2.5rem;
   border: 1px solid blue;
-  display: block;
   width: 90vw;
-  min-height: 10rem;
+  min-height: 50vh;
 
   position: relative;
 }
 
 .flag {
-  background: white;
   color: $darkblue;
-  display: inline-block;
+  position: relative;
+  width: 20rem;
 }
 
-.timeline-scene .character {
-  display: inline-block;
-  cursor: move;
+.flag-flag {
+  fill: white;
+}
+
+.flag-stick {
+  fill: #936119;
+}
+
+.flag-language {
   position: absolute;
-  left: 0;
-  width: 5rem;
-  height: 5rem;
-  border: 1px solid blue;
+  display: block;
+  z-index: 1;
+  font-weight: 500;
+  text-align: center;
+  top: 5rem;
+  left: 2.5rem;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+
+  text-transform: uppercase;
+  color: #0a5e5e;
+}
+
+.timeline-scene .drag-character {
+  display: inline-block;
+  position: absolute;
+  background: none;
+  right: 0;
+  border: 1px solid red;
+
+  width: 7rem;
+  height: 100%;
+
+  p,
+  svg {
+    height: 100%;
+    width: 100%;
+    display: block;
+    cursor: move;
+  }
+
+  &.chris {
+    width: 20rem;
+  }
+
+  &.gigi {
+    width: 14rem;
+  }
 }
 
 .drag-preview {
@@ -52,7 +99,8 @@ $blue: #26e2e9;
   position: relative;
   justify-content: flex-start;
 
-  &::after {
+  &::after,
+  &::before {
     @add-mixin before-after;
     width: 100%;
     height: .1rem;
@@ -63,6 +111,16 @@ $blue: #26e2e9;
     margin: auto;
 
     z-index: 0;
+  }
+
+  &::after {
+    border: none;
+    width: .5rem;
+    height: .5rem;
+    left: auto;
+    right: 0;
+    background: white;
+    border-radius: .5rem;
   }
 }
 
@@ -75,8 +133,7 @@ $blue: #26e2e9;
 
 .timeline-language {
   padding: 1rem;
-  background: $darkblue;
-  border: .3rem solid $midblue;
+  background: $blue;
   font-weight: 700;
 
   text-transform: uppercase;
