@@ -61,19 +61,22 @@ $blue: #26e2e9;
 }
 
 .timeline-scene .drag-character {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   position: absolute;
+  z-index: 5;
   background: none;
-  right: 0;
-  border: 1px solid red;
+  left: 0;
+  bottom: 0;
 
   width: 7rem;
   height: 100%;
+  transform-origin: center center;
 
-  p,
   svg {
     height: 100%;
-    width: 100%;
+    width: auto;
     display: block;
     cursor: move;
   }
@@ -148,6 +151,7 @@ $blue: #26e2e9;
   margin: 1rem;
 
   position: absolute;
+  transform-origin: center center;
   left: 0;
   top: 0;
   bottom: 0;

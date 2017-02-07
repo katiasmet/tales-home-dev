@@ -646,6 +646,7 @@ textarea {
   resize: none;
   background: ghostwhite;
   border: none;
+  min-height: 35vh;
 }
 
 input:-webkit-autofill {
@@ -1340,8 +1341,6 @@ MODELSOVERVIEW
 
   position: relative;
 
-  z-index: 1;
-
 }
 
 .model-nav-item.active::after,
@@ -1436,6 +1435,10 @@ MODELSOVERVIEW
   font-size: 25.6px;
 
   font-size: 1.6rem;
+
+  position: relative;
+
+  z-index: 5;
 
 }
 
@@ -1714,11 +1717,36 @@ MODELSOVERVIEW
   width: 40rem;
 
   position: absolute;
+  z-index: 50;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
 
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.model-notes .family-info-membes ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 /* languages */
 
@@ -2153,21 +2181,31 @@ MODELSOVERVIEW
 }
 
 .timeline-scene .drag-character {
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   position: absolute;
+  z-index: 5;
   background: none;
-  right: 0;
-  border: 1px solid red;
+  left: 0;
+  bottom: 0;
 
   width: 112px;
   width: 7rem;
   height: 100%;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
 }
 
-.timeline-scene .drag-character p,
-  .timeline-scene .drag-character svg {
+.timeline-scene .drag-character svg {
   height: 100%;
-  width: 100%;
+  width: auto;
   display: block;
   cursor: move;
 }
@@ -2266,6 +2304,8 @@ MODELSOVERVIEW
   margin: 1rem;
 
   position: absolute;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
   left: 0;
   top: 0;
   bottom: 0;

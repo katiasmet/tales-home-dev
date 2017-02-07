@@ -111,7 +111,6 @@ MODELSOVERVIEW
     height: 3rem;
 
     position: relative;
-    z-index: 1;
 
     &::after,
     &::before {
@@ -145,6 +144,8 @@ MODELSOVERVIEW
     width: 100%;
     height: 100%;
     font-size: 1.6rem;
+    position: relative;
+    z-index: 5;
   }
 
   a {
@@ -296,9 +297,17 @@ MODELSOVERVIEW
   width: 40rem;
 
   position: absolute;
+  z-index: 50;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.model-notes .family-info-membes ul {
+  @add-mixin flex-center;
 }

@@ -124,12 +124,20 @@ class Models  {
 
     this.isLoadingDistance = true;
 
-    //push objects in array, memberid, charactername, x, y
     families.activeFamily.familymembers.forEach(familymember => {
       const character = {};
       character._id = familymember._id;
       character.name = familymember.character;
       character.left = 0;
+
+      if (character.name === `chris`) {
+        character.width = 20;
+      } else if (character.name === `gigi`) {
+        character.width = 14;
+      } else {
+        character.width = 7;
+      }
+
       this.draggableCharacters.push(character);
     });
 
@@ -137,7 +145,27 @@ class Models  {
 
   }
 
-  @action handleMoveCharacter = (id, left) => {
+  @action handleMoveCharacter = (id, e) => {
+    e.preventDefault();
+
+    const xPos = e.touches[0].clientX;
+
+    this.draggableCharacters.forEach(character => {
+      if (character._id === id) {
+        let left = ((xPos / 10) - (character.width / 2));
+        if (left > 75) left = 75;
+        if (left < 0) left = 0;
+        character.left = left;
+      }
+    });
+  }
+
+  @action handleEndMoveCharacter = e => {
+    e.preventDefault();
+    this.socket.emit(`handleModel`, token.content().sub, this.draggableCharacters);
+  }
+
+  /*@action handleMoveCharacter = (id, left) => {
     console.log(`handle move character`);
 
     this.draggableCharacters.forEach(character => {
@@ -145,7 +173,7 @@ class Models  {
     });
 
     this.socket.emit(`handleModel`, token.content().sub, this.draggableCharacters);
-  }
+  }*/
 
 }
 

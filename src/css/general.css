@@ -341,6 +341,7 @@ textarea {
   resize: none;
   background: $lightpurple;
   border: none;
+  min-height: 35vh;
 }
 
 input:-webkit-autofill {

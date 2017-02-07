@@ -1,12 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
-import {DragDropContext} from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 
-import {ModelDistanceScene, ModelDistanceCharacterPreview, ModelDistanceTimeline} from './';
+import {ModelDistanceScene, ModelDistanceTimeline} from './';
 import {Loading} from '../';
 
-@DragDropContext(HTML5Backend)
 @inject(`models`) @observer
 class ModelDistance extends Component {
 
@@ -26,10 +23,6 @@ class ModelDistance extends Component {
         {
           isLoadingDistance ? <Loading />
           : <ModelDistanceScene />
-        }
-
-        {
-          !isLoadingDistance && <ModelDistanceCharacterPreview />
         }
 
         {

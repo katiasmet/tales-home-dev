@@ -1,31 +1,13 @@
 import React, {Component, PropTypes} from 'react';
-import {DragSource} from 'react-dnd';
-import {getEmptyImage} from 'react-dnd-html5-backend';
+import {inject, observer} from 'mobx-react';
 
-import {itemTypes} from '../../util/';
-import {CharacterGigi, CharacterKiki, CharacterChris, Flag} from '../illustrations';
+import {CharacterGigi, CharacterKiki, CharacterChris} from '../illustrations';
 
-const characterSource = {
-  beginDrag(props) {
-    const {_id, name, left} = props;
-    return {_id, name, left};
-  },
-};
-
-@DragSource(itemTypes.CHARACTER, characterSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  connectDragPreview: connect.dragPreview(),
-  isDragging: monitor.isDragging(),
-}))
+@inject(`models`) @observer
 class ModelDistanceCharacter extends Component {
 
-  componentDidMount() {
-    this.props.connectDragPreview(getEmptyImage(), {
-      captureDraggingState: true,
-    });
-  }
 
-  /*renderCharacter(name) {
+  renderCharacter(name) {
 
     if (name === `kiki`) {
       return <CharacterKiki />;
@@ -34,28 +16,27 @@ class ModelDistanceCharacter extends Component {
     } else {
       return <CharacterGigi />;
     }
-  }*/
-
-  renderCharacter(name) {
-    return <p>{name}</p>;
   }
+
 
   render() {
 
-    const {name, left, connectDragSource, isDragging} = this.props;
-    const transform = `translateX(${left / 10}rem)`;
+    const {_id, name, left} = this.props;
+    const {handleMoveCharacter, handleEndMoveCharacter} = this.props.models;
 
-    console.log(isDragging);
+    const transform = `translateX(${left}rem)`;
+
+    console.log(left);
 
     const style = {
       transform,
       WebkitTransform: transform,
-      opacity: isDragging ? 0 : 1,
-      height: isDragging ? 0 : ``,
     };
 
-    return connectDragSource(
-      <div  className={isDragging ? `drag-character ${name} dragging` : `drag-character ${name}`}
+    return (
+      <div  className={`drag-character ${name}`}
+            onTouchMove={e => handleMoveCharacter(_id, e)}
+            onTouchEnd={e => handleEndMoveCharacter(e)}
             style={style}
       >
         {this.renderCharacter(name)}
@@ -66,11 +47,13 @@ class ModelDistanceCharacter extends Component {
 }
 
 ModelDistanceCharacter.propTypes = {
+  _id: PropTypes.string,
   name: PropTypes.string,
-  connectDragSource: PropTypes.func,
-  connectDragPreview: PropTypes.func,
-  isDragging: PropTypes.bool,
-  left: PropTypes.number
+  left: PropTypes.number,
+  models: PropTypes.shape({
+    handleMoveCharacter: PropTypes.func,
+    handleEndMoveCharacter: PropTypes.func
+  })
 };
 
 export default ModelDistanceCharacter;
