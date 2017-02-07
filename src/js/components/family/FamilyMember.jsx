@@ -59,7 +59,7 @@ class FamilyMember extends Component {
 
           </figure>
 
-          <h2>{firstName}</h2>
+          {firstName}
         </Link>
 
         <Actions actionClass='familymember-actions' actions={this.actions} />

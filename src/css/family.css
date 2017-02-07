@@ -1,0 +1,32 @@
+@define-mixin before-after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@define-mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-family {
+  color: white;
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+.family-overview {
+  @add-mixin flex-center;
+}
+
+.family-member {
+
+  a {
+    display: block;
+  }
+}
