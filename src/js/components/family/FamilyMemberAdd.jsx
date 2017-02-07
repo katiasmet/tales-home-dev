@@ -5,7 +5,7 @@ import {isEmpty} from 'lodash';
 import {FormInput} from '../';
 import {FamilyMemberAddCharacters, FamilyMemberAddLanguages, FamilyMemberAddRoles} from './';
 
-const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
+const FamilyMemberAdd = ({form, handleChange, handleSubmit, edit = false}) => {
 
   const {fields, meta, redirect} = form;
 
@@ -16,6 +16,13 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
       {
         redirect && <Redirect to={`/family`} />
       }
+
+      {
+        edit ? <h1>Edit a family member</h1>
+        : <h1>Add a new family member</h1>
+      }
+
+
 
       <form
         action=''
@@ -36,7 +43,7 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
             onChange={handleChange}
             placeholder='f.e. Harry' />
 
-          <FamilyMemberAddRoles handleChange={handleChange} value={fields.role.value} />
+          <FamilyMemberAddRoles handleChange={handleChange} value={fields.role.value} character={fields.character.value} />
 
           <FamilyMemberAddLanguages />
 
@@ -47,7 +54,7 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
               <Link to='/family' className='btn'>
                 <i className='fa fa-close'></i>
               </Link>
-              <button type='submit' className='btn'><i className='fa fa-caret-right'></i></button>
+              <button type='submit' className='btn'><i className='fa fa-play'></i></button>
           </div>
 
         </fieldset>
@@ -60,6 +67,7 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit}) => {
 FamilyMemberAdd.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  edit: PropTypes.bool,
   form: PropTypes.shape({
     fields: PropTypes.objectOf(PropTypes.shape({
       value: PropTypes.any.isRequired,

@@ -24,7 +24,6 @@ class Navigation extends Component {
     if (includes(pathname, `models`)) {
 
       const {handleStopSession, activeFamily} = this.props.families;
-      console.log(activeFamily);
 
       return (
         <ul className='navigation'>
@@ -60,7 +59,7 @@ class Navigation extends Component {
 
     const {pathname} = this.props;
 
-    if (includes(pathname, `models`)) {
+    if (includes(pathname, `models`) || includes(pathname, `member`)) {
       return (
         <ul className='navigation'>
           <NavigationItem link='/family' icon='fa-users' pathname={pathname} />

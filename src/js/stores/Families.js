@@ -281,8 +281,9 @@ class Families  {
 
   }
 
-  @action handleConfirmation = () => {
-    this.confirmation = !this.confirmation;
+  @action handleConfirmation = id => {
+    if (isEmpty(this.confirmation)) this.confirmation = id;
+    else this.confirmation = ``;
   }
 
   @action handleFamilyMemberRemove = id => {

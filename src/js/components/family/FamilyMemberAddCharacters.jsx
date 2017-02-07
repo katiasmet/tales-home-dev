@@ -2,45 +2,78 @@ import React, {PropTypes} from 'react';
 
 const FamilyMemberAddCharacters = ({handleChange, value}) => {
 
+  console.log((value === `kiki`));
+
   return (
     <section className='form-characters'>
       <h3 className='label'>Choose your character</h3>
 
-      <label  htmlFor='charactername-1'
-              className='charactername-1'
-              onClick={() => handleChange(`character`, `character-name-1`)}>
-              charactername 1
-      </label>
-      <input  id='charactername-1'
-              className='hidden'
-              type='radio'
-              name='character'
-              value='charactername-1'
-              defaultChecked={(value === `charactername-1`) ? `true` : `false`} />
+      <section className='form-characters-options'>
+        <input  id='remi'
+                className='hidden'
+                type='radio'
+                name='character'
+                value='remi'
+                defaultChecked={value === `remi`} />
+        <label  htmlFor='remi'
+                className='character'
+                onClick={() => handleChange(`character`, `remi`)}>
+                <span className='character-figure remi'></span>
+                <span className='bg-pattern'></span>
+        </label>
 
-      <label  htmlFor='charactername-2'
-              className='charactername-2'
-              onClick={() => handleChange(`character`, `character-name-2`)}>
-              charactername 2
-      </label>
-      <input  id='charactername-2'
-              className='hidden'
-              type='radio'
-              name='character'
-              value='charactername-2'
-              defaultChecked={(value === `charactername-2`) ? `true` : `false`} />
+        <input  id='eddy'
+                className='hidden'
+                type='radio'
+                name='character'
+                value='eddy'
+                defaultChecked={value === `eddy`} />
+        <label  htmlFor='eddy'
+                className='character'
+                onClick={() => handleChange(`character`, `eddy`)}>
+                <span className='character-figure eddy'></span>
+                <span className='bg-pattern'></span>
+        </label>
 
-      <label  htmlFor='charactername-3'
-              className='charactername-3'
-              onClick={() => handleChange(`character`, `character-name-3`)}>
-              charactername 3
-      </label>
-      <input  id='charactername-3'
-              className='hidden'
-              type='radio'
-              name='character'
-              value='charactername-3'
-              defaultChecked={(value === `charactername-3`) ? `true` : `false`} />
+        <input  id='kiki'
+                className='hidden'
+                type='radio'
+                name='character'
+                value='kiki'
+                defaultChecked={value === `kiki`} />
+        <label  htmlFor='kiki'
+                className='character kiki'
+                onClick={() => handleChange(`character`, `kiki`)}>
+                <span className='character-figure kiki'></span>
+                <span className='bg-pattern'></span>
+        </label>
+
+        <input  id='gigi'
+                className='hidden'
+                type='radio'
+                name='character'
+                value='gigi'
+                defaultChecked={value === `gigi`} />
+        <label  htmlFor='gigi'
+                className='character gigi'
+                onClick={() => handleChange(`character`, `gigi`)}>
+                <span className='character-figure gigi'></span>
+                <span className='bg-pattern'></span>
+        </label>
+
+        <input  id='chris'
+                className='hidden'
+                type='radio'
+                name='character'
+                value='chris'
+                defaultChecked={value === `chris`} />
+        <label  htmlFor='chris'
+                className='character chris'
+                onClick={() => handleChange(`character`, `chris`)}>
+                <span className='character-figure chris'></span>
+                <span className='bg-pattern'></span>
+        </label>
+      </section>
 
     </section>
   );

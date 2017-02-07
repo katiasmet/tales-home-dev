@@ -19,12 +19,12 @@ class FormAddFamilyMember extends Form {
         rule: `required|array`
       },
       character: {
-        value: ``,
+        value: `kiki`,
         error: ``,
         rule: `required|min:3`
       },
       role: {
-        value: ``,
+        value: `child`,
         error: ``,
         rule: `required|min:3`
       }

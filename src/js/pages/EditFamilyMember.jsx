@@ -32,11 +32,10 @@ class EditFamilyMember extends Component {
         <Header pathname={pathname} />
 
         <main>
-          <h1>Edit a family member</h1>
 
           {
             isLoading ? <Loading />
-            : <FamilyMemberAdd form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+          : <FamilyMemberAdd form={form} handleChange={handleChange} handleSubmit={handleSubmit} edit={true} />
           }
 
         </main>

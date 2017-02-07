@@ -26,7 +26,9 @@ MODELSOVERVIEW
 
 .page-models,
 .page-model,
-.page-family {
+.page-family,
+.page-new-family-member,
+.page-edit-family-member {
   background-color: $blue;
   height: 100%;
   width: 100%;
@@ -58,7 +60,8 @@ MODELSOVERVIEW
   }
 
   header,
-  main {
+  main,
+  footer {
     position: relative;
     z-index: 1;
   }

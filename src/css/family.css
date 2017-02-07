@@ -1,3 +1,11 @@
+$bluenav: #21c5cb;
+$blue: #00e2ea;
+$accentblue: #cddefe; /* languages */
+
+$purple: #6e2bc8;
+$darkpurple: #5427aa;
+$grey: #515151;
+
 @define-mixin before-after {
   content: '';
   position: absolute;
@@ -12,21 +20,425 @@
   align-items: center;
 }
 
-.page-family {
+.page-family,
+.page-new-family-member,
+.page-edit-family-member {
   color: white;
 
-  h1 {
-    font-size: 3rem;
+  .btn,
+  .btn-handle-session,
+  .btn:hover,
+  .action .fa {
+    cursor: pointer;
+    color: $bluenav;
+  }
+
+  .btn,
+  .btn:hover,
+  .action:hover {
+    background: white;
   }
 }
 
-.family-overview {
+/*
+  FAMILY OVERVIEW
+*/
+
+.page-family {
+
+  main {
+    height: calc(100% - 14.5rem - 8rem);
+  }
+}
+
+.family-members,
+.page-family footer {
   @add-mixin flex-center;
 }
 
 .family-member {
+  @add-mixin flex-center;
+  flex-direction: column;
+  text-align: center;
 
   a {
     display: block;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 300;
+  }
+
+  .action {
+    margin-top: 1rem;
+    background: white;
+    color: $bluenav;
+  }
+}
+
+.page-family footer {
+  flex-direction: column;
+
+  h1 {
+    font-size: 3rem;
+    color: white;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
+
+}
+
+/*
+  ADD FAMILY MEMBER
+*/
+
+.page-new-family-member,
+.page-edit-family-member {
+  color: $bluenav;
+  overflow: inherit;
+  height: auto;
+  min-height: 100%;
+
+  h1,
+  h3,
+  label,
+  .nav-item {
+    color: $bluenav;
+  }
+
+  input {
+    background: rgba(0, 204, 198, .1);
+    color: $grey;
+
+    &:focus {
+      background: rgba(0, 204, 198, .2);
+      color: $grey;
+    }
+  }
+
+  .character span {
+    margin-left: 0;
+  }
+
+  main {
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+.form-add-family-member,
+.form-edit-family-member {
+
+  margin-top: 0;
+  padding-bottom: 5rem;
+
+  .form-actions {
+    position: absolute;
+    top: auto;
+    bottom: -2.2rem;
+    left: 0;
+    right: 0;
+  }
+
+  .btn {
+    position: initial;
+    background: $purple;
+    color: white;
+
+    &:hover {
+      background: $purple;
+      color: white;
+      animation: hover .3s ease-in;
+    }
+  }
+
+  &::after {
+    background: $blue;
+  }
+}
+
+.form-roles-options,
+.form-characters-options,
+.form-languages header {
+  @add-mixin flex-center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.form-roles {
+  margin: 2rem 0;
+}
+
+.form-roles-options label {
+  font-weight: 300;
+  text-align: center;
+  color: $grey;
+  margin-top: 0;
+}
+
+.form-characters-options .character,
+.form-roles-options .role {
+  width: 5rem;
+  height: 7rem;
+  border-radius: 1rem;
+
+  margin-top: 0;
+  transition: all .3s ease-in;
+  position: relative;
+  cursor: pointer;
+
+  overflow: hidden;
+  mask-image: -webkit-radial-gradient(circle, white, black);
+  opacity: .7;
+
+  &:hover {
+    animation: none;
+    transform: scale(1.5);
+    opacity: 1;
+
+    .character-figure {
+      transform: translateY(-.5rem);
+    }
+
+    .role-figure {
+      transform: translateY(-1.5rem);
+    }
+
+    .chris {
+      transform: translateY(-3.5rem);
+    }
+
+    .gigi {
+      transform: translateY(-2rem);
+    }
+
+    .child {
+      transform: translateY(-2.5rem);
+      background-size: 65%;
+    }
+  }
+
+  .role:hover {
+    margin-bottom: 2rem;
+  }
+
+}
+
+.bg-pattern {
+
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  background: $purple;
+
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  overflow: hidden;
+  mask-image: -webkit-radial-gradient(circle, white, black);
+  transform: translateY(.1rem);
+
+  &::before,
+  &::after {
+    @add-mixin before-after;
+    width: 130%;
+    height: 150%;
+    background: $darkpurple;
+
+    top: 1rem;
+    left: auto;
+    right: -3rem;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    width: 10%;
+    right: 2.5rem;
+    top: -2rem;
+  }
+}
+
+.character-figure {
+  display: block;
+  width: 100%;
+  height: 150%;
+  margin-left: 0;
+
+  position: relative;
+  z-index: 1;
+  transform: translateY(.5rem);
+  transition: transform .3s ease-in;
+
+  &.remi {
+    background: url(../assets/img/characters/remi/remi.png) no-repeat bottom center;
+    background-size: 90%;
+  }
+
+  &.eddy {
+    background: url(../assets/img/characters/eddy/eddy.png) no-repeat bottom center;
+    background-size: 100%;
+  }
+
+  &.kiki {
+    background: url(../assets/img/characters/kiki/kiki.png) no-repeat bottom center;
+    background-size: 75%;
+  }
+
+  &.gigi {
+    background: url(../assets/img/characters/gigi/gigi.png) no-repeat bottom center;
+    background-size: 75%;
+    transform: translateY(-1rem);
+  }
+
+  &.chris {
+    background: url(../assets/img/characters/chris/chris.png) no-repeat bottom center;
+    background-size: 100%;
+    transform: translateY(-2rem);
+  }
+
+}
+
+.form-roles-options {
+  justify-content: center;
+
+  .role:nth-child(even) {
+    margin: 0 2rem;
+  }
+}
+
+.role {
+
+  margin-bottom: 1rem;
+
+  .role-figure {
+    display: block;
+    width: 100%;
+    height: 150%;
+    margin-left: 0;
+
+    position: relative;
+    z-index: 1;
+    transform: translateY(-.5rem);
+    transition: transform .3s ease-in;
+  }
+
+  .father {
+    background: url(../assets/img/characters/kiki/kiki_father.png) no-repeat bottom center;
+    background-size: 75%;
+  }
+
+  .mother {
+    background: url(../assets/img/characters/kiki/kiki_mother.png) no-repeat bottom center;
+    background-size: 75%;
+  }
+
+  .child {
+    background: url(../assets/img/characters/kiki/kiki.png) no-repeat bottom center;
+    background-size: 50%;
+    transform: translateY(-1rem);
+  }
+}
+
+.form-characters-options input[type=radio]:checked + label,
+.form-roles-options input[type=radio]:checked + label {
+  transform: scale(1.5);
+  opacity: 1;
+
+  .character-figure {
+    transform: translateY(-.5rem);
+  }
+
+  .role-figure {
+    transform: translateY(-1.5rem);
+  }
+
+  .chris {
+    transform: translateY(-3.5rem);
+  }
+
+  .gigi {
+    transform: translateY(-2rem);
+  }
+
+  .child {
+    transform: translateY(-2.5rem);
+    background-size: 65%;
+  }
+}
+
+.form-roles-options input[type=radio]:checked + .role {
+  margin-bottom: 2rem;
+}
+
+.form-add-family-member .form-languages {
+
+  position: relative;
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  .btn {
+    background: $bluenav;
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
+    position: initial;
+  }
+
+  .languages {
+    max-height: 20rem;
+    width: calc(100% + 6rem);
+    margin-left: -3rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    border: 1rem solid white;
+    overflow: scroll;
+
+    &::after {
+      @add-mixin before-after;
+      top: 2rem;
+      left: auto;
+      right: 0;
+      border: solid transparent;
+      height: 0;
+      width: 0;
+      border-bottom-color: rgba(0, 204, 198, .1);
+      border-width: 1.5rem;
+      margin-left: -1.5rem;
+    }
+  }
+
+  .language {
+    color: $bluenav;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: rgba(0, 204, 198, .1);
+    transition: all .3s ease-in;
+
+    &:hover {
+      background: rgba(0, 204, 198, .2);
+    }
+  }
+
+  .member-languages {
+    display: flex;
+    flex-wrap: wrap;
+
+    .form-input {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  .member-language {
+    background: rgba(0, 204, 198, .1);
+    padding: .5rem 1rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+    font-weight: 300;
+    color: $grey;
   }
 }

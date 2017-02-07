@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 
 import {Header, Loading} from '../components/';
-import {FamilyOverview} from '../components/family';
+import {FamilyMembers} from '../components/family';
 import {content} from '../auth/token';
 
 //familieside
@@ -23,21 +23,29 @@ class Family extends Component {
   render() {
     const {isLoading, handleStartSession} = this.props.families;
     const {pathname} = this.props.location;
+    const name = content().name;
 
     return (
       <div className='page page-family'>
         <Header pathname={pathname} />
 
-        {
-          (isLoading === `familymembers`) ? (<Loading />)
-          : <FamilyOverview />
-        }
+        <main>
+          {
+            (isLoading === `familymembers`) ? (<Loading />)
+            : <FamilyMembers />
+          }
+        </main>
 
-        <div onClick={handleStartSession} >
-          <Link to='/models' className='btn'>
-            <i className='fa fa-caret-right'></i>
-          </Link>
-        </div>
+        <footer>
+
+          <div onClick={handleStartSession} className='btn-handle-session'>
+            <Link to='/models' className='btn'>
+              <i className='fa fa-play'></i>
+            </Link>
+          </div>
+
+          <h1>The {name}&#39;s</h1>
+        </footer>
 
       </div>
     );

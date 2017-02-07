@@ -20,7 +20,7 @@ class FamilyMember extends Component {
 
     const {confirmation} = this.props.families;
 
-    if (confirmation) {
+    if (confirmation === this.props._id) {
       this.actions = [
         {
           _id: this.props._id,
