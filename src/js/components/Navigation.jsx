@@ -23,11 +23,15 @@ class Navigation extends Component {
 
     if (includes(pathname, `models`)) {
 
-      const {handleStopSession} = this.props.families;
+      const {handleStopSession, activeFamily} = this.props.families;
+      console.log(activeFamily);
 
       return (
         <ul className='navigation'>
-          <li onClick={handleStopSession} >
+          <li>
+            The {activeFamily.name}&#39;s
+          </li>
+          <li onClick={handleStopSession} className='nav-item'>
             <i className='fa fa-sign-out'></i>
           </li>
         </ul>
@@ -100,7 +104,8 @@ class Navigation extends Component {
 Navigation.propTypes = {
   pathname: PropTypes.string,
   families: PropTypes.shape({
-    handleStopSession: PropTypes.func
+    handleStopSession: PropTypes.func,
+    activeFamily: PropTypes.object
   })
 };
 

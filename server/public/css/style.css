@@ -373,8 +373,6 @@ html {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   width: 90vw;
   position: relative;
   -webkit-box-pack: start;
@@ -522,6 +520,7 @@ h1 {
   text-align: center;
   margin-bottom: 48px;
   margin-bottom: 3rem;
+  width: 100%;
 }
 
 h1 span {
@@ -760,6 +759,8 @@ nav li, .form-actions li {
   margin-left: 2rem;
 
   color: white;
+
+  font-weight: 700;
 }
 
 nav a, .form-actions a {
@@ -864,6 +865,19 @@ nav .user, .form-actions .user {
           animation: hover .3s ease-in;
 
   opacity: 1;
+}
+
+.page-models .nav-item,
+.page-model .nav-item,
+.page-family .nav-item {
+  color: #21c5cb
+}
+
+.page-models .nav-item:hover, .page-model .nav-item:hover, .page-family .nav-item:hover{
+
+  color: #21c5cb;
+
+  background: white;
 }
 
 .form-edit-user .form-actions .btn:nth-child(odd),
@@ -1004,6 +1018,7 @@ input::placeholder {
   bottom: 0;
   left: -40vw;
   width: 23vw;
+  height: 45vw;
   z-index: 2;
 }
 
@@ -1011,8 +1026,6 @@ input::placeholder {
 .page-new-family::after {
   bottom: -88px;
   bottom: -5.5rem;
-  height: 720px;
-  height: 45rem;
   background: url(/assets/img/login_family.png) no-repeat center bottom;
   background-size: contain;
 
@@ -1024,8 +1037,6 @@ input::placeholder {
 .page-login.register::after {
   bottom: -208px;
   bottom: -13rem;
-  height: 800px;
-  height: 50rem;
   background: url(/assets/img/login_newmentor.png) no-repeat center bottom;
   background-size: contain;
 
@@ -1038,8 +1049,6 @@ input::placeholder {
 .page-edit-profile::after {
   bottom: -240px;
   bottom: -15rem;
-  height: 832px;
-  height: 52rem;
   background: url(/assets/img/login_mentor.png) no-repeat center bottom;
   background-size: contain;
 
@@ -1378,6 +1387,8 @@ MENTOR FAMILIES
       -ms-flex: 1;
 
           flex: 1;
+
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
 }
 
 .families-browse .character {
@@ -1440,6 +1451,12 @@ MENTOR FAMILIES
   border: 1.6px solid #6e2bc8;
 
   border: .1rem solid #6e2bc8;
+
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
+
+  -webkit-filter: blur(.5px);
+
+  filter: blur(.5px);
 
   -webkit-animation: radar 2s ease-in infinite;
 
@@ -1899,6 +1916,8 @@ STARTSESSION POP-UP
   left: 0;
   right: 0;
   margin: auto;
+
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
 }
 
 .pop-up .btn {
@@ -1958,6 +1977,12 @@ STARTSESSION POP-UP
 
   border: .1rem solid #6e2bc8;
 
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
+
+  -webkit-filter: blur(.5px);
+
+  filter: blur(.5px);
+
   -webkit-animation: radar 2s ease-in infinite;
 
   animation: radar 2s ease-in infinite;
@@ -2002,18 +2027,95 @@ MODELSOVERVIEW
 */
 
 .page-models,
-.page-model {
+.page-model,
+.page-family {
   background-color: #26e2e9;
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-image:
-    url(/assets/img/bg/bg_ground_blue.png),
-    url(/assets/img/bg/bg_gradient.png);
+
+  /*background-image:
+    url(../assets/img/bg/bg_ground_blue.png),
+    url(../assets/img/bg/bg_gradient.png);
   background-repeat: no-repeat;
   background-size: contain, cover;
-  background-position: 0% 170%, top;
+  background-position: 0% 170%, top;*/
 
+  position: relative;
+
+}
+
+.page-models header,
+  .page-models main,
+  .page-model header,
+  .page-model main,
+  .page-family header,
+  .page-family main {
+
+  position: relative;
+
+  z-index: 1;
+}
+
+.page-models::after,
+  .page-models::before,
+  .page-model::after,
+  .page-model::before,
+  .page-family::after,
+  .page-family::before{
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  display: block;
+
+  bottom: 0;
+
+  margin: auto;
+
+  width: 100vw;
+
+  height: cacl(100vh + 10vw);
+
+  background: -webkit-radial-gradient(center ellipse, rgba(0, 0, 0, 0) 50%, black 100%);
+
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, black 100%);
+
+  opacity: .3;
+
+  z-index: 0;
+}
+
+.page-models::after, .page-model::after, .page-family::after{
+
+  width: 150vw;
+
+  height: 50vh;
+
+  top: auto;
+
+  left: -25vw;
+
+  bottom: 0;
+
+  background: -webkit-linear-gradient(top, black 0%, rgba(0, 0, 0, 0) 100%);
+
+  background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0) 100%);
+
+  opacity: .05;
+
+  border-radius: 45% / 50%;
+
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="5" /></filter></svg>#filter');
+
+  -webkit-filter: blur(5px);
+
+          filter: blur(5px);
 }
 
 .models {
@@ -2114,6 +2216,12 @@ MODELSOVERVIEW
   border: 1.6px solid white;
 
   border: .1rem solid white;
+
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
+
+  -webkit-filter: blur(.5px);
+
+          filter: blur(.5px);
 
   -webkit-animation: radar 2s ease-in infinite;
 
@@ -2394,10 +2502,6 @@ MODELSOVERVIEW
 .model-count {
   text-transform: uppercase;
   font-weight: 700;
-}
-
-.page-model {
-  position: relative;
 }
 
 .model {
