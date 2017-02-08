@@ -22,7 +22,7 @@ class ModelDistanceCharacter extends Component {
   render() {
 
     const {_id, name, left} = this.props;
-    const {handleMoveCharacter, handleEndMoveCharacter} = this.props.models;
+    const {handleMoveCharacter, handleDragCharacter, handleEndMoveCharacter} = this.props.models;
 
     const transform = `translateX(${left}rem)`;
 
@@ -37,6 +37,9 @@ class ModelDistanceCharacter extends Component {
       <div  className={`drag-character ${name}`}
             onTouchMove={e => handleMoveCharacter(_id, e)}
             onTouchEnd={e => handleEndMoveCharacter(e)}
+            draggable='true'
+            onDrag={e => handleDragCharacter(_id, e)}
+            onDrop={e => handleEndMoveCharacter(e)}
             style={style}
       >
         {this.renderCharacter(name)}
@@ -52,6 +55,7 @@ ModelDistanceCharacter.propTypes = {
   left: PropTypes.number,
   models: PropTypes.shape({
     handleMoveCharacter: PropTypes.func,
+    handleDragCharacter: PropTypes.func,
     handleEndMoveCharacter: PropTypes.func
   })
 };

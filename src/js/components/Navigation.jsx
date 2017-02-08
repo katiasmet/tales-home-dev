@@ -6,7 +6,7 @@ import {isEmpty, includes} from 'lodash';
 import {isLoggedIn, token} from '../auth';
 import {NavigationItem} from './';
 
-@inject(`families`) @observer
+@inject(`families`, `notes`) @observer
 class Navigation extends Component {
 
   renderNavigation() {
@@ -21,15 +21,26 @@ class Navigation extends Component {
 
     const {pathname} = this.props;
 
+    console.log(`professional navigation`);
+
     if (includes(pathname, `models`)) {
 
       const {handleStopSession, activeFamily} = this.props.families;
+      const {handleOpenNotes} = this.props.notes;
+      const {model} = this.props;
 
       return (
         <ul className='navigation'>
           <li>
             The {activeFamily.name}&#39;s
           </li>
+          {
+            model && (
+              <li onClick={handleOpenNotes} className='nav-item'>
+                <i className='fa fa-align-justify'></i>
+              </li>
+            )
+          }
           <li onClick={handleStopSession} className='nav-item'>
             <i className='fa fa-sign-out'></i>
           </li>
@@ -102,9 +113,14 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   pathname: PropTypes.string,
+  model: PropTypes.bool,
   families: PropTypes.shape({
     handleStopSession: PropTypes.func,
-    activeFamily: PropTypes.object
+    activeFamily: PropTypes.object,
+    activeFamilyModel: PropTypes.object
+  }),
+  notes: PropTypes.shape({
+    handleOpenNotes: PropTypes.func
   })
 };
 

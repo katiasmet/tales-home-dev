@@ -401,3 +401,66 @@ STARTSESSION POP-UP
     letter-spacing: .5rem;
   }
 }
+
+.first-run {
+  @add-mixin flex-center;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 50;
+  bottom: 0;
+
+  width: calc(100% - 9.5rem);
+  background: $purple;
+  color: white;
+  border-radius: 0 2rem 2rem;
+
+  padding: 2rem 3rem 2rem 12.5rem;
+  margin: 1.5rem 2.5rem 1.5rem 7rem;
+
+  .btn {
+    background: white;
+    color: $purple;
+
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
+  }
+
+  &::after,
+  &::before {
+    @add-mixin before-after;
+    top: -2rem;
+    height: 3rem;
+    width: 3rem;
+    background: url(../assets/img/arrow.png) no-repeat center center;
+    background-size: contain;
+  }
+
+  &::before {
+    top: auto;
+    left: 1rem;
+    bottom: 0;
+    height: 10rem;
+    width: 10rem;
+    background: url(../assets/img/test_run_first_run.png) no-repeat center center;
+    background-size: contain;
+  }
+
+}
+
+.next-run {
+  position: absolute;
+  z-index: 50;
+  bottom: -10rem;
+  right: -17rem;
+  transition: all .3s ease-in;
+  cursor: pointer;
+
+  figure {
+    width: 23rem;
+  }
+
+  &:hover {
+    transform: translate(-10rem, -4rem);
+  }
+}

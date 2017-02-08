@@ -7,13 +7,14 @@ import {Header, Loading} from '../components/';
 import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
 import {token} from '../auth';
 
-@inject(`models`, `families`, `notes`) @observer
+@inject(`models`, `families`, `notes`, `results`) @observer
 class Models extends Component {
 
   componentDidMount() {
     if (token.content().scope === `professional`) {
       this.props.models.getModels();
       this.props.notes.getNotes();
+      this.props.results.getResults();
       this.props.notes.handleRedirect();
     } else {
       const {handleFamilyMembersVisites} = this.props.families;
@@ -88,6 +89,9 @@ Models.propTypes = {
   notes: PropTypes.shape({
     getNotes: PropTypes.func,
     handleRedirect: PropTypes.func
+  }),
+  results: PropTypes.shape({
+    getResults: PropTypes.func
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string

@@ -6,8 +6,8 @@ const CharacterGigi = () => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      width='100%'
-      height='100%'
+      width='148.7px'
+      height='190.4px'
       viewBox='0 0 148.7 190.4'
       className='gigi-illustration'
     >

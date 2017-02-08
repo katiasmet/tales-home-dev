@@ -10,6 +10,7 @@ import {content} from '../auth/token';
 
 import users from './Users';
 import notes from './Notes';
+import results from './Results';
 
 class Families  {
 
@@ -174,6 +175,10 @@ class Families  {
 
   };
 
+  @action handleActiveFamilyMember = id => {
+    this.showInfo = id;
+  }
+
   @action handleFamilySession = familyId => {
 
     this.generateSessionId();
@@ -228,7 +233,6 @@ class Families  {
   @action handleStartModel = id => {
 
     this.isLoading = `model`;
-
     this.socket.emit(`setModel`, users.currentSocketId, id);
 
     //get familymodelid else insert
@@ -238,6 +242,7 @@ class Families  {
           this.activeFamilyModel._id = familymodel.familyModel._id;
           this.isLoading = ``;
           notes.getNote();
+          results.getResult();
         } else {
 
           insert({familyId: this.activeFamily._id, modelId: id})
@@ -245,6 +250,7 @@ class Families  {
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
               notes.getNote();
+              results.getResult();
             })
             .catch(err => {
               this.handleError(err);

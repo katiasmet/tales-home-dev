@@ -13,12 +13,38 @@ class ModelDistance extends Component {
     getDraggableCharacters();
   }
 
+  renderLanguages() {
+    const {familyLanguages, currentLanguage, handleNextLanguage} = this.props.models;
+
+    return (
+      <ul className='model-languages'>
+
+        {
+          familyLanguages.slice().map((language, i) => {
+            return (
+              <li className={(i === currentLanguage) ? `language active` : `language`}
+                  onClick={() => handleNextLanguage(i)}
+                  key={i}>
+                    {language}
+              </li>
+            );
+          })
+        }
+
+      </ul>
+    );
+  }
+
   render() {
 
     const {isLoadingDistance} = this.props.models;
 
     return (
       <section className='model-distance'>
+
+        {
+          !isLoadingDistance && this.renderLanguages()
+        }
 
         {
           isLoadingDistance ? <Loading />
@@ -42,7 +68,8 @@ ModelDistance.propTypes = {
     currentLanguage: PropTypes.number,
     getDraggableCharacters: PropTypes.func,
     draggableCharacters: PropTypes.array,
-    isLoadingDistance: PropTypes.bool
+    isLoadingDistance: PropTypes.bool,
+    handleNextLanguage: PropTypes.func
   })
 };
 

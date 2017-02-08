@@ -31,6 +31,11 @@ const schema = new Schema({
     default: Scopes.PROFESSIONAL
   },
 
+  firstLogin: {
+    type: Boolean,
+    default: true
+  },
+
   isActive: {
     type: Boolean,
     default: true

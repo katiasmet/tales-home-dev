@@ -6,8 +6,8 @@ const CharacterKiki = () => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      width='100%'
-      height='100%'
+      width='60.4px'
+      height='117.5px'
       viewBox='0 0 60.4 117.5'
       className='kiki-illustration'
     >

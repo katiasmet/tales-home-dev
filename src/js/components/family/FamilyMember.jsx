@@ -2,12 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 
+import {CharacterGigi, CharacterKiki, CharacterChris} from '../illustrations';
 import {Actions} from '../';
 
 @inject(`families`) @observer
 class FamilyMember extends Component {
 
-  //bewegend character = figure ?
   actions = [
     {
       _id: this.props._id,
@@ -46,6 +46,17 @@ class FamilyMember extends Component {
 
   }
 
+  renderCharacter(character) {
+
+    if (character === `kiki`) {
+      return <CharacterKiki />;
+    } else if (character === `chris`) {
+      return <CharacterChris />;
+    } else {
+      return <CharacterGigi />;
+    }
+  }
+
   render() {
 
     const {character, firstName, _id} = this.props;
@@ -55,9 +66,8 @@ class FamilyMember extends Component {
       <article className='family-member'>
 
         <Link to={`/editfamilymember/${_id}`}>
-          <figure className={character}>
 
-          </figure>
+          {this.renderCharacter(character)}
 
           {firstName}
         </Link>

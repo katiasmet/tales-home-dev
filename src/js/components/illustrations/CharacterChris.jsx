@@ -6,8 +6,8 @@ const Chris = () => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      width='100%'
-      height='100%'
+      width='138.7px'
+      height='126.9px'
       viewBox='0 0 138.7 126.9'
       className='chris-illustration'
     >

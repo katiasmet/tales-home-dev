@@ -30,10 +30,10 @@ class Model extends Component {
 
     if (token.content().scope === `professional`) {
 
-      const {isLoadingNotes, redirect} = this.props.notes;
+      const {isLoadingNotes, redirect, showNotes} = this.props.notes;
       if (isLoadingNotes) return (<Loading />);
       if (redirect) return <Redirect to='/models' />;
-      return <ModelNotes />;
+      if (showNotes) return <ModelNotes />;
 
     }
 
@@ -54,12 +54,13 @@ class Model extends Component {
   render() {
     const {pathname} = this.props.location;
     const {isLoading} = this.props.families;
+    const {showNotes} = this.props.notes;
 
     return (
       <div className='page page-model '>
-        <Header pathname={pathname} />
+        <Header pathname={pathname} model={true} />
 
-        <section className='model'>
+        <section className={(token.content().scope === `professional` && showNotes) ? `model active-notes`  : `model`}>
 
           {
             (!isEmpty(isLoading)) ? <Loading />
@@ -98,7 +99,8 @@ Model.propTypes = {
   notes: PropTypes.shape({
     isLoadingNotes: PropTypes.bool,
     getNote: PropTypes.func,
-    redirect: PropTypes.bool
+    redirect: PropTypes.bool,
+    showNotes: PropTypes.bool
   }),
 };
 

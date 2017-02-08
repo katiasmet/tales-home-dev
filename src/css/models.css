@@ -6,6 +6,10 @@ $accentblue: #cddefe; /* languages */
 $accentlightblue: #90f0f3; /* themes */
 $bluenav: #21c5cb;
 
+$lightpurple: ghostwhite;
+$purple: #6e2bc8;
+$darkpurple: #5427aa;
+
 @define-mixin before-after {
   content: '';
   position: absolute;
@@ -182,7 +186,7 @@ MODELSOVERVIEW
   border-radius: 0;
   background: url(../assets/img/btn_show_grid.png) no-repeat center bottom;
   background-size: contain;
-  margin-top: -3.6rem;
+  margin-top: -3.4rem;
   position: relative;
 
   &:hover {
@@ -286,7 +290,7 @@ MODELSOVERVIEW
   justify-content: space-between;
   align-items: center;
 
-  height: 100%;
+  height: calc(100% - 8rem);
 }
 
 .model-notes {
@@ -306,8 +310,130 @@ MODELSOVERVIEW
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  h1 {
+    text-align: left;
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+
+  header {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+
+  .btn-stop {
+    width: auto;
+    height: auto;
+    padding: 1rem;
+
+    i {
+      margin-left: 1rem;
+    }
+  }
+
+  .btn-close:hover {
+    animation: none;
+  }
+
+}
+
+.active-notes::after {
+  @add-mixin before-after;
+  width: 38rem;
+  height: calc(100% + 10rem);
+  top: -5rem;
+  left: auto;
+  right: 0;
+  z-index: 0;
+  background: $purple;
 }
 
 .model-notes .family-info-membes ul {
   @add-mixin flex-center;
+}
+
+.model-members {
+  @add-mixin flex-center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.model-member {
+  max-width: 5rem;
+  margin-right: 3rem;
+  display: block;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .3s ease-in;
+
+  svg {
+    height: 100%;
+  }
+
+  &.active,
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.member-info {
+
+  .languages {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+  }
+
+  .language {
+    background: $lightpurple;
+    padding: .5rem 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    list-style: none;
+  }
+}
+
+.model-notes footer {
+  @add-mixin flex-center;
+  justify-content: space-between;
+}
+
+.model-notes .btn {
+  color: white;
+  background: $purple;
+
+  &:hover {
+    color: white;
+    background: $purple;
+
+    animation: hover .3s ease-in;
+  }
+}
+
+.model-languages {
+  @add-mixin flex-center;
+  position: relative;
+  z-index: 10;
+
+  .language {
+    background: $purple;
+    padding: .5rem 1rem;
+    margin: 0 .5rem;
+    border-radius: 1rem;
+    list-style: none;
+    cursor: pointer;
+    transition: all .3s ease-in;
+
+    &.active,
+    &:hover {
+      background: $darkpurple;
+    }
+  }
 }
