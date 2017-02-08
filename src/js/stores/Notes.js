@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 import {selectByProfessional, insert, update} from '../api/notes';
 import {token} from '../auth';
 import families from './Families';
+import results from './Results';
 import users from './Users';
 
 class Notes  {
@@ -16,6 +17,7 @@ class Notes  {
   @observable error = ``;
   @observable isLoadingNotes = false;
   @observable activeNote = ``;
+  @observable showNotes = true;
 
   @action handleNoteRemove = id => {
     console.log(`remove notes`);
@@ -38,18 +40,17 @@ class Notes  {
 
     this.isLoadingNotes = true;
 
-    const note = filter(this.allNotes, note => {
-      return note.familyModelId === families.activeFamilyModel._id;
-    })[0][0];
+    if (this.allNotes.length > 0) {
+      const note = filter(this.allNotes, note => {
+        return note.familyModelId === families.activeFamilyModel._id;
+      })[0][0];
 
-    if (note) {
-      this.activeNote = note._id;
-      this.notesInput = note.notes;
+      if (note) {
+        this.activeNote = note._id;
+        this.notesInput = note.notes;
+      }
     }
 
-    console.log(note);
-
-    //id;
     this.isLoadingNotes = false;
 
   }
@@ -62,6 +63,7 @@ class Notes  {
 
     e.preventDefault();
 
+    results.handleSubmit();
     if (isEmpty(this.activeNote)) {
       insert({familyModelId: families.activeFamilyModel._id, notes: this.notesInput})
         .then(() => {
@@ -79,7 +81,6 @@ class Notes  {
         .catch(error => {
           this.handleError(error.message);
         });
-
     }
 
     this.socket.emit(`stopModel`, users.currentSocketId);
@@ -92,6 +93,14 @@ class Notes  {
 
   @action handleError = error => {
     this.error = error;
+  }
+
+  @action handleCloseNotes = () => {
+    this.showNotes = false;
+  }
+
+  @action handleOpenNotes = () => {
+    this.showNotes = true;
   }
 
 }

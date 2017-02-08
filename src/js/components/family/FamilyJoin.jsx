@@ -19,15 +19,14 @@ const FamilyJoin = inject(`formJoin`)(observer(({formJoin}) => {
         )
       }
 
+      <h1>Start family session</h1>
+
       <form
         action=''
         method='post'
         acceptCharset='utf-8'
         onSubmit={handleSubmit}>
 
-        <fieldset>
-          <h2>Start family session</h2>
-        </fieldset>
 
         <fieldset>
 
@@ -43,9 +42,9 @@ const FamilyJoin = inject(`formJoin`)(observer(({formJoin}) => {
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
-          <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
-
         </fieldset>
+
+        <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-play'></i></button>
 
       </form>
 

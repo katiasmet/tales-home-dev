@@ -9,10 +9,11 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview, handleStartMo
     const pathname = kebabCase(model.name);
 
     return (
-      <li className='model-nav-item active' key={i} onClick={() => handleStartModel(model._id)}>
+      <li className={handleIsPassed(model._id) ? `model-nav-item active done` : `model-nav-item active done`} key={i} onClick={() => handleStartModel(model._id)}>
         <Link to={`/models/${pathname}`}>
           <i className='fa fa-play'></i>
         </Link>
+        {handleIsPassed(model._id) && <i className='fa fa-check'></i>}
       </li>
     );
 
@@ -22,7 +23,7 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview, handleStartMo
       <li className={handleIsPassed(model._id) ? `model-nav-item done` : `model-nav-item`}
           key={i}
           onClick={() => handleModelPreview(model._id)}>
-        {model.name}
+          {handleIsPassed(model._id) && <i className='fa fa-check'></i>}
       </li>
     );
 

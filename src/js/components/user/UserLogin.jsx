@@ -20,15 +20,13 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
             )
           }
 
+          <h1>Login</h1>
+
           <form
             action=''
             method='post'
             acceptCharset='utf-8'
             onSubmit={handleSubmit}>
-
-            <fieldset>
-              <h2>Log in</h2>
-            </fieldset>
 
             <fieldset>
 
@@ -59,9 +57,9 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
                 <p><Link to='/'>Forgotten your password? </Link></p>
               </section>
 
-              <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-caret-right'></i></button>
-
             </fieldset>
+
+            <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-play'></i></button>
 
           </form>
 

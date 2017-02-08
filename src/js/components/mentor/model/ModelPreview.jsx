@@ -11,7 +11,7 @@ const ModelPreview = inject(`models`)(observer(({models}) => {
   return (
     <section className='model-preview'>
       <img src='./assets/img/model_distance_previewimg.png' alt='Distance Model Preview' height='375' width='480'></img>
-      <h2>{name}</h2>
+      <h1>{name}</h1>
       <p>{description}</p>
       <ul className='model-preview-themes'>
         {

@@ -6,15 +6,15 @@ import {Loading} from '../../';
 
 const StartSession = inject(`families`, `users`)(observer(({families, users}) => {
 
-  const {activeFamily, sessionId} = families;
+  const {activeFamily, sessionId, handleCloseSession} = families;
   const {isSessionStarted} = users;
 
   return (
     <section className='startsession pop-up-overlay pop-up'>
-      <button className='btn'><i className='fa fa-close'></i></button>
+      <button className='btn' onClick={handleCloseSession}><i className='fa fa-close'></i></button>
 
       <header>
-        <h2>The {activeFamily.name}&#39;s SESSION</h2>
+        <h1>The {activeFamily.name}&#39;s session</h1>
       </header>
 
 

@@ -2,7 +2,8 @@ import {observable, action} from 'mobx';
 import Form from './Form';
 
 import {login} from '../api/auth';
-import {set} from '../auth/token';
+import {updateLogin} from '../api/users';
+import {set, content} from '../auth/token';
 
 class FormLogin extends Form {
   @observable form = ({
@@ -35,6 +36,10 @@ class FormLogin extends Form {
       login(this.getValues())
         .then(d => set(d))
         .then(() => {
+          updateLogin({firstLogin: false})
+            .catch(error => {
+              this.handleError(error.message);
+            });
           this.form.redirect = true;
         })
         .catch(error => {

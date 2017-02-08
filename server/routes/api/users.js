@@ -85,6 +85,7 @@ module.exports = [
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
           organisation: Joi.string().allow(``),
+          firstLogin: Joi.boolean(),
           isActive: Joi.boolean(),
           scope: Joi.string().min(3)
         }
@@ -98,7 +99,7 @@ module.exports = [
       let fields = [`name`, `email`, `password`, `organisation`];
 
       if (req.hasScope(Scopes.ADMIN)) {
-        fields = [...fields, `isActive`, `scope`];
+        fields = [...fields, `isActive`, `firstLogin`, `scope`];
       }
 
       const data = pick(req.payload, fields);
@@ -145,6 +146,7 @@ module.exports = [
           newpassword: Joi.string().min(3).allow(``),
           organisation: Joi.string().allow(``),
           audience: Joi.string().min(3).required(),
+          firstLogin: Joi.boolean(),
           isActive: Joi.boolean(),
           scope: Joi.string().min(3)
         }
@@ -161,11 +163,11 @@ module.exports = [
 
       let fields;
       if (req.sameUserId(_id)) {
-        fields = [`name`, `email`, `password`, `organisation`];
+        fields = [`name`, `email`, `password`, `organisation`, `firstLogin`];
       }
 
       if (req.hasScope(Scopes.ADMIN)) {
-        fields = [`name`, `email`, `password`, `organisation` `isActive`, `scope`];
+        fields = [`name`, `email`, `password`, `organisation`, `firstLogin`, `isActive`, `scope`];
       }
 
       if (isEmpty(fields)) {
@@ -227,6 +229,56 @@ module.exports = [
             Boom.badRequest(`Oops! We couldn't update your information.`)
           );
       });
+
+    }
+
+  },
+
+  {
+
+    method: `PUT`,
+    path: `${base}/users/{_id}`,
+
+    config: {
+
+      auth: {
+        strategy: `token`,
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL]
+      },
+
+      validate: {
+
+        params: {
+          _id: Joi.objectId()
+        },
+
+        options: {
+          abortEarly: false
+        },
+
+        payload: {
+          firstLogin: Joi.boolean().required()
+        }
+
+      }
+
+    },
+
+    handler: (req, res) => {
+
+      const {_id} = req.params;
+      const fields = [`firstLogin`];
+      const query = {_id: _id};
+      const data = pick(req.payload, fields);
+      const update = {new: true};
+
+      User.findOneAndUpdate(query, data, update)
+        .then(user => {
+          if (!user) return res(Boom.badRequest(`Cannot update user.`));
+          user = omit(user.toJSON(), [`__v`, `password`, `isActive`, `_id`, `created`]);
+          return res(user);
+        })
+        .catch(() => res(Boom.badRequest(`Cannot update user.`)));
 
     }
 

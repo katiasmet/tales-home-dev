@@ -16,7 +16,7 @@ const handleFamilies = (families, activeFamilies, searchInput) => {
   if (isEmpty(families)) {
     return (
         <p> Hello there! Looks like you didn't analyse any families yet.
-            Start by <Link to='/newfamiliy'>adding a family</Link>.</p>
+            Start by <Link to='/newfamily'>adding a family</Link>.</p>
     );
   } else {
     if (isEmpty(activeFamilies)) {
@@ -36,7 +36,7 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
   const {allFamilies, activeFamilies, searchInput, isLoading} = families;
 
   return (
-    <section className='families families-overview'>
+    <section className='families-overview'>
 
       <h1>Families</h1>
 

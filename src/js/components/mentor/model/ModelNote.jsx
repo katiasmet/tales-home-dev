@@ -13,14 +13,16 @@ const ModelNote = inject(`notes`)(observer(({notes}) => {
 
         <label htmlFor='notes-form'>Notes</label>
 
-        <textarea
-          id='notes-form'
-          name='notes'
-          value={notesInput}
-          placeholder='Type to add notes of this session. Changes will be changed automatically.'
-          onChange={handleNotes}
-        >
-       </textarea>
+        <span className='form-textarea'>
+          <textarea
+            id='notes-form'
+            name='notes'
+            value={notesInput}
+            placeholder='Type to add notes for this model. Changes will be saved automatically.'
+            onChange={handleNotes}
+          >
+         </textarea>
+        </span>
 
       </span>
 

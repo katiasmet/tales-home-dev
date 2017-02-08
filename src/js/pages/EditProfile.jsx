@@ -12,7 +12,6 @@ const EditProfile = ({location}) => {
       <Header pathname={pathname} />
 
       <main>
-
         <UserEdit />
       </main>
     </div>

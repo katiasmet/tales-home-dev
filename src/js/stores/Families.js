@@ -10,6 +10,7 @@ import {content} from '../auth/token';
 
 import users from './Users';
 import notes from './Notes';
+import results from './Results';
 
 class Families  {
 
@@ -22,7 +23,6 @@ class Families  {
 
   @observable characters = []; /* PRO - family navigation */
   @observable activeCharacter = ``;
-
   @observable activeFamily = { /* PRO AND FAMILY */
     _id: ``,
     name: ``,
@@ -125,7 +125,8 @@ class Families  {
 
     this.findActiveFamily(id);
 
-    if (!this.showInfo) {
+    if (isEmpty(this.showInfo)) {
+
       this.getFamilyMembers(id);
 
       selectFamilyModels({familyId: id})
@@ -142,7 +143,7 @@ class Families  {
 
             selectModel(familymodel.modelId)
             .then(model => {
-              familymodel.name = model.model[0].name;
+              this.activeFamily.familymodels[i].name = model.model[0].name;
             })
             .then(() => {
               if ((i + 1) === this.activeFamily.familymodels.length) this.isLoading = ``;
@@ -174,12 +175,15 @@ class Families  {
 
   };
 
+  @action handleActiveFamilyMember = id => {
+    this.showInfo = id;
+  }
+
   @action handleFamilySession = familyId => {
 
     this.generateSessionId();
     this.handleFamilyInfo(familyId, false);
     this.isLoading = `session`;
-
 
     this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
 
@@ -214,7 +218,12 @@ class Families  {
 
   }
 
-  @action handleStopSession = () => {
+  @action handleCloseSession = () => { //happens when you close the session
+    this.sessionId = ``;
+    this.socket.emit(`stopSession`, users.currentSocketId);
+  }
+
+  @action handleStopSession = () => { //happens when session is already started
 
     this.socket.emit(`stopSession`, users.currentSocketId);
     window.location.href = `/`;
@@ -224,24 +233,28 @@ class Families  {
   @action handleStartModel = id => {
 
     this.isLoading = `model`;
-
     this.socket.emit(`setModel`, users.currentSocketId, id);
 
     //get familymodelid else insert
     selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
-        if (familymodel) {
-          console.log(familymodel);
-          this.activeFamilyModel._id = familymodel.familyModel._id;
+        if (familymodel.familyModel.length !== 0) {
+          this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
+          console.log(`handle start model, select`);
+          console.log(familymodel);
+          console.log(this.activeFamilyModel);
           notes.getNote();
+          results.getResult();
         } else {
+
           insert({familyId: this.activeFamily._id, modelId: id})
             .then(familymodel => {
-              console.log(familymodel);
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
+              console.log(`handle start model, insert`);
               notes.getNote();
+              results.getResult();
             })
             .catch(err => {
               this.handleError(err);
@@ -278,8 +291,9 @@ class Families  {
 
   }
 
-  @action handleConfirmation = () => {
-    this.confirmation = !this.confirmation;
+  @action handleConfirmation = id => {
+    if (isEmpty(this.confirmation)) this.confirmation = id;
+    else this.confirmation = ``;
   }
 
   @action handleFamilyMemberRemove = id => {

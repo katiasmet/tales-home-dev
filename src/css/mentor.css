@@ -1,0 +1,466 @@
+$purple: #6e2bc8;
+$textpurple: #33217f; /* for text */
+$darkpurple: #5427aa; /* for bg */
+$lightpurple: ghostwhite;
+$midpurple: #dfd4f9; /* used on form focus */
+
+$grey: #515151;
+
+$lightblue: #dbe8fe;
+$blue: #26e2e9;
+$accentblue: #cddefe; /* languages */
+$accentlightblue: #90f0f3; /* themes */
+$bluenav: #21c5cb;
+
+@define-mixin before-after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@define-mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+MENTOR FAMILIES
+*/
+.page-families .action:hover {
+  animation: hover .3s ease-in;
+  background: $purple;
+  opacity: 1;
+}
+
+.page-families::before,
+.page-edit-profile::before,
+.page-new-family::before {
+  content: none;
+}
+
+.page-families main,
+.page-edit-profile main,
+.page-new-family main {
+  background: $lightblue;
+  min-height: calc(100% - 8rem);
+}
+
+.families-search {
+  background-color: $purple;
+  padding-bottom: 2.5rem;
+  display: block;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+  color: white;
+
+  span {
+    width: 100%;
+    display: block;
+    position: relative;
+
+    &::after {
+      @add-mixin before-after;
+      content: '\f002';
+      font-family: FontAwesome, sans-serif;
+
+      left: auto;
+      right: 1.5rem;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: 2rem;
+
+      font-size: 2rem;
+      color: white;
+      opacity: .2;
+    }
+  }
+
+  input {
+    background-color: rgba(60, 35, 40, .3); /* dark purple */
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+
+    &::placeholder {
+      color: white;
+      opacity: .2;
+    }
+
+    &:focus {
+      background-color: rgba(60, 35, 40, .5);
+    }
+  }
+}
+
+.families {
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  padding: 3rem 2.5rem;
+}
+
+.families-browse {
+
+  flex: 1;
+
+  .character {
+    margin: 1rem;
+    margin-left: 4rem;
+    color: white;
+    font-size: 2rem;
+    background: $purple;
+    position: relative;
+
+    transition: all .3s ease-in;
+
+    &:hover {
+      background: $darkpurple;
+      transform: scale(1.2);
+      animation: none;
+
+      &::after,
+      &::before {
+        @add-mixin before-after;
+        width: 100%;
+        height: 100%;
+        border-radius: 3rem;
+        border: .1rem solid $purple;
+        filter: blur(.5px);
+
+        animation: radar 2s ease-in infinite;
+      }
+
+      &::after {
+        animation-delay: .5s;
+      }
+
+    }
+
+  }
+
+  .character.disabled,
+  .character.active {
+
+    &:hover {
+      background: none;
+      transform: none;
+
+      &::after,
+      &::before {
+        animation: none;
+        border-radius: 0;
+        border: none;
+        width: inherit;
+        height: inherit;
+      }
+    }
+
+  }
+
+  .character.disabled {
+    font-size: 1.2rem;
+    background: none;
+    cursor: inherit;
+
+    margin: 1.5rem;
+    margin-left: 1rem;
+    color: $purple;
+    width: inherit;
+    height: inherit;
+    display: block;
+    text-align: left;
+
+    &::before {
+      @add-mixin before-after;
+      content: attr(data-character);
+      top: auto;
+      bottom: 0;
+      opacity: .08;
+      font-size: 2.5rem;
+    }
+
+  }
+
+  .character.active {
+    width: 4rem;
+    height: 4rem;
+    cursor: inherit;
+
+    &:hover {
+      background: $purple;
+    }
+  }
+}
+
+.families-overview {
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 10;
+
+  h1 {
+    text-align: left;
+  }
+
+  .family-item:first-child {
+    padding-top: 0;
+  }
+}
+
+.family-item {
+  color: $textpurple;
+  padding: 3rem 0;
+  border-bottom: .05rem solid rgb(100, 49, 185, .1);
+  font-weight: 300;
+
+  header {
+    padding: 0;
+  }
+
+  h2 {
+    color: $textpurple;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  &.active .action .fa-plus {
+    transform: rotate(45deg);
+  }
+
+  &.active {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.action {
+
+  background: $purple;
+
+  .fa {
+    color: white;
+    transition: all .3s ease-in;
+  }
+
+  .fa-play {
+    font-size: 1.4rem;
+  }
+
+}
+
+.family-info {
+  padding: 3rem 12rem 3rem 4rem;
+  font-weight: 300;
+  overflow: hidden;
+  transform-origin: top center;
+
+  animation: family-info 1s ease-in forwards;
+  position: relative;
+
+  &::after {
+    @add-mixin before-after;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: .1rem;
+    border-bottom: .05rem solid rgb(100, 49, 185, .1);
+
+    animation: family-info-child 1s ease-in forwards;
+  }
+}
+
+.family-info-members {
+  margin-bottom: 3rem;
+  animation: family-info-child 1s ease-in forwards;
+
+  .family-info-member {
+    @add-mixin flex-center;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .member-name {
+    flex: 1;
+  }
+
+  .languages {
+    @add-mixin flex-center;
+    justify-content: flex-start;
+    margin-left: 3rem;
+    font-size: 1.4rem;
+
+    flex: 4;
+  }
+
+  .language {
+    background-color: $accentblue;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+    border-radius: 1rem;
+  }
+}
+
+.family-info-results {
+  animation: family-info-child 1s ease-in forwards;
+  font-weight: 300;
+
+  .family-info-result {
+    @add-mixin flex-center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .action {
+    background: none;
+
+    .fa {
+      color: $textpurple;
+    }
+
+    &:hover {
+      background: none;
+      color: $purple;
+    }
+  }
+}
+
+/*
+STARTSESSION POP-UP
+*/
+
+.families.families-pop-up {
+
+  &::before {
+    @add-mixin before-after;
+    top: -20rem;
+    width: 100%;
+    height: calc(100% + 20rem);
+    background: $darkpurple;
+    z-index: 1;
+    opacity: .3;
+  }
+}
+
+.pop-up {
+  @add-mixin flex-center;
+  flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 40rem;
+
+  position: absolute;
+  z-index: 10;
+  top: 15rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  .btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
+
+    align-self: flex-end;
+    margin-top: -3.5rem;
+    transform: translateX(3.5rem);
+
+    &:hover {
+      animation: none;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      @add-mixin before-after;
+      width: 100%;
+      height: 100%;
+      border-radius: 3rem;
+      border: .1rem solid $purple;
+      filter: blur(.5px);
+
+      animation: radar 2s ease-in infinite;
+    }
+
+    &:hover::after {
+      animation-delay: .5s;
+    }
+  }
+
+  .session-code {
+    display: block;
+    background-color: $purple;
+    border-radius: 1rem;
+    color: white;
+    padding: 1.5rem 3rem;
+    margin-bottom: 4rem;
+    font-size: 2rem;
+    letter-spacing: .5rem;
+  }
+}
+
+.first-run {
+  @add-mixin flex-center;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 50;
+  bottom: 0;
+
+  width: calc(100% - 9.5rem);
+  background: $purple;
+  color: white;
+  border-radius: 0 2rem 2rem;
+
+  padding: 2rem 3rem 2rem 12.5rem;
+  margin: 1.5rem 2.5rem 1.5rem 7rem;
+
+  .btn {
+    background: white;
+    color: $purple;
+
+    width: 3.1rem;
+    height: 3rem;
+    font-size: 1.6rem;
+  }
+
+  &::after,
+  &::before {
+    @add-mixin before-after;
+    top: -2rem;
+    height: 3rem;
+    width: 3rem;
+    background: url(../assets/img/arrow.png) no-repeat center center;
+    background-size: contain;
+  }
+
+  &::before {
+    top: auto;
+    left: 1rem;
+    bottom: 0;
+    height: 10rem;
+    width: 10rem;
+    background: url(../assets/img/test_run_first_run.png) no-repeat center center;
+    background-size: contain;
+  }
+
+}
+
+.next-run {
+  position: absolute;
+  z-index: 50;
+  bottom: -10rem;
+  right: -16.5rem;
+  transition: all .3s ease-in;
+  cursor: pointer;
+
+  figure {
+    width: 23rem;
+  }
+
+  &:hover {
+    transform: translate(-10rem, -4rem);
+  }
+}

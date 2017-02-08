@@ -8,7 +8,7 @@ const FamiliesSearch = inject(`families`)(observer(({families}) => {
   const {searchInput, handleSearch} = families;
 
   return (
-    <section className='families families-search'>
+    <section className='families-search'>
       <FormInput
         id='search-form'
         name='search'

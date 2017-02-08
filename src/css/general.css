@@ -1,0 +1,558 @@
+$active: #773eff;
+
+$purple: #6e2bc8;
+$textpurple: #33217f; /* for text */
+$darkpurple: #5427aa; /* for bg */
+$lightpurple: ghostwhite;
+$midpurple: #dfd4f9; /* used on form focus */
+
+$grey: #515151;
+
+$lightblue: #dbe8fe;
+$blue: #26e2e9;
+$accentblue: #cddefe; /* languages */
+$accentlightblue: #90f0f3; /* themes */
+$bluenav: #21c5cb;
+
+/* MIXINS */
+@define-mixin before-after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@define-mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GENERAL */
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Rubik, Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 130%;
+  font-weight: 300;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+svg,
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  transition: all .3s ease-in;
+  font-weight: 500;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.btn,
+.nav-item,
+.action,
+.character {
+  @add-mixin flex-center;
+  color: white;
+  border: none;
+  background: $purple;
+  border-radius: 5rem;
+  font-size: 3rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  &:hover {
+    background: $purple;
+    opacity: 1;
+    animation: hover .3s ease-in;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $darkpurple;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+
+  span {
+    display: none;
+  }
+}
+
+h2,
+.model-note label {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: $darkpurple;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.error {
+  color: red;
+}
+
+.actions {
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  li {
+    margin-left: 1rem;
+    color: $active;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main > section {
+  padding: 0 2.5rem;
+}
+
+.container,
+.main {
+  min-height: 100%;
+  height: 100%;
+}
+
+.page-home,
+.page-login,
+.page-families,
+.page-edit-profile,
+.page-new-family {
+  background: $purple;
+  height: 100%;
+  position: relative;
+
+  &::before {
+    @add-mixin before-after;
+    width: 55vw;
+    height: 150vh;
+    background: $darkpurple;
+    opacity: .3;
+
+    top: -10rem;
+    left: auto;
+    right: -10rem;
+    transform: rotate(20deg);
+  }
+
+  .main-header,
+  main {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/*
+HEADER
+*/
+header,
+.families,
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  padding: 1.5rem 2.5rem;
+  width: 100%;
+}
+
+.logo {
+  height: 30px;
+  width: 69px;
+  padding: 40px;
+  padding: 2.5rem;
+  margin-left: 40px;
+  margin-left: 2.5rem;
+  background-image: url(/assets/logo_talesathome.png);
+  background-repeat: no-repeat;
+}
+
+nav,
+.form-actions {
+  @add-mixin flex-center;
+  color: white;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  li {
+    @add-mixin flex-center;
+
+    margin-left: 2rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  a {
+    @add-mixin flex-center;
+  }
+
+  .user {
+    display: block;
+    color: white;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+
+}
+
+.form-actions {
+
+  margin-top: 2rem;
+
+  .btn,
+  a {
+    @add-mixin flex-center;
+
+    margin-left: 2rem;
+    color: white;
+  }
+}
+
+.nav-item,
+.action,
+.character,
+.model-notes .btn {
+  background: white;
+  border-radius: 3rem;
+  color: $purple;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.6rem;
+  display: flex;
+
+  i {
+    display: block;
+  }
+
+  span {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    animation: hover .3s ease-in;
+    background: white;
+    opacity: 1;
+  }
+}
+
+.page-models .nav-item,
+.page-model .nav-item,
+.page-family .nav-item {
+  color: $bluenav;
+
+  &:hover {
+    color: $bluenav;
+    background: white;
+  }
+}
+
+.form-edit-user .form-actions .btn:nth-child(odd),
+.form-add-family .form-actions .btn:nth-child(odd) {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.6rem;
+  border-radius: 3rem;
+}
+
+/*
+FORMS
+*/
+
+form {
+  @add-mixin flex-center;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-top: 2rem;
+  font-weight: 500;
+  color: $textpurple;
+}
+
+.form-input {
+  width: 35rem;
+  display: block;
+}
+
+input,
+textarea {
+  display: block;
+  padding: 1rem;
+
+  margin: 1rem 0;
+  background: white;
+  border: none;
+  width: 100%;
+  border-radius: 1rem;
+  transition: all .3s ease-in;
+  font-size: 1.6rem;
+  color: $darkpurple;
+
+  &:focus {
+    outline: none;
+    background: ghostwhite;
+  }
+}
+
+textarea {
+  resize: none;
+  background: $lightpurple;
+  border: none;
+  min-height: 35vh;
+  position: relative;
+  z-index: 5;
+}
+
+.form-textarea {
+  display: block;
+  position: relative;
+
+  &::after {
+    @add-mixin before-after;
+    left: auto;
+    right: -5rem;
+    width: 100%;
+    height: 100%;
+    background: $lightpurple;
+    z-index: 0;
+  }
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px ghostwhite inset;
+}
+
+input::placeholder {
+  color: rgba(60, 35, 40, .2); /* dark purple */
+  font-family: Rubik, sans-serif;
+}
+
+/*
+  LOGIN
+*/
+.page-home,
+.page-login,
+.page-new-family-member,
+.page-edit-family-member {
+  overflow: hidden;
+
+  main {
+    height: 100%;
+  }
+}
+
+.page-home .nav-item,
+.page-login .nav-item {
+  width: auto;
+  height: auto;
+  padding: 1rem;
+}
+
+.page-new-family,
+.page-edit-profile {
+  overflow: hidden;
+}
+
+.page-login::after,
+.page-new-family::after,
+.page-edit-profile::after {
+  @add-mixin before-after;
+  top: auto;
+  bottom: 0;
+  left: -40vw;
+  width: 23vw;
+  height: 45vw;
+  z-index: 2;
+}
+
+.page-login.join::after,
+.page-new-family::after {
+  bottom: -5.5rem;
+  background: url(../assets/img/login_family.png) no-repeat center bottom;
+  background-size: contain;
+
+  animation: join .3s ease-in forwards;
+}
+
+.page-login.register::after {
+  bottom: -13rem;
+  background: url(../assets/img/login_newmentor.png) no-repeat center bottom;
+  background-size: contain;
+
+  animation: register .3s ease-in forwards;
+}
+
+.page-login.login::after,
+.page-edit-profile::after {
+  bottom: -15rem;
+  background: url(../assets/img/login_mentor.png) no-repeat center bottom;
+  background-size: contain;
+
+  animation: login .3s ease-in forwards;
+}
+
+.page-login-forms,
+.form-add-family-member,
+.form-edit-family-member {
+  position: relative;
+  margin-top: -5rem;
+
+  background-color: white;
+  border-radius: 2rem;
+  color: $purple;
+  padding: 3rem 8rem 4rem;
+
+  input {
+    background: ghostwhite;
+
+    &:focus {
+      background: $midpurple;
+      color: white;
+    }
+  }
+
+  .btn {
+    position: absolute;
+    top: auto;
+    bottom: -2.2rem;
+
+    &:hover {
+      animation: hover-start .3s ease-in;
+    }
+  }
+
+  &::after {
+    @add-mixin before-after;
+    width: 100%;
+    height: 100%;
+    background: $darkpurple;
+    border-radius: 2rem;
+
+    left: 1rem;
+    top: 1rem;
+    z-index: -1;
+  }
+}
+
+.user-profiles {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  li {
+    position: relative;
+    margin: 1rem;
+  }
+
+  li::after {
+    @add-mixin before-after;
+    width: 3.2rem;
+    height: 3rem;
+    right: 0;
+    margin: auto;
+    z-index: 0;
+
+    background: url(../assets/img/login_hover_family.png) no-repeat top center;
+    background-size: 3.2rem auto;
+    transition: all .3s ease-in;
+  }
+
+  .user-profile-register::after {
+    background: url(../assets/img/login_hover_newmentor.png) no-repeat top center;
+    background-size: 2.5rem auto;
+  }
+
+  .user-profile-login::after {
+    background: url(../assets/img/login_mentor.png) no-repeat top center;
+    background-size: 3.2rem auto;
+  }
+
+  li:hover::after {
+    transform: translateY(-3rem);
+  }
+
+}
+
+.user-profile {
+  background: $purple;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  display: block;
+
+  color: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    background: $darkpurple;
+  }
+}
+
+.page-login-img {
+  position: absolute;
+  margin-top: -15rem;
+}
+
+.info-login {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  color: $grey;
+  line-height: 2rem;
+}

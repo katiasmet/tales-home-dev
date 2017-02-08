@@ -1,0 +1,172 @@
+$darkblue: #00afa2;
+$midblue: #21cbc5;
+$blue: #26e2e9;
+
+.page-model::after {
+  content: none;
+}
+
+.model-distance {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+
+  width: 100%;
+  height: calc(100% - 8rem);
+
+  padding: 0 3rem;
+}
+
+.active-notes .model-distance {
+  width: calc(100% - 40rem);
+}
+
+.timeline-scene {
+  display: flex;
+  align-items: flex-end;
+  min-height: 55vh;
+  width: 100%;
+
+  position: relative;
+}
+
+.flag {
+  color: $darkblue;
+  position: relative;
+  width: 20rem;
+}
+
+.flag-flag {
+  fill: white;
+}
+
+.flag-stick {
+  fill: #936119;
+}
+
+.flag-language {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  font-weight: 500;
+  text-align: center;
+  top: 5rem;
+  left: 2.5rem;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+
+  text-transform: uppercase;
+  color: #0a5e5e;
+}
+
+.timeline-scene .drag-character {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  z-index: 5;
+  background: none;
+  left: 0;
+  bottom: 0;
+
+  width: 7rem;
+  height: 100%;
+  transform-origin: center center;
+
+  svg {
+    display: block;
+    cursor: move;
+  }
+
+  &.chris {
+    width: 20rem;
+  }
+
+  &.gigi {
+    width: 14rem;
+  }
+}
+
+.drag-preview {
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid blue;
+}
+
+.timeline {
+  @add-mixin flex-center;
+  position: relative;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 3rem;
+
+  &::after,
+  &::before {
+    @add-mixin before-after;
+    width: 100%;
+    height: .1rem;
+    border-bottom: .1rem dashed white;
+
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    z-index: 0;
+  }
+
+  &::after {
+    border: none;
+    width: .5rem;
+    height: .5rem;
+    left: auto;
+    right: 0;
+    background: white;
+    border-radius: .5rem;
+  }
+}
+
+.timeline-language,
+.timeline-character {
+  position: relative;
+  z-index: 1;
+  border-radius: 1rem;
+}
+
+.timeline-language {
+  padding: 1rem;
+  background: $blue;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.timeline-character {
+  @add-mixin flex-center;
+  flex-direction: column;
+  position: absolute;
+  transform-origin: center center;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+
+  .member-bullet {
+    width: 2rem;
+    height: 2rem;
+    border: .3rem solid white;
+    background: $blue;
+
+    display: block;
+    border-radius: 2rem;
+    transform: translateY(1rem);
+  }
+
+  .member-name {
+    transform: translateY(2rem);
+  }
+}

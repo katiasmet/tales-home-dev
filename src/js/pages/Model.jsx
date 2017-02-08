@@ -7,22 +7,33 @@ import {Header, Loading} from '../components/';
 import {token} from '../auth';
 import {ModelNotes} from '../components/mentor/model';
 
+import {ModelDistance, ModelModel1, ModelModel3} from '../components/models';
+
 @inject(`families`, `notes`, `models`) @observer
 
 class Model extends Component {
 
-  renderModelView(component) {
-    return React.createElement(component, {});
+  renderModelView() {
+    const model = upperFirst(camelCase(this.props.match.params.id));
+
+    switch (model) {
+    case `Distance`:
+      return <ModelDistance />;
+    case `Model1`:
+      return <ModelModel1 />;
+    case `Model3`:
+      return <ModelModel3 />;
+    }
   }
 
   renderNotes() {
 
     if (token.content().scope === `professional`) {
 
-      const {isLoadingNotes, redirect} = this.props.notes;
+      const {isLoadingNotes, redirect, showNotes} = this.props.notes;
       if (isLoadingNotes) return (<Loading />);
       if (redirect) return <Redirect to='/models' />;
-      return <ModelNotes />;
+      if (showNotes) return <ModelNotes />;
 
     }
 
@@ -34,39 +45,37 @@ class Model extends Component {
       const {activeFamilyModel} = this.props.families;
       const {isLoading} = this.props.models;
 
-      console.log(`handle family redirect`);
-      console.log(isLoading);
-
       if (isEmpty(activeFamilyModel.name) && (!isLoading)) {
-        console.log(`redirect`);
         return <Redirect to='/models' />;
       }
     }
   }
 
-
   render() {
     const {pathname} = this.props.location;
-    const component = upperFirst(camelCase(this.props.match.params.id));
-
     const {isLoading} = this.props.families;
+    const {showNotes} = this.props.notes;
 
     return (
       <div className='page page-model '>
-        <Header pathname={pathname} />
+        <Header pathname={pathname} model={true} />
 
-        {
-          (!isEmpty(isLoading)) ? <Loading />
-          : this.renderModelView(component)
-        }
+        <section className={(token.content().scope === `professional` && showNotes) ? `model active-notes`  : `model`}>
 
-        {
-          this.handleFamilyRedirect()
-        }
+          {
+            (!isEmpty(isLoading)) ? <Loading />
+            : this.renderModelView()
+          }
 
-        {
-          this.renderNotes()
-        }
+          {
+            this.handleFamilyRedirect()
+          }
+
+          {
+            this.renderNotes()
+          }
+
+        </section>
 
       </div>
 
@@ -90,7 +99,8 @@ Model.propTypes = {
   notes: PropTypes.shape({
     isLoadingNotes: PropTypes.bool,
     getNote: PropTypes.func,
-    redirect: PropTypes.bool
+    redirect: PropTypes.bool,
+    showNotes: PropTypes.bool
   }),
 };
 

@@ -24,8 +24,9 @@ const renderCharacter = (activeCharacter, characters, handleActiveCharacter) => 
 
     return (
       <li key={i}
-          className={characterClass}
-          onClick={isEmpty(characterClass) && handleActiveCharacter}>
+          className={`character ${characterClass}`}
+          onClick={isEmpty(characterClass) && handleActiveCharacter}
+          data-character={character}>
           {character}
       </li>
     );
@@ -37,7 +38,7 @@ const FamiliesBrowse = inject(`families`)(observer(({families}) => {
   const {activeCharacter, characters, handleActiveCharacter} = families;
 
   return (
-    <ul className='families families-browse'>
+    <ul className='families-browse'>
       {
         renderCharacter(activeCharacter, characters, handleActiveCharacter)
       }

@@ -29,7 +29,6 @@ class NewFamilyMember extends Component {
         <Header pathname={pathname} />
 
         <main>
-          <h1>Add a new family member</h1>
           <FamilyMemberAdd form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
         </main>
       </div>

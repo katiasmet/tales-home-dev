@@ -15,9 +15,9 @@ const ModelGridItem = ({_id, image, name, i, handleStartModel, handleIsPassed}) 
         </figure>
 
         <footer>
-          <p>Model {i + 1}: {name}</p>
+          <p><span className='model-count'>Model {i + 1}:</span> {name}</p>
           {
-            (handleIsPassed(_id)) && (<i className='fa fa-check'></i>)
+            (handleIsPassed(_id)) && (<span className='btn'><i className='fa fa-check'></i></span>)
           }
         </footer>
       </Link>

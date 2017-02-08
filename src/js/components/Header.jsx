@@ -3,17 +3,18 @@ import {Link} from 'react-router-dom';
 
 import {Navigation} from './';
 
-const Header = ({pathname}) => {
+const Header = ({pathname, model = false}) => {
   return (
     <header className='main-header'>
         <Link to='/'><div className='logo'></div></Link>
-        <Navigation pathname={pathname} />
+        <Navigation pathname={pathname} model={model} />
     </header>
   );
 };
 
 Header.propTypes = {
-  pathname: PropTypes.string
+  pathname: PropTypes.string,
+  model: PropTypes.bool
 };
 
 export default Header;

@@ -5,6 +5,7 @@ import {isEmpty} from 'lodash';
 import {Header} from '../components/';
 import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/mentor';
 import {FamilyStartSession} from '../components/mentor/family';
+import {token} from '../auth';
 
 @inject(`families`) @observer
 class Families extends Component {
@@ -17,16 +18,17 @@ class Families extends Component {
 
     const {sessionId} = this.props.families;
     const {pathname} = this.props.location;
+    const {firstLogin} = token.content();
 
     return (
-      <div className={!isEmpty(sessionId) ? `page page-families page-pop-up` : `page page-families`}>
+      <div className='page page-families'>
         <Header pathname={pathname} />
 
         <main>
 
           <FamiliesSearch />
 
-          <section className='families'>
+          <section className={!isEmpty(sessionId) ? `families families-pop-up` : `families`}>
 
             {
               !isEmpty(sessionId) && <FamilyStartSession />
@@ -36,6 +38,22 @@ class Families extends Component {
             <FamiliesOverview />
           </section>
         </main>
+
+        {
+          firstLogin ? (
+            <footer className='test-run first-run'>
+              <p>Looks like you find your way to the Talkie application! Want to find out what the application has to offer?</p>
+              <button className='btn btn-test'><i className='fa fa-play'></i></button>
+            </footer>
+          ) : (
+            <footer className='test-run next-run'>
+              <figure>
+                <img src='../assets/img/test_run.png' alt='test run' />
+              </figure>
+            </footer>
+          )
+        }
+
       </div>
 
     );

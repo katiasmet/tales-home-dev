@@ -1,0 +1,104 @@
+@keyframes hover {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1rem);
+  }
+
+  75% {
+    transform: translateY(.5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hover-start {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(1rem);
+  }
+
+  75% {
+    transform: translateX(-.5rem);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes login {
+
+  0% { transform: translateX(0); }
+
+  100% { transform: translateX(50vw); }
+}
+
+@keyframes register {
+
+  0% { transform: translateX(0); }
+
+  100% { transform: translateX(51vw); }
+}
+
+@keyframes join {
+
+  0% { transform: translateX(0); }
+
+  100% { transform: translateX(45vw); }
+}
+
+@keyframes radar {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes family-info {
+
+  0%,
+  75%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5rem);
+  }
+}
+
+@keyframes family-info-child {
+
+  0% {
+    transform: translateY(-20rem);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(-2rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

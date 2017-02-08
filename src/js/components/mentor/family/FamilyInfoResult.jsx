@@ -8,11 +8,6 @@ class FamilyInfoResult extends Component {
   actions = [
     {
       id: this.props._id,
-      icon: `fa-trash`,
-      handleAction: this.handleRemove
-    },
-    {
-      id: this.props._id,
       icon: `fa-align-justify`,
       handleAction: this.handleNotes
     },
@@ -20,6 +15,11 @@ class FamilyInfoResult extends Component {
       id: this.props._id,
       icon: `fa-download`,
       handleAction: this.handleDownload
+    },
+    {
+      id: this.props._id,
+      icon: `fa-trash`,
+      handleAction: this.handleRemove
     }
   ];
 
@@ -40,12 +40,13 @@ class FamilyInfoResult extends Component {
     const {name, created} = this.props;
 
     const resultDate = moment(created).format(`D MMMM YYYY`);
+    console.log(name);
 
     return (
       <li className='family-info-result'>
         <span>
           {name}
-          <span className='result-date'> - {resultDate}</span>
+          <span className='result-date'>, {resultDate}</span>
         </span>
 
         <Actions actionClass='result-actions' actions={this.actions} />

@@ -7,18 +7,17 @@ import {FamilyJoin} from '../components/family';
 const Login = ({location}) => {
 
   const {pathname} = location;
+  const pageClass = renderLoginClass();
 
   return (
 
-    <div className='page page-login'>
+    <div className={`page page-login ${pageClass}`}>
 
       <Header pathname={pathname} />
 
       <main>
         <section className='page-login-forms'>
-          {renderProfileImages()}
-          <UserProfiles />
-
+          <UserProfiles pathname={pathname} />
           {renderLogin()}
         </section>
 
@@ -28,16 +27,14 @@ const Login = ({location}) => {
   );
 };
 
-const renderProfileImages = () => {
-
+const renderLoginClass = () => {
   if (location.pathname === `/login`) {
-    return <img src='assets/img/UserProfiles_professional.png' alt='Smiley face' height='151' width='162' className='page-login-img' />;
+    return `login`;
   } else if (location.pathname === `/register`) {
-    return <img src='assets/img/UserProfiles_newprofessional.png' alt='Smiley face' height='151' width='162' className='page-login-img' />;
+    return `register`;
   } else {
-    return <img src='assets/img/UserProfiles_family.png' alt='Smiley face' height='151' width='162' className='page-login-img' />;
+    return `join`;
   }
-
 };
 
 const renderLogin = () => {

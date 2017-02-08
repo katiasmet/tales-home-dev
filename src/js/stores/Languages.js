@@ -49,7 +49,7 @@ class Languages  {
 
     this.selectedLanguages.push(
       filter(this.allLanguages, language => {
-        return language.name === e.currentTarget.innerHTML;
+        if (language.nativeName === e.currentTarget.innerHTML) return language;
       })[0]
     );
 
@@ -60,7 +60,7 @@ class Languages  {
   @action handleSelectedLanguages = languages => {
     languages.forEach(language => {
       this.selectedLanguages = filter(this.allLanguages, availableLanguage => {
-        return availableLanguage.name === language;
+        if (availableLanguage.name === language) return availableLanguage;
       });
     });
   }

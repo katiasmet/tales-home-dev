@@ -7,13 +7,14 @@ import {Header, Loading} from '../components/';
 import {ModelsOverview, ModelsOverviewGrid} from '../components/mentor';
 import {token} from '../auth';
 
-@inject(`models`, `families`, `notes`) @observer
+@inject(`models`, `families`, `notes`, `results`) @observer
 class Models extends Component {
 
   componentDidMount() {
     if (token.content().scope === `professional`) {
       this.props.models.getModels();
       this.props.notes.getNotes();
+      this.props.results.getResults();
       this.props.notes.handleRedirect();
     } else {
       const {handleFamilyMembersVisites} = this.props.families;
@@ -53,7 +54,7 @@ class Models extends Component {
   render() {
 
     const {pathname} = this.props.location;
-    const {isLoading, handleShowGrid} = this.props.models;
+    const {isLoading} = this.props.models;
 
     return (
       <div className='page page-models'>
@@ -63,10 +64,6 @@ class Models extends Component {
           (token.content().scope === `professional` && !isLoading) ? (
             <main>
               <ModelsOverview />
-              <button className='btn btn-show-grid'
-                onClick={handleShowGrid}
-              >
-              </button>
               <ModelsOverviewGrid />
             </main>
           ) : this.renderModels()
@@ -92,6 +89,9 @@ Models.propTypes = {
   notes: PropTypes.shape({
     getNotes: PropTypes.func,
     handleRedirect: PropTypes.func
+  }),
+  results: PropTypes.shape({
+    getResults: PropTypes.func
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string

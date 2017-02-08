@@ -33,7 +33,7 @@ module.exports = [
     handler: (req, res) => {
 
       const {_id} = req.params;
-      const {familyModelId} = req.query;
+      const {familyModelId, professionalId} = req.query;
       const isActive = true;
       const projection = `-__v -isActive`;
 
@@ -52,6 +52,15 @@ module.exports = [
         .then(results => {
           if (!results) return res(Boom.notFound());
           return res({results});
+        })
+        .catch(() => res(Boom.badRequest()));
+
+      } else if (professionalId) {
+
+        Result.find({professionalId, isActive}, projection)
+        .then(notes => {
+          if (!notes) return res(Boom.notFound());
+          return res({notes});
         })
         .catch(() => res(Boom.badRequest()));
 

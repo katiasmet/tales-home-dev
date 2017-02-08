@@ -1,11 +1,12 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {isEmpty, includes} from 'lodash';
 
 import {isLoggedIn, token} from '../auth';
 import {NavigationItem} from './';
 
-@inject(`families`) @observer
+@inject(`families`, `notes`) @observer
 class Navigation extends Component {
 
   renderNavigation() {
@@ -22,11 +23,23 @@ class Navigation extends Component {
 
     if (includes(pathname, `models`)) {
 
-      const {handleStopSession} = this.props.families;
+      const {handleStopSession, activeFamily} = this.props.families;
+      const {handleOpenNotes} = this.props.notes;
+      const {model} = this.props;
 
       return (
         <ul className='navigation'>
-          <li onClick={handleStopSession} >
+          <li>
+            The {activeFamily.name}&#39;s
+          </li>
+          {
+            model && (
+              <li onClick={handleOpenNotes} className='nav-item'>
+                <i className='fa fa-align-justify'></i>
+              </li>
+            )
+          }
+          <li onClick={handleStopSession} className='nav-item'>
             <i className='fa fa-sign-out'></i>
           </li>
         </ul>
@@ -38,10 +51,13 @@ class Navigation extends Component {
 
       return (
         <ul className='navigation'>
-          <NavigationItem link='/newfamily' icon='fa-user-plus' pathname={pathname} />
+          <li>
+            <Link to='/editprofile' className={`user ${this.setActive(`/editprofile`, pathname)}`}>
+              {user}
+            </Link>
+          </li>
 
-          <li>{user}</li>
-          <NavigationItem link='/editprofile' icon='fa-gear' pathname={pathname} />
+          <NavigationItem link='/newfamily' icon='fa-plus' pathname={pathname} />
         </ul>
       );
     }
@@ -52,7 +68,7 @@ class Navigation extends Component {
 
     const {pathname} = this.props;
 
-    if (includes(pathname, `models`)) {
+    if (includes(pathname, `models`) || includes(pathname, `member`)) {
       return (
         <ul className='navigation'>
           <NavigationItem link='/family' icon='fa-users' pathname={pathname} />
@@ -66,6 +82,10 @@ class Navigation extends Component {
       );
     }
 
+  }
+
+  setActive(link, pathname) {
+    return (link === pathname) ? `active` : ``;
   }
 
   render() {
@@ -91,8 +111,14 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   pathname: PropTypes.string,
+  model: PropTypes.bool,
   families: PropTypes.shape({
-    handleStopSession: PropTypes.func
+    handleStopSession: PropTypes.func,
+    activeFamily: PropTypes.object,
+    activeFamilyModel: PropTypes.object
+  }),
+  notes: PropTypes.shape({
+    handleOpenNotes: PropTypes.func
   })
 };
 

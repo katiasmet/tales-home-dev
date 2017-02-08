@@ -9,7 +9,7 @@ const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
   const {handleShowLanguages, showDropDown, selectedLanguages} = languages;
 
   return (
-    <section className='form-roles'>
+    <section className='form-languages'>
 
       <header>
         <h3 className='label'>What languages do you speak?</h3>
