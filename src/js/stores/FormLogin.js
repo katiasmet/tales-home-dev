@@ -3,7 +3,7 @@ import Form from './Form';
 
 import {login} from '../api/auth';
 import {updateLogin} from '../api/users';
-import {set, content} from '../auth/token';
+import {set} from '../auth/token';
 
 class FormLogin extends Form {
   @observable form = ({
