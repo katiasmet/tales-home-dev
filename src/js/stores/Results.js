@@ -43,8 +43,6 @@ class Results  {
 
   @action handleSubmit = () => {
 
-    console.log(`submit result`);
-
     if (isEmpty(this.activeResult)) {
       insert({familyModelId: families.activeFamilyModel._id, result: models.currentResult})
         .catch(error => {

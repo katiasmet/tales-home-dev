@@ -235,6 +235,56 @@ module.exports = [
   },
 
   {
+
+    method: `PUT`,
+    path: `${base}/users/{_id}`,
+
+    config: {
+
+      auth: {
+        strategy: `token`,
+        scope: [Scopes.ADMIN, Scopes.PROFESSIONAL]
+      },
+
+      validate: {
+
+        params: {
+          _id: Joi.objectId()
+        },
+
+        options: {
+          abortEarly: false
+        },
+
+        payload: {
+          firstLogin: Joi.boolean().required()
+        }
+
+      }
+
+    },
+
+    handler: (req, res) => {
+
+      const {_id} = req.params;
+      const fields = [`firstLogin`];
+      const query = {_id: _id};
+      const data = pick(req.payload, fields);
+      const update = {new: true};
+
+      User.findOneAndUpdate(query, data, update)
+        .then(user => {
+          if (!user) return res(Boom.badRequest(`Cannot update user.`));
+          user = omit(user.toJSON(), [`__v`, `password`, `isActive`, `_id`, `created`]);
+          return res(user);
+        })
+        .catch(() => res(Boom.badRequest(`Cannot update user.`)));
+
+    }
+
+  },
+
+  {
     method: `DELETE`,
     path: `${base}/users/{_id}`,
 

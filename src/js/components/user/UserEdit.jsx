@@ -75,9 +75,9 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <div className='form-actions'>
-            <button className='btn' onClick={handleRemoveUser}><i className='fa fa-trash'></i></button>
+            <button type='button' className='btn' onClick={handleRemoveUser}><i className='fa fa-trash'></i></button>
             <button type='submit' className='btn' disabled={!meta.isValid}><i className='fa fa-save'></i></button>
-            <button className='btn' onClick={handleLogout}><i className='fa fa-sign-out'></i></button>
+            <button type='button' className='btn' onClick={handleLogout}><i className='fa fa-sign-out'></i></button>
           </div>
 
         </fieldset>

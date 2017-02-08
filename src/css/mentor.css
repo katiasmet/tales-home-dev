@@ -421,7 +421,7 @@ STARTSESSION POP-UP
     background: white;
     color: $purple;
 
-    width: 3rem;
+    width: 3.1rem;
     height: 3rem;
     font-size: 1.6rem;
   }
@@ -452,7 +452,7 @@ STARTSESSION POP-UP
   position: absolute;
   z-index: 50;
   bottom: -10rem;
-  right: -17rem;
+  right: -16.5rem;
   transition: all .3s ease-in;
   cursor: pointer;
 

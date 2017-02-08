@@ -26,8 +26,6 @@ class ModelDistanceCharacter extends Component {
 
     const transform = `translateX(${left}rem)`;
 
-    console.log(left);
-
     const style = {
       transform,
       WebkitTransform: transform,

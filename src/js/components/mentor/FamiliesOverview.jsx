@@ -16,7 +16,7 @@ const handleFamilies = (families, activeFamilies, searchInput) => {
   if (isEmpty(families)) {
     return (
         <p> Hello there! Looks like you didn't analyse any families yet.
-            Start by <Link to='/newfamiliy'>adding a family</Link>.</p>
+            Start by <Link to='/newfamily'>adding a family</Link>.</p>
     );
   } else {
     if (isEmpty(activeFamilies)) {

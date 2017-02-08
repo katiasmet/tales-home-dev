@@ -18,7 +18,7 @@ const ModelNote = inject(`notes`)(observer(({notes}) => {
             id='notes-form'
             name='notes'
             value={notesInput}
-            placeholder='Type to add notes of this session. Changes will be changed automatically.'
+            placeholder='Type to add notes for this model. Changes will be saved automatically.'
             onChange={handleNotes}
           >
          </textarea>

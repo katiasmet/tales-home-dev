@@ -8,7 +8,8 @@ const base = `/api/users`;
 
 const whitelist = {
   POST: [`name`, `email`, `password`, `organisation`],
-  UPDATE: [`name`, `email`, `password`, `newpassword`, `organisation`]
+  UPDATE: [`name`, `email`, `password`, `newpassword`, `organisation`],
+  PUT: [`firstLogin`]
 };
 
 export const select = id => {
@@ -46,8 +47,20 @@ export const update = data => {
     .then(checkStatus);
 };
 
+export const updateLogin = data => {
+
+  const method = `PUT`;
+  const headers = new Headers({Authorization: `Bearer ${token.get()}`});
+  const body = buildBody(data, whitelist.PUT);
+  const id = token.content().sub;
+
+  return fetch(`${base}/${id}`, {method, headers, body})
+    .then(checkStatus);
+};
+
 export default {
   insert,
   select,
-  update
+  update,
+  updateLogin
 };

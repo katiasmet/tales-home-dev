@@ -238,9 +238,12 @@ class Families  {
     //get familymodelid else insert
     selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
-        if (familymodel.length !== 0) {
-          this.activeFamilyModel._id = familymodel.familyModel._id;
+        if (familymodel.familyModel.length !== 0) {
+          this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
+          console.log(`handle start model, select`);
+          console.log(familymodel);
+          console.log(this.activeFamilyModel);
           notes.getNote();
           results.getResult();
         } else {
@@ -249,6 +252,7 @@ class Families  {
             .then(familymodel => {
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
+              console.log(`handle start model, insert`);
               notes.getNote();
               results.getResult();
             })

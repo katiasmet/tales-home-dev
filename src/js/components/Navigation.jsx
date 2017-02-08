@@ -21,8 +21,6 @@ class Navigation extends Component {
 
     const {pathname} = this.props;
 
-    console.log(`professional navigation`);
-
     if (includes(pathname, `models`)) {
 
       const {handleStopSession, activeFamily} = this.props.families;

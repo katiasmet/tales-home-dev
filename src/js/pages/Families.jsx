@@ -19,7 +19,6 @@ class Families extends Component {
     const {sessionId} = this.props.families;
     const {pathname} = this.props.location;
     const {firstLogin} = token.content();
-    console.log(token.content());
 
     return (
       <div className='page page-families'>
