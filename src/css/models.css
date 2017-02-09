@@ -10,6 +10,9 @@ $lightpurple: ghostwhite;
 $purple: #6e2bc8;
 $darkpurple: #5427aa;
 
+$green: #36cc12;
+$red: crimson;
+
 @define-mixin before-after {
   content: '';
   position: absolute;
@@ -400,9 +403,60 @@ MODELSOVERVIEW
   }
 }
 
-.model-notes footer {
+.model-notes .footer {
   @add-mixin flex-center;
   justify-content: space-between;
+}
+
+.model-notes .confirmation-overlay {
+  flex-direction: column;
+  justify-content: flex-end;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  z-index: 10;
+  background: rgba(255, 255, 255, .9);
+  border-radius: 2rem;
+
+  .actions {
+    margin-bottom: 10vh;
+  }
+
+  .btn {
+    width: 6rem;
+    height: 6rem;
+    font-size: 3rem;
+
+    margin: 1rem;
+  }
+
+  .btn-green {
+    background: $green;
+
+    &:hover {
+      background: $green;
+    }
+  }
+
+  .btn-red {
+    background: $red;
+
+    &:hover {
+      background: $red;
+    }
+  }
+
+  .character {
+    width: 12rem;
+    height: 20.5rem;
+    margin-bottom: 3rem;
+
+    background: none;
+  }
 }
 
 .model-notes .btn {

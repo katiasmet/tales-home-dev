@@ -15,8 +15,7 @@ const schema = new Schema({
   },
 
   notes: {
-    type: String,
-    required: true
+    type: String
   },
 
   isActive: {

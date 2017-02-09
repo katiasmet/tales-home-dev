@@ -13,6 +13,8 @@ $blue: #26e2e9;
 $accentblue: #cddefe; /* languages */
 $accentlightblue: #90f0f3; /* themes */
 $bluenav: #21c5cb;
+$green: #36cc12;
+$red: crimson;
 
 /* MIXINS */
 @define-mixin before-after {
@@ -94,6 +96,14 @@ button {
   }
 }
 
+.btn-green {
+  background: $green;
+}
+
+.btn-red {
+  background: $red;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -123,7 +133,7 @@ h3 {
 }
 
 .error {
-  color: red;
+  color: $red;
 }
 
 .actions {

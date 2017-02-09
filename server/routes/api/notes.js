@@ -100,7 +100,7 @@ module.exports = [
 
         payload: {
           familyModelId: Joi.string().alphanum().min(3).required(),
-          notes: Joi.string().min(3).required(),
+          notes: Joi.string(),
           isActive: Joi.boolean()
         }
 

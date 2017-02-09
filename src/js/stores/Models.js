@@ -81,14 +81,9 @@ class Models  {
   }
 
   @action handleIsPassed = id => {
-
-    console.log(`handle is passed`);
-    console.log(id);
-    console.log(this.passedModels);
     const model = filter(this.passedModels, model => {
       return model._id === id;
     })[0];
-    console.log(model);
 
     if (model) return true;
     return false;
