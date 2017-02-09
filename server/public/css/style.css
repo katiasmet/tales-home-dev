@@ -2762,9 +2762,9 @@ MODELSOVERVIEW
 
 .chris-illustration .st3 {
 
-    -webkit-clip-path: url(#svgid_4_);
+    -webkit-clip-path: url(#svgid_1_);
 
-    clip-path: url(#svgid_4_);
+    clip-path: url(#svgid_1_);
 
     fill: #961568;
 }
@@ -2775,7 +2775,7 @@ MODELSOVERVIEW
 
     stroke: #9c1265;
 
-    stroke-width: 2.87;
+    stroke-width: 4.93;
 
     stroke-miterlimit: 10;
 }
@@ -2790,22 +2790,24 @@ MODELSOVERVIEW
     fill: white;
 }
 
-.chris-illustration .st8 {
-
-    -webkit-clip-path: url(#svgid_5_);
-
-    clip-path: url(#svgid_5_);
+.chris-illustration .st8,
+  .chris-illustration .st9 {
 
     fill: #8e1161;
 }
 
+.chris-illustration .st8 {
+
+    -webkit-clip-path: url(#svgid_2_);
+
+    clip-path: url(#svgid_2_);
+}
+
 .chris-illustration .st9 {
 
-    -webkit-clip-path: url(#svgid_6_);
+    -webkit-clip-path: url(#svgid_3_);
 
-    clip-path: url(#svgid_6_);
-
-    fill: #8e1161;
+    clip-path: url(#svgid_3_);
 }
 
 .chris-illustration .st10 {
@@ -2823,54 +2825,18 @@ MODELSOVERVIEW
     fill: #721952;
 }
 
-.chris-illustration .st13 {
-
-    fill: #440634;
-}
-
-.chris-illustration .st14 {
-
-    -webkit-clip-path: url(#svgid_7_);
-
-    clip-path: url(#svgid_7_);
-
-    fill: #961568;
-}
-
-.chris-illustration .st15 {
-
-    -webkit-clip-path: url(#svgid_8_);
-
-    clip-path: url(#svgid_8_);
-
-    fill: #8e1161;
-}
-
-.chris-illustration .st16 {
-
-    -webkit-clip-path: url(#svgid_9_);
-
-    clip-path: url(#svgid_9_);
-
-    fill: #8e1161;
-}
-
 .kiki-illustration .st0 {
 
     fill: #aa4343;
 }
 
-.kiki-illustration .st1,
-  .kiki-illustration .st13 {
-
-    fill: #a34848;
-}
-
 .kiki-illustration .st1 {
 
-    -webkit-clip-path: url(#svgid_4_);
+    -webkit-clip-path: url(#svgid_2_);
 
-    clip-path: url(#svgid_4_);
+    clip-path: url(#svgid_2_);
+
+    fill: #a34848;
 }
 
 .kiki-illustration .st2 {
@@ -2880,7 +2846,7 @@ MODELSOVERVIEW
 
 .kiki-illustration .st3 {
 
-    fill: #e26969;
+    fill: #cd5251;
 }
 
 .kiki-illustration .st4 {
@@ -2910,17 +2876,13 @@ MODELSOVERVIEW
     fill: #913237;
 }
 
-.kiki-illustration .st9,
-  .kiki-illustration .st14 {
-
-    fill: #e2002b;
-}
-
 .kiki-illustration .st9 {
 
-    -webkit-clip-path: url(#svgid_5_);
+    -webkit-clip-path: url(#svgid_4_);
 
-    clip-path: url(#svgid_5_);
+    clip-path: url(#svgid_4_);
+
+    fill: #e2002b;
 }
 
 .kiki-illustration .st10 {
@@ -2928,8 +2890,7 @@ MODELSOVERVIEW
     fill: #c14c4c;
 }
 
-.kiki-illustration .st11,
-  .kiki-illustration .st12 {
+.kiki-illustration .st11 {
 
     fill: #933135;
 }
@@ -2939,52 +2900,31 @@ MODELSOVERVIEW
     -webkit-clip-path: url(#svgid_6_);
 
     clip-path: url(#svgid_6_);
+
+    fill: #933135;
 }
 
-.kiki-illustration .st13 {
+.gigi-illustration .st0 {
 
-    -webkit-clip-path: url(#svgid_7_);
+    -webkit-clip-path: url(#svgid_1_);
 
-    clip-path: url(#svgid_7_);
-}
-
-.kiki-illustration .st14 {
-
-    -webkit-clip-path: url(#svgid_8_);
-
-    clip-path: url(#svgid_8_);
-
-    fill: #e2002b;
-}
-
-.kiki-illustration .st15 {
-
-    -webkit-clip-path: url(#svgid_9_);
-
-    clip-path: url(#svgid_9_);
-}
-
-.gigi-illustration .st0,
-  .gigi-illustration .st1,
-  .gigi-illustration .st2,
-  .gigi-illustration .st12,
-  .gigi-illustration .st13 {
+    clip-path: url(#svgid_1_);
 
     fill: #5050ea;
 }
 
 .gigi-illustration .st1 {
 
-    -webkit-clip-path: url(#svgid_5_);
+    -webkit-clip-path: url(#svgid_2_);
 
-    clip-path: url(#svgid_5_);
+    clip-path: url(#svgid_2_);
+
+    fill: #5050ea;
 }
 
 .gigi-illustration .st2 {
 
-    -webkit-clip-path: url(#svgid_6_);
-
-    clip-path: url(#svgid_6_);
+    fill: #5050ea;
 }
 
 .gigi-illustration .st3 {
@@ -3004,300 +2944,632 @@ MODELSOVERVIEW
 
 .gigi-illustration .st6 {
 
-    -webkit-clip-path: url(#svgid_7_);
+    -webkit-clip-path: url(#svgid_3_);
 
-    clip-path: url(#svgid_7_);
+    clip-path: url(#svgid_3_);
 
     fill: #272791;
 }
 
 .gigi-illustration .st7 {
 
-    fill: #a4e3ff;
+    fill: #7400e0;
 }
 
 .gigi-illustration .st8 {
+
+    fill: #a4e3ff;
+}
+
+.gigi-illustration .st9 {
 
     fill: #212193;
 
     stroke: #f4f4f4;
 
-    stroke-width: 3.12;
+    stroke-width: 3.35;
 
     stroke-miterlimit: 10;
 }
 
-.gigi-illustration .st9 {
+.gigi-illustration .st10 {
 
     fill: #f4f4f4;
 }
 
-.gigi-illustration .st10 {
+.gigi-illustration .st11 {
 
     fill: #3c3caa;
 }
 
-.gigi-illustration .st11 {
+.gigi-illustration .st12 {
+
+    -webkit-clip-path: url(#svgid_4_);
+
+    clip-path: url(#svgid_4_);
+
+    fill: #37379b;
+}
+
+.professor-overlay-illustration .st0 {
+
+    fill: #76c1ff;
+}
+
+.professor-overlay-illustration .st1 {
+
+    -webkit-clip-path: url(#svgid_1_);
+
+    clip-path: url(#svgid_1_);
+}
+
+.professor-overlay-illustration .st2 {
+
+    -webkit-clip-path: url(#svgid_1_);
+
+    clip-path: url(#svgid_1_);
+
+    fill: #5299ff;
+}
+
+.professor-overlay-illustration .st3 {
+
+    -webkit-clip-path: url(#svgid_2_);
+
+    clip-path: url(#svgid_2_);
+}
+
+.professor-overlay-illustration .st4 {
+
+    fill: #60b9ef;
+}
+
+.professor-overlay-illustration .st5 {
+
+    -webkit-clip-path: url(#svgid_2_);
+
+    clip-path: url(#svgid_2_);
+
+    fill: #5299ff;
+}
+
+.professor-overlay-illustration .st6 {
+
+    -webkit-clip-path: url(#svgid_3_);
+
+    clip-path: url(#svgid_3_);
+}
+
+.professor-overlay-illustration .st7 {
+
+    -webkit-clip-path: url(#svgid_3_);
+
+    clip-path: url(#svgid_3_);
+
+    fill: #5299ff;
+}
+
+.professor-overlay-illustration .st8 {
+
+    fill: #80d2ff;
+}
+
+.professor-overlay-illustration .st9 {
+
+    fill: #5299ff;
+}
+
+.professor-overlay-illustration .st10 {
+
+    opacity: .5;
+
+    -webkit-clip-path: url(#svgid_4_);
+
+    clip-path: url(#svgid_4_);
+
+    fill: #8fddff;
+}
+
+.professor-overlay-illustration .st11 {
+
+    fill: #4885ff;
+}
+
+.professor-overlay-illustration .st12 {
+
+    fill: #e0fcef;
+}
+
+.professor-overlay-illustration .st13 {
+
+    fill: #231f20;
+}
+
+.professor-overlay-illustration .st14 {
+
+    fill: white;
+}
+
+.professor-overlay-illustration .st15 {
+
+    -webkit-clip-path: url(#svgid_5_);
+
+    clip-path: url(#svgid_5_);
+
+    fill: #4885ff;
+}
+
+.professor-overlay-illustration .st16 {
+
+    fill: #3131ff;
+}
+
+.professor-overlay-illustration .st17 {
+
+    -webkit-clip-path: url(#svgid_6_);
+
+    clip-path: url(#svgid_6_);
+
+    fill: #5299ff;
+}
+
+.professor-overlay-illustration .st18 {
+
+    -webkit-clip-path: url(#svgid_7_);
+
+    clip-path: url(#svgid_7_);
+
+    fill: #4885ff;
+}
+
+.professor-overlay-illustration .st19 {
 
     -webkit-clip-path: url(#svgid_8_);
 
     clip-path: url(#svgid_8_);
 
-    fill: #37379b;
+    fill: #486fff;
 }
 
-.gigi-illustration .st12 {
+.professor-overlay-illustration .st20 {
 
-    -webkit-clip-path: url(#svgid_9_);
+    fill: none;
 
-    clip-path: url(#svgid_9_);
+    stroke: #233133;
+
+    stroke-width: 4.67;
+
+    stroke-miterlimit: 10;
 }
 
-.gigi-illustration .st13 {
+.professor-overlay-illustration .st21 {
 
-    -webkit-clip-path: url(#svgid_10_);
+    fill: none;
 
-    clip-path: url(#svgid_10_);
+    stroke: #233133;
+
+    stroke-width: 4.67;
+
+    stroke-linecap: round;
+
+    stroke-miterlimit: 10;
 }
 
-.gigi-illustration .st14 {
+.new-professor-illustration .st0 {
 
-    -webkit-clip-path: url(#svgid_11_);
-
-    clip-path: url(#svgid_11_);
-
-    fill: #272791;
+    fill: #564325;
 }
 
-.gigi-illustration .st15 {
+.new-professor-illustration .st1 {
 
-    -webkit-clip-path: url(#svgid_12_);
+    -webkit-clip-path: url(#svgid_1_);
 
-    clip-path: url(#svgid_12_);
-
-    fill: #37379b;
+    clip-path: url(#svgid_1_);
 }
 
-.professor-illustration .st11,
-  .professor-illustration .st15,
-  .professor-illustration .st18,
-  .professor-illustration .st27,
-  .professor-illustration .st29,
-  .professor-illustration .st30 {
-
-    fill: #4885ff;
-}
-
-.professor-illustration .st2,
-  .professor-illustration .st5,
-  .professor-illustration .st7,
-  .professor-illustration .st9,
-  .professor-illustration .st17,
-  .professor-illustration .st21,
-  .professor-illustration .st23,
-  .professor-illustration .st25,
-  .professor-illustration .st28 {
-
-    fill: #5299ff;
-}
-
-.professor-illustration .st0 {
+.new-professor-illustration .st2 {
 
     fill: #76c1ff;
 }
 
-.professor-illustration .st1 {
+.new-professor-illustration .st3 {
 
-    -webkit-clip-path: url(#svgid_9_);
+    -webkit-clip-path: url(#svgid_1_);
 
-    clip-path: url(#svgid_9_);
+    clip-path: url(#svgid_1_);
+
+    fill: #5299ff;
 }
 
-.professor-illustration .st2 {
+.new-professor-illustration .st4 {
 
-    -webkit-clip-path: url(#svgid_9_);
+    -webkit-clip-path: url(#svgid_2_);
 
-    clip-path: url(#svgid_9_);
+    clip-path: url(#svgid_2_);
 }
 
-.professor-illustration .st3 {
+.new-professor-illustration .st5 {
 
-    -webkit-clip-path: url(#svgid_10_);
+    -webkit-clip-path: url(#svgid_2_);
 
-    clip-path: url(#svgid_10_);
+    clip-path: url(#svgid_2_);
+
+    fill: #5299ff;
 }
 
-.professor-illustration .st4 {
+.new-professor-illustration .st6 {
+
+    -webkit-clip-path: url(#svgid_3_);
+
+    clip-path: url(#svgid_3_);
+}
+
+.new-professor-illustration .st7 {
 
     fill: #60b9ef;
 }
 
-.professor-illustration .st5 {
+.new-professor-illustration .st8 {
 
-    -webkit-clip-path: url(#svgid_10_);
+    -webkit-clip-path: url(#svgid_3_);
 
-    clip-path: url(#svgid_10_);
+    clip-path: url(#svgid_3_);
+
+    fill: #5299ff;
 }
 
-.professor-illustration .st6 {
+.new-professor-illustration .st9 {
 
-    -webkit-clip-path: url(#svgid_11_);
+    -webkit-clip-path: url(#svgid_4_);
 
-    clip-path: url(#svgid_11_);
+    clip-path: url(#svgid_4_);
 }
 
-.professor-illustration .st7 {
+.new-professor-illustration .st10 {
 
-    -webkit-clip-path: url(#svgid_11_);
+    -webkit-clip-path: url(#svgid_4_);
 
-    clip-path: url(#svgid_11_);
+    clip-path: url(#svgid_4_);
+
+    fill: #5299ff;
 }
 
-.professor-illustration .st8 {
+.new-professor-illustration .st11 {
 
     fill: #80d2ff;
 }
 
-.professor-illustration .st10 {
+.new-professor-illustration .st12 {
+
+    fill: #5299ff;
+}
+
+.new-professor-illustration .st13 {
 
     opacity: .5;
+
+    -webkit-clip-path: url(#svgid_5_);
+
+    clip-path: url(#svgid_5_);
+
+    fill: #8fddff;
+}
+
+.new-professor-illustration .st14 {
+
+    fill: #4885ff;
+}
+
+.new-professor-illustration .st15 {
+
+    fill: #e0fcef;
+}
+
+.new-professor-illustration .st16 {
+
+    fill: #231f20;
+}
+
+.new-professor-illustration .st17 {
+
+    fill: white;
+}
+
+.new-professor-illustration .st18 {
+
+    -webkit-clip-path: url(#svgid_6_);
+
+    clip-path: url(#svgid_6_);
+
+    fill: #4885ff;
+}
+
+.new-professor-illustration .st19 {
+
+    fill: #3131ff;
+}
+
+.new-professor-illustration .st20 {
+
+    -webkit-clip-path: url(#svgid_7_);
+
+    clip-path: url(#svgid_7_);
+
+    fill: #486fff;
+}
+
+.new-professor-illustration .st21 {
+
+    fill: #755d32;
+}
+
+.new-professor-illustration .st22 {
+
+    fill: #ffebcf;
+}
+
+.new-professor-illustration .st23 {
+
+    fill: #91dd40;
+}
+
+.family-illustration .st0 {
+
+    fill: #6dc5f2;
+}
+
+.family-illustration .st1 {
+
+    -webkit-clip-path: url(#svgid_1_);
+
+    clip-path: url(#svgid_1_);
+
+    fill: #60a4f4;
+}
+
+.family-illustration .st2 {
+
+    fill: #71c2ea;
+}
+
+.family-illustration .st3 {
+
+    fill: white;
+}
+
+.family-illustration .st4 {
+
+    -webkit-clip-path: url(#svgid_2_);
+
+    clip-path: url(#svgid_2_);
+}
+
+.family-illustration .st5 {
+
+    fill: #76c1ff;
+}
+
+.family-illustration .st6 {
+
+    -webkit-clip-path: url(#svgid_2_);
+
+    clip-path: url(#svgid_2_);
+
+    fill: #5299ff;
+}
+
+.family-illustration .st7 {
+
+    -webkit-clip-path: url(#svgid_3_);
+
+    clip-path: url(#svgid_3_);
+}
+
+.family-illustration .st8 {
+
+    fill: #60b9ef;
+}
+
+.family-illustration .st9 {
+
+    -webkit-clip-path: url(#svgid_3_);
+
+    clip-path: url(#svgid_3_);
+
+    fill: #5299ff;
+}
+
+.family-illustration .st10 {
+
+    -webkit-clip-path: url(#svgid_4_);
+
+    clip-path: url(#svgid_4_);
+}
+
+.family-illustration .st11 {
+
+    -webkit-clip-path: url(#svgid_4_);
+
+    clip-path: url(#svgid_4_);
+
+    fill: #5299ff;
+}
+
+.family-illustration .st12 {
+
+    fill: #80d2ff;
+}
+
+.family-illustration .st13 {
+
+    opacity: .5;
+
+    -webkit-clip-path: url(#svgid_5_);
+
+    clip-path: url(#svgid_5_);
+
+    fill: #8fddff;
+}
+
+.family-illustration .st14 {
+
+    fill: #4885ff;
+}
+
+.family-illustration .st15 {
+
+    fill: #e0fcef;
+}
+
+.family-illustration .st16 {
+
+    fill: #231f20;
+}
+
+.family-illustration .st17 {
+
+    fill: #5299ff;
+}
+
+.family-illustration .st18 {
+
+    -webkit-clip-path: url(#svgid_6_);
+
+    clip-path: url(#svgid_6_);
+
+    fill: #4885ff;
+}
+
+.family-illustration .st19 {
+
+    fill: #3131ff;
+}
+
+.family-illustration .st20 {
+
+    -webkit-clip-path: url(#svgid_7_);
+
+    clip-path: url(#svgid_7_);
+
+    fill: #486fff;
+}
+
+.family-illustration .st21,
+  .family-illustration .st22,
+  .family-illustration .st23 {
+
+    fill: #5050ea;
+}
+
+.family-illustration .st22 {
+
+    -webkit-clip-path: url(#svgid_8_);
+
+    clip-path: url(#svgid_8_);
+}
+
+.family-illustration .st23 {
+
+    -webkit-clip-path: url(#svgid_9_);
+
+    clip-path: url(#svgid_9_);
+}
+
+.family-illustration .st24 {
+
+    fill: #4444ea;
+}
+
+.family-illustration .st25 {
+
+    fill: #212193;
+}
+
+.family-illustration .st26 {
+
+    opacity: .5;
+}
+
+.family-illustration .st27 {
+
+    -webkit-clip-path: url(#svgid_10_);
+
+    clip-path: url(#svgid_10_);
+
+    fill: #272791;
+}
+
+.family-illustration .st28 {
+
+    fill: #a4e3ff;
+}
+
+.family-illustration .st29 {
+
+    fill: #212193;
+
+    stroke: #f4f4f4;
+
+    stroke-width: 5.51;
+
+    stroke-miterlimit: 10;
+}
+
+.family-illustration .st30 {
+
+    fill: #f4f4f4;
+}
+
+.family-illustration .st31 {
+
+    fill: #3c3caa;
+}
+
+.family-illustration .st32 {
+
+    -webkit-clip-path: url(#svgid_11_);
+
+    clip-path: url(#svgid_11_);
+
+    fill: #37379b;
+}
+
+.family-illustration .st33 {
+
+    fill: #2b2baf;
+}
+
+.family-illustration .st34 {
+
+    fill: #242496;
+}
+
+.family-illustration .st35 {
+
+    opacity: .4;
+}
+
+.family-illustration .st36 {
 
     -webkit-clip-path: url(#svgid_12_);
 
     clip-path: url(#svgid_12_);
 
-    fill: #8fddff;
+    fill: #212193;
 }
 
-.professor-illustration .st12 {
+.family-illustration .st37 {
 
-    fill: #e0fcef;
+    fill: #dbecfc;
 }
 
-.professor-illustration .st13 {
-
-    fill: #231f20;
-}
-
-.professor-illustration .st14 {
-
-    fill: white;
-}
-
-.professor-illustration .st15 {
+.family-illustration .st38 {
 
     -webkit-clip-path: url(#svgid_13_);
 
     clip-path: url(#svgid_13_);
-}
 
-.professor-illustration .st16 {
-
-    fill: #3131ff;
-}
-
-.professor-illustration .st17 {
-
-    -webkit-clip-path: url(#svgid_14_);
-
-    clip-path: url(#svgid_14_);
-}
-
-.professor-illustration .st18 {
-
-    -webkit-clip-path: url(#svgid_15_);
-
-    clip-path: url(#svgid_15_);
-}
-
-.professor-illustration .st19 {
-
-    -webkit-clip-path: url(#svgid_16_);
-
-    clip-path: url(#svgid_16_);
-
-    fill: #486fff;
-}
-
-.professor-illustration .st20 {
-
-    -webkit-clip-path: url(#svgid_17_);
-
-    clip-path: url(#svgid_17_);
-}
-
-.professor-illustration .st21 {
-
-    -webkit-clip-path: url(#svgid_17_);
-
-    clip-path: url(#svgid_17_);
-}
-
-.professor-illustration .st22 {
-
-    -webkit-clip-path: url(#svgid_18_);
-
-    clip-path: url(#svgid_18_);
-}
-
-.professor-illustration .st23 {
-
-    -webkit-clip-path: url(#svgid_18_);
-
-    clip-path: url(#svgid_18_);
-}
-
-.professor-illustration .st24 {
-
-    -webkit-clip-path: url(#svgid_19_);
-
-    clip-path: url(#svgid_19_);
-}
-
-.professor-illustration .st25 {
-
-    -webkit-clip-path: url(#svgid_19_);
-
-    clip-path: url(#svgid_19_);
-}
-
-.professor-illustration .st26 {
-
-    opacity: .5;
-
-    -webkit-clip-path: url(#svgid_20_);
-
-    clip-path: url(#svgid_20_);
-
-    fill: #8fddff;
-}
-
-.professor-illustration .st27 {
-
-    -webkit-clip-path: url(#svgid_21_);
-
-    clip-path: url(#svgid_21_);
-}
-
-.professor-illustration .st28 {
-
-    -webkit-clip-path: url(#svgid_22_);
-
-    clip-path: url(#svgid_22_);
-}
-
-.professor-illustration .st29 {
-
-    -webkit-clip-path: url(#svgid_23_);
-
-    clip-path: url(#svgid_23_);
-}
-
-.professor-illustration .st30 {
-
-    -webkit-clip-path: url(#svgid_24_);
-
-    clip-path: url(#svgid_24_);
+    fill: #67aef4;
 }
 
 

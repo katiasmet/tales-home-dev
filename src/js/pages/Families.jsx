@@ -7,6 +7,8 @@ import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/me
 import {FamilyStartSession} from '../components/mentor/family';
 import {token} from '../auth';
 
+import {NewProfessor} from '../components/illustrations';
+
 @inject(`families`) @observer
 class Families extends Component {
 
@@ -25,6 +27,8 @@ class Families extends Component {
         <Header pathname={pathname} />
 
         <main>
+
+          <NewProfessor />
 
           <FamiliesSearch />
 

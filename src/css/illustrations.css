@@ -11,14 +11,14 @@
   }
 
   .st3 {
-    clip-path: url(#svgid_4_);
+    clip-path: url(#svgid_1_);
     fill: #961568;
   }
 
   .st5 {
     fill: #ffe9f7;
     stroke: #9c1265;
-    stroke-width: 2.87;
+    stroke-width: 4.93;
     stroke-miterlimit: 10;
   }
 
@@ -30,14 +30,17 @@
     fill: white;
   }
 
-  .st8 {
-    clip-path: url(#svgid_5_);
+  .st8,
+  .st9 {
     fill: #8e1161;
   }
 
+  .st8 {
+    clip-path: url(#svgid_2_);
+  }
+
   .st9 {
-    clip-path: url(#svgid_6_);
-    fill: #8e1161;
+    clip-path: url(#svgid_3_);
   }
 
   .st10 {
@@ -51,25 +54,6 @@
   .st12 {
     fill: #721952;
   }
-
-  .st13 {
-    fill: #440634;
-  }
-
-  .st14 {
-    clip-path: url(#svgid_7_);
-    fill: #961568;
-  }
-
-  .st15 {
-    clip-path: url(#svgid_8_);
-    fill: #8e1161;
-  }
-
-  .st16 {
-    clip-path: url(#svgid_9_);
-    fill: #8e1161;
-  }
 }
 
 .kiki-illustration {
@@ -78,13 +62,9 @@
     fill: #aa4343;
   }
 
-  .st1,
-  .st13 {
-    fill: #a34848;
-  }
-
   .st1 {
-    clip-path: url(#svgid_4_);
+    clip-path: url(#svgid_2_);
+    fill: #a34848;
   }
 
   .st2 {
@@ -92,7 +72,7 @@
   }
 
   .st3 {
-    fill: #e26969;
+    fill: #cd5251;
   }
 
   .st4 {
@@ -116,58 +96,39 @@
     fill: #913237;
   }
 
-  .st9,
-  .st14 {
-    fill: #e2002b;
-  }
-
   .st9 {
-    clip-path: url(#svgid_5_);
+    clip-path: url(#svgid_4_);
+    fill: #e2002b;
   }
 
   .st10 {
     fill: #c14c4c;
   }
 
-  .st11,
-  .st12 {
+  .st11 {
     fill: #933135;
   }
 
   .st12 {
     clip-path: url(#svgid_6_);
-  }
-
-  .st13 {
-    clip-path: url(#svgid_7_);
-  }
-
-  .st14 {
-    clip-path: url(#svgid_8_);
-    fill: #e2002b;
-  }
-
-  .st15 {
-    clip-path: url(#svgid_9_);
+    fill: #933135;
   }
 }
 
 .gigi-illustration {
 
-  .st0,
-  .st1,
-  .st2,
-  .st12,
-  .st13 {
+  .st0 {
+    clip-path: url(#svgid_1_);
     fill: #5050ea;
   }
 
   .st1 {
-    clip-path: url(#svgid_5_);
+    clip-path: url(#svgid_2_);
+    fill: #5050ea;
   }
 
   .st2 {
-    clip-path: url(#svgid_6_);
+    fill: #5050ea;
   }
 
   .st3 {
@@ -183,90 +144,56 @@
   }
 
   .st6 {
-    clip-path: url(#svgid_7_);
+    clip-path: url(#svgid_3_);
     fill: #272791;
   }
 
   .st7 {
-    fill: #a4e3ff;
+    fill: #7400e0;
   }
 
   .st8 {
-    fill: #212193;
-    stroke: #f4f4f4;
-    stroke-width: 3.12;
-    stroke-miterlimit: 10;
+    fill: #a4e3ff;
   }
 
   .st9 {
-    fill: #f4f4f4;
+    fill: #212193;
+    stroke: #f4f4f4;
+    stroke-width: 3.35;
+    stroke-miterlimit: 10;
   }
 
   .st10 {
-    fill: #3c3caa;
+    fill: #f4f4f4;
   }
 
   .st11 {
-    clip-path: url(#svgid_8_);
-    fill: #37379b;
+    fill: #3c3caa;
   }
 
   .st12 {
-    clip-path: url(#svgid_9_);
-  }
-
-  .st13 {
-    clip-path: url(#svgid_10_);
-  }
-
-  .st14 {
-    clip-path: url(#svgid_11_);
-    fill: #272791;
-  }
-
-  .st15 {
-    clip-path: url(#svgid_12_);
+    clip-path: url(#svgid_4_);
     fill: #37379b;
   }
 }
 
-.professor-illustration {
-
-  .st11,
-  .st15,
-  .st18,
-  .st27,
-  .st29,
-  .st30 {
-    fill: #4885ff;
-  }
-
-  .st2,
-  .st5,
-  .st7,
-  .st9,
-  .st17,
-  .st21,
-  .st23,
-  .st25,
-  .st28 {
-    fill: #5299ff;
-  }
+.professor-overlay-illustration {
 
   .st0 {
     fill: #76c1ff;
   }
 
   .st1 {
-    clip-path: url(#svgid_9_);
+    clip-path: url(#svgid_1_);
   }
 
   .st2 {
-    clip-path: url(#svgid_9_);
+    clip-path: url(#svgid_1_);
+    fill: #5299ff;
   }
 
   .st3 {
-    clip-path: url(#svgid_10_);
+    clip-path: url(#svgid_2_);
   }
 
   .st4 {
@@ -274,25 +201,35 @@
   }
 
   .st5 {
-    clip-path: url(#svgid_10_);
+    clip-path: url(#svgid_2_);
+    fill: #5299ff;
   }
 
   .st6 {
-    clip-path: url(#svgid_11_);
+    clip-path: url(#svgid_3_);
   }
 
   .st7 {
-    clip-path: url(#svgid_11_);
+    clip-path: url(#svgid_3_);
+    fill: #5299ff;
   }
 
   .st8 {
     fill: #80d2ff;
   }
 
+  .st9 {
+    fill: #5299ff;
+  }
+
   .st10 {
     opacity: .5;
-    clip-path: url(#svgid_12_);
+    clip-path: url(#svgid_4_);
     fill: #8fddff;
+  }
+
+  .st11 {
+    fill: #4885ff;
   }
 
   .st12 {
@@ -308,7 +245,8 @@
   }
 
   .st15 {
-    clip-path: url(#svgid_13_);
+    clip-path: url(#svgid_5_);
+    fill: #4885ff;
   }
 
   .st16 {
@@ -316,61 +254,316 @@
   }
 
   .st17 {
-    clip-path: url(#svgid_14_);
+    clip-path: url(#svgid_6_);
+    fill: #5299ff;
   }
 
   .st18 {
-    clip-path: url(#svgid_15_);
+    clip-path: url(#svgid_7_);
+    fill: #4885ff;
   }
 
   .st19 {
-    clip-path: url(#svgid_16_);
+    clip-path: url(#svgid_8_);
     fill: #486fff;
   }
 
   .st20 {
-    clip-path: url(#svgid_17_);
+    fill: none;
+    stroke: #233133;
+    stroke-width: 4.67;
+    stroke-miterlimit: 10;
   }
 
   .st21 {
-    clip-path: url(#svgid_17_);
+    fill: none;
+    stroke: #233133;
+    stroke-width: 4.67;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
+
+}
+
+.new-professor-illustration {
+
+  .st0 {
+    fill: #564325;
+  }
+
+  .st1 {
+    clip-path: url(#svgid_1_);
+  }
+
+  .st2 {
+    fill: #76c1ff;
+  }
+
+  .st3 {
+    clip-path: url(#svgid_1_);
+    fill: #5299ff;
+  }
+
+  .st4 {
+    clip-path: url(#svgid_2_);
+  }
+
+  .st5 {
+    clip-path: url(#svgid_2_);
+    fill: #5299ff;
+  }
+
+  .st6 {
+    clip-path: url(#svgid_3_);
+  }
+
+  .st7 {
+    fill: #60b9ef;
+  }
+
+  .st8 {
+    clip-path: url(#svgid_3_);
+    fill: #5299ff;
+  }
+
+  .st9 {
+    clip-path: url(#svgid_4_);
+  }
+
+  .st10 {
+    clip-path: url(#svgid_4_);
+    fill: #5299ff;
+  }
+
+  .st11 {
+    fill: #80d2ff;
+  }
+
+  .st12 {
+    fill: #5299ff;
+  }
+
+  .st13 {
+    opacity: .5;
+    clip-path: url(#svgid_5_);
+    fill: #8fddff;
+  }
+
+  .st14 {
+    fill: #4885ff;
+  }
+
+  .st15 {
+    fill: #e0fcef;
+  }
+
+  .st16 {
+    fill: #231f20;
+  }
+
+  .st17 {
+    fill: white;
+  }
+
+  .st18 {
+    clip-path: url(#svgid_6_);
+    fill: #4885ff;
+  }
+
+  .st19 {
+    fill: #3131ff;
+  }
+
+  .st20 {
+    clip-path: url(#svgid_7_);
+    fill: #486fff;
+  }
+
+  .st21 {
+    fill: #755d32;
   }
 
   .st22 {
-    clip-path: url(#svgid_18_);
+    fill: #ffebcf;
   }
 
   .st23 {
-    clip-path: url(#svgid_18_);
+    fill: #91dd40;
+  }
+}
+
+.family-illustration {
+
+  .st0 {
+    fill: #6dc5f2;
+  }
+
+  .st1 {
+    clip-path: url(#svgid_1_);
+    fill: #60a4f4;
+  }
+
+  .st2 {
+    fill: #71c2ea;
+  }
+
+  .st3 {
+    fill: white;
+  }
+
+  .st4 {
+    clip-path: url(#svgid_2_);
+  }
+
+  .st5 {
+    fill: #76c1ff;
+  }
+
+  .st6 {
+    clip-path: url(#svgid_2_);
+    fill: #5299ff;
+  }
+
+  .st7 {
+    clip-path: url(#svgid_3_);
+  }
+
+  .st8 {
+    fill: #60b9ef;
+  }
+
+  .st9 {
+    clip-path: url(#svgid_3_);
+    fill: #5299ff;
+  }
+
+  .st10 {
+    clip-path: url(#svgid_4_);
+  }
+
+  .st11 {
+    clip-path: url(#svgid_4_);
+    fill: #5299ff;
+  }
+
+  .st12 {
+    fill: #80d2ff;
+  }
+
+  .st13 {
+    opacity: .5;
+    clip-path: url(#svgid_5_);
+    fill: #8fddff;
+  }
+
+  .st14 {
+    fill: #4885ff;
+  }
+
+  .st15 {
+    fill: #e0fcef;
+  }
+
+  .st16 {
+    fill: #231f20;
+  }
+
+  .st17 {
+    fill: #5299ff;
+  }
+
+  .st18 {
+    clip-path: url(#svgid_6_);
+    fill: #4885ff;
+  }
+
+  .st19 {
+    fill: #3131ff;
+  }
+
+  .st20 {
+    clip-path: url(#svgid_7_);
+    fill: #486fff;
+  }
+
+  .st21,
+  .st22,
+  .st23 {
+    fill: #5050ea;
+  }
+
+  .st22 {
+    clip-path: url(#svgid_8_);
+  }
+
+  .st23 {
+    clip-path: url(#svgid_9_);
   }
 
   .st24 {
-    clip-path: url(#svgid_19_);
+    fill: #4444ea;
   }
 
   .st25 {
-    clip-path: url(#svgid_19_);
+    fill: #212193;
   }
 
   .st26 {
     opacity: .5;
-    clip-path: url(#svgid_20_);
-    fill: #8fddff;
   }
 
   .st27 {
-    clip-path: url(#svgid_21_);
+    clip-path: url(#svgid_10_);
+    fill: #272791;
   }
 
   .st28 {
-    clip-path: url(#svgid_22_);
+    fill: #a4e3ff;
   }
 
   .st29 {
-    clip-path: url(#svgid_23_);
+    fill: #212193;
+    stroke: #f4f4f4;
+    stroke-width: 5.51;
+    stroke-miterlimit: 10;
   }
 
   .st30 {
-    clip-path: url(#svgid_24_);
+    fill: #f4f4f4;
+  }
+
+  .st31 {
+    fill: #3c3caa;
+  }
+
+  .st32 {
+    clip-path: url(#svgid_11_);
+    fill: #37379b;
+  }
+
+  .st33 {
+    fill: #2b2baf;
+  }
+
+  .st34 {
+    fill: #242496;
+  }
+
+  .st35 {
+    opacity: .4;
+  }
+
+  .st36 {
+    clip-path: url(#svgid_12_);
+    fill: #212193;
+  }
+
+  .st37 {
+    fill: #dbecfc;
+  }
+
+  .st38 {
+    clip-path: url(#svgid_13_);
+    fill: #67aef4;
   }
 }

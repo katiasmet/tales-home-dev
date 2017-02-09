@@ -2,7 +2,7 @@ import React from 'react';
 import {inject, observer} from 'mobx-react';
 
 import {ModelNote, ModelMembers} from './';
-import {Professor} from '../../illustrations';
+import {ProfessorOverlay} from '../../illustrations';
 
 const ModelNotes = inject(`notes`, `families`)(observer(({notes, families}) => {
 
@@ -36,7 +36,7 @@ const renderConfirmation = (handleSubmit, handleConfirmation) => {
   return (
     <footer className='footer confirmation-overlay'>
       <figure className='character'>
-        <Professor />
+        <ProfessorOverlay />
       </figure>
       <div className='actions'>
         <button type='submit' onClick={handleSubmit} className='btn btn-green'><i className='fa fa-check'></i></button>
