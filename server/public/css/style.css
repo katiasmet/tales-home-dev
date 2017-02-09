@@ -301,6 +301,38 @@ html {
             transform: translateY(0);
   }
 }
+
+@-webkit-keyframes wink {
+
+  0%,
+  10%,
+  100% {
+    -webkit-transform: scale(.3, 0);
+            transform: scale(.3, 0);
+  }
+
+  5% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+
+}
+
+@keyframes wink {
+
+  0%,
+  10%,
+  100% {
+    -webkit-transform: scale(.3, 0);
+            transform: scale(.3, 0);
+  }
+
+  5% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+
+}
 /* for text */ /* for bg */ /* used on form focus */ /* languages */ /* themes */
 
 /* MIXINS */
@@ -2750,826 +2782,630 @@ MODELSOVERVIEW
 }
 .chris-illustration .st0,
   .chris-illustration .st1 {
-
-    fill: #88115e;
+  fill: #88115e;
 }
 
 .chris-illustration .st2,
   .chris-illustration .st4 {
-
-    fill: #9c1365;
+  fill: #9c1365;
 }
 
 .chris-illustration .st3 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
-
-    fill: #961568;
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
+  fill: #961568;
 }
 
 .chris-illustration .st5 {
-
-    fill: #ffe9f7;
-
-    stroke: #9c1265;
-
-    stroke-width: 4.93;
-
-    stroke-miterlimit: 10;
+  fill: #ffe9f7;
+  stroke: #9c1265;
+  stroke-width: 4.93;
+  stroke-miterlimit: 10;
 }
 
 .chris-illustration .st6 {
-
-    fill: #353535;
+  fill: #353535;
 }
 
 .chris-illustration .st7 {
-
-    fill: white;
+  fill: white;
 }
 
 .chris-illustration .st8,
   .chris-illustration .st9 {
-
-    fill: #8e1161;
+  fill: #8e1161;
 }
 
 .chris-illustration .st8 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
 }
 
 .chris-illustration .st9 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
 }
 
 .chris-illustration .st10 {
-
-    fill: #282628;
+  fill: #282628;
 }
 
 .chris-illustration .st11 {
-
-    fill: #a51b74;
+  fill: #a51b74;
 }
 
 .chris-illustration .st12 {
-
-    fill: #721952;
+  fill: #721952;
 }
 
 .kiki-illustration .st0 {
-
-    fill: #aa4343;
+  fill: #aa4343;
 }
 
 .kiki-illustration .st1 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
-
-    fill: #a34848;
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
+  fill: #a34848;
 }
 
 .kiki-illustration .st2 {
-
-    fill: #bc4d4d;
+  fill: #bc4d4d;
 }
 
 .kiki-illustration .st3 {
-
-    fill: #cd5251;
+  fill: #cd5251;
 }
 
 .kiki-illustration .st4 {
-
-    opacity: .6;
-
-    fill: #c64f4f;
+  opacity: .6;
+  fill: #c64f4f;
 }
 
 .kiki-illustration .st5 {
-
-    fill: #fdeed8;
+  fill: #fdeed8;
 }
 
 .kiki-illustration .st6 {
-
-    fill: #231f20;
+  fill: #231f20;
 }
 
 .kiki-illustration .st7 {
-
-    fill: white;
+  fill: white;
 }
 
 .kiki-illustration .st8 {
-
-    fill: #913237;
+  fill: #913237;
 }
 
 .kiki-illustration .st9 {
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
-
-    fill: #e2002b;
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
+  fill: #e2002b;
 }
 
 .kiki-illustration .st10 {
-
-    fill: #c14c4c;
+  fill: #c14c4c;
 }
 
 .kiki-illustration .st11 {
-
-    fill: #933135;
+  fill: #933135;
 }
 
 .kiki-illustration .st12 {
-
-    -webkit-clip-path: url(#svgid_6_);
-
-    clip-path: url(#svgid_6_);
-
-    fill: #933135;
+  -webkit-clip-path: url(#svgid_6_);
+  clip-path: url(#svgid_6_);
+  fill: #933135;
 }
 
 .gigi-illustration .st0 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
-
-    fill: #5050ea;
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
+  fill: #5050ea;
 }
 
 .gigi-illustration .st1 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
-
-    fill: #5050ea;
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
+  fill: #5050ea;
 }
 
 .gigi-illustration .st2 {
-
-    fill: #5050ea;
+  fill: #5050ea;
 }
 
 .gigi-illustration .st3 {
-
-    fill: #4444ea;
+  fill: #4444ea;
 }
 
 .gigi-illustration .st4 {
-
-    fill: #212193;
+  fill: #212193;
 }
 
 .gigi-illustration .st5 {
-
-    opacity: .5;
+  opacity: .5;
 }
 
 .gigi-illustration .st6 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
-
-    fill: #272791;
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
+  fill: #272791;
 }
 
 .gigi-illustration .st7 {
-
-    fill: #7400e0;
+  fill: #7400e0;
 }
 
 .gigi-illustration .st8 {
-
-    fill: #a4e3ff;
+  fill: #a4e3ff;
 }
 
 .gigi-illustration .st9 {
-
-    fill: #212193;
-
-    stroke: #f4f4f4;
-
-    stroke-width: 3.35;
-
-    stroke-miterlimit: 10;
+  fill: #212193;
+  stroke: #f4f4f4;
+  stroke-width: 3.35;
+  stroke-miterlimit: 10;
 }
 
 .gigi-illustration .st10 {
-
-    fill: #f4f4f4;
+  fill: #f4f4f4;
 }
 
 .gigi-illustration .st11 {
-
-    fill: #3c3caa;
+  fill: #3c3caa;
 }
 
 .gigi-illustration .st12 {
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
-
-    fill: #37379b;
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
+  fill: #37379b;
 }
 
 .professor-overlay-illustration .st0 {
-
-    fill: #76c1ff;
+  fill: #76c1ff;
 }
 
 .professor-overlay-illustration .st1 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
 }
 
 .professor-overlay-illustration .st2 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
+  fill: #5299ff;
 }
 
 .professor-overlay-illustration .st3 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
 }
 
 .professor-overlay-illustration .st4 {
-
-    fill: #60b9ef;
+  fill: #60b9ef;
 }
 
 .professor-overlay-illustration .st5 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
+  fill: #5299ff;
 }
 
 .professor-overlay-illustration .st6 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
 }
 
 .professor-overlay-illustration .st7 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
+  fill: #5299ff;
 }
 
 .professor-overlay-illustration .st8 {
-
-    fill: #80d2ff;
+  fill: #80d2ff;
 }
 
 .professor-overlay-illustration .st9 {
-
-    fill: #5299ff;
+  fill: #5299ff;
 }
 
 .professor-overlay-illustration .st10 {
-
-    opacity: .5;
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
-
-    fill: #8fddff;
+  opacity: .5;
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
+  fill: #8fddff;
 }
 
 .professor-overlay-illustration .st11 {
-
-    fill: #4885ff;
+  fill: #4885ff;
 }
 
 .professor-overlay-illustration .st12 {
-
-    fill: #e0fcef;
+  fill: #e0fcef;
 }
 
 .professor-overlay-illustration .st13 {
-
-    fill: #231f20;
+  fill: #231f20;
 }
 
 .professor-overlay-illustration .st14 {
-
-    fill: white;
+  fill: white;
 }
 
 .professor-overlay-illustration .st15 {
-
-    -webkit-clip-path: url(#svgid_5_);
-
-    clip-path: url(#svgid_5_);
-
-    fill: #4885ff;
+  -webkit-clip-path: url(#svgid_5_);
+  clip-path: url(#svgid_5_);
+  fill: #4885ff;
 }
 
 .professor-overlay-illustration .st16 {
-
-    fill: #3131ff;
+  fill: #3131ff;
 }
 
 .professor-overlay-illustration .st17 {
-
-    -webkit-clip-path: url(#svgid_6_);
-
-    clip-path: url(#svgid_6_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_6_);
+  clip-path: url(#svgid_6_);
+  fill: #5299ff;
 }
 
 .professor-overlay-illustration .st18 {
-
-    -webkit-clip-path: url(#svgid_7_);
-
-    clip-path: url(#svgid_7_);
-
-    fill: #4885ff;
+  -webkit-clip-path: url(#svgid_7_);
+  clip-path: url(#svgid_7_);
+  fill: #4885ff;
 }
 
 .professor-overlay-illustration .st19 {
-
-    -webkit-clip-path: url(#svgid_8_);
-
-    clip-path: url(#svgid_8_);
-
-    fill: #486fff;
+  -webkit-clip-path: url(#svgid_8_);
+  clip-path: url(#svgid_8_);
+  fill: #486fff;
 }
 
 .professor-overlay-illustration .st20 {
-
-    fill: none;
-
-    stroke: #233133;
-
-    stroke-width: 4.67;
-
-    stroke-miterlimit: 10;
+  fill: none;
+  stroke: #233133;
+  stroke-width: 4.67;
+  stroke-miterlimit: 10;
 }
 
 .professor-overlay-illustration .st21 {
+  fill: none;
+  stroke: #233133;
+  stroke-width: 4.67;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
 
-    fill: none;
+.svg-new-professor {
+  width: 320px;
+  width: 20rem;
+}
 
-    stroke: #233133;
+.new-professor-illustration .eyelid {
+  fill: #4885ff;
+  -webkit-transform: scale(.6, 0);
+  transform: scale(.6, 0);
+  -webkit-animation: wink 5s ease-in 3s infinite forwards;
+  animation: wink 5s ease-in 3s infinite forwards;
+}
 
-    stroke-width: 4.67;
+.new-professor-illustration .eyelid-left-top,
+  .new-professor-illustration .eyelid-right-top {
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}
 
-    stroke-linecap: round;
+.new-professor-illustration .eyelid-left-bottom,
+  .new-professor-illustration .eyelid-right-bottom {
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+}
 
-    stroke-miterlimit: 10;
+.new-professor-illustration .tentacle {
+  fill: #76c1ff;
 }
 
 .new-professor-illustration .st0 {
-
-    fill: #564325;
+  fill: #564325;
 }
 
 .new-professor-illustration .st1 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
 }
 
 .new-professor-illustration .st2 {
-
-    fill: #76c1ff;
+  fill: #76c1ff;
 }
 
 .new-professor-illustration .st3 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
+  fill: #5299ff;
 }
 
 .new-professor-illustration .st4 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
 }
 
 .new-professor-illustration .st5 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
+  fill: #5299ff;
 }
 
 .new-professor-illustration .st6 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
 }
 
 .new-professor-illustration .st7 {
-
-    fill: #60b9ef;
+  fill: #60b9ef;
 }
 
 .new-professor-illustration .st8 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
+  fill: #5299ff;
 }
 
 .new-professor-illustration .st9 {
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
 }
 
 .new-professor-illustration .st10 {
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
+  fill: #5299ff;
 }
 
 .new-professor-illustration .st11 {
-
-    fill: #80d2ff;
+  fill: #80d2ff;
 }
 
 .new-professor-illustration .st12 {
-
-    fill: #5299ff;
+  fill: #5299ff;
 }
 
 .new-professor-illustration .st13 {
-
-    opacity: .5;
-
-    -webkit-clip-path: url(#svgid_5_);
-
-    clip-path: url(#svgid_5_);
-
-    fill: #8fddff;
+  opacity: .5;
+  -webkit-clip-path: url(#svgid_5_);
+  clip-path: url(#svgid_5_);
+  fill: #8fddff;
 }
 
 .new-professor-illustration .st14 {
-
-    fill: #4885ff;
+  fill: #4885ff;
 }
 
 .new-professor-illustration .st15 {
-
-    fill: #e0fcef;
+  fill: #e0fcef;
 }
 
 .new-professor-illustration .st16 {
-
-    fill: #231f20;
+  fill: #231f20;
 }
 
 .new-professor-illustration .st17 {
-
-    fill: white;
+  fill: white;
 }
 
 .new-professor-illustration .st18 {
-
-    -webkit-clip-path: url(#svgid_6_);
-
-    clip-path: url(#svgid_6_);
-
-    fill: #4885ff;
+  -webkit-clip-path: url(#svgid_6_);
+  clip-path: url(#svgid_6_);
+  fill: #4885ff;
 }
 
 .new-professor-illustration .st19 {
-
-    fill: #3131ff;
+  fill: #3131ff;
 }
 
 .new-professor-illustration .st20 {
-
-    -webkit-clip-path: url(#svgid_7_);
-
-    clip-path: url(#svgid_7_);
-
-    fill: #486fff;
+  -webkit-clip-path: url(#svgid_7_);
+  clip-path: url(#svgid_7_);
+  fill: #486fff;
 }
 
 .new-professor-illustration .st21 {
-
-    fill: #755d32;
+  fill: #755d32;
 }
 
 .new-professor-illustration .st22 {
-
-    fill: #ffebcf;
+  fill: #ffebcf;
 }
 
 .new-professor-illustration .st23 {
-
-    fill: #91dd40;
+  fill: #91dd40;
 }
 
 .family-illustration .st0 {
-
-    fill: #6dc5f2;
+  fill: #6dc5f2;
 }
 
 .family-illustration .st1 {
-
-    -webkit-clip-path: url(#svgid_1_);
-
-    clip-path: url(#svgid_1_);
-
-    fill: #60a4f4;
+  -webkit-clip-path: url(#svgid_1_);
+  clip-path: url(#svgid_1_);
+  fill: #60a4f4;
 }
 
 .family-illustration .st2 {
-
-    fill: #71c2ea;
+  fill: #71c2ea;
 }
 
 .family-illustration .st3 {
-
-    fill: white;
+  fill: white;
 }
 
 .family-illustration .st4 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
 }
 
 .family-illustration .st5 {
-
-    fill: #76c1ff;
+  fill: #76c1ff;
 }
 
 .family-illustration .st6 {
-
-    -webkit-clip-path: url(#svgid_2_);
-
-    clip-path: url(#svgid_2_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_2_);
+  clip-path: url(#svgid_2_);
+  fill: #5299ff;
 }
 
 .family-illustration .st7 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
 }
 
 .family-illustration .st8 {
-
-    fill: #60b9ef;
+  fill: #60b9ef;
 }
 
 .family-illustration .st9 {
-
-    -webkit-clip-path: url(#svgid_3_);
-
-    clip-path: url(#svgid_3_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_3_);
+  clip-path: url(#svgid_3_);
+  fill: #5299ff;
 }
 
 .family-illustration .st10 {
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
 }
 
 .family-illustration .st11 {
-
-    -webkit-clip-path: url(#svgid_4_);
-
-    clip-path: url(#svgid_4_);
-
-    fill: #5299ff;
+  -webkit-clip-path: url(#svgid_4_);
+  clip-path: url(#svgid_4_);
+  fill: #5299ff;
 }
 
 .family-illustration .st12 {
-
-    fill: #80d2ff;
+  fill: #80d2ff;
 }
 
 .family-illustration .st13 {
-
-    opacity: .5;
-
-    -webkit-clip-path: url(#svgid_5_);
-
-    clip-path: url(#svgid_5_);
-
-    fill: #8fddff;
+  opacity: .5;
+  -webkit-clip-path: url(#svgid_5_);
+  clip-path: url(#svgid_5_);
+  fill: #8fddff;
 }
 
 .family-illustration .st14 {
-
-    fill: #4885ff;
+  fill: #4885ff;
 }
 
 .family-illustration .st15 {
-
-    fill: #e0fcef;
+  fill: #e0fcef;
 }
 
 .family-illustration .st16 {
-
-    fill: #231f20;
+  fill: #231f20;
 }
 
 .family-illustration .st17 {
-
-    fill: #5299ff;
+  fill: #5299ff;
 }
 
 .family-illustration .st18 {
-
-    -webkit-clip-path: url(#svgid_6_);
-
-    clip-path: url(#svgid_6_);
-
-    fill: #4885ff;
+  -webkit-clip-path: url(#svgid_6_);
+  clip-path: url(#svgid_6_);
+  fill: #4885ff;
 }
 
 .family-illustration .st19 {
-
-    fill: #3131ff;
+  fill: #3131ff;
 }
 
 .family-illustration .st20 {
-
-    -webkit-clip-path: url(#svgid_7_);
-
-    clip-path: url(#svgid_7_);
-
-    fill: #486fff;
+  -webkit-clip-path: url(#svgid_7_);
+  clip-path: url(#svgid_7_);
+  fill: #486fff;
 }
 
 .family-illustration .st21,
   .family-illustration .st22,
   .family-illustration .st23 {
-
-    fill: #5050ea;
+  fill: #5050ea;
 }
 
 .family-illustration .st22 {
-
-    -webkit-clip-path: url(#svgid_8_);
-
-    clip-path: url(#svgid_8_);
+  -webkit-clip-path: url(#svgid_8_);
+  clip-path: url(#svgid_8_);
 }
 
 .family-illustration .st23 {
-
-    -webkit-clip-path: url(#svgid_9_);
-
-    clip-path: url(#svgid_9_);
+  -webkit-clip-path: url(#svgid_9_);
+  clip-path: url(#svgid_9_);
 }
 
 .family-illustration .st24 {
-
-    fill: #4444ea;
+  fill: #4444ea;
 }
 
 .family-illustration .st25 {
-
-    fill: #212193;
+  fill: #212193;
 }
 
 .family-illustration .st26 {
-
-    opacity: .5;
+  opacity: .5;
 }
 
 .family-illustration .st27 {
-
-    -webkit-clip-path: url(#svgid_10_);
-
-    clip-path: url(#svgid_10_);
-
-    fill: #272791;
+  -webkit-clip-path: url(#svgid_10_);
+  clip-path: url(#svgid_10_);
+  fill: #272791;
 }
 
 .family-illustration .st28 {
-
-    fill: #a4e3ff;
+  fill: #a4e3ff;
 }
 
 .family-illustration .st29 {
-
-    fill: #212193;
-
-    stroke: #f4f4f4;
-
-    stroke-width: 5.51;
-
-    stroke-miterlimit: 10;
+  fill: #212193;
+  stroke: #f4f4f4;
+  stroke-width: 5.51;
+  stroke-miterlimit: 10;
 }
 
 .family-illustration .st30 {
-
-    fill: #f4f4f4;
+  fill: #f4f4f4;
 }
 
 .family-illustration .st31 {
-
-    fill: #3c3caa;
+  fill: #3c3caa;
 }
 
 .family-illustration .st32 {
-
-    -webkit-clip-path: url(#svgid_11_);
-
-    clip-path: url(#svgid_11_);
-
-    fill: #37379b;
+  -webkit-clip-path: url(#svgid_11_);
+  clip-path: url(#svgid_11_);
+  fill: #37379b;
 }
 
 .family-illustration .st33 {
-
-    fill: #2b2baf;
+  fill: #2b2baf;
 }
 
 .family-illustration .st34 {
-
-    fill: #242496;
+  fill: #242496;
 }
 
 .family-illustration .st35 {
-
-    opacity: .4;
+  opacity: .4;
 }
 
 .family-illustration .st36 {
-
-    -webkit-clip-path: url(#svgid_12_);
-
-    clip-path: url(#svgid_12_);
-
-    fill: #212193;
+  -webkit-clip-path: url(#svgid_12_);
+  clip-path: url(#svgid_12_);
+  fill: #212193;
 }
 
 .family-illustration .st37 {
-
-    fill: #dbecfc;
+  fill: #dbecfc;
 }
 
 .family-illustration .st38 {
-
-    -webkit-clip-path: url(#svgid_13_);
-
-    clip-path: url(#svgid_13_);
-
-    fill: #67aef4;
+  -webkit-clip-path: url(#svgid_13_);
+  clip-path: url(#svgid_13_);
+  fill: #67aef4;
 }
 
 

@@ -4081,6 +4081,12 @@ known-css-properties@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.0.6.tgz#71a0b8fde1b6e3431c471efbc3d9733faebbcfbf"
 
+kute.js@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/kute.js/-/kute.js-1.6.2.tgz#ca0f59313b9c45b67c638632c4eaa696d1ea60dc"
+  dependencies:
+    uglify-js "^2.7.3"
+
 latest-version@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-1.0.1.tgz#72cfc46e3e8d1be651e1ebb54ea9f6ea96f374bb"
@@ -7057,7 +7063,7 @@ uglify-js@2.6.x:
     uglify-to-browserify "~1.0.0"
     yargs "~3.10.0"
 
-uglify-js@2.7.x, uglify-js@^2.7.5:
+uglify-js@2.7.x, uglify-js@^2.7.3, uglify-js@^2.7.5:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
   dependencies:

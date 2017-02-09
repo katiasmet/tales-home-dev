@@ -102,3 +102,17 @@
     transform: translateY(0);
   }
 }
+
+@keyframes wink {
+
+  0%,
+  10%,
+  100% {
+    transform: scale(.3, 0);
+  }
+
+  5% {
+    transform: scale(1, 1);
+  }
+
+}

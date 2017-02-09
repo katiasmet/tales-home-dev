@@ -285,7 +285,31 @@
 
 }
 
+.svg-new-professor {
+  width: 20rem;
+}
+
 .new-professor-illustration {
+
+  .eyelid {
+    fill: #4885ff;
+    transform: scale(.6, 0);
+    animation: wink 5s ease-in 3s infinite forwards;
+  }
+
+  .eyelid-left-top,
+  .eyelid-right-top {
+    transform-origin: top center;
+  }
+
+  .eyelid-left-bottom,
+  .eyelid-right-bottom {
+    transform-origin: bottom center;
+  }
+
+  .tentacle {
+    fill: #76c1ff;
+  }
 
   .st0 {
     fill: #564325;

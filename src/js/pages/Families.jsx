@@ -28,7 +28,10 @@ class Families extends Component {
 
         <main>
 
-          <NewProfessor />
+          <figure className='svg-new-professor'>
+            <NewProfessor />
+          </figure>
+
 
           <FamiliesSearch />
 
