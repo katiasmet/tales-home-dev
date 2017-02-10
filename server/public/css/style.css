@@ -1429,6 +1429,7 @@ MODELSOVERVIEW
   margin: 16px;
   margin: 1rem;
   cursor: pointer;
+  position: relative;
 }
 
 .model-nav-item a {
@@ -1592,11 +1593,63 @@ MODELSOVERVIEW
 
 }
 
+.model-nav-item::after{
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  display: block;
+
+  content: attr(data-model-name);
+
+  left: -72px;
+
+  left: -4.5rem;
+
+  width: 160px;
+
+  width: 10rem;
+
+  font-size: 22.4px;
+
+  font-size: 1.4rem;
+
+  color: white;
+
+  top: auto;
+
+  bottom: 0;
+
+  font-weight: 300;
+
+  opacity: 0;
+
+  -webkit-transition: all .3s ease-in;
+
+  transition: all .3s ease-in;
+
+}
+
 .model-nav-item:hover{
 
   -webkit-animation: hover .3s ease-in;
 
           animation: hover .3s ease-in;
+
+}
+
+.model-nav-item:hover::after{
+
+  opacity: 1;
+
+  -webkit-transform: translateY(3rem);
+
+          transform: translateY(3rem);
 
 }
 
@@ -1687,6 +1740,8 @@ MODELSOVERVIEW
   -webkit-transition: all 1s ease-in;
   transition: all 1s ease-in;
   padding: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .show-grid {
@@ -2222,6 +2277,19 @@ MODELSOVERVIEW
     .model-languages .language:hover{
 
   background: #5427aa;
+
+}
+
+.model-languages .language.family{
+
+  cursor: default;
+
+}
+
+.model-languages .language.family:hover,
+      .model-languages .language.family.active{
+
+  background: #6e2bc8;
 
 }
 /* languages */

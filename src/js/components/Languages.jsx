@@ -10,7 +10,7 @@ const Languages = inject(`languages`)(observer(({languages}) => {
   return (
     <ul className='languages'>
 
-      <li className='search'>
+      <li className='language search'>
         <FormInput
           id='search-form'
           name='search'

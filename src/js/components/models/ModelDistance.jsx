@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 
+import {token} from '../../auth';
 import {ModelDistanceScene, ModelDistanceTimeline} from './';
 import {Loading} from '../';
 
@@ -13,8 +14,18 @@ class ModelDistance extends Component {
     getDraggableCharacters();
   }
 
+  handleClick(i) {
+
+    const {handleNextLanguage} = this.props.models;
+
+    if (token.content().scope === `professional`) {
+      handleNextLanguage(i);
+    }
+  }
+
   renderLanguages() {
-    const {familyLanguages, currentLanguage, handleNextLanguage} = this.props.models;
+    const {familyLanguages, currentLanguage} = this.props.models;
+    const scope = token.content().scope;
 
     return (
       <ul className='model-languages'>
@@ -22,8 +33,8 @@ class ModelDistance extends Component {
         {
           familyLanguages.slice().map((language, i) => {
             return (
-              <li className={(i === currentLanguage) ? `language active` : `language`}
-                  onClick={() => handleNextLanguage(i)}
+              <li className={(i === currentLanguage) ? `language active ${scope}` : `language ${scope}`}
+                  onClick={this.handleClick(i)}
                   key={i}>
                     {language}
               </li>

@@ -102,6 +102,7 @@ MODELSOVERVIEW
   display: block;
   margin: 1rem;
   cursor: pointer;
+  position: relative;
 
   &.done {
     @add-mixin flex-center;
@@ -163,8 +164,27 @@ MODELSOVERVIEW
     opacity: 1;
   }
 
+  &::after {
+    @add-mixin before-after;
+    content: attr(data-model-name);
+    left: -4.5rem;
+    width: 10rem;
+    font-size: 1.4rem;
+    color: white;
+    top: auto;
+    bottom: 0;
+    font-weight: 300;
+    opacity: 0;
+    transition: all .3s ease-in;
+  }
+
   &:hover {
     animation: hover .3s ease-in;
+
+    &::after {
+      opacity: 1;
+      transform: translateY(3rem);
+    }
   }
 }
 
@@ -213,6 +233,8 @@ MODELSOVERVIEW
   flex-direction: column;
   transition: all 1s ease-in;
   padding: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .show-grid {
@@ -489,5 +511,15 @@ MODELSOVERVIEW
     &:hover {
       background: $darkpurple;
     }
+
+    &.family {
+      cursor: default;
+
+      &:hover,
+      &.active {
+        background: $purple;
+      }
+    }
+
   }
 }

@@ -38,9 +38,15 @@ class Navigation extends Component {
               </li>
             )
           }
-          <li onClick={handleStopSession} className='nav-item'>
-            <i className='fa fa-sign-out'></i>
-          </li>
+
+          {
+            !model && (
+              <li onClick={handleStopSession} className='nav-item'>
+                <i className='fa fa-sign-out'></i>
+              </li>
+            )
+          }
+
         </ul>
       );
 
