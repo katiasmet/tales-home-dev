@@ -6,7 +6,7 @@ const FamilyMemberAddCharacters = ({handleChange, value}) => {
 
   return (
     <section className='form-characters'>
-      <h3 className='label'>Choose your character</h3>
+      <h3 className='label'>Choose your character *</h3>
 
       <section className='form-characters-options'>
         <input  id='remi'

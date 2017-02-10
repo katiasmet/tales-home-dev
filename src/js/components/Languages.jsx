@@ -1,18 +1,27 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
 
-import {Language} from './';
+import {Language, FormInput} from './';
 
 const Languages = inject(`languages`)(observer(({languages}) => {
 
-  const {allLanguages, handleSelectLanguage} = languages;
+  const {availableLanguages, handleSelectLanguage, handleSearch, searchInput} = languages;
 
   return (
     <ul className='languages'>
 
+      <li className='search'>
+        <FormInput
+          id='search-form'
+          name='search'
+          value={searchInput}
+          onChange={handleSearch}
+          placeholder='Search language' />
+      </li>
+
       {
 
-        allLanguages.slice().map((language, i) => {
+        availableLanguages.slice().map((language, i) => {
           return <Language {...language} key={i} handleSelectLanguage={handleSelectLanguage} />;
         })
 

@@ -47,7 +47,6 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit, edit = false}) => {
 
           <FamilyMemberAddLanguages />
 
-
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <div className='form-actions'>

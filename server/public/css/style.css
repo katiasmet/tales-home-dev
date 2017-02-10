@@ -1015,7 +1015,7 @@ MENTOR FAMILIES
 }
 
 .families-browse .character:hover::after,
-      .families-browse .character:hover::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 3rem;border: 1.6px solid #6e2bc8;border: .1rem solid #6e2bc8;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+      .families-browse .character:hover::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 50%;border: 1.6px solid #6e2bc8;border: .1rem solid #6e2bc8;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
 }
 
 .families-browse .character:hover::after {-webkit-animation-delay: .5s;animation-delay: .5s;
@@ -1196,7 +1196,7 @@ STARTSESSION POP-UP
 }
 
 .pop-up .btn:hover::after,
-    .pop-up .btn:hover::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 3rem;border: 1.6px solid #6e2bc8;border: .1rem solid #6e2bc8;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+    .pop-up .btn:hover::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 50%;border: 1.6px solid #6e2bc8;border: .1rem solid #6e2bc8;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
 }
 
 .pop-up .btn:hover::after {-webkit-animation-delay: .5s;animation-delay: .5s;
@@ -1238,7 +1238,7 @@ STARTSESSION POP-UP
 }
 
 .first-run .btn::after,
-    .first-run .btn::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 3rem;border: 1.6px solid white;border: .1rem solid white;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+    .first-run .btn::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 50%;border: 1.6px solid white;border: .1rem solid white;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
 }
 
 .first-run .btn::after {-webkit-animation-delay: .5s;animation-delay: .5s;
@@ -1510,7 +1510,7 @@ MODELSOVERVIEW
 
   height: 100%;
 
-  border-radius: 3rem;
+  border-radius: 50%;
 
   border: 1.6px solid white;
 
@@ -2229,7 +2229,7 @@ MODELSOVERVIEW
 .page-family,
 .page-new-family-member,
 .page-edit-family-member {
-  color: white;
+  color: white;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
 }
 
 .page-family .btn,
@@ -2255,6 +2255,20 @@ MODELSOVERVIEW
   .page-edit-family-member .btn,
   .page-edit-family-member .btn:hover,
   .page-edit-family-member .action:hover {background: white;
+}
+
+.page-family .btn-add-member, .page-new-family-member .btn-add-member, .page-edit-family-member .btn-add-member {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;align-items: center;color: white;background: #5427aa;width: 128px;width: 8rem;height: 128px;height: 8rem;border-radius: 8rem;font-size: 64px;font-size: 4rem;position: relative
+}
+
+.page-family .btn-add-member::after,
+    .page-family .btn-add-member::before,
+    .page-new-family-member .btn-add-member::after,
+    .page-new-family-member .btn-add-member::before,
+    .page-edit-family-member .btn-add-member::after,
+    .page-edit-family-member .btn-add-member::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 50%;border: 1.6px solid #5427aa;border: .1rem solid #5427aa;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+}
+
+.page-family .btn-add-member::after, .page-new-family-member .btn-add-member::after, .page-edit-family-member .btn-add-member::after {-webkit-animation-delay: .5s;animation-delay: .5s;
 }
 
 /*
@@ -2400,8 +2414,8 @@ MODELSOVERVIEW
 .form-roles-options .role {
   width: 80px;
   width: 5rem;
-  height: 112px;
-  height: 7rem;
+  height: 104px;
+  height: 6.5rem;
   border-radius: 1rem;
 
   margin-top: 0;
@@ -2524,6 +2538,30 @@ MODELSOVERVIEW
 .role .child {background: url(/assets/img/characters/kiki/kiki.png) no-repeat bottom center;background-size: 50%;-webkit-transform: translateY(-1rem);transform: translateY(-1rem);
 }
 
+.role .gigi {-webkit-transform: translateY(-2rem);transform: translateY(-2rem);
+}
+
+.role .father.gigi {background: url(/assets/img/characters/gigi/gigi_father.png) no-repeat bottom center;background-size: 75%;
+}
+
+.role .mother.gigi {background: url(/assets/img/characters/gigi/gigi_mother.png) no-repeat bottom center;background-size: 75%;
+}
+
+.role .child.gigi {background: url(/assets/img/characters/gigi/gigi_child.png) no-repeat bottom center;background-size: 50%;-webkit-transform: translateY(-3rem);transform: translateY(-3rem);
+}
+
+.role .chris {-webkit-transform: translateY(-3.5rem);transform: translateY(-3.5rem);
+}
+
+.role .father.chris {background: url(/assets/img/characters/chris/chris_father.png) no-repeat bottom center;background-size: 90%;
+}
+
+.role .mother.chris {background: url(/assets/img/characters/chris/chris_mother.png) no-repeat bottom center;background-size: 90%;
+}
+
+.role .child.chris {background: url(/assets/img/characters/chris/chris_child.png) no-repeat bottom center;background-size: 75%;-webkit-transform: translateY(-4rem);transform: translateY(-4rem);
+}
+
 .form-characters-options input[type=radio]:checked + label,
 .form-roles-options input[type=radio]:checked + label {
   -webkit-transform: scale(1.5);
@@ -2543,7 +2581,25 @@ MODELSOVERVIEW
 .form-characters-options input[type=radio]:checked + label .gigi, .form-roles-options input[type=radio]:checked + label .gigi {-webkit-transform: translateY(-2rem);transform: translateY(-2rem);
 }
 
-.form-characters-options input[type=radio]:checked + label .child, .form-roles-options input[type=radio]:checked + label .child {-webkit-transform: translateY(-2.5rem);transform: translateY(-2.5rem);background-size: 65%;
+.form-characters-options input[type=radio]:checked + label .child, .form-roles-options input[type=radio]:checked + label .child {-webkit-transform: translateY(-2.5rem);transform: translateY(-2.5rem);background-size: 65%
+}
+
+.form-characters-options input[type=radio]:checked + label .child.gigi, .form-roles-options input[type=radio]:checked + label .child.gigi {-webkit-transform: translateY(-4rem);transform: translateY(-4rem);background-size: 70%;
+}
+
+.form-characters-options input[type=radio]:checked + label .child.chris, .form-roles-options input[type=radio]:checked + label .child.chris {-webkit-transform: translateY(-5rem);transform: translateY(-5rem);background-size: 85%;
+}
+
+.form-characters-options input[type=radio]:checked + label .father.gigi,
+  .form-characters-options input[type=radio]:checked + label .mother.gigi,
+  .form-roles-options input[type=radio]:checked + label .father.gigi,
+  .form-roles-options input[type=radio]:checked + label .mother.gigi {-webkit-transform: translateY(-3.5rem);transform: translateY(-3.5rem);
+}
+
+.form-characters-options input[type=radio]:checked + label .father.chris,
+  .form-characters-options input[type=radio]:checked + label .mother.chris,
+  .form-roles-options input[type=radio]:checked + label .father.chris,
+  .form-roles-options input[type=radio]:checked + label .mother.chris {-webkit-transform: translateY(-5rem);transform: translateY(-5rem);
 }
 
 .form-roles-options input[type=radio]:checked + .role {
@@ -2572,6 +2628,9 @@ MODELSOVERVIEW
 }
 
 .form-add-family-member .form-languages .language:hover {background: rgba(0, 204, 198, .2);
+}
+
+.form-add-family-member .form-languages .form-input {width: 100%;
 }
 
 .form-add-family-member .form-languages .member-languages {display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;

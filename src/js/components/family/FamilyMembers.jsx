@@ -21,7 +21,7 @@ const FamilyMembers = inject(`families`)(observer(({families}) => {
 
       {
 
-        (isEmpty(familymembers)) ? <Link to='newfamilymember'><i className='fa fa-plus'></i></Link>
+        (isEmpty(familymembers)) ? <Link to='newfamilymember' className='btn-add-member'><i className='fa fa-plus'></i></Link>
         : handleFamilyMembers(familymembers)
 
       }
