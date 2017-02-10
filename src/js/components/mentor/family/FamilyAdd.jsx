@@ -44,7 +44,8 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
             value={fields.origins.value}
             error={fields.origins.error}
             onChange={handleChange}
-            placeholder='f.e. Greece' />
+            placeholder='f.e. Greece'
+            required={false} />
 
           <FormInput
             id='family-form-home-location'
@@ -53,7 +54,8 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
             value={fields.homeLocation.value}
             error={fields.homeLocation.error}
             onChange={handleChange}
-            placeholder='f.e. London' />
+            placeholder='f.e. London'
+            required={false} />
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 

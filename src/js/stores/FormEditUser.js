@@ -51,8 +51,6 @@ class FormEditUser extends Form {
   @action handleSubmit = e => {
     e.preventDefault();
 
-    console.log(`submit`);
-
     if (!this.form.meta.isValid) {
       this.handleError(`Oops! Looks like password isn't correct.`);
     } else {

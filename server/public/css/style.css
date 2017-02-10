@@ -348,10 +348,10 @@ button {
   border-radius: 5rem;
   font-size: 48px;
   font-size: 3rem;
-  width: 88px;
-  width: 5.5rem;
-  height: 88px;
-  height: 5.5rem;
+  width: 80px;
+  width: 5rem;
+  height: 80px;
+  height: 5rem;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
@@ -359,6 +359,9 @@ button {
 }
 
 .btn:hover, .nav-item:hover, .action:hover, .character:hover {background: #6e2bc8;opacity: 1;-webkit-animation: hover .3s ease-in;animation: hover .3s ease-in;
+}
+
+.btn:disabled, .nav-item:disabled, .action:disabled, .character:disabled {cursor: default;-webkit-animation: none;animation: none;opacity: .5;background: #515151;
 }
 
 .btn-green {
@@ -404,6 +407,14 @@ h3 {
 
 .error {
   color: crimson;
+  font-style: italic;
+}
+
+.info-success {
+  margin: 16px 0;
+  margin: 1rem 0;
+  color: #36cc12;
+  font-style: italic;
 }
 
 .actions ul {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;
@@ -644,6 +655,11 @@ textarea {
 }
 
 input:focus, textarea:focus {outline: none;background: ghostwhite;
+}
+
+.form-error input {
+  border: 1.6px solid crimson;
+  border: .1rem solid crimson;
 }
 
 textarea {

@@ -82,8 +82,8 @@ button {
   background: $purple;
   border-radius: 5rem;
   font-size: 3rem;
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 5rem;
+  height: 5rem;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
@@ -93,6 +93,13 @@ button {
     background: $purple;
     opacity: 1;
     animation: hover .3s ease-in;
+  }
+
+  &:disabled {
+    cursor: default;
+    animation: none;
+    opacity: .5;
+    background: $grey;
   }
 }
 
@@ -134,6 +141,13 @@ h3 {
 
 .error {
   color: $red;
+  font-style: italic;
+}
+
+.info-success {
+  margin: 1rem 0;
+  color: $green;
+  font-style: italic;
 }
 
 .actions {
@@ -361,6 +375,10 @@ textarea {
     outline: none;
     background: ghostwhite;
   }
+}
+
+.form-error input {
+  border: .1rem solid $red;
 }
 
 textarea {

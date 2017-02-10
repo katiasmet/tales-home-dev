@@ -66,7 +66,8 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
             value={fields.organisation.value}
             error={fields.organisation.error}
             onChange={handleChange}
-            placeholder='f.e. Howest University College' />
+            placeholder='f.e. Howest University College'
+            required={false} />
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 

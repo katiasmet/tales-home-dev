@@ -16,6 +16,14 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
 
       <h1> Edit your profile </h1>
 
+      {
+        success && (
+          <section className='info info-success'>
+            <p>{success}</p>
+          </section>
+        )
+      }
+
       <form
         action=''
         method='post'
@@ -50,7 +58,8 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
             value={fields.organisation.value}
             error={fields.organisation.error}
             onChange={handleChange}
-            placeholder='f.e. Howest University College' />
+            placeholder='f.e. Howest University College'
+            required={false} />
 
           <FormInput
             id='edit-form-password'
@@ -70,27 +79,20 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
               value={fields.newpassword.value}
               error={fields.newpassword.error}
               onChange={handleChange}
-              placeholder='your new password' />
+              placeholder='your new password'
+              required={false} />
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
           <div className='form-actions'>
             <button type='button' className='btn' onClick={handleRemoveUser}><i className='fa fa-trash'></i></button>
-            <button className='btn' disabled={!meta.isValid} onClick={handleSubmit}><i className='fa fa-save'></i></button>
+            <button type='submit' className='btn' disabled={!meta.isValid} ><i className='fa fa-save'></i></button>
             <button type='button' className='btn' onClick={handleLogout}><i className='fa fa-sign-out'></i></button>
           </div>
 
         </fieldset>
 
       </form>
-
-      {
-        success && (
-          <section className='info info-success'>
-            <p>{success}</p>
-          </section>
-        )
-      }
 
     </section>
   );
