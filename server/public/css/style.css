@@ -226,51 +226,11 @@ html {
   }
 }
 
-@-webkit-keyframes family-info {
-
-  0%,
-  75%,
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  50% {
-    -webkit-transform: translateY(5rem);
-            transform: translateY(5rem);
-  }
-}
-
-@keyframes family-info {
-
-  0%,
-  75%,
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  50% {
-    -webkit-transform: translateY(5rem);
-            transform: translateY(5rem);
-  }
-}
-
 @-webkit-keyframes family-info-child {
 
   0% {
     -webkit-transform: translateY(-20rem);
             transform: translateY(-20rem);
-  }
-
-  50% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  75% {
-    -webkit-transform: translateY(-2rem);
-            transform: translateY(-2rem);
   }
 
   100% {
@@ -284,16 +244,6 @@ html {
   0% {
     -webkit-transform: translateY(-20rem);
             transform: translateY(-20rem);
-  }
-
-  50% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  75% {
-    -webkit-transform: translateY(-2rem);
-            transform: translateY(-2rem);
   }
 
   100% {
@@ -568,7 +518,7 @@ nav,
 nav ul, .form-actions ul {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;-webkit-box-align: center;-ms-flex-align: center;align-items: center;
 }
 
-nav li, .form-actions li {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;align-items: center;margin-left: 32px;margin-left: 2rem;color: white;font-weight: 700;
+nav li, .form-actions li {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;align-items: center;margin-left: 24px;margin-left: 1.5rem;color: white;font-weight: 700;
 }
 
 nav a, .form-actions a {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;align-items: center;
@@ -612,6 +562,12 @@ nav .user, .form-actions .user {display: block;color: white;font-weight: 400;tex
 }
 
 .nav-item:hover, .action:hover, .character:hover, .model-notes .btn:hover {-webkit-animation: hover .3s ease-in;animation: hover .3s ease-in;background: white;opacity: 1;
+}
+
+.nav-item.active, .action.active, .character.active, .model-notes .btn.active {cursor: default;opacity: .5;
+}
+
+.nav-item.active:hover, .action.active:hover, .character.active:hover, .model-notes .btn.active:hover {-webkit-animation: none;animation: none;
 }
 
 .page-models .nav-item,
@@ -1075,20 +1031,17 @@ MENTOR FAMILIES
   -webkit-transform-origin: top center;
           transform-origin: top center;
 
-  -webkit-animation: family-info 1s ease-in forwards;
-
-          animation: family-info 1s ease-in forwards;
   position: relative
 }
 
-.family-info::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;bottom: 0;width: 100%;height: 1.6px;height: .1rem;border-bottom: 0.8px solid rgba(100, 49, 185, .1);border-bottom: .05rem solid rgba(100, 49, 185, .1);-webkit-animation: family-info-child 1s ease-in forwards;animation: family-info-child 1s ease-in forwards;
+.family-info::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;bottom: 0;width: 100%;height: 1.6px;height: .1rem;border-bottom: 0.8px solid rgba(100, 49, 185, .1);border-bottom: .05rem solid rgba(100, 49, 185, .1);-webkit-animation: family-info-child .5s ease-in forwards;animation: family-info-child .5s ease-in forwards;
 }
 
 .family-info-members {
   margin-bottom: 48px;
   margin-bottom: 3rem;
-  -webkit-animation: family-info-child 1s ease-in forwards;
-          animation: family-info-child 1s ease-in forwards;
+  -webkit-animation: family-info-child .5s ease-in forwards;
+          animation: family-info-child .5s ease-in forwards;
 }
 
 .family-info-members .family-info-member {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: start;-ms-flex-pack: start;justify-content: flex-start;margin-bottom: 16px;margin-bottom: 1rem;font-weight: 300;
@@ -1104,8 +1057,8 @@ MENTOR FAMILIES
 }
 
 .family-info-results {
-  -webkit-animation: family-info-child 1s ease-in forwards;
-          animation: family-info-child 1s ease-in forwards;
+  -webkit-animation: family-info-child .5s ease-in forwards;
+          animation: family-info-child .5s ease-in forwards;
   font-weight: 300;
 }
 
@@ -1190,7 +1143,7 @@ STARTSESSION POP-UP
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: absolute;
+  position: fixed;
   z-index: 50;
   bottom: 0;
 
@@ -1202,22 +1155,29 @@ STARTSESSION POP-UP
   padding: 32px 48px 32px 200px;
   padding: 2rem 3rem 2rem 12.5rem;
   margin: 24px 40px 24px 112px;
-  margin: 1.5rem 2.5rem 1.5rem 7rem;
+  margin: 1.5rem 2.5rem 1.5rem 7rem;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
 
 }
 
-.first-run .btn {background: white;color: #6e2bc8;width: 49.6px;width: 3.1rem;height: 48px;height: 3rem;font-size: 25.6px;font-size: 1.6rem;
+.first-run .btn {background: white;color: #6e2bc8;width: 49.6px;width: 3.1rem;height: 48px;height: 3rem;font-size: 25.6px;font-size: 1.6rem;position: relative
+}
+
+.first-run .btn::after,
+    .first-run .btn::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 3rem;border: 1.6px solid white;border: .1rem solid white;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');-webkit-filter: blur(.5px);filter: blur(.5px);-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+}
+
+.first-run .btn::after {-webkit-animation-delay: .5s;animation-delay: .5s;
 }
 
 .first-run::after,
-  .first-run::before {content: '';position: absolute;top: 0;left: 0;display: block;top: -32px;top: -2rem;height: 48px;height: 3rem;width: 48px;width: 3rem;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATCAYAAADmtp8+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOVJREFUeNpiZEACedonEoCUPxALQIU+APHGSVctFjAMMGCEOhDksPVA7IBD3QMgbhxIBzNCHbkfiA2IUH8A6uAD9HYoExD3E+lIBmiI7wd6bj4QK9DboQlk6APpOQ90bAM9o/4/hWaA0m8hMDlsGOwORU6/IAdfGOwOhYEFUAd/oHYapTYApd/71E6/tAhRmqRfWjuUaumXiU6liwO0OCO7/KVXiCIDUCabCMQTSMlwTAz0B6Aqux6a4RIGc4hiy3CJhNoPTAwDDxSg7QcQNhjMDiUqww2GqCcqwzExDE6AkeEAAgwAm7pj+f91hKkAAAAASUVORK5CYII=) no-repeat center center;background-size: contain;
+  .first-run::before {content: '';position: absolute;top: 0;left: 0;display: block;top: -32px;top: -2rem;height: 48px;height: 3rem;width: 48px;width: 3rem;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAATCAYAAADmtp8+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOVJREFUeNpiZEACedonEoCUPxALQIU+APHGSVctFjAMMGCEOhDksPVA7IBD3QMgbhxIBzNCHbkfiA2IUH8A6uAD9HYoExD3E+lIBmiI7wd6bj4QK9DboQlk6APpOQ90bAM9o/4/hWaA0m8hMDlsGOwORU6/IAdfGOwOhYEFUAd/oHYapTYApd/71E6/tAhRmqRfWjuUaumXiU6liwO0OCO7/KVXiCIDUCabCMQTSMlwTAz0B6Aqux6a4RIGc4hiy3CJhNoPTAwDDxSg7QcQNhjMDiUqww2GqCcqwzExDE6AkeEAAgwAm7pj+f91hKkAAAAASUVORK5CYII=) no-repeat center center;background-size: contain;z-index: 0;
 }
 
-.first-run::before {top: auto;left: 16px;left: 1rem;bottom: 0;height: 160px;height: 10rem;width: 160px;width: 10rem;background: url(/assets/img/test_run_first_run.png) no-repeat center center;background-size: contain;
+.first-run::before {top: auto;left: 16px;left: 1rem;bottom: 0;height: 160px;height: 10rem;width: 160px;width: 10rem;background: url(/assets/img/test_run_first_run.png) no-repeat center center;background-size: contain;z-index: 1;
 }
 
 .next-run {
-  position: absolute;
+  position: fixed;
   z-index: 50;
   bottom: -160px;
   bottom: -10rem;

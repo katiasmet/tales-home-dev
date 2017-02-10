@@ -236,7 +236,7 @@ nav,
   li {
     @add-mixin flex-center;
 
-    margin-left: 2rem;
+    margin-left: 1.5rem;
     color: white;
     font-weight: 700;
   }
@@ -291,6 +291,15 @@ nav,
     animation: hover .3s ease-in;
     background: white;
     opacity: 1;
+  }
+
+  &.active {
+    cursor: default;
+    opacity: .5;
+
+    &:hover {
+      animation: none;
+    }
   }
 }
 
