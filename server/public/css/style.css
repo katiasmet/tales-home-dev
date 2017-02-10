@@ -154,44 +154,92 @@ html {
 
 @-webkit-keyframes login {
 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { -webkit-transform: translateX(50vw); transform: translateX(50vw); }
+  100% {
+    -webkit-transform: translateX(50vw);
+            transform: translateX(50vw);
+    opacity: 1;
+  }
 }
 
 @keyframes login {
 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { -webkit-transform: translateX(50vw); transform: translateX(50vw); }
+  100% {
+    -webkit-transform: translateX(50vw);
+            transform: translateX(50vw);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes register {
 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { -webkit-transform: translateX(51vw); transform: translateX(51vw); }
+  100% {
+    -webkit-transform: translateX(51vw);
+            transform: translateX(51vw);
+    opacity: 1;
+  }
 }
 
 @keyframes register {
 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { -webkit-transform: translateX(51vw); transform: translateX(51vw); }
+  100% {
+    -webkit-transform: translateX(51vw);
+            transform: translateX(51vw);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes join {
 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { -webkit-transform: translateX(45vw); transform: translateX(45vw); }
+  100% {
+    -webkit-transform: translateX(45vw);
+            transform: translateX(45vw);
+    opacity: 1;
+  }
 }
 
 @keyframes join {
 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { -webkit-transform: translateX(45vw); transform: translateX(45vw); }
+  100% {
+    -webkit-transform: translateX(45vw);
+            transform: translateX(45vw);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes radar {
@@ -361,7 +409,10 @@ button {
 .btn:hover, .nav-item:hover, .action:hover, .character:hover {background: #6e2bc8;opacity: 1;-webkit-animation: hover .3s ease-in;animation: hover .3s ease-in;
 }
 
-.btn:disabled, .nav-item:disabled, .action:disabled, .character:disabled {cursor: default;-webkit-animation: none;animation: none;opacity: .5;background: #515151;
+.btn:disabled, .nav-item:disabled, .action:disabled, .character:disabled {cursor: default;-webkit-animation: none;animation: none;background: #a8a8a8;
+}
+
+.btn:disabled:hover, .nav-item:disabled:hover, .action:disabled:hover, .character:disabled:hover {-webkit-animation: none;animation: none;
 }
 
 .btn-green {
@@ -564,6 +615,7 @@ nav .user, .form-actions .user {display: block;color: white;font-weight: 400;tex
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
 }
 
 .nav-item i, .action i, .character i, .model-notes .btn i {display: block;
@@ -575,10 +627,12 @@ nav .user, .form-actions .user {display: block;color: white;font-weight: 400;tex
 .nav-item:hover, .action:hover, .character:hover, .model-notes .btn:hover {-webkit-animation: hover .3s ease-in;animation: hover .3s ease-in;background: white;opacity: 1;
 }
 
-.nav-item.active, .action.active, .character.active, .model-notes .btn.active {cursor: default;opacity: .5;
+.nav-item.active {
+  cursor: default;
+  opacity: .5
 }
 
-.nav-item.active:hover, .action.active:hover, .character.active:hover, .model-notes .btn.active:hover {-webkit-animation: none;animation: none;
+.nav-item.active:hover {-webkit-animation: none;animation: none;
 }
 
 .page-models .nav-item,
@@ -753,9 +807,9 @@ input::placeholder {
   background: url(/assets/img/login_family.png) no-repeat center bottom;
   background-size: contain;
 
-  -webkit-animation: join .3s ease-in forwards;
+  -webkit-animation: join .7s ease-in forwards;
 
-          animation: join .3s ease-in forwards;
+          animation: join .7s ease-in forwards;
 }
 
 .page-login.register::after {
@@ -764,9 +818,9 @@ input::placeholder {
   background: url(/assets/img/login_newmentor.png) no-repeat center bottom;
   background-size: contain;
 
-  -webkit-animation: register .3s ease-in forwards;
+  -webkit-animation: register .7s ease-in forwards;
 
-          animation: register .3s ease-in forwards;
+          animation: register .7s ease-in forwards;
 }
 
 .page-login.login::after,
@@ -776,9 +830,9 @@ input::placeholder {
   background: url(/assets/img/login_mentor.png) no-repeat center bottom;
   background-size: contain;
 
-  -webkit-animation: login .3s ease-in forwards;
+  -webkit-animation: login .7s ease-in forwards;
 
-          animation: login .3s ease-in forwards;
+          animation: login .7s ease-in forwards;
 }
 
 .page-login-forms,
@@ -805,6 +859,9 @@ input::placeholder {
 }
 
 .page-login-forms .btn:hover, .form-add-family-member .btn:hover, .form-edit-family-member .btn:hover {-webkit-animation: hover-start .3s ease-in;animation: hover-start .3s ease-in;
+}
+
+.page-login-forms .btn:disabled:hover, .form-add-family-member .btn:disabled:hover, .form-edit-family-member .btn:disabled:hover {-webkit-animation: none;animation: none;
 }
 
 .page-login-forms::after, .form-add-family-member::after, .form-edit-family-member::after {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;background: #5427aa;border-radius: 2rem;left: 16px;left: 1rem;top: 16px;top: 1rem;z-index: -1;

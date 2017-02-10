@@ -7,6 +7,7 @@ $lightpurple: ghostwhite;
 $midpurple: #dfd4f9; /* used on form focus */
 
 $grey: #515151;
+$lightgrey: #a8a8a8;
 
 $lightblue: #dbe8fe;
 $blue: #26e2e9;
@@ -98,8 +99,11 @@ button {
   &:disabled {
     cursor: default;
     animation: none;
-    opacity: .5;
-    background: $grey;
+    background: $lightgrey;
+
+    &:hover {
+      animation: none;
+    }
   }
 }
 
@@ -307,13 +311,14 @@ nav,
     opacity: 1;
   }
 
-  &.active {
-    cursor: default;
-    opacity: .5;
+}
 
-    &:hover {
-      animation: none;
-    }
+.nav-item.active {
+  cursor: default;
+  opacity: .5;
+
+  &:hover {
+    animation: none;
   }
 }
 
@@ -459,7 +464,7 @@ input::placeholder {
   background: url(../assets/img/login_family.png) no-repeat center bottom;
   background-size: contain;
 
-  animation: join .3s ease-in forwards;
+  animation: join .7s ease-in forwards;
 }
 
 .page-login.register::after {
@@ -467,7 +472,7 @@ input::placeholder {
   background: url(../assets/img/login_newmentor.png) no-repeat center bottom;
   background-size: contain;
 
-  animation: register .3s ease-in forwards;
+  animation: register .7s ease-in forwards;
 }
 
 .page-login.login::after,
@@ -476,7 +481,7 @@ input::placeholder {
   background: url(../assets/img/login_mentor.png) no-repeat center bottom;
   background-size: contain;
 
-  animation: login .3s ease-in forwards;
+  animation: login .7s ease-in forwards;
 }
 
 .page-login-forms,
@@ -506,6 +511,10 @@ input::placeholder {
 
     &:hover {
       animation: hover-start .3s ease-in;
+    }
+
+    &:disabled:hover {
+      animation: none;
     }
   }
 

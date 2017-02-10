@@ -46,10 +46,16 @@ class FormAddFamily extends Form {
 
       insert(this.getValues())
         .then(family => {
-          console.log(`family`);
-          console.log(this.submitButton);
-          if (this.submitButton === `start`) families.handleFamilySession(family._id);
+
           this.form.redirect = `families`;
+
+          if (this.submitButton === `start`) {
+            families.getFamilies()
+              .then(() => {
+                families.handleFamilySession(family._id);
+              });
+          }
+
         })
         .catch(error => {
           this.handleError(error.message);

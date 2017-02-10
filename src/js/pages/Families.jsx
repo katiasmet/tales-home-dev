@@ -16,9 +16,12 @@ class Families extends Component {
 
   render() {
 
-    const {sessionId} = this.props.families;
+    const {sessionId, isLoading, activeFamily} = this.props.families;
     const {pathname} = this.props.location;
     const {firstLogin} = token.content();
+
+    console.log(`families page`);
+    console.log(activeFamily);
 
     return (
       <div className='page page-families'>
@@ -28,10 +31,11 @@ class Families extends Component {
 
           <FamiliesSearch />
 
-          <section className={!isEmpty(sessionId) ? `families families-pop-up` : `families`}>
+          <section   className={(!isEmpty(sessionId) && isEmpty(isLoading) && !isEmpty(activeFamily)) ?
+                    `families families-pop-up` : `families`}>
 
             {
-              !isEmpty(sessionId) && <FamilyStartSession />
+              (!isEmpty(sessionId) && isEmpty(isLoading) && !isEmpty(activeFamily)) && <FamilyStartSession />
             }
 
             <FamiliesBrowse />
@@ -63,7 +67,9 @@ class Families extends Component {
 Families.propTypes = {
   families: PropTypes.shape({
     getFamilies: PropTypes.func,
-    sessionId: PropTypes.string
+    sessionId: PropTypes.string,
+    activeFamily: PropTypes.object,
+    isLoading: PropTypes.string
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string

@@ -56,6 +56,7 @@ class Families  {
       }).then(() => {
         this.handleActiveFamilies();
         this.isLoading = ``;
+        return true;
       }).catch(err => {
         this.handleError(err);
       });
@@ -119,6 +120,8 @@ class Families  {
 
   @action handleFamilyInfo = (id, showInfo = true) => {
 
+    console.log(`handle family info`);
+
     this.activeFamily = {};
     this.isLoading = `info`;
     this.infoMessage = {};
@@ -126,6 +129,8 @@ class Families  {
     this.findActiveFamily(id);
 
     if (isEmpty(this.showInfo)) {
+
+      console.log(`do it`);
 
       this.getFamilyMembers(id);
 
@@ -162,12 +167,18 @@ class Families  {
       });
 
     } else {
+
+      console.log(`tis leeg`);
+
       this.activeFamily = {};
       this.showInfo = ``;
     }
   }
 
   findActiveFamily = id => {
+
+    console.log(`find active family`);
+    console.log(this.allFamilies);
 
     this.activeFamily = filter(this.allFamilies, family => {
       return family._id === id;
@@ -182,16 +193,19 @@ class Families  {
   @action handleFamilySession = familyId => {
 
     console.log(`handle family session`);
+    console.log(familyId);
+    this.isLoading = `session`;
 
     this.generateSessionId();
     this.handleFamilyInfo(familyId, false);
-    this.isLoading = `session`;
 
     this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
 
   }
 
   generateSessionId = () => {
+
+    console.log(`generate session id`);
 
     const sessionId = toString(Math.floor(1000 + Math.random() * 9000));
 
@@ -243,9 +257,6 @@ class Families  {
         if (familymodel.familyModel.length !== 0) {
           this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
-          console.log(`handle start model, select`);
-          console.log(familymodel);
-          console.log(this.activeFamilyModel);
           notes.getNote();
           results.getResult();
         } else {
@@ -254,7 +265,6 @@ class Families  {
             .then(familymodel => {
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
-              console.log(`handle start model, insert`);
               notes.getNote();
               results.getResult();
             })

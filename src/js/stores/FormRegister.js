@@ -33,7 +33,7 @@ class FormRegister extends Form {
       isValid: false,
       error: ``
     },
-    succes: false
+    redirect: false
   });
 
   @action handleSubmit = e => {
@@ -47,7 +47,6 @@ class FormRegister extends Form {
         .then(() => login(this.getValues()))
         .then(t => set(t))
         .then(() => {
-          console.log(`redirect`);
           this.form.redirect = true;
         })
         .catch(error => {

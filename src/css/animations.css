@@ -38,23 +38,41 @@
 
 @keyframes login {
 
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { transform: translateX(50vw); }
+  100% {
+    transform: translateX(50vw);
+    opacity: 1;
+  }
 }
 
 @keyframes register {
 
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { transform: translateX(51vw); }
+  100% {
+    transform: translateX(51vw);
+    opacity: 1;
+  }
 }
 
 @keyframes join {
 
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { transform: translateX(45vw); }
+  100% {
+    transform: translateX(45vw);
+    opacity: 1;
+  }
 }
 
 @keyframes radar {
