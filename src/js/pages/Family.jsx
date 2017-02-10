@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {Header, Loading} from '../components/';
 import {FamilyMembers} from '../components/family';
@@ -21,7 +22,8 @@ class Family extends Component {
   }
 
   render() {
-    const {isLoading, handleStartSession} = this.props.families;
+    const {isLoading, handleStartSession, activeFamily} = this.props.families;
+    const {familymembers} = activeFamily;
     const {pathname} = this.props.location;
     const name = content().name;
 
@@ -38,11 +40,15 @@ class Family extends Component {
 
         <footer>
 
-          <div onClick={handleStartSession} className='btn-handle-session'>
-            <Link to='/models' className='btn'>
-              <i className='fa fa-play'></i>
-            </Link>
-          </div>
+          {
+            (!isEmpty(familymembers)) && (
+              <div onClick={handleStartSession} className='btn-handle-session'>
+                <Link to='/models' className='btn'>
+                  <i className='fa fa-play'></i>
+                </Link>
+              </div>
+            )
+          }
 
           <h1>The {name}&#39;s</h1>
         </footer>
@@ -57,7 +63,8 @@ Family.propTypes = {
     isLoading: PropTypes.string,
     getFamilyMembers: PropTypes.func,
     handleFamilyMembersVisites: PropTypes.func,
-    handleStartSession: PropTypes.func
+    handleStartSession: PropTypes.func,
+    activeFamily: PropTypes.object
   }),
   languages: PropTypes.shape({
     getLanguages: PropTypes.func

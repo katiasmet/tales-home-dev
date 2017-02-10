@@ -16,12 +16,12 @@ class FormAddFamily extends Form {
       origins: {
         value: ``,
         error: ``,
-        rule: `string|min:3`
+        rule: `string`
       },
       homeLocation: {
         value: ``,
         error: ``,
-        rule: `string|min:3`
+        rule: `string`
       }
     },
     meta: {
@@ -46,6 +46,8 @@ class FormAddFamily extends Form {
 
       insert(this.getValues())
         .then(family => {
+          console.log(`family`);
+          console.log(this.submitButton);
           if (this.submitButton === `start`) families.handleFamilySession(family._id);
           this.form.redirect = `families`;
         })

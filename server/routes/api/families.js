@@ -1,6 +1,6 @@
 const {Family} = require(`mongoose`).models;
 
-const {pick, omit} = require(`lodash`);
+const {pick, omit, isEmpty} = require(`lodash`);
 
 const Scopes = require(`../../modules/mongoose/const/Scopes`);
 
@@ -91,8 +91,8 @@ module.exports = [
 
         payload: {
           name: Joi.string().min(3).required(),
-          origins: Joi.string().min(3),
-          homeLocation: Joi.string().min(3),
+          origins: Joi.string(),
+          homeLocation: Joi.string(),
           isActive: Joi.boolean()
         }
 
@@ -102,7 +102,12 @@ module.exports = [
 
     handler: (req, res) => {
 
-      let fields = [`name`, `origins`, `homeLocation`];
+      let fields = [`name`];
+
+      const {origins, homeLocation} = req.payload;
+      if (!isEmpty(origins)) fields = [...fields, `origins`];
+      if (!isEmpty(homeLocation)) fields = [...fields, `homeLocation`];
+
 
       if (req.hasScope(Scopes.ADMIN)) {
         fields = [...fields, `isActive`];

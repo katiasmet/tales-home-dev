@@ -619,6 +619,8 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  max-width: 560px;
+  max-width: 35rem;
 }
 
 label {

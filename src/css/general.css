@@ -343,6 +343,7 @@ FORMS
 form {
   @add-mixin flex-center;
   flex-direction: column;
+  max-width: 35rem;
 }
 
 label {

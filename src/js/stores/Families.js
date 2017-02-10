@@ -181,6 +181,8 @@ class Families  {
 
   @action handleFamilySession = familyId => {
 
+    console.log(`handle family session`);
+
     this.generateSessionId();
     this.handleFamilyInfo(familyId, false);
     this.isLoading = `session`;
