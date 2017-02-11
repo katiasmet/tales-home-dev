@@ -38,23 +38,41 @@
 
 @keyframes login {
 
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { transform: translateX(50vw); }
+  100% {
+    transform: translateX(50vw);
+    opacity: 1;
+  }
 }
 
 @keyframes register {
 
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { transform: translateX(51vw); }
+  100% {
+    transform: translateX(51vw);
+    opacity: 1;
+  }
 }
 
 @keyframes join {
 
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 
-  100% { transform: translateX(45vw); }
+  100% {
+    transform: translateX(45vw);
+    opacity: 1;
+  }
 }
 
 @keyframes radar {
@@ -71,34 +89,27 @@
   }
 }
 
-@keyframes family-info {
-
-  0%,
-  75%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(5rem);
-  }
-}
-
 @keyframes family-info-child {
 
   0% {
     transform: translateY(-20rem);
   }
 
-  50% {
-    transform: translateY(0);
-  }
-
-  75% {
-    transform: translateY(-2rem);
-  }
-
   100% {
     transform: translateY(0);
   }
+}
+
+@keyframes wink {
+
+  0%,
+  10%,
+  100% {
+    transform: scale(.3, 0);
+  }
+
+  5% {
+    transform: scale(1, 1);
+  }
+
 }

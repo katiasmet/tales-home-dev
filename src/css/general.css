@@ -7,12 +7,15 @@ $lightpurple: ghostwhite;
 $midpurple: #dfd4f9; /* used on form focus */
 
 $grey: #515151;
+$lightgrey: #a8a8a8;
 
 $lightblue: #dbe8fe;
 $blue: #26e2e9;
 $accentblue: #cddefe; /* languages */
 $accentlightblue: #90f0f3; /* themes */
 $bluenav: #21c5cb;
+$green: #36cc12;
+$red: crimson;
 
 /* MIXINS */
 @define-mixin before-after {
@@ -57,6 +60,7 @@ a {
   outline: none;
   transition: all .3s ease-in;
   font-weight: 500;
+  color: $textpurple;
 
   &:hover {
     opacity: .5;
@@ -80,8 +84,8 @@ button {
   background: $purple;
   border-radius: 5rem;
   font-size: 3rem;
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 5rem;
+  height: 5rem;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
@@ -92,6 +96,24 @@ button {
     opacity: 1;
     animation: hover .3s ease-in;
   }
+
+  &:disabled {
+    cursor: default;
+    animation: none;
+    background: $lightgrey;
+
+    &:hover {
+      animation: none;
+    }
+  }
+}
+
+.btn-green {
+  background: $green;
+}
+
+.btn-red {
+  background: $red;
 }
 
 h1 {
@@ -123,7 +145,14 @@ h3 {
 }
 
 .error {
-  color: red;
+  color: $red;
+  font-style: italic;
+}
+
+.info-success {
+  margin: 1rem 0;
+  color: $green;
+  font-style: italic;
 }
 
 .actions {
@@ -226,7 +255,7 @@ nav,
   li {
     @add-mixin flex-center;
 
-    margin-left: 2rem;
+    margin-left: 1.5rem;
     color: white;
     font-weight: 700;
   }
@@ -282,6 +311,16 @@ nav,
     background: white;
     opacity: 1;
   }
+
+}
+
+.nav-item.active {
+  cursor: default;
+  opacity: .5;
+
+  &:hover {
+    animation: none;
+  }
 }
 
 .page-models .nav-item,
@@ -310,6 +349,7 @@ FORMS
 form {
   @add-mixin flex-center;
   flex-direction: column;
+  max-width: 35rem;
 }
 
 label {
@@ -342,6 +382,10 @@ textarea {
     outline: none;
     background: ghostwhite;
   }
+}
+
+.form-error input {
+  border: .1rem solid $red;
 }
 
 textarea {
@@ -387,7 +431,7 @@ input::placeholder {
   overflow: hidden;
 
   main {
-    height: 100%;
+    min-height: 100%;
   }
 }
 
@@ -421,7 +465,7 @@ input::placeholder {
   background: url(../assets/img/login_family.png) no-repeat center bottom;
   background-size: contain;
 
-  animation: join .3s ease-in forwards;
+  animation: join .7s ease-in forwards;
 }
 
 .page-login.register::after {
@@ -429,7 +473,7 @@ input::placeholder {
   background: url(../assets/img/login_newmentor.png) no-repeat center bottom;
   background-size: contain;
 
-  animation: register .3s ease-in forwards;
+  animation: register .7s ease-in forwards;
 }
 
 .page-login.login::after,
@@ -438,7 +482,7 @@ input::placeholder {
   background: url(../assets/img/login_mentor.png) no-repeat center bottom;
   background-size: contain;
 
-  animation: login .3s ease-in forwards;
+  animation: login .7s ease-in forwards;
 }
 
 .page-login-forms,
@@ -468,6 +512,10 @@ input::placeholder {
 
     &:hover {
       animation: hover-start .3s ease-in;
+    }
+
+    &:disabled:hover {
+      animation: none;
     }
   }
 

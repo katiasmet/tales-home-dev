@@ -3,11 +3,9 @@ import {isEmpty} from 'lodash';
 
 const FamilyMemberAddRoles = ({handleChange, value, character}) => {
 
-  console.log(value);
-
   return (
     <section className='form-roles'>
-      <h3 className='label'>What's your role within the family?</h3>
+      <h3 className='label'>What's your role within the family? *</h3>
 
       <section className='form-roles-options'>
 

@@ -77,6 +77,38 @@ $blue: #26e2e9;
   height: 100%;
   transform-origin: center center;
 
+  &::after {
+    @add-mixin before-after;
+    top: auto;
+    bottom: -1rem;
+    width: 100%;
+    height: .6rem;
+    border-radius: 50%;
+    background: black;
+    opacity: .05;
+    filter: blur(2px);
+  }
+
+  &:nth-child(1) {
+    transform: translateX(0);
+  }
+
+  &:nth-child(2) {
+    transform: translateX(-1rem);
+  }
+
+  &:nth-child(3) {
+    transform: translateX(1rem);
+  }
+
+  &:nth-child(4) {
+    transform: translateX(-2rem);
+  }
+
+  &:nth-child(5) {
+    transform: translateX(2rem);
+  }
+
   svg {
     display: block;
     cursor: move;
@@ -89,12 +121,6 @@ $blue: #26e2e9;
   &.gigi {
     width: 14rem;
   }
-}
-
-.drag-preview {
-  width: 5rem;
-  height: 5rem;
-  border: 1px solid blue;
 }
 
 .timeline {
@@ -146,8 +172,8 @@ $blue: #26e2e9;
 }
 
 .timeline-character {
-  @add-mixin flex-center;
-  flex-direction: column;
+  display: block;
+  text-align: center;
   position: absolute;
   transform-origin: center center;
   left: 0;
@@ -162,6 +188,8 @@ $blue: #26e2e9;
     background: $blue;
 
     display: block;
+    margin: auto;
+    margin-bottom: 1rem;
     border-radius: 2rem;
     transform: translateY(1rem);
   }

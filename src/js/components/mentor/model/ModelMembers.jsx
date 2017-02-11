@@ -17,7 +17,11 @@ const ModelMembers = inject(`families`)(observer(({families}) => {
 
         {
           familymembers.slice().map((familymember, i) => {
-            return <li className={(showInfo === familymember._id) ? `model-member ${familymember.character} active` : `model-member ${familymember.character}`} key={i} onClick={() => handleActiveFamilyMember(familymember._id)}>{renderCharacter(familymember.character, familymember._id, handleActiveFamilyMember)}</li>;
+            return (<li className={(showInfo === familymember._id) ? `model-member ${familymember.character} active` : `model-member ${familymember.character}`}
+                        key={i}
+                        onClick={() => handleActiveFamilyMember(familymember._id)}>
+                        {renderCharacter(familymember.character, familymember._id, handleActiveFamilyMember)}
+                  </li>);
           })
         }
 

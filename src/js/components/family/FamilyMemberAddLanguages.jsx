@@ -12,7 +12,7 @@ const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
     <section className='form-languages'>
 
       <header>
-        <h3 className='label'>What languages do you speak?</h3>
+        <h3 className='label'>What languages do you speak? *</h3>
         <a className='btn' onClick={handleShowLanguages}><i className='fa fa-plus'></i></a>
       </header>
 

@@ -1,17 +1,20 @@
 import {observable, action} from 'mobx';
-import {filter, capitalize} from 'lodash';
+import {filter, capitalize, toUpper, includes} from 'lodash';
 
 import {select} from '../api/languages';
 import formAddFamilyMember from './formAddFamilyMember';
 import formEditFamilyMember from './formEditFamilyMember';
+import models from './Models';
 
 class Languages  {
 
   @observable isLoading = true;
   @observable allLanguages = [];
+  @observable availableLanguages = [];
   error = ``;
   @observable showDropDown = false;
   @observable selectedLanguages = [];
+  @observable searchInput = ``;
 
 
   @action getLanguages = () => {
@@ -38,6 +41,7 @@ class Languages  {
     });
 
     this.allLanguages = languages;
+    this.availableLanguages = this.allLanguages;
   }
 
   @action handleShowLanguages = () => {
@@ -75,6 +79,38 @@ class Languages  {
     formAddFamilyMember.handleChange(`languages`, languages);
     formEditFamilyMember.handleChange(`languages`, languages);
 
+  }
+
+  @action handleSearch = (field, value) => {
+    this.searchInput = value;
+
+    if (value) {
+      this.availableLanguages = filter(this.allLanguages, language => {
+        if (includes(toUpper(language.name), toUpper(value)) ||
+            includes(toUpper(language.nativeName), toUpper(value))
+        ) {
+          return language;
+        }
+      });
+    } else {
+      this.availableLanguages = this.allLanguages;
+    }
+
+  }
+
+  @action handleFamilyLanguages = languages => {
+
+    const familyLanguages = [];
+
+    languages.forEach(language => {
+      const familyLanguage = filter(this.allLanguages, availableLanguage => {
+        return availableLanguage.name === language;
+      })[0];
+
+      if (familyLanguage) familyLanguages.push(familyLanguage.nativeName);
+    });
+
+    models.familyLanguages = familyLanguages;
   }
 
 }

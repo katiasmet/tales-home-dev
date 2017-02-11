@@ -38,6 +38,34 @@ $grey: #515151;
   .action:hover {
     background: white;
   }
+
+  .btn-add-member {
+    @add-mixin flex-center;
+    color: white;
+    background: $darkpurple;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 8rem;
+    font-size: 4rem;
+    position: relative;
+
+    &::after,
+    &::before {
+      @add-mixin before-after;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: .1rem solid $darkpurple;
+      filter: blur(.5px);
+
+      animation: radar 2s ease-in infinite;
+    }
+
+    &::after {
+      animation-delay: .5s;
+    }
+
+  }
 }
 
 /*
@@ -48,12 +76,24 @@ $grey: #515151;
 
   main {
     height: calc(100% - 14.5rem - 8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
 .family-members,
 .page-family footer {
   @add-mixin flex-center;
+}
+
+.family-members {
+  margin-bottom: 5rem;
+
+  &.no-members {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
 }
 
 .family-member {
@@ -73,6 +113,25 @@ $grey: #515151;
     background: white;
     color: $bluenav;
   }
+
+  .family-member-character {
+    position: relative;
+    display: block;
+    margin-bottom: 1.5rem;
+
+    &::after {
+      @add-mixin before-after;
+      top: auto;
+      bottom: -1rem;
+      width: 100%;
+      height: .6rem;
+      border-radius: 50%;
+      background: black;
+      opacity: .05;
+      filter: blur(2px);
+    }
+  }
+
 }
 
 .page-family footer {
@@ -179,7 +238,7 @@ $grey: #515151;
 .form-characters-options .character,
 .form-roles-options .role {
   width: 5rem;
-  height: 7rem;
+  height: 6.5rem;
   border-radius: 1rem;
 
   margin-top: 0;
@@ -338,6 +397,46 @@ $grey: #515151;
     background-size: 50%;
     transform: translateY(-1rem);
   }
+
+  .gigi {
+    transform: translateY(-2rem);
+  }
+
+  .father.gigi {
+    background: url(../assets/img/characters/gigi/gigi_father.png) no-repeat bottom center;
+    background-size: 75%;
+  }
+
+  .mother.gigi {
+    background: url(../assets/img/characters/gigi/gigi_mother.png) no-repeat bottom center;
+    background-size: 75%;
+  }
+
+  .child.gigi {
+    background: url(../assets/img/characters/gigi/gigi_child.png) no-repeat bottom center;
+    background-size: 50%;
+    transform: translateY(-3rem);
+  }
+
+  .chris {
+    transform: translateY(-3.5rem);
+  }
+
+  .father.chris {
+    background: url(../assets/img/characters/chris/chris_father.png) no-repeat bottom center;
+    background-size: 90%;
+  }
+
+  .mother.chris {
+    background: url(../assets/img/characters/chris/chris_mother.png) no-repeat bottom center;
+    background-size: 90%;
+  }
+
+  .child.chris {
+    background: url(../assets/img/characters/chris/chris_child.png) no-repeat bottom center;
+    background-size: 75%;
+    transform: translateY(-4rem);
+  }
 }
 
 .form-characters-options input[type=radio]:checked + label,
@@ -364,6 +463,26 @@ $grey: #515151;
   .child {
     transform: translateY(-2.5rem);
     background-size: 65%;
+
+    &.gigi {
+      transform: translateY(-4rem);
+      background-size: 70%;
+    }
+
+    &.chris {
+      transform: translateY(-5rem);
+      background-size: 85%;
+    }
+  }
+
+  .father.gigi,
+  .mother.gigi {
+    transform: translateY(-3.5rem);
+  }
+
+  .father.chris,
+  .mother.chris {
+    transform: translateY(-5rem);
   }
 }
 
@@ -421,6 +540,10 @@ $grey: #515151;
     &:hover {
       background: rgba(0, 204, 198, .2);
     }
+  }
+
+  .form-input {
+    width: 100%;
   }
 
   .member-languages {

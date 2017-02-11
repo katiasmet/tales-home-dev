@@ -56,6 +56,7 @@ class Families  {
       }).then(() => {
         this.handleActiveFamilies();
         this.isLoading = ``;
+        return true;
       }).catch(err => {
         this.handleError(err);
       });
@@ -162,6 +163,7 @@ class Families  {
       });
 
     } else {
+
       this.activeFamily = {};
       this.showInfo = ``;
     }
@@ -181,9 +183,10 @@ class Families  {
 
   @action handleFamilySession = familyId => {
 
+    this.isLoading = `session`;
+
     this.generateSessionId();
     this.handleFamilyInfo(familyId, false);
-    this.isLoading = `session`;
 
     this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
 
@@ -241,9 +244,6 @@ class Families  {
         if (familymodel.familyModel.length !== 0) {
           this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
-          console.log(`handle start model, select`);
-          console.log(familymodel);
-          console.log(this.activeFamilyModel);
           notes.getNote();
           results.getResult();
         } else {
@@ -252,7 +252,6 @@ class Families  {
             .then(familymodel => {
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
-              console.log(`handle start model, insert`);
               notes.getNote();
               results.getResult();
             })

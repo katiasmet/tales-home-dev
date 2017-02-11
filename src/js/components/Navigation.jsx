@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import {isEmpty, includes} from 'lodash';
 
@@ -39,9 +38,15 @@ class Navigation extends Component {
               </li>
             )
           }
-          <li onClick={handleStopSession} className='nav-item'>
-            <i className='fa fa-sign-out'></i>
-          </li>
+
+          {
+            !model && (
+              <li onClick={handleStopSession} className='nav-item'>
+                <i className='fa fa-sign-out'></i>
+              </li>
+            )
+          }
+
         </ul>
       );
 
@@ -51,12 +56,12 @@ class Navigation extends Component {
 
       return (
         <ul className='navigation'>
-          <li>
-            <Link to='/editprofile' className={`user ${this.setActive(`/editprofile`, pathname)}`}>
-              {user}
-            </Link>
+          <li className='user'>
+            {user}
           </li>
 
+          <NavigationItem link='/families' icon='fa-list-ul' pathname={pathname} />
+          <NavigationItem link='/editprofile' icon='fa-user' pathname={pathname} />
           <NavigationItem link='/newfamily' icon='fa-plus' pathname={pathname} />
         </ul>
       );
@@ -99,7 +104,7 @@ class Navigation extends Component {
             (!isEmpty(isLoggedIn())) ? (this.renderNavigation())
             : (
               <ul className='navigation'>
-                <NavigationItem link='/login' icon='fa-lock' content='login' pathname={pathname} />
+                <NavigationItem link='/login' icon='fa-unlock' content='login' pathname={pathname} />
               </ul>
             )
 

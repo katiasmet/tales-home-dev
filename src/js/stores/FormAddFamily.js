@@ -2,7 +2,6 @@ import {observable, action} from 'mobx';
 import Form from './Form';
 
 import {insert} from '../api/families';
-import families from './Families';
 
 class FormAddFamily extends Form {
 
@@ -16,12 +15,12 @@ class FormAddFamily extends Form {
       origins: {
         value: ``,
         error: ``,
-        rule: `string|min:3`
+        rule: `string`
       },
       homeLocation: {
         value: ``,
         error: ``,
-        rule: `string|min:3`
+        rule: `string`
       }
     },
     meta: {
@@ -32,6 +31,7 @@ class FormAddFamily extends Form {
   });
 
   submitButton = ``;
+  startSession = ``;
 
   @action handleSubmitButton = (e, button) => {
     this.submitButton = button;
@@ -46,8 +46,10 @@ class FormAddFamily extends Form {
 
       insert(this.getValues())
         .then(family => {
-          if (this.submitButton === `start`) families.handleFamilySession(family._id);
+
           this.form.redirect = `families`;
+          if (this.submitButton === `start`) this.startSession = family._id;
+
         })
         .catch(error => {
           this.handleError(error.message);

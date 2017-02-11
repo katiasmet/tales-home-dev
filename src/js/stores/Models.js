@@ -6,6 +6,7 @@ import {select} from '../api/models';
 import {selectByFamily} from '../api/familymodels';
 import users from './Users';
 import families from './Families';
+import languages from './Languages';
 import {token} from '../auth';
 
 class Models  {
@@ -81,14 +82,9 @@ class Models  {
   }
 
   @action handleIsPassed = id => {
-
-    console.log(`handle is passed`);
-    console.log(id);
-    console.log(this.passedModels);
     const model = filter(this.passedModels, model => {
       return model._id === id;
     })[0];
-    console.log(model);
 
     if (model) return true;
     return false;
@@ -119,12 +115,10 @@ class Models  {
 
     this.familyLanguages = uniq(familyLanguages);
 
+    if (token.content().scope === `family`) languages.handleFamilyLanguages(this.familyLanguages);
+
     this.isLoadingDistance = false;
 
-  }
-
-  @action handleNextLanguage = () => {
-    this.currentLanguage++;
   }
 
   @action getDraggableCharacters = () => {
@@ -177,9 +171,6 @@ class Models  {
     document.body.appendChild(dragImgEl);
     e.dataTransfer.setDragImage(dragImgEl, 0, 0);*/
     /*e.dataTransfer.setDragImage(0, 0, 0);*/
-    console.log(e);
-
-
     const xPos = e.clientX;
 
     this.draggableCharacters.forEach(character => {
@@ -200,25 +191,67 @@ class Models  {
   }
 
   @action handleNextLanguage = i => {
-    this.handleCurrentResult();
-    this.handleResetCharacters();
 
+    this.handleCurrentResult(this.currentLanguage);
     this.currentLanguage = i;
+    this.handleResetCharacters(i);
+
+    this.socket.emit(`handleCurrentLanguage`, users.currentSocketId, this.currentLanguage);
   }
 
-  handleCurrentResult = () => {
-    const result = {
-      model: users.currentModelId,
-      language: this.familyLanguages[this.currentLanguage],
-      results: this.draggableCharacters
-    };
-    this.currentResult.push(result);
+  handleCurrentResult = i => {
+    /* save the old results */
+
+    const result = filter(this.currentResult, result => {
+      return result.language === this.familyLanguages[i];
+    })[0];
+
+    if (result) { //update
+      this.currentResult.forEach(result => {
+        if (result.language === this.familyLanguages[i]) {
+          result.results = this.draggableCharacters;
+        }
+      });
+    } else { //add
+      const result = {
+        model: users.currentModelId,
+        language: this.familyLanguages[this.currentLanguage],
+        results: this.draggableCharacters
+      };
+      this.currentResult.push(result);
+    }
+
   }
 
-  handleResetCharacters = () => {
-    this.draggableCharacters.forEach(character => {
-      character.left = 0;
+  handleResetCharacters = i => {
+
+    const result = filter(this.currentResult, result => {
+      return result.language === this.familyLanguages[i];
     });
+
+    console.log(result.length);
+
+    if (result.length > 0) {
+      console.log(`language in results`);
+      this.draggableCharacters = result[0].results;
+    } else if (result.length === 0) {
+      console.log(`language not in results`);
+      console.log(this.draggableCharacters);
+      this.draggableCharacters.forEach(character => {
+        character.left = 0;
+      });
+    }
+
+    this.socket.emit(`handleModelLanguage`, users.currentSocketId, this.draggableCharacters);
+  }
+
+  @action handleIsPassedLanguage = language => {
+
+    let passed = false;
+    this.currentResult.forEach(result => {
+      if (result.language === language) passed = true;
+    });
+    return passed;
   }
 
 

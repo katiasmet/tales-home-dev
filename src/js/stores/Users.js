@@ -10,12 +10,16 @@ class Users  {
   @observable currentSocketId = ``;
   @observable isSessionStarted = false;
   @observable currentModelId = ``;
+  @observable totalFamilyMembers = 0;
 
   @action handleUsers = users => {
+
     this.allUsers = users;
     this.handleSessionStarted();
     this.handleCurrentModel();
+    this.handleCurrentLanguage();
     this.handleFamilyLogOut();
+
   }
 
   handleSessionStarted = () => {
@@ -32,8 +36,17 @@ class Users  {
         if (user.modelId) this.currentModelId = user.modelId;
         if (user.modelInfo) models.draggableCharacters = user.modelInfo;
       } else if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
+        if (user.modelInfo)  models.draggableCharacters = user.modelInfo;
         if (user.modelId) models.getModel(user.modelId);
         else models.handleCleanModel();
+      }
+    });
+  }
+
+  handleCurrentLanguage = () => {
+    this.allUsers.forEach(user => {
+      if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
+        if (user.currentLanguage) models.currentLanguage = user.currentLanguage;
       }
     });
   }

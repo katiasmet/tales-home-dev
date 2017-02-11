@@ -14,6 +14,7 @@ module.exports.register = (server, options, next) => {
       professionalId: ``,
       familyId: ``,
       modelId: ``,
+      currentLanguage: 0,
       modelInfo: [],
       isSessionStarted: ``
     };
@@ -60,6 +61,22 @@ module.exports.register = (server, options, next) => {
       const user = users.find(u => familyId === u.familyId);
       if (user) {
         user.modelInfo = modelInfo;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`handleModelLanguage`, (id, modelInfo) => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.modelInfo = modelInfo;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`handleCurrentLanguage`, (id, currentLanguage) => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.currentLanguage = currentLanguage;
         socket.broadcast.emit(`recheck`, users);
       }
     });

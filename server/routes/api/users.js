@@ -96,7 +96,10 @@ module.exports = [
 
     handler: (req, res) => {
 
-      let fields = [`name`, `email`, `password`, `organisation`];
+      let fields = [`name`, `email`, `password`];
+
+      const {organisation} = req.payload;
+      if (!isEmpty(organisation)) fields = [...fields, `organisation`];
 
       if (req.hasScope(Scopes.ADMIN)) {
         fields = [...fields, `isActive`, `firstLogin`, `scope`];

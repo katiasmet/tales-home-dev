@@ -7,7 +7,7 @@ import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/me
 import {FamilyStartSession} from '../components/mentor/family';
 import {token} from '../auth';
 
-@inject(`families`) @observer
+@inject(`families`, `formAddFamily`) @observer
 class Families extends Component {
 
   componentDidMount() {
@@ -16,9 +16,10 @@ class Families extends Component {
 
   render() {
 
-    const {sessionId} = this.props.families;
+    const {sessionId, isLoading, activeFamily, handleFamilySession} = this.props.families;
     const {pathname} = this.props.location;
     const {firstLogin} = token.content();
+    const {startSession} = this.props.formAddFamily;
 
     return (
       <div className='page page-families'>
@@ -28,10 +29,15 @@ class Families extends Component {
 
           <FamiliesSearch />
 
-          <section className={!isEmpty(sessionId) ? `families families-pop-up` : `families`}>
+          <section   className={(!isEmpty(sessionId) && isEmpty(isLoading) && !isEmpty(activeFamily)) ?
+                    `families families-pop-up` : `families`}>
 
             {
-              !isEmpty(sessionId) && <FamilyStartSession />
+              (!isEmpty(startSession) && isEmpty(sessionId)) && handleFamilySession(startSession)
+            }
+
+            {
+              (!isEmpty(sessionId) && isEmpty(isLoading) && !isEmpty(activeFamily)) && <FamilyStartSession />
             }
 
             <FamiliesBrowse />
@@ -42,8 +48,8 @@ class Families extends Component {
         {
           firstLogin ? (
             <footer className='test-run first-run'>
-              <p>Looks like you find your way to the Talkie application! Want to find out what the application has to offer?</p>
-              <button className='btn btn-test'><i className='fa fa-play'></i></button>
+              <p>Looks like you founnd your way to the Talkie application! Want to know what the application has to offer?</p>
+              <button className='btn btn-test'><i className='fa fa-question'></i></button>
             </footer>
           ) : (
             <footer className='test-run next-run'>
@@ -63,10 +69,16 @@ class Families extends Component {
 Families.propTypes = {
   families: PropTypes.shape({
     getFamilies: PropTypes.func,
-    sessionId: PropTypes.string
+    sessionId: PropTypes.string,
+    activeFamily: PropTypes.object,
+    isLoading: PropTypes.string,
+    handleFamilySession: PropTypes.func
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string
+  }),
+  formAddFamily: PropTypes.shape({
+    startSession: PropTypes.string
   })
 };
 

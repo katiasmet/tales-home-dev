@@ -56,7 +56,14 @@ class FamilyItem extends Component {
 
           </header>
 
-          <p>Comes from {origins}, lives in {homeLocation}</p>
+          <p>
+            {
+              origins && `Comes from ${origins}`
+            }
+            {
+              homeLocation && `, lives in ${homeLocation}`
+            }
+          </p>
 
           {
             (_id === showInfo) && this.handleFamilyInfo()
