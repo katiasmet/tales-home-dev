@@ -36,6 +36,7 @@ $red: crimson;
 
 html {
   height: 100%;
+  text-size-adjust: none;
 }
 
 body {
@@ -90,6 +91,7 @@ button {
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 700;
+  padding: 0;
 
   &:hover {
     background: $purple;
@@ -452,7 +454,7 @@ input::placeholder {
   @add-mixin before-after;
   top: auto;
   bottom: 0;
-  left: -40vw;
+  left: -45vw;
   width: 23vw;
   height: 45vw;
   z-index: 2;
@@ -460,7 +462,6 @@ input::placeholder {
 
 .page-login.join::after,
 .page-new-family::after {
-  bottom: -5.5rem;
   background: url(../assets/img/login_family.png) no-repeat center bottom;
   background-size: contain;
 
@@ -468,7 +469,6 @@ input::placeholder {
 }
 
 .page-login.register::after {
-  bottom: -13rem;
   background: url(../assets/img/login_newmentor.png) no-repeat center bottom;
   background-size: contain;
 
@@ -477,7 +477,6 @@ input::placeholder {
 
 .page-login.login::after,
 .page-edit-profile::after {
-  bottom: -15rem;
   background: url(../assets/img/login_mentor.png) no-repeat center bottom;
   background-size: contain;
 
@@ -509,6 +508,8 @@ input::placeholder {
     position: absolute;
     top: auto;
     bottom: -2.2rem;
+    left: 0;
+    right: 0;
     margin: auto;
 
     &:hover {
