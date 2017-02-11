@@ -100,7 +100,7 @@ module.exports = [
 
         payload: {
           familyModelId: Joi.string().alphanum().min(3).required(),
-          result: Joi.array().allow([]),
+          result: Joi.array().allow([``]),
           isActive: Joi.boolean()
         }
 
@@ -126,7 +126,7 @@ module.exports = [
         result = omit(result.toJSON(), [`__v`, `isActive`]);
         return res(result);
       })
-      .catch(() => res(Boom.badRequest(`test.`)));
+      .catch(() => res(Boom.badRequest(`Cannot save result.`)));
 
     }
 
@@ -155,7 +155,7 @@ module.exports = [
         },
 
         payload: {
-          result: Joi.array().allow([])
+          result: Joi.array().allow([``])
         }
 
       }

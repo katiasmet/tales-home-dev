@@ -3,6 +3,7 @@ import {observable, action} from 'mobx';
 import Form from './Form';
 import {insert} from '../api/familymembers';
 import {content} from '../auth/token';
+import Languages from './Languages';
 
 class FormAddFamilyMember extends Form {
 
@@ -37,10 +38,13 @@ class FormAddFamilyMember extends Form {
   });
 
   @action handleEmptyValues = () => {
+    console.log(`handle empty values`);
     this.form.fields.firstName.value = ``;
     this.form.fields.languages.value = ``;
     this.form.fields.character.value = `kiki`;
     this.form.fields.role.value = `child`;
+    Languages.selectedLanguages = [];
+    this.form.meta.error = ``;
   }
 
 

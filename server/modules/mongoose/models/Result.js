@@ -14,8 +14,7 @@ const schema = new Schema({
   },
 
   result: {
-    type: [Schema.Types.Mixed],
-    required: true
+    type: [Schema.Types.Mixed]
   },
 
   isActive: {

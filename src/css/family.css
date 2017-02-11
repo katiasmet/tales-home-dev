@@ -75,7 +75,7 @@ $grey: #515151;
 .page-family {
 
   main {
-    height: calc(100% - 14.5rem - 8rem);
+    height: calc(100vh - 14.5rem - 8rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -153,9 +153,7 @@ $grey: #515151;
 .page-new-family-member,
 .page-edit-family-member {
   color: $bluenav;
-  overflow: inherit;
-  height: auto;
-  min-height: 100%;
+  min-height: 100vh;
 
   h1,
   h3,
@@ -179,8 +177,7 @@ $grey: #515151;
   }
 
   main {
-    height: auto;
-    min-height: 100%;
+    min-height: calc(100vh - 8rem);
   }
 }
 
@@ -188,6 +185,7 @@ $grey: #515151;
 .form-edit-family-member {
 
   margin-top: 0;
+  margin-bottom: 5rem;
   padding-bottom: 5rem;
 
   .form-actions {
@@ -294,6 +292,8 @@ $grey: #515151;
   position: absolute;
   top: auto;
   bottom: 0;
+  left: 0;
+  right: auto;
   overflow: hidden;
   mask-image: -webkit-radial-gradient(circle, white, black);
   transform: translateY(.1rem);

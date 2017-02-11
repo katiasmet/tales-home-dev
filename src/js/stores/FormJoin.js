@@ -2,7 +2,7 @@ import {observable, action} from 'mobx';
 import {filter} from 'lodash';
 
 import Form from './Form';
-import users from './Users';
+import Users from './Users';
 
 import {familyLogin} from '../api/auth';
 import {set} from '../auth/token';
@@ -30,7 +30,7 @@ class FormJoin extends Form {
       this.handleError(`Oops! Looks like your family code isn't correct.`);
     } else {
 
-      const linkedUser = filter(users.allUsers, user => {
+      const linkedUser = filter(Users.allUsers, user => {
         return user.sessionId === this.getValues().sessionId;
       })[0];
 

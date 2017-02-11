@@ -8,10 +8,10 @@ import {selectByFamily as selectFamilyModels, selectFamilyModel, insert, remove 
 import {select as selectModel} from '../api/models';
 import {content} from '../auth/token';
 
-import users from './Users';
-import notes from './Notes';
-import results from './Results';
-import formAddFamily from './FormAddFamily';
+import Users from './Users';
+import Notes from './Notes';
+import Results from './Results';
+import FormAddFamily from './FormAddFamily';
 
 class Families  {
 
@@ -189,7 +189,7 @@ class Families  {
     this.generateSessionId();
     this.handleFamilyInfo(familyId, false);
 
-    this.socket.emit(`setSession`, users.currentSocketId, familyId, this.sessionId);
+    this.socket.emit(`setSession`, Users.currentSocketId, familyId, this.sessionId);
 
   }
 
@@ -203,7 +203,7 @@ class Families  {
   }
 
   checkInUse = sessionId => {
-    const used = filter(users.allUsers, user => {
+    const used = filter(Users.allUsers, user => {
       return user.sessionId === sessionId;
     });
 
@@ -224,13 +224,13 @@ class Families  {
 
   @action handleCloseSession = () => { //happens when you close the session
     this.sessionId = ``;
-    formAddFamily.startSession = ``;
-    this.socket.emit(`stopSession`, users.currentSocketId);
+    FormAddFamily.startSession = ``;
+    this.socket.emit(`stopSession`, Users.currentSocketId);
   }
 
   @action handleStopSession = () => { //happens when session is already started
 
-    this.socket.emit(`stopSession`, users.currentSocketId);
+    this.socket.emit(`stopSession`, Users.currentSocketId);
     window.location.href = `/`;
 
   }
@@ -238,7 +238,7 @@ class Families  {
   @action handleStartModel = id => {
 
     this.isLoading = `model`;
-    this.socket.emit(`setModel`, users.currentSocketId, id);
+    this.socket.emit(`setModel`, Users.currentSocketId, id);
 
     //get familymodelid else insert
     selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
@@ -246,16 +246,16 @@ class Families  {
         if (familymodel.familyModel.length !== 0) {
           this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
-          notes.getNote();
-          results.getResult();
+          Notes.getNote();
+          Results.getResult();
         } else {
 
           insert({familyId: this.activeFamily._id, modelId: id})
             .then(familymodel => {
               this.activeFamilyModel._id = familymodel._id;
               this.isLoading = ``;
-              notes.getNote();
-              results.getResult();
+              Notes.getNote();
+              Results.getResult();
             })
             .catch(err => {
               this.handleError(err);

@@ -3,8 +3,8 @@ import {filter, isEmpty} from 'lodash';
 
 import {selectByProfessional, insert, update} from '../api/results';
 import {token} from '../auth';
-import models from './Models';
-import families from './Families';
+import Models from './Models';
+import Families from './Families';
 
 class Results  {
 
@@ -30,7 +30,7 @@ class Results  {
 
     if (this.allResults.length > 0) {
       const result = filter(this.allResults, result => {
-        return result.familyModelId === families.activeFamilyModel._id;
+        return result.familyModelId === Families.activeFamilyModel._id;
       })[0][0];
 
       if (result) {
@@ -43,13 +43,15 @@ class Results  {
 
   @action handleSubmit = () => {
 
+    console.log(Models.currentResult);
+
     if (isEmpty(this.activeResult)) {
-      insert({familyModelId: families.activeFamilyModel._id, result: models.currentResult})
+      insert({familyModelId: Families.activeFamilyModel._id, result: Models.currentResult})
         .catch(error => {
           this.handleError(error.message);
         });
     } else {
-      update({result: models.currentResult}, this.activeResult)
+      update({result: Models.currentResult}, this.activeResult)
         .catch(error => {
           this.handleError(error.message);
         });

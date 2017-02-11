@@ -25,14 +25,13 @@ class NewFamilyMember extends Component {
   render() {
 
     const {pathname} = this.props.location;
-    const {form, handleChange, handleSubmit} = this.props.formAddFamilyMember;
 
     return (
       <div className='page page-new-family-member'>
         <Header pathname={pathname} />
 
         <main>
-          <FamilyMemberAdd form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+          <FamilyMemberAdd edit={false} />
         </main>
       </div>
 

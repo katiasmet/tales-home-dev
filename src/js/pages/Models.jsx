@@ -18,7 +18,6 @@ class Models extends Component {
       this.props.notes.handleRedirect();
 
       const {getFamilyMembers, activeFamily} = this.props.families;
-      console.log(`active family`);
       getFamilyMembers(activeFamily._id);
     } else {
       const {handleFamilyMembersVisites} = this.props.families;

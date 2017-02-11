@@ -4,9 +4,9 @@ import io from 'socket.io-client';
 
 import {select} from '../api/models';
 import {selectByFamily} from '../api/familymodels';
-import users from './Users';
-import families from './Families';
-import languages from './Languages';
+import Users from './Users';
+import Families from './Families';
+import Languages from './Languages';
 import {token} from '../auth';
 
 class Models  {
@@ -23,7 +23,7 @@ class Models  {
   @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
-  @observable currentResult = [];
+  @observable currentResult = [{}];
 
   @action getModels = () => {
     this.isLoading = true;
@@ -46,8 +46,8 @@ class Models  {
 
     select(id)
     .then(models => {
-      users.currentModelId = models.model[0]._id;
-      families.activeFamilyModel.name = kebabCase(models.model[0].name);
+      Users.currentModelId = models.model[0]._id;
+      Families.activeFamilyModel.name = kebabCase(models.model[0].name);
       this.isLoading = false;
     }).catch(err => {
       this.handleError(err);
@@ -65,7 +65,7 @@ class Models  {
 
     this.isLoading = true;
 
-    selectByFamily({familyId: families.activeFamily._id})
+    selectByFamily({familyId: Families.activeFamily._id})
       .then(familymodels => {
         familymodels.familyModels.forEach(familymodel => {
 
@@ -91,8 +91,8 @@ class Models  {
   }
 
   @action handleCleanModel = () => {
-    users.currentModelId = ``;
-    families.activeFamilyModel.name = ``;
+    Users.currentModelId = ``;
+    Families.activeFamilyModel.name = ``;
   }
 
   handleError = error => {
@@ -109,13 +109,13 @@ class Models  {
     this.isLoadingDistance = true;
 
     const familyLanguages = [];
-    families.activeFamily.familymembers.forEach(familymember => {
+    Families.activeFamily.familymembers.forEach(familymember => {
       familymember.languages.forEach(language => familyLanguages.push(language));
     });
 
     this.familyLanguages = uniq(familyLanguages);
 
-    if (token.content().scope === `family`) languages.handleFamilyLanguages(this.familyLanguages);
+    if (token.content().scope === `family`) Languages.handleFamilyLanguages(this.familyLanguages);
 
     this.isLoadingDistance = false;
 
@@ -125,7 +125,7 @@ class Models  {
 
     this.isLoadingDistance = true;
 
-    families.activeFamily.familymembers.forEach(familymember => {
+    Families.activeFamily.familymembers.forEach(familymember => {
       const character = {};
       character._id = familymember._id;
       character.name = familymember.character;
@@ -196,7 +196,7 @@ class Models  {
     this.currentLanguage = i;
     this.handleResetCharacters(i);
 
-    this.socket.emit(`handleCurrentLanguage`, users.currentSocketId, this.currentLanguage);
+    this.socket.emit(`handleCurrentLanguage`, Users.currentSocketId, this.currentLanguage);
   }
 
   handleCurrentResult = i => {
@@ -214,7 +214,7 @@ class Models  {
       });
     } else { //add
       const result = {
-        model: users.currentModelId,
+        model: Users.currentModelId,
         language: this.familyLanguages[this.currentLanguage],
         results: this.draggableCharacters
       };
@@ -240,7 +240,7 @@ class Models  {
       });
     }
 
-    this.socket.emit(`handleModelLanguage`, users.currentSocketId, this.draggableCharacters);
+    this.socket.emit(`handleModelLanguage`, Users.currentSocketId, this.draggableCharacters);
   }
 
   @action handleIsPassedLanguage = language => {

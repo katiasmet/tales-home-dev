@@ -45,7 +45,7 @@ MENTOR FAMILIES
 .page-edit-profile main,
 .page-new-family main {
   background: $lightblue;
-  min-height: calc(100% - 8rem);
+  min-height: calc(100vh - 8rem);
 }
 
 .families-search {
@@ -337,7 +337,7 @@ STARTSESSION POP-UP
     @add-mixin before-after;
     top: -20rem;
     width: 100%;
-    height: calc(100% + 20rem);
+    height: calc(100vh + 20rem);
     background: $darkpurple;
     z-index: 1;
     opacity: .3;

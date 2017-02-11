@@ -22,13 +22,13 @@ class App extends Component {
 
   handleWSInit = users => {
 
-    const {handleUsers} = stores.users;
+    const {handleUsers} = stores.Users;
     handleUsers(users);
 
     if (isLoggedIn() === `professional`) {
 
       const {id: socketId} = this.socket;
-      const {handleCurrentSocketId} = stores.users;
+      const {handleCurrentSocketId} = stores.Users;
       handleCurrentSocketId(socketId);
       this.socket.emit(`setProfessionalId`, socketId, token.content().sub);
     }
@@ -36,36 +36,36 @@ class App extends Component {
   }
 
   handleWSJoin = user => {
-    const {handleJoinUser} = stores.users;
+    const {handleJoinUser} = stores.Users;
     handleJoinUser(user);
   }
 
   handleWSLeave = socketId => {
-    const {handleLeaveUser} = stores.users;
+    const {handleLeaveUser} = stores.Users;
     handleLeaveUser(socketId);
   }
 
   handleWSRecheck = newUsers => {
-    const {handleUsers} = stores.users;
+    const {handleUsers} = stores.Users;
     handleUsers(newUsers);
   }
 
   render() {
     return (
       <Provider
-        users={stores.users}
-        formLogin={stores.formLogin}
-        formRegister={stores.formRegister}
-        formEditUser={stores.formEditUser}
-        formJoin={stores.formJoin}
-        formAddFamily={stores.formAddFamily}
-        formAddFamilyMember={stores.formAddFamilyMember}
-        formEditFamilyMember={stores.formEditFamilyMember}
-        families={stores.families}
-        models={stores.models}
-        notes={stores.notes}
-        results={stores.results}
-        languages={stores.languages}
+        users={stores.Users}
+        formLogin={stores.FormLogin}
+        formRegister={stores.FormRegister}
+        formEditUser={stores.FormEditUser}
+        formJoin={stores.FormJoin}
+        formAddFamily={stores.FormAddFamily}
+        formAddFamilyMember={stores.FormAddFamilyMember}
+        formEditFamilyMember={stores.FormEditFamilyMember}
+        families={stores.Families}
+        models={stores.Models}
+        notes={stores.Notes}
+        results={stores.Results}
+        languages={stores.Languages}
       >
 
         <Router />

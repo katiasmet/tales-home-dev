@@ -48,7 +48,7 @@ class Families extends Component {
         {
           firstLogin ? (
             <footer className='test-run first-run'>
-              <p>Looks like you founnd your way to the Talkie application! Want to know what the application has to offer?</p>
+              <p>Looks like you found your way to the Talkie application! Want to know what the application has to offer?</p>
               <button className='btn btn-test'><i className='fa fa-question'></i></button>
             </footer>
           ) : (

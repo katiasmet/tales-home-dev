@@ -37,7 +37,7 @@ MODELSOVERVIEW
 .page-new-family-member,
 .page-edit-family-member {
   background-color: $blue;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -48,7 +48,7 @@ MODELSOVERVIEW
     bottom: 0;
     margin: auto;
     width: 100vw;
-    height: cacl(100vh + 10vw);
+    height: calc(100% + 10vw);
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, black 100%);
     opacity: .3;
     z-index: 0;
@@ -73,6 +73,11 @@ MODELSOVERVIEW
     z-index: 1;
   }
 
+}
+
+.page-models,
+.page-model {
+  height: 100vh;
 }
 
 .models {
@@ -254,6 +259,7 @@ MODELSOVERVIEW
 .models-overview-grid {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
