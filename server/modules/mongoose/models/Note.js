@@ -4,8 +4,7 @@ const schema = new Schema({
 
   professionalId: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
 
   familyModelId: {
