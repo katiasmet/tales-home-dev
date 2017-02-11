@@ -6,6 +6,7 @@ import {select} from '../api/models';
 import {selectByFamily} from '../api/familymodels';
 import users from './Users';
 import families from './Families';
+import languages from './Languages';
 import {token} from '../auth';
 
 class Models  {
@@ -114,6 +115,8 @@ class Models  {
 
     this.familyLanguages = uniq(familyLanguages);
 
+    if (token.content().scope === `family`) languages.handleFamilyLanguages(this.familyLanguages);
+
     this.isLoadingDistance = false;
 
   }
@@ -172,9 +175,6 @@ class Models  {
     document.body.appendChild(dragImgEl);
     e.dataTransfer.setDragImage(dragImgEl, 0, 0);*/
     /*e.dataTransfer.setDragImage(0, 0, 0);*/
-    console.log(e);
-
-
     const xPos = e.clientX;
 
     this.draggableCharacters.forEach(character => {
@@ -218,7 +218,6 @@ class Models  {
 
   @action handleIsPassedLanguage = language => {
     console.log(`handle passed language`);
-    console.log(language);
 
     this.currentResult.forEach(result => {
       console.log(result.language);

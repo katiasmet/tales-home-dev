@@ -7,7 +7,7 @@ import {FamiliesSearch, FamiliesBrowse, FamiliesOverview} from '../components/me
 import {FamilyStartSession} from '../components/mentor/family';
 import {token} from '../auth';
 
-@inject(`families`) @observer
+@inject(`families`, `formAddFamily`) @observer
 class Families extends Component {
 
   componentDidMount() {
@@ -16,12 +16,12 @@ class Families extends Component {
 
   render() {
 
-    const {sessionId, isLoading, activeFamily} = this.props.families;
+    const {sessionId, isLoading, activeFamily, handleFamilySession} = this.props.families;
     const {pathname} = this.props.location;
     const {firstLogin} = token.content();
+    const {startSession} = this.props.formAddFamily;
 
-    console.log(`families page`);
-    console.log(activeFamily);
+    if (!isEmpty(startSession) && isEmpty(sessionId)) handleFamilySession(startSession);
 
     return (
       <div className='page page-families'>
@@ -69,10 +69,14 @@ Families.propTypes = {
     getFamilies: PropTypes.func,
     sessionId: PropTypes.string,
     activeFamily: PropTypes.object,
-    isLoading: PropTypes.string
+    isLoading: PropTypes.string,
+    handleFamilySession: PropTypes.func
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string
+  }),
+  formAddFamily: PropTypes.shape({
+    startSession: PropTypes.string
   })
 };
 

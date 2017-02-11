@@ -430,7 +430,7 @@ input::placeholder {
   overflow: hidden;
 
   main {
-    height: 100%;
+    min-height: 100%;
   }
 }
 

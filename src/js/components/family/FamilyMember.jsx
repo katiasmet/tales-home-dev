@@ -67,7 +67,9 @@ class FamilyMember extends Component {
 
         <Link to={`/editfamilymember/${_id}`}>
 
-          {this.renderCharacter(character)}
+          <span className='family-member-character'>
+            {this.renderCharacter(character)}
+          </span>
 
           {firstName}
         </Link>

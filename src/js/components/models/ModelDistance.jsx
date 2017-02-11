@@ -1,24 +1,30 @@
 import React, {Component, PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
+import {isEmpty} from 'lodash';
 
 import {token} from '../../auth';
 import {ModelDistanceScene, ModelDistanceTimeline} from './';
 import {Loading} from '../';
 
-@inject(`models`) @observer
+@inject(`models`, `languages`) @observer
 class ModelDistance extends Component {
 
   componentDidMount() {
     const {getFamiliesLanguages, getDraggableCharacters} = this.props.models;
+    const {allLanguages, getLanguages} = this.props.languages;
+    if (isEmpty(allLanguages)) getLanguages();
     getFamiliesLanguages();
     getDraggableCharacters();
   }
 
   handleClick(i) {
 
+    console.log(`handle click`);
+
     const {handleNextLanguage} = this.props.models;
 
     if (token.content().scope === `professional`) {
+      console.log(`handle next language`);
       handleNextLanguage(i);
     }
   }
@@ -27,6 +33,8 @@ class ModelDistance extends Component {
     const {familyLanguages, currentLanguage, handleIsPassedLanguage} = this.props.models;
     const scope = token.content().scope;
 
+    console.log(familyLanguages);
+
     return (
       <ul className='model-languages'>
 
@@ -34,7 +42,7 @@ class ModelDistance extends Component {
           familyLanguages.slice().map((language, i) => {
             return (
               <li className={(i === currentLanguage) ? `language active ${scope}` : `language ${scope}`}
-                  onClick={this.handleClick(i)}
+                  onClick={() => this.handleNextLanguage(i)}
                   key={i}>
                     {language}
                     {handleIsPassedLanguage(language) && <i className='fa fa-check'></i>}
@@ -50,6 +58,7 @@ class ModelDistance extends Component {
   render() {
 
     const {isLoadingDistance} = this.props.models;
+    console.log(isLoadingDistance);
 
     return (
       <section className='model-distance'>
@@ -83,6 +92,10 @@ ModelDistance.propTypes = {
     isLoadingDistance: PropTypes.bool,
     handleNextLanguage: PropTypes.func,
     handleIsPassedLanguage: PropTypes.func
+  }),
+  languages: PropTypes.shape({
+    allLanguages: PropTypes.array,
+    getLanguages: PropTypes.func
   })
 };
 

@@ -768,7 +768,7 @@ input::placeholder {
 .page-edit-family-member {
   overflow: hidden;
 }
-.page-home main, .page-login main, .page-new-family-member main, .page-edit-family-member main {height: 100%;
+.page-home main, .page-login main, .page-new-family-member main, .page-edit-family-member main {min-height: 100%;
 }
 
 .page-home .nav-item,
@@ -2378,7 +2378,7 @@ MODELSOVERVIEW
   FAMILY OVERVIEW
 */
 
-.page-family main {height: calc(100% - 14.5rem - 8rem);
+.page-family main {height: calc(100% - 14.5rem - 8rem);display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;-webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end;
 }
 
 .family-members,
@@ -2392,6 +2392,14 @@ MODELSOVERVIEW
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.family-members {
+  margin-bottom: 80px;
+  margin-bottom: 5rem
+}
+
+.family-members.no-members {margin-bottom: auto;margin-top: auto;
 }
 
 .family-member {
@@ -2408,13 +2416,20 @@ MODELSOVERVIEW
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-align: center;
+  text-align: center;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');
+
 }
 
 .family-member a {display: block;color: white;text-transform: capitalize;font-weight: 300;
 }
 
 .family-member .action {margin-top: 16px;margin-top: 1rem;background: white;color: #21c5cb;
+}
+
+.family-member .family-member-character {position: relative;display: block;margin-bottom: 24px;margin-bottom: 1.5rem
+}
+
+.family-member .family-member-character::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;bottom: -16px;bottom: -1rem;width: 100%;height: 9.6px;height: .6rem;border-radius: 50%;background: black;opacity: .05;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');-webkit-filter: blur(2px);filter: blur(2px);
 }
 
 .page-family footer {
@@ -2847,27 +2862,31 @@ MODELSOVERVIEW
           transform-origin: center center;
 }
 
-.timeline-scene .drag-character svg {
-  display: block;
-  cursor: move;
+.timeline-scene .drag-character svg {display: block;cursor: move;
 }
 
-.timeline-scene .drag-character.chris {
-  width: 320px;
-  width: 20rem;
+.timeline-scene .drag-character::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;bottom: -16px;bottom: -1rem;width: 100%;height: 9.6px;height: .6rem;border-radius: 50%;background: black;opacity: .05;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');-webkit-filter: blur(2px);filter: blur(2px);
 }
 
-.timeline-scene .drag-character.gigi {
-  width: 224px;
-  width: 14rem;
+.timeline-scene .drag-character:nth-child(1) {-webkit-transform: translateX(0);transform: translateX(0);
 }
 
-.drag-preview {
-  width: 80px;
-  width: 5rem;
-  height: 80px;
-  height: 5rem;
-  border: 1px solid blue;
+.timeline-scene .drag-character:nth-child(2) {-webkit-transform: translateX(-1rem);transform: translateX(-1rem);
+}
+
+.timeline-scene .drag-character:nth-child(3) {-webkit-transform: translateX(1rem);transform: translateX(1rem);
+}
+
+.timeline-scene .drag-character:nth-child(4) {-webkit-transform: translateX(-2rem);transform: translateX(-2rem);
+}
+
+.timeline-scene .drag-character:nth-child(5) {-webkit-transform: translateX(2rem);transform: translateX(2rem);
+}
+
+.timeline-scene .drag-character.chris {width: 320px;width: 20rem;
+}
+
+.timeline-scene .drag-character.gigi {width: 224px;width: 14rem;
 }
 
 .timeline {
@@ -2890,33 +2909,10 @@ MODELSOVERVIEW
 }
 
 .timeline::after,
-  .timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 1.6px;
-  height: .1rem;
-  border-bottom: 1.6px dashed white;
-  border-bottom: .1rem dashed white;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 0;
+  .timeline::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 1.6px;height: .1rem;border-bottom: 1.6px dashed white;border-bottom: .1rem dashed white;top: 0;bottom: 0;margin: auto;z-index: 0;
 }
 
-.timeline::after {
-  border: none;
-  width: 8px;
-  width: .5rem;
-  height: 8px;
-  height: .5rem;
-  left: auto;
-  right: 0;
-  background: white;
-  border-radius: .5rem;
+.timeline::after {border: none;width: 8px;width: .5rem;height: 8px;height: .5rem;left: auto;right: 0;background: white;border-radius: .5rem;
 }
 
 .timeline-language,
@@ -2937,19 +2933,8 @@ MODELSOVERVIEW
 }
 
 .timeline-character {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: block;
+  text-align: center;
   position: absolute;
   -webkit-transform-origin: center center;
           transform-origin: center center;
@@ -2959,23 +2944,10 @@ MODELSOVERVIEW
   opacity: 0;
 }
 
-.timeline-character .member-bullet {
-  width: 32px;
-  width: 2rem;
-  height: 32px;
-  height: 2rem;
-  border: 4.8px solid white;
-  border: .3rem solid white;
-  background: #26e2e9;
-  display: block;
-  border-radius: 2rem;
-  -webkit-transform: translateY(1rem);
-  transform: translateY(1rem);
+.timeline-character .member-bullet {width: 32px;width: 2rem;height: 32px;height: 2rem;border: 4.8px solid white;border: .3rem solid white;background: #26e2e9;display: block;margin: auto;margin-bottom: 16px;margin-bottom: 1rem;border-radius: 2rem;-webkit-transform: translateY(1rem);transform: translateY(1rem);
 }
 
-.timeline-character .member-name {
-  -webkit-transform: translateY(2rem);
-  transform: translateY(2rem);
+.timeline-character .member-name {-webkit-transform: translateY(2rem);transform: translateY(2rem);
 }
 .chris-illustration .st0,
   .chris-illustration .st1 {

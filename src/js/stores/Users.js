@@ -10,12 +10,14 @@ class Users  {
   @observable currentSocketId = ``;
   @observable isSessionStarted = false;
   @observable currentModelId = ``;
+  @observable totalFamilyMembers = 0;
 
   @action handleUsers = users => {
     this.allUsers = users;
     this.handleSessionStarted();
     this.handleCurrentModel();
     this.handleFamilyLogOut();
+    this.handleFamilyMembers();
   }
 
   handleSessionStarted = () => {
@@ -38,6 +40,17 @@ class Users  {
     });
   }
 
+  handleFamilyMembers = () => {
+    console.log(`handle family members user`);
+    console.log(this.totalFamilyMembers);
+    this.allUsers.forEach(user => {
+      if (user.socketId === this.currentSocketId) {
+        console.log(user.familyMembers);
+        this.totalFamilyMembers = user.familyMembers;
+      }
+    });
+  }
+
   handleFamilyLogOut = () => {
 
     const family = filter(this.allUsers, user => {
@@ -48,6 +61,10 @@ class Users  {
       logout();
       window.location.href = `/`;
     }
+
+    /*if (token.content().scope === `professional` && !family) {
+      window.location.href = `/`;
+    }*/
 
   }
 

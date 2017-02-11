@@ -76,12 +76,24 @@ $grey: #515151;
 
   main {
     height: calc(100% - 14.5rem - 8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
 .family-members,
 .page-family footer {
   @add-mixin flex-center;
+}
+
+.family-members {
+  margin-bottom: 5rem;
+
+  &.no-members {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
 }
 
 .family-member {
@@ -101,6 +113,25 @@ $grey: #515151;
     background: white;
     color: $bluenav;
   }
+
+  .family-member-character {
+    position: relative;
+    display: block;
+    margin-bottom: 1.5rem;
+
+    &::after {
+      @add-mixin before-after;
+      top: auto;
+      bottom: -1rem;
+      width: 100%;
+      height: .6rem;
+      border-radius: 50%;
+      background: black;
+      opacity: .05;
+      filter: blur(2px);
+    }
+  }
+
 }
 
 .page-family footer {
