@@ -229,8 +229,6 @@ class Models  {
       return result.language === this.familyLanguages[i];
     });
 
-    console.log(result.length);
-
     if (result.length > 0) {
       console.log(`language in results`);
       this.draggableCharacters = result[0].results;
