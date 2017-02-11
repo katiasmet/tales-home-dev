@@ -9,6 +9,8 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit, edit = false}) => {
 
   const {fields, meta, redirect} = form;
 
+  console.log(fields.firstName);
+
   return (
 
     <section className='form form-add-family-member'>
