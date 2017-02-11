@@ -65,6 +65,9 @@ class Notes  {
 
     Results.handleSubmit();
     if (isEmpty(this.activeNote)) {
+
+      console.log(this.notesInput);
+
       insert({familyModelId: Families.activeFamilyModel._id, notes: this.notesInput})
         .then(() => {
           this.redirect = true;

@@ -613,3 +613,8 @@ input::placeholder {
   color: $grey;
   line-height: 2rem;
 }
+
+.loading {
+  @add-mixin flex-center;
+  height: 100%;
+}
