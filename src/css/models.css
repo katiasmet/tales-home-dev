@@ -564,3 +564,10 @@ MODELSOVERVIEW
     }
   }
 }
+
+.preview-background {
+
+  .flag {
+    width: 10rem;
+  }
+}

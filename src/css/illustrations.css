@@ -591,3 +591,113 @@
     fill: #67aef4;
   }
 }
+
+.cloud-illustration {
+
+  .st0 {
+    fill: #90f0f3;
+  }
+
+  .st1 {
+    fill: #35d8de;
+  }
+}
+
+.cloud2-illustration {
+
+  .st0 {
+    fill: #90f0f3;
+  }
+
+  .st1 {
+    fill: #35d8de;
+  }
+}
+
+.car-illustration {
+
+  .st0 {
+    fill: #00e2ea;
+  }
+
+  .st1 {
+    fill: #1db0b6;
+  }
+
+  .st2 {
+    fill: #21c5cb;
+  }
+
+  .st3 {
+    fill: #4de7ec;
+  }
+}
+
+.truck-illustration {
+
+  .st0 {
+    fill: #1db0b6;
+  }
+
+  .st1 {
+    fill: #21c5cb;
+  }
+
+  .st2 {
+    fill: #00e2ea;
+  }
+
+  .st3 {
+    fill: #00ccc6;
+  }
+
+  .st4 {
+    fill: #609b3a;
+  }
+
+  .st5 {
+    fill: #24d8df;
+  }
+}
+
+.airplane-illustration {
+
+  .st0 {
+    fill: #1db0b6;
+  }
+
+  .st1 {
+    fill: #21c5cb;
+  }
+
+  .st2 {
+    fill: #24d8df;
+  }
+
+  .st3 {
+    fill: #00e2ea;
+  }
+}
+
+.roadsigns-illustration {
+
+  .st0 {
+    fill: #21c5cb;
+  }
+
+  .st1 {
+    fill: #7cd644;
+  }
+
+  .st2 {
+    fill: #1db0b6;
+  }
+
+  .st3 {
+    fill: #24d8df;
+  }
+
+  .st4 {
+    fill: #00e2ea;
+  }
+}

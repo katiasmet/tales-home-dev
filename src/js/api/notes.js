@@ -38,8 +38,6 @@ export const selectByProfessional = query => {
 
 export const insert = data => {
 
-  console.log(data);
-
   const method = `POST`;
   const headers = new Headers({Authorization: `Bearer ${token.get()}`});
   const body = buildBody(data, whitelist.POST, {});
