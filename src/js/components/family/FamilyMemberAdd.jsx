@@ -9,14 +9,12 @@ import {FamilyMemberAddCharacters, FamilyMemberAddLanguages, FamilyMemberAddRole
 @inject(`formEditFamilyMember`, `formAddFamilyMember`) @observer
 class FamilyMemberAdd extends Component {
 
-  componentDidMount() {
-    const {edit} = this.props;
-    if (edit) this.formMember = this.props.formEditFamilyMember;
-    else this.formMember = this.props.formAddFamilyMember;
-  }
-
   render() {
     const {edit} = this.props;
+
+    if (edit) this.formMember = this.props.formEditFamilyMember;
+    else this.formMember = this.props.formAddFamilyMember;
+
     const {form, handleChange, handleSubmit} = this.formMember;
     const {fields, meta, redirect} = form;
 
