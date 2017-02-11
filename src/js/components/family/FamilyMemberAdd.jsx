@@ -10,6 +10,8 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit, edit = false}) => {
   const {fields, meta, redirect} = form;
 
   console.log(fields.firstName);
+  console.log(fields);
+  console.log(`family member add`);
 
   return (
 
@@ -23,8 +25,6 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit, edit = false}) => {
         edit ? <h1>Edit a family member</h1>
         : <h1>Add a new family member</h1>
       }
-
-
 
       <form
         action=''
