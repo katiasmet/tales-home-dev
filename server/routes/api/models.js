@@ -133,7 +133,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().alphanum().min(3),
+          name: Joi.string().min(3),
           description: Joi.string().min(3),
           image: Joi.string().min(3),
           themes: Joi.array(),

@@ -23,10 +23,10 @@ const handleNavItem = (model, i, handleModelPreview, modelPreview, handleStartMo
 
     return (
       <li className={handleIsPassed(model._id) ? `model-nav-item done` : `model-nav-item`}
-          data-model-name={model.name}
           key={i}
           onClick={() => handleModelPreview(model._id)}>
           {handleIsPassed(model._id) && <i className='fa fa-check'></i>}
+          <span className='model-name'>{model.name}</span>
       </li>
     );
 

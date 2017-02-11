@@ -216,6 +216,17 @@ class Models  {
     });
   }
 
+  @action handleIsPassedLanguage = language => {
+    console.log(`handle passed language`);
+    console.log(language);
+
+    this.currentResult.forEach(result => {
+      console.log(result.language);
+      if (result.language === language) return true;
+    });
+    return false;
+  }
+
 
 }
 

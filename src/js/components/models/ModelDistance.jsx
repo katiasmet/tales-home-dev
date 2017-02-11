@@ -24,7 +24,7 @@ class ModelDistance extends Component {
   }
 
   renderLanguages() {
-    const {familyLanguages, currentLanguage} = this.props.models;
+    const {familyLanguages, currentLanguage, handleIsPassedLanguage} = this.props.models;
     const scope = token.content().scope;
 
     return (
@@ -37,6 +37,7 @@ class ModelDistance extends Component {
                   onClick={this.handleClick(i)}
                   key={i}>
                     {language}
+                    {handleIsPassedLanguage(language) && <i className='fa fa-check'></i>}
               </li>
             );
           })
@@ -80,7 +81,8 @@ ModelDistance.propTypes = {
     getDraggableCharacters: PropTypes.func,
     draggableCharacters: PropTypes.array,
     isLoadingDistance: PropTypes.bool,
-    handleNextLanguage: PropTypes.func
+    handleNextLanguage: PropTypes.func,
+    handleIsPassedLanguage: PropTypes.func
   })
 };
 

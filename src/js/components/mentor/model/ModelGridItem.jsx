@@ -5,21 +5,21 @@ import {kebabCase} from 'lodash';
 const ModelGridItem = ({_id, image, name, i, handleStartModel, handleIsPassed}) => {
 
   const pathname = kebabCase(name);
-  console.log(image);
 
   return (
     <article className='models-overview-grid-item' onClick={() => handleStartModel(_id)}>
       <Link to={`/models/${pathname}`}>
-        <figure>
 
+        <figure>
+          <img src={`assets/img/models/${image}.png`} alt={name} />
         </figure>
 
-        <footer>
+        <div className='model-info'>
           <p><span className='model-count'>Model {i + 1}:</span> {name}</p>
           {
             (handleIsPassed(_id)) && (<span className='btn'><i className='fa fa-check'></i></span>)
           }
-        </footer>
+        </div>
       </Link>
     </article>
   );
