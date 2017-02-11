@@ -364,7 +364,8 @@ a {
   outline: none;
   -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
-  font-weight: 500
+  font-weight: 500;
+  color: #33217f
 }
 
 a:hover {opacity: .5;
@@ -2353,8 +2354,7 @@ MODELSOVERVIEW
 
 }
 
-.model-languages .language.family:hover,
-      .model-languages .language.family.active{
+.model-languages .language.family:hover{
 
   background: #6e2bc8;
 

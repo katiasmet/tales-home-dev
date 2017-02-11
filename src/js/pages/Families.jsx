@@ -21,8 +21,6 @@ class Families extends Component {
     const {firstLogin} = token.content();
     const {startSession} = this.props.formAddFamily;
 
-    if (!isEmpty(startSession) && isEmpty(sessionId)) handleFamilySession(startSession);
-
     return (
       <div className='page page-families'>
         <Header pathname={pathname} />
@@ -33,6 +31,10 @@ class Families extends Component {
 
           <section   className={(!isEmpty(sessionId) && isEmpty(isLoading) && !isEmpty(activeFamily)) ?
                     `families families-pop-up` : `families`}>
+
+            {
+              (!isEmpty(startSession) && isEmpty(sessionId)) && handleFamilySession(startSession)
+            }
 
             {
               (!isEmpty(sessionId) && isEmpty(isLoading) && !isEmpty(activeFamily)) && <FamilyStartSession />

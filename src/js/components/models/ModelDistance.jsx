@@ -17,7 +17,8 @@ class ModelDistance extends Component {
     getDraggableCharacters();
   }
 
-  handleClick(i) {
+  handleClick(e, i) {
+    e.preventDefault();
     const {handleNextLanguage} = this.props.models;
 
     if (token.content().scope === `professional`) {
@@ -36,7 +37,7 @@ class ModelDistance extends Component {
           familyLanguages.slice().map((language, i) => {
             return (
               <li className={(i === currentLanguage) ? `language active ${scope}` : `language ${scope}`}
-                  onClick={() => this.handleClick(i)}
+                  onClick={e => this.handleClick(e, i)}
                   key={i}>
                     {language}
                     {handleIsPassedLanguage(language) && <i className='fa fa-check'></i>}

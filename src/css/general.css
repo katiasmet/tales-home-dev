@@ -60,6 +60,7 @@ a {
   outline: none;
   transition: all .3s ease-in;
   font-weight: 500;
+  color: $textpurple;
 
   &:hover {
     opacity: .5;

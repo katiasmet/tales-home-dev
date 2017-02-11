@@ -535,8 +535,7 @@ MODELSOVERVIEW
     &.family {
       cursor: default;
 
-      &:hover,
-      &.active {
+      &:hover {
         background: $purple;
       }
     }

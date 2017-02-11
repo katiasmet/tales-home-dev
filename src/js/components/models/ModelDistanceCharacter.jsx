@@ -37,6 +37,7 @@ class ModelDistanceCharacter extends Component {
             onTouchEnd={e => handleEndMoveCharacter(e)}
             draggable='true'
             onDrag={e => handleDragCharacter(_id, e)}
+            onDragEnd={e => handleEndMoveCharacter(e)}
             onDrop={e => handleEndMoveCharacter(e)}
             style={style}
       >
