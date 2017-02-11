@@ -5,6 +5,8 @@ class Form {
 
   @action handleChange = (field, value) => {
 
+    console.log(`handle change`);
+
     this.form.fields[field].value = value;
     const validation = new Validator(
       this.getValues(`value`),
