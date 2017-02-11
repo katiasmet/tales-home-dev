@@ -11,6 +11,7 @@ import {content} from '../auth/token';
 import users from './Users';
 import notes from './Notes';
 import results from './Results';
+import formAddFamily from './FormAddFamily';
 
 class Families  {
 
@@ -223,6 +224,7 @@ class Families  {
 
   @action handleCloseSession = () => { //happens when you close the session
     this.sessionId = ``;
+    formAddFamily.startSession = ``;
     this.socket.emit(`stopSession`, users.currentSocketId);
   }
 
