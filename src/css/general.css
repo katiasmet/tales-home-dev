@@ -108,6 +108,10 @@ button {
       animation: none;
     }
   }
+
+  i {
+    margin: auto; /* for ipad */
+  }
 }
 
 .btn-green {
