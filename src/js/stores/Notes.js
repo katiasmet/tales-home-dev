@@ -4,9 +4,9 @@ import io from 'socket.io-client';
 
 import {selectByProfessional, insert, update} from '../api/notes';
 import {token} from '../auth';
-import families from './Families';
-import results from './Results';
-import users from './Users';
+import Families from './Families';
+import Results from './Results';
+import Users from './Users';
 
 class Notes  {
 
@@ -42,7 +42,7 @@ class Notes  {
 
     if (this.allNotes.length > 0) {
       const note = filter(this.allNotes, note => {
-        return note.familyModelId === families.activeFamilyModel._id;
+        return note.familyModelId === Families.activeFamilyModel._id;
       })[0][0];
 
       if (note) {
@@ -63,9 +63,9 @@ class Notes  {
 
     e.preventDefault();
 
-    results.handleSubmit();
+    Results.handleSubmit();
     if (isEmpty(this.activeNote)) {
-      insert({familyModelId: families.activeFamilyModel._id, notes: this.notesInput})
+      insert({familyModelId: Families.activeFamilyModel._id, notes: this.notesInput})
         .then(() => {
           this.redirect = true;
         })
@@ -83,9 +83,9 @@ class Notes  {
         });
     }
 
-    families.handleConfirmation();
+    Families.handleConfirmation();
 
-    this.socket.emit(`stopModel`, users.currentSocketId);
+    this.socket.emit(`stopModel`, Users.currentSocketId);
 
   }
 

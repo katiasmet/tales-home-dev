@@ -1,10 +1,10 @@
 import {observable, action} from 'mobx';
 import {filter, capitalize, toUpper, includes} from 'lodash';
 
-import {select} from '../api/languages';
-import formAddFamilyMember from './formAddFamilyMember';
-import formEditFamilyMember from './formEditFamilyMember';
-import models from './Models';
+import {select} from '../api/Languages';
+import FormAddFamilyMember from './FormAddFamilyMember';
+import FormEditFamilyMember from './FormEditFamilyMember';
+import Models from './Models';
 
 class Languages  {
 
@@ -76,8 +76,8 @@ class Languages  {
       languages.push(language.name);
     });
 
-    formAddFamilyMember.handleChange(`languages`, languages);
-    formEditFamilyMember.handleChange(`languages`, languages);
+    FormAddFamilyMember.handleChange(`languages`, languages);
+    FormEditFamilyMember.handleChange(`languages`, languages);
 
   }
 
@@ -110,7 +110,7 @@ class Languages  {
       if (familyLanguage) familyLanguages.push(familyLanguage.nativeName);
     });
 
-    models.familyLanguages = familyLanguages;
+    Models.familyLanguages = familyLanguages;
   }
 
 }

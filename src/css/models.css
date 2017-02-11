@@ -37,7 +37,7 @@ MODELSOVERVIEW
 .page-new-family-member,
 .page-edit-family-member {
   background-color: $blue;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   overflow: hidden;
   position: relative;

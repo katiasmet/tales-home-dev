@@ -1,35 +1,35 @@
-import users from './Users';
-import formLogin from './FormLogin';
-import formRegister from './FormRegister';
-import formEditUser from './FormEditUser';
-import formJoin from './FormJoin';
+import Users from './Users';
+import FormLogin from './FormLogin';
+import FormRegister from './FormRegister';
+import FormEditUser from './FormEditUser';
+import FormJoin from './FormJoin';
 
-import families from './Families';
-import formAddFamily from './formAddFamily';
-import formAddFamilyMember from './formAddFamilyMember';
-import formEditFamilyMember from './formEditFamilyMember';
+import Families from './Families';
+import FormAddFamily from './FormAddFamily';
+import FormAddFamilyMember from './FormAddFamilyMember';
+import FormEditFamilyMember from './FormEditFamilyMember';
 
-import notes from './Notes';
-import results from './Results';
+import Notes from './Notes';
+import Results from './Results';
 
-import models from './Models';
+import Models from './Models';
 
-import languages from './Languages';
+import Languages from './Languages';
 
 const stores = {
-  users,
-  formLogin,
-  formRegister,
-  formEditUser,
-  formJoin,
-  families,
-  formAddFamily,
-  formAddFamilyMember,
-  formEditFamilyMember,
-  notes,
-  results,
-  models,
-  languages
+  Users,
+  FormLogin,
+  FormRegister,
+  FormEditUser,
+  FormJoin,
+  Families,
+  FormAddFamily,
+  FormAddFamilyMember,
+  FormEditFamilyMember,
+  Notes,
+  Results,
+  Models,
+  Languages
 };
 
 export default stores;

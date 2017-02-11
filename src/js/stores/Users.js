@@ -2,7 +2,7 @@ import {observable, action} from 'mobx';
 import {filter} from 'lodash';
 
 import {token, logout} from '../auth';
-import models from './Models';
+import Models from './Models';
 
 class Users  {
 
@@ -34,11 +34,11 @@ class Users  {
     this.allUsers.forEach(user => {
       if (user.socketId === this.currentSocketId) { /* PRO-SIDE */
         if (user.modelId) this.currentModelId = user.modelId;
-        if (user.modelInfo) models.draggableCharacters = user.modelInfo;
+        if (user.modelInfo) Models.draggableCharacters = user.modelInfo;
       } else if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
-        if (user.modelInfo)  models.draggableCharacters = user.modelInfo;
-        if (user.modelId) models.getModel(user.modelId);
-        else models.handleCleanModel();
+        if (user.modelInfo)  Models.draggableCharacters = user.modelInfo;
+        if (user.modelId) Models.getModel(user.modelId);
+        else Models.handleCleanModel();
       }
     });
   }
@@ -46,7 +46,7 @@ class Users  {
   handleCurrentLanguage = () => {
     this.allUsers.forEach(user => {
       if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
-        if (user.currentLanguage) models.currentLanguage = user.currentLanguage;
+        if (user.currentLanguage) Models.currentLanguage = user.currentLanguage;
       }
     });
   }

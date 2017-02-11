@@ -4,8 +4,8 @@ import {filter, isEmpty} from 'lodash';
 import Form from './Form';
 import {select, update} from '../api/familymembers';
 import {content} from '../auth/token';
-import families from './Families';
-import languages from './Languages';
+import Families from './Families';
+import Languages from './Languages';
 
 class FormEditFamilyMember extends Form {
 
@@ -51,7 +51,7 @@ class FormEditFamilyMember extends Form {
 
     this.isLoading = true;
 
-    const {activeFamily} = families;
+    const {activeFamily} = Families;
 
     if (isEmpty(activeFamily.familymembers)) {
       select(id)
@@ -80,7 +80,7 @@ class FormEditFamilyMember extends Form {
     this.form.fields.role.value = this.activeMember.role;
 
     this.form.fields.languages.value = this.activeMember.languages;
-    languages.handleSelectedLanguages(this.activeMember.languages);
+    Languages.handleSelectedLanguages(this.activeMember.languages);
 
     this.isLoading = false;
   }

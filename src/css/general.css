@@ -181,7 +181,7 @@ main > section {
 
 .container,
 .main {
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .page-home,
@@ -190,7 +190,7 @@ main > section {
 .page-edit-profile,
 .page-new-family {
   background: $purple;
-  min-height: 100%;
+  min-height: 100vh;
   position: relative;
 
   &::before {
@@ -430,7 +430,7 @@ input::placeholder {
   overflow: hidden;
 
   main {
-    min-height: 100%;
+    min-height: 100vh;
   }
 }
 
@@ -489,6 +489,7 @@ input::placeholder {
 .form-edit-family-member {
   position: relative;
   margin-top: -5rem;
+  margin-bottom: 5rem;
 
   background-color: white;
   border-radius: 2rem;
@@ -508,6 +509,7 @@ input::placeholder {
     position: absolute;
     top: auto;
     bottom: -2.2rem;
+    margin: auto;
 
     &:hover {
       animation: hover-start .3s ease-in;

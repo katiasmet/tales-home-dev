@@ -53,19 +53,19 @@ class App extends Component {
   render() {
     return (
       <Provider
-        users={stores.users}
-        formLogin={stores.formLogin}
-        formRegister={stores.formRegister}
-        formEditUser={stores.formEditUser}
-        formJoin={stores.formJoin}
-        formAddFamily={stores.formAddFamily}
-        formAddFamilyMember={stores.formAddFamilyMember}
-        formEditFamilyMember={stores.formEditFamilyMember}
-        families={stores.families}
-        models={stores.models}
-        notes={stores.notes}
-        results={stores.results}
-        languages={stores.languages}
+        users={stores.Users}
+        formLogin={stores.FormLogin}
+        formRegister={stores.FormRegister}
+        formEditUser={stores.FormEditUser}
+        formJoin={stores.FormJoin}
+        formAddFamily={stores.FormAddFamily}
+        formAddFamilyMember={stores.FormAddFamilyMember}
+        formEditFamilyMember={stores.FormEditFamilyMember}
+        families={stores.Families}
+        models={stores.Models}
+        notes={stores.Notes}
+        results={stores.Results}
+        languages={stores.Languages}
       >
 
         <Router />
