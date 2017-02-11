@@ -193,7 +193,6 @@ class Models  {
   @action handleNextLanguage = i => {
 
     this.handleCurrentResult(this.currentLanguage);
-    //console.log(this.currentResult[0].results[0].left);
     this.currentLanguage = i;
     this.handleResetCharacters(i);
 
@@ -201,9 +200,6 @@ class Models  {
   }
 
   handleCurrentResult = i => {
-    console.log(`handle current result`);
-    console.log(this.familyLanguages[i]);
-    console.log(this.draggableCharacters);
     /* save the old results */
 
     const result = filter(this.currentResult, result => {
@@ -228,24 +224,22 @@ class Models  {
   }
 
   handleResetCharacters = i => {
+
     const result = filter(this.currentResult, result => {
       return result.language === this.familyLanguages[i];
-    })[0];
+    });
 
-    if (result) {
+    console.log(result.length);
+
+    if (result.length > 0) {
       console.log(`language in results`);
-      console.log(this.draggableCharacters);
-      this.draggableCharacters = result.results;
-    } else {
+      this.draggableCharacters = result[0].results;
+    } else if (result.length === 0) {
       console.log(`language not in results`);
       console.log(this.draggableCharacters);
-      /*const newCharacters = [];
-      this.draggableCharacters.forEach(character => {newCharacters.push(character);});
-      newCharacters.forEach(character => {
+      this.draggableCharacters.forEach(character => {
         character.left = 0;
       });
-      console.log(newCharacters);
-      this.draggableCharacters = newCharacters;*/
     }
 
     this.socket.emit(`handleModelLanguage`, users.currentSocketId, this.draggableCharacters);
