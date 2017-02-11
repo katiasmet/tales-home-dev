@@ -14,6 +14,8 @@ class Form {
       this.getValues(`rule`));
     this.form.meta.isValid = validation.passes();
 
+    console.log(this.form.fields.firstName);
+
     if (validation.errors.first(field)) {
       this.form.fields[field].error = validation.errors.first(field);
     } else {

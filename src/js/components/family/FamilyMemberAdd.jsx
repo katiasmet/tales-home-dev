@@ -37,7 +37,7 @@ const FamilyMemberAdd = ({form, handleChange, handleSubmit, edit = false}) => {
           <FamilyMemberAddCharacters handleChange={handleChange} value={fields.character.value} />
 
           <FormInput
-            id='familymember-form-name'
+            id='familymember-form-firstname'
             label='First name'
             name='firstName'
             value={fields.firstName.value}

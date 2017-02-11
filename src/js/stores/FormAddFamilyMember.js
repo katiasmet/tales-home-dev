@@ -37,6 +37,7 @@ class FormAddFamilyMember extends Form {
   });
 
   @action handleEmptyValues = () => {
+    console.log(`handle empty values`);
     this.form.fields.firstName.value = ``;
     this.form.fields.languages.value = ``;
     this.form.fields.character.value = `kiki`;
