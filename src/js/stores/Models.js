@@ -23,7 +23,7 @@ class Models  {
   @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
-  @observable currentResult = [];
+  @observable currentResult = [{}];
 
   @action getModels = () => {
     this.isLoading = true;

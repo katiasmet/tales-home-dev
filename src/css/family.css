@@ -153,7 +153,6 @@ $grey: #515151;
 .page-new-family-member,
 .page-edit-family-member {
   color: $bluenav;
-  overflow: inherit;
   min-height: 100vh;
 
   h1,
@@ -293,6 +292,8 @@ $grey: #515151;
   position: absolute;
   top: auto;
   bottom: 0;
+  left: 0;
+  right: auto;
   overflow: hidden;
   mask-image: -webkit-radial-gradient(circle, white, black);
   transform: translateY(.1rem);

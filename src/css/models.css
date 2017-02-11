@@ -48,7 +48,7 @@ MODELSOVERVIEW
     bottom: 0;
     margin: auto;
     width: 100vw;
-    height: cacl(100vh + 10vw);
+    height: calc(100vh + 10vw);
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, black 100%);
     opacity: .3;
     z-index: 0;

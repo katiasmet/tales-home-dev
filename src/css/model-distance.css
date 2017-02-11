@@ -2,10 +2,6 @@ $darkblue: #00afa2;
 $midblue: #21cbc5;
 $blue: #26e2e9;
 
-.page-model::after {
-  content: none;
-}
-
 .model-distance {
   display: flex;
   flex-direction: column;

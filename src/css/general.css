@@ -512,9 +512,6 @@ input::placeholder {
     position: absolute;
     top: auto;
     bottom: -2.2rem;
-    left: 0;
-    right: 0;
-    margin: auto;
 
     &:hover {
       animation: hover-start .3s ease-in;
@@ -536,6 +533,12 @@ input::placeholder {
     top: 1rem;
     z-index: -1;
   }
+}
+
+.page-login-forms .btn {
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .user-profiles {
