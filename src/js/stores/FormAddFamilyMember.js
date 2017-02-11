@@ -3,6 +3,7 @@ import {observable, action} from 'mobx';
 import Form from './Form';
 import {insert} from '../api/familymembers';
 import {content} from '../auth/token';
+import languages from './Languages';
 
 class FormAddFamilyMember extends Form {
 
@@ -42,6 +43,8 @@ class FormAddFamilyMember extends Form {
     this.form.fields.languages.value = ``;
     this.form.fields.character.value = `kiki`;
     this.form.fields.role.value = `child`;
+    languages.selectedLanguages = [];
+    this.form.meta.error = ``;
   }
 
 

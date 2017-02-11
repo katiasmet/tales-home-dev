@@ -83,6 +83,8 @@ class Notes  {
         });
     }
 
+    families.handleConfirmation();
+
     this.socket.emit(`stopModel`, users.currentSocketId);
 
   }

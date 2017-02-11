@@ -154,7 +154,6 @@ $grey: #515151;
 .page-edit-family-member {
   color: $bluenav;
   overflow: inherit;
-  height: auto;
   min-height: 100%;
 
   h1,

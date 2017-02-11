@@ -18,10 +18,6 @@ class FamilyMemberAdd extends Component {
     const {form, handleChange, handleSubmit} = this.formMember;
     const {fields, meta, redirect} = form;
 
-    console.log(fields.firstName);
-    console.log(fields);
-    console.log(`family member add`);
-
     return (
 
       <section className='form form-add-family-member'>
