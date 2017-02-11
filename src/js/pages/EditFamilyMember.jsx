@@ -24,7 +24,7 @@ class EditFamilyMember extends Component {
 
   render() {
 
-    const {form, handleChange, handleSubmit, isLoading} = this.props.formEditFamilyMember;
+    const {isLoading} = this.props.formEditFamilyMember;
     const {pathname} = this.props.location;
 
     return (
@@ -35,7 +35,7 @@ class EditFamilyMember extends Component {
 
           {
             isLoading ? <Loading />
-          : <FamilyMemberAdd form={form} handleChange={handleChange} handleSubmit={handleSubmit} edit={true} />
+            : <FamilyMemberAdd edit={true} />
           }
 
         </main>
