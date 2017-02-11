@@ -100,7 +100,7 @@ module.exports = [
 
         payload: {
           familyModelId: Joi.string().alphanum().min(3).required(),
-          result: Joi.array().required(),
+          result: Joi.array().allow([]),
           isActive: Joi.boolean()
         }
 
@@ -155,7 +155,7 @@ module.exports = [
         },
 
         payload: {
-          result: Joi.array().required()
+          result: Joi.array().allow([])
         }
 
       }

@@ -10,8 +10,6 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
   const {form, handleChange, handleSubmit} = formRegister;
   const {fields, meta, redirect} = form;
 
-  console.log(redirect);
-
   return (
 
     <section className='form form-register'>

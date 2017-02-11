@@ -17,6 +17,9 @@ class NewFamilyMember extends Component {
   componentDidMount() {
     const {allLanguages, getLanguages} = this.props.languages;
     if (isEmpty(allLanguages)) getLanguages();
+
+    const {handleEmptyValues} = this.props.formAddFamilyMember;
+    handleEmptyValues();
   }
 
   render() {
@@ -44,6 +47,7 @@ NewFamilyMember.propTypes = {
     getLanguages: PropTypes.func
   }),
   formAddFamilyMember: PropTypes.shape({
+    handleEmptyValues: PropTypes.func,
     resetRedirect: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,

@@ -18,13 +18,9 @@ class ModelDistance extends Component {
   }
 
   handleClick(i) {
-
-    console.log(`handle click`);
-
     const {handleNextLanguage} = this.props.models;
 
     if (token.content().scope === `professional`) {
-      console.log(`handle next language`);
       handleNextLanguage(i);
     }
   }
@@ -33,8 +29,6 @@ class ModelDistance extends Component {
     const {familyLanguages, currentLanguage, handleIsPassedLanguage} = this.props.models;
     const scope = token.content().scope;
 
-    console.log(familyLanguages);
-
     return (
       <ul className='model-languages'>
 
@@ -42,7 +36,7 @@ class ModelDistance extends Component {
           familyLanguages.slice().map((language, i) => {
             return (
               <li className={(i === currentLanguage) ? `language active ${scope}` : `language ${scope}`}
-                  onClick={() => this.handleNextLanguage(i)}
+                  onClick={() => this.handleClick(i)}
                   key={i}>
                     {language}
                     {handleIsPassedLanguage(language) && <i className='fa fa-check'></i>}
@@ -58,10 +52,19 @@ class ModelDistance extends Component {
   render() {
 
     const {isLoadingDistance} = this.props.models;
-    console.log(isLoadingDistance);
 
     return (
       <section className='model-distance'>
+
+        <section className='model-distance-background'>
+          <div className='airplane'></div>
+          <div className='sun'></div>
+          <div className='cloud cloud-left'></div>
+          <div className='cloud cloud-right'></div>
+          <div className='truck'></div>
+          <div className='car'></div>
+          <div className='street-signs'></div>
+        </section>
 
         {
           !isLoadingDistance && this.renderLanguages()

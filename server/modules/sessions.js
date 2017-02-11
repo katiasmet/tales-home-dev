@@ -13,8 +13,8 @@ module.exports.register = (server, options, next) => {
       sessionId: ``,
       professionalId: ``,
       familyId: ``,
-      familyMembers: 0,
       modelId: ``,
+      currentLanguage: 0,
       modelInfo: [],
       isSessionStarted: ``
     };
@@ -41,14 +41,6 @@ module.exports.register = (server, options, next) => {
       }
     });
 
-    socket.on(`setFamilyMembers`, (familyId, familyMembers) => {
-      const user = users.find(u => familyId === u.familyId);
-      if (user) {
-        user.familyMembers = familyMembers;
-        socket.broadcast.emit(`recheck`, users);
-      }
-    });
-
     socket.on(`startSession`, familyId => {
       const user = users.find(u => familyId === u.familyId);
       if (user) {
@@ -69,6 +61,22 @@ module.exports.register = (server, options, next) => {
       const user = users.find(u => familyId === u.familyId);
       if (user) {
         user.modelInfo = modelInfo;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`handleModelLanguage`, (id, modelInfo) => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.modelInfo = modelInfo;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`handleCurrentLanguage`, (id, currentLanguage) => {
+      const user = users.find(u => id === u.socketId);
+      if (user) {
+        user.currentLanguage = currentLanguage;
         socket.broadcast.emit(`recheck`, users);
       }
     });

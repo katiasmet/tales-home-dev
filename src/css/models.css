@@ -55,7 +55,7 @@ MODELSOVERVIEW
   }
 
   &::after {
-    width: 150vw;
+    width: 150%;
     height: 50vh;
     top: auto;
     left: -25vw;
@@ -525,6 +525,7 @@ MODELSOVERVIEW
     list-style: none;
     cursor: pointer;
     transition: all .3s ease-in;
+    position: relative;
 
     &.active,
     &:hover {
@@ -540,5 +541,21 @@ MODELSOVERVIEW
       }
     }
 
+    .fa-check {
+      position: absolute;
+      top: -.5rem;
+      right: -.5rem;
+      background: $purple;
+      border-radius: 1rem;
+      padding: .2rem;
+      font-size: 1.4rem;
+
+      transition: all .3s ease-in;
+    }
+
+    &.active .fa-check,
+    &:hover .fa-check {
+      background: $darkpurple;
+    }
   }
 }

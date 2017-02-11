@@ -16,6 +16,10 @@ class Models extends Component {
       this.props.notes.getNotes();
       this.props.results.getResults();
       this.props.notes.handleRedirect();
+
+      const {getFamilyMembers, activeFamily} = this.props.families;
+      console.log(`active family`);
+      getFamilyMembers(activeFamily._id);
     } else {
       const {handleFamilyMembersVisites} = this.props.families;
       handleFamilyMembersVisites();
@@ -84,7 +88,9 @@ Models.propTypes = {
   }),
   families: PropTypes.shape({
     handleFamilyMembersVisites: PropTypes.func,
-    activeFamilyModel: PropTypes.object
+    activeFamilyModel: PropTypes.object,
+    getFamilyMembers: PropTypes.func,
+    activeFamily: PropTypes.object
   }),
   notes: PropTypes.shape({
     getNotes: PropTypes.func,

@@ -120,8 +120,6 @@ class Families  {
 
   @action handleFamilyInfo = (id, showInfo = true) => {
 
-    console.log(`handle family info`);
-
     this.activeFamily = {};
     this.isLoading = `info`;
     this.infoMessage = {};
@@ -129,8 +127,6 @@ class Families  {
     this.findActiveFamily(id);
 
     if (isEmpty(this.showInfo)) {
-
-      console.log(`do it`);
 
       this.getFamilyMembers(id);
 
@@ -168,17 +164,12 @@ class Families  {
 
     } else {
 
-      console.log(`tis leeg`);
-
       this.activeFamily = {};
       this.showInfo = ``;
     }
   }
 
   findActiveFamily = id => {
-
-    console.log(`find active family`);
-    console.log(this.allFamilies);
 
     this.activeFamily = filter(this.allFamilies, family => {
       return family._id === id;
@@ -192,8 +183,6 @@ class Families  {
 
   @action handleFamilySession = familyId => {
 
-    console.log(`handle family session`);
-    console.log(familyId);
     this.isLoading = `session`;
 
     this.generateSessionId();
@@ -204,8 +193,6 @@ class Families  {
   }
 
   generateSessionId = () => {
-
-    console.log(`generate session id`);
 
     const sessionId = toString(Math.floor(1000 + Math.random() * 9000));
 

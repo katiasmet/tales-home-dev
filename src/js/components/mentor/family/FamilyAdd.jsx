@@ -39,7 +39,7 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
 
           <FormInput
             id='family-form-origins'
-            label='Which country does this family come from?'
+            label='Where is this family originally from?'
             name='origins'
             value={fields.origins.value}
             error={fields.origins.error}

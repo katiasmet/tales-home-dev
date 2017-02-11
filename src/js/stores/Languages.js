@@ -100,9 +100,6 @@ class Languages  {
 
   @action handleFamilyLanguages = languages => {
 
-    console.log(`handle family languages`);
-    console.log(languages);
-
     const familyLanguages = [];
 
     languages.forEach(language => {

@@ -1182,8 +1182,8 @@ STARTSESSION POP-UP
 
   position: absolute;
   z-index: 10;
-  top: 240px;
-  top: 15rem;
+  top: 160px;
+  top: 10rem;
   left: 0;
   right: 0;
   margin: auto;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="0.5" /></filter></svg>#filter');
@@ -1350,7 +1350,7 @@ MODELSOVERVIEW
 
 .page-models::after, .page-model::after, .page-family::after, .page-new-family-member::after, .page-edit-family-member::after{
 
-  width: 150vw;
+  width: 150%;
 
   height: 50vh;
 
@@ -2304,7 +2304,39 @@ MODELSOVERVIEW
 
   -webkit-transition: all .3s ease-in;
 
-  transition: all .3s ease-in
+  transition: all .3s ease-in;
+
+  position: relative;
+
+}
+
+.model-languages .language .fa-check {
+
+  position: absolute;
+
+  top: -8px;
+
+  top: -.5rem;
+
+  right: -8px;
+
+  right: -.5rem;
+
+  background: #6e2bc8;
+
+  border-radius: 1rem;
+
+  padding: 3.2px;
+
+  padding: .2rem;
+
+  font-size: 22.4px;
+
+  font-size: 1.4rem;
+
+  -webkit-transition: all .3s ease-in;
+
+  transition: all .3s ease-in;
 
 }
 
@@ -2325,6 +2357,13 @@ MODELSOVERVIEW
       .model-languages .language.family.active{
 
   background: #6e2bc8;
+
+}
+
+.model-languages .language.active .fa-check,
+    .model-languages .language:hover .fa-check{
+
+  background: #5427aa;
 
 }
 /* languages */

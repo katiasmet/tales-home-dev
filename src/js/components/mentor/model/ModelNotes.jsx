@@ -48,8 +48,6 @@ const renderConfirmation = (handleSubmit, handleConfirmation) => {
 
 const renderActions = handleConfirmation => {
 
-  console.log(`render actions`);
-
   return (
     <footer className='footer'>
       <button type='button' onClick={() => handleConfirmation(`close model`)} className='btn btn-stop'>stop <i className='fa fa-sign-out'></i></button>

@@ -2,8 +2,6 @@ import React, {PropTypes} from 'react';
 
 const FamilyMemberAddCharacters = ({handleChange, value}) => {
 
-  console.log((value === `kiki`));
-
   return (
     <section className='form-characters'>
       <h3 className='label'>Choose your character *</h3>

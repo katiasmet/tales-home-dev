@@ -36,6 +36,13 @@ class FormAddFamilyMember extends Form {
     redirect: false
   });
 
+  @action handleEmptyValues = () => {
+    this.form.fields.firstName.value = ``;
+    this.form.fields.languages.value = ``;
+    this.form.fields.character.value = `kiki`;
+    this.form.fields.role.value = `child`;
+  }
+
 
   @action handleSubmit = e => {
     e.preventDefault();

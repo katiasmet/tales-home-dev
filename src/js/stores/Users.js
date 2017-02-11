@@ -13,11 +13,13 @@ class Users  {
   @observable totalFamilyMembers = 0;
 
   @action handleUsers = users => {
+
     this.allUsers = users;
     this.handleSessionStarted();
     this.handleCurrentModel();
+    this.handleCurrentLanguage();
     this.handleFamilyLogOut();
-    this.handleFamilyMembers();
+
   }
 
   handleSessionStarted = () => {
@@ -31,22 +33,28 @@ class Users  {
   handleCurrentModel = () => {
     this.allUsers.forEach(user => {
       if (user.socketId === this.currentSocketId) { /* PRO-SIDE */
-        if (user.modelId) this.currentModelId = user.modelId;
+
+        if (user.modelId) {
+          this.currentModelId = user.modelId;
+          console.log(user.modelInfo);
+        }
         if (user.modelInfo) models.draggableCharacters = user.modelInfo;
       } else if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
+
+        if (user.modelInfo) {
+          models.draggableCharacters = user.modelInfo;
+          console.log(user.modelInfo);
+        }
         if (user.modelId) models.getModel(user.modelId);
         else models.handleCleanModel();
       }
     });
   }
 
-  handleFamilyMembers = () => {
-    console.log(`handle family members user`);
-    console.log(this.totalFamilyMembers);
+  handleCurrentLanguage = () => {
     this.allUsers.forEach(user => {
-      if (user.socketId === this.currentSocketId) {
-        console.log(user.familyMembers);
-        this.totalFamilyMembers = user.familyMembers;
+      if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
+        if (user.currentLanguage) models.currentLanguage = user.currentLanguage;
       }
     });
   }
@@ -61,10 +69,6 @@ class Users  {
       logout();
       window.location.href = `/`;
     }
-
-    /*if (token.content().scope === `professional` && !family) {
-      window.location.href = `/`;
-    }*/
 
   }
 
