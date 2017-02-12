@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, isEmpty} from 'lodash';
+import {find, isEmpty} from 'lodash';
 
 import {selectByProfessional, insert, update} from '../api/results';
 import {token} from '../auth';
@@ -19,7 +19,7 @@ class Results  {
   @action getResults = () => {
     selectByProfessional({professionalId: token.content().sub})
       .then(results => {
-        this.allResults = results;
+        this.allResults = results.results;
       })
       .catch(err => {
         this.handleError(err);
@@ -29,9 +29,9 @@ class Results  {
   @action getResult = () => {
 
     if (this.allResults.length > 0) {
-      const result = filter(this.allResults, result => {
+      const result = find(this.allResults, result => {
         return result.familyModelId === Families.activeFamilyModel._id;
-      })[0][0];
+      });
 
       if (result) {
         this.activeResult = result._id;
@@ -47,11 +47,19 @@ class Results  {
 
     if (isEmpty(this.activeResult)) {
       insert({familyModelId: Families.activeFamilyModel._id, result: Models.currentResult})
+        .then(result => {
+          this.allResults.push(result);
+        })
         .catch(error => {
           this.handleError(error.message);
         });
     } else {
       update({result: Models.currentResult}, this.activeResult)
+        .then(result => {
+          this.allResults.forEach(availableResult => {
+            if (availableResult._id === result._id) availableResult = result;
+          });
+        })
         .catch(error => {
           this.handleError(error.message);
         });

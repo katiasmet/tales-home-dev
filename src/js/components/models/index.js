@@ -1,5 +1,5 @@
-export ModelModel1 from './ModelModel1';
-export ModelModel3 from './ModelModel3';
+export ModelLearning from './ModelLearning';
+export ModelSituationDiscussion from './ModelSituationDiscussion';
 
 export ModelDistance from './ModelDistance';
 export ModelDistanceScene from './ModelDistanceScene';

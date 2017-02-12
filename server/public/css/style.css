@@ -1416,7 +1416,7 @@ MODELSOVERVIEW
 
   position: relative;
 
-  z-index: 1;
+  z-index: 2;
 
 }
 
@@ -3113,6 +3113,20 @@ MODELSOVERVIEW
   width: calc(100% - 40rem);
 }
 
+.active-notes .model-distance-background {
+  width: calc(100% - 40rem);
+}
+
+.active-notes .model-distance-background .car {right: 80px;right: 5rem;
+}
+
+.active-notes .model-distance-background .cloud-right {right: 320px;right: 20rem;
+}
+
+.active-notes .model-distance-background .sun,
+  .active-notes .model-distance-background .airplane {right: 560px;right: 35rem;
+}
+
 .timeline-scene {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3130,7 +3144,8 @@ MODELSOVERVIEW
   color: #00afa2;
   position: relative;
   width: 320px;
-  width: 20rem
+  width: 20rem;
+  z-index: 1
 }
 
 .flag::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;left: 0;right: 0;bottom: 0;margin: auto;width: 50%;height: 12.8px;height: .8rem;border-radius: 50%;background: black;opacity: .05;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');-webkit-filter: blur(2px);filter: blur(2px);

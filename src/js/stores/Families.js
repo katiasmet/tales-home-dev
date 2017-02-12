@@ -222,7 +222,7 @@ class Families  {
 
   }
 
-  @action handleCloseSession = () => { //happens when you close the session
+  @action handleCloseSession = () => { //happens when you close the session popup
     this.sessionId = ``;
     FormAddFamily.startSession = ``;
     this.socket.emit(`stopSession`, Users.currentSocketId);
@@ -248,6 +248,7 @@ class Families  {
           this.isLoading = ``;
           Notes.getNote();
           Results.getResult();
+
         } else {
 
           insert({familyId: this.activeFamily._id, modelId: id})

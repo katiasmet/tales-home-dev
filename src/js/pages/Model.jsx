@@ -7,7 +7,7 @@ import {Header, Loading} from '../components/';
 import {token} from '../auth';
 import {ModelNotes} from '../components/mentor/model';
 
-import {ModelDistance, ModelModel1, ModelModel3} from '../components/models';
+import {ModelDistance, ModelLearning, ModelSituationDiscussion} from '../components/models';
 
 @inject(`families`, `notes`, `models`) @observer
 
@@ -19,10 +19,10 @@ class Model extends Component {
     switch (model) {
     case `Distance`:
       return <ModelDistance />;
-    case `Model1`:
-      return <ModelModel1 />;
-    case `Model3`:
-      return <ModelModel3 />;
+    case `Learning`:
+      return <ModelLearning />;
+    case `SituationDiscussion`:
+      return <ModelSituationDiscussion />;
     }
   }
 

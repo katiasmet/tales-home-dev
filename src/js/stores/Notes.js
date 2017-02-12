@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, isEmpty} from 'lodash';
+import {find, isEmpty} from 'lodash';
 import io from 'socket.io-client';
 
 import {selectByProfessional, insert, update} from '../api/notes';
@@ -28,7 +28,7 @@ class Notes  {
     this.isLoadingNotes = true;
     selectByProfessional({professionalId: token.content().sub})
       .then(notes => {
-        this.allNotes = notes;
+        this.allNotes = notes.notes;
         this.isLoadingNotes = false;
       })
       .catch(err => {
@@ -40,16 +40,25 @@ class Notes  {
 
     this.isLoadingNotes = true;
 
+    console.log(`get note`);
+
+    console.log(this.allNotes);
+    console.log(Families.activeFamilyModel._id);
+
     if (this.allNotes.length > 0) {
-      const note = filter(this.allNotes, note => {
+      const note = find(this.allNotes, note => {
         return note.familyModelId === Families.activeFamilyModel._id;
-      })[0][0];
+      });
+
+      console.log(note);
 
       if (note) {
         this.activeNote = note._id;
         this.notesInput = note.notes;
       }
     }
+
+    console.log(this.activeNote);
 
     this.isLoadingNotes = false;
 
@@ -69,8 +78,9 @@ class Notes  {
       console.log(this.notesInput);
 
       insert({familyModelId: Families.activeFamilyModel._id, notes: this.notesInput})
-        .then(() => {
+        .then(note => {
           this.redirect = true;
+          this.allNotes.push(note);
         })
         .catch(error => {
           this.handleError(error.message);
@@ -78,7 +88,10 @@ class Notes  {
     } else {
 
       update({notes: this.notesInput}, this.activeNote)
-        .then(() => {
+        .then(note => {
+          this.allNotes.forEach(availableNote => {
+            if (availableNote._id === note._id) availableNote = note;
+          });
           this.redirect = true;
         })
         .catch(error => {

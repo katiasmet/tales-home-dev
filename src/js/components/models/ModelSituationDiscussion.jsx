@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModelModel3 = () => {
+const ModelSituationDiscussion = () => {
   return (
     <section>
       model 3
@@ -8,4 +8,4 @@ const ModelModel3 = () => {
   );
 };
 
-export default ModelModel3;
+export default ModelSituationDiscussion;

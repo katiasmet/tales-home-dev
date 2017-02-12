@@ -22,6 +22,23 @@ $blue: #26e2e9;
   width: calc(100% - 40rem);
 }
 
+.active-notes .model-distance-background {
+  width: calc(100% - 40rem);
+
+  .car {
+    right: 5rem;
+  }
+
+  .cloud-right {
+    right: 20rem;
+  }
+
+  .sun,
+  .airplane {
+    right: 35rem;
+  }
+}
+
 .timeline-scene {
   display: flex;
   align-items: flex-end;
@@ -35,6 +52,7 @@ $blue: #26e2e9;
   color: $darkblue;
   position: relative;
   width: 20rem;
+  z-index: 1;
 
   &::after {
     @add-mixin before-after;
