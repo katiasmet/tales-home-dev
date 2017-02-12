@@ -1,6 +1,6 @@
 import {observable, action} from 'mobx';
 import io from 'socket.io-client';
-import {orderBy, filter, startsWith, isEmpty, toUpper, uniq, includes, toString} from 'lodash';
+import {orderBy, filter, find, startsWith, isEmpty, toUpper, uniq, includes, toString} from 'lodash';
 
 import {selectByProfessional, remove as removeFamily} from '../api/families';
 import {selectByFamily as selectFamilyMembers, remove as removeFamilyMembers} from '../api/familymembers';
@@ -172,9 +172,9 @@ class Families  {
 
   findActiveFamily = id => {
 
-    this.activeFamily = filter(this.allFamilies, family => {
+    this.activeFamily = find(this.allFamilies, family => {
       return family._id === id;
-    })[0];
+    });
 
   };
 

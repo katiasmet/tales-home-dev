@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, isEmpty} from 'lodash';
+import {find, isEmpty} from 'lodash';
 
 import Form from './Form';
 import {select, update} from '../api/familymembers';
@@ -64,9 +64,9 @@ class FormEditFamilyMember extends Form {
         });
     } else {
 
-      this.activeMember = filter(activeFamily.familymembers, familymember => {
+      this.activeMember = find(activeFamily.familymembers, familymember => {
         return familymember._id === id;
-      })[0];
+      });
 
       this.setValues();
 

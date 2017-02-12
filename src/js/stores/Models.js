@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, kebabCase, uniq} from 'lodash';
+import {find, kebabCase, uniq} from 'lodash';
 import io from 'socket.io-client';
 
 import {select} from '../api/models';
@@ -56,9 +56,9 @@ class Models  {
 
   @action handleModelPreview = id => {
     this.modelPreview = {};
-    this.modelPreview = filter(this.allModels, o => {
+    this.modelPreview = find(this.allModels, o => {
       return o._id === id;
-    })[0];
+    });
   }
 
   handlePassedModels = () => {
@@ -82,9 +82,9 @@ class Models  {
   }
 
   @action handleIsPassed = id => {
-    const model = filter(this.passedModels, model => {
+    const model = find(this.passedModels, model => {
       return model._id === id;
-    })[0];
+    });
 
     if (model) return true;
     return false;
@@ -202,9 +202,9 @@ class Models  {
   handleCurrentResult = i => {
     /* save the old results */
 
-    const result = filter(this.currentResult, result => {
+    const result = find(this.currentResult, result => {
       return result.language === this.familyLanguages[i];
-    })[0];
+    });
 
     if (result) { //update
       this.currentResult.forEach(result => {
@@ -225,14 +225,14 @@ class Models  {
 
   handleResetCharacters = i => {
 
-    const result = filter(this.currentResult, result => {
+    const result = find(this.currentResult, result => {
       return result.language === this.familyLanguages[i];
     });
 
-    if (result.length > 0) {
+    if (result) {
       console.log(`language in results`);
-      this.draggableCharacters = result[0].results;
-    } else if (result.length === 0) {
+      this.draggableCharacters = result.results;
+    } else {
       console.log(`language not in results`);
       console.log(this.draggableCharacters);
       this.draggableCharacters.forEach(character => {
