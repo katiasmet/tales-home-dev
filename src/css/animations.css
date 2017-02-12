@@ -113,3 +113,41 @@
   }
 
 }
+
+@keyframes shine {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: .5;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1rem);
+  }
+}
+
+@keyframes float-shadow {
+
+  0%,
+  100% {
+    transform: scaleX(1) translateY(0);
+  }
+
+  50% {
+    transform: scaleX(.7) translateY(1rem);
+  }
+}

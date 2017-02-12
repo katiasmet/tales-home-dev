@@ -44,7 +44,7 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
             value={fields.origins.value}
             error={fields.origins.error}
             onChange={handleChange}
-            placeholder='f.e. Greece'
+            placeholder='f.e. Greece - Poland'
             required={false} />
 
           <FormInput

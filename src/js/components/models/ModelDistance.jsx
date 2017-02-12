@@ -5,6 +5,7 @@ import {isEmpty} from 'lodash';
 import {token} from '../../auth';
 import {ModelDistanceScene, ModelDistanceTimeline} from './';
 import {Loading} from '../';
+import {ModelDistanceBg} from '../illustrations';
 
 @inject(`models`, `languages`) @observer
 class ModelDistance extends Component {
@@ -57,15 +58,7 @@ class ModelDistance extends Component {
     return (
       <section className='model-distance'>
 
-        <section className='model-distance-background'>
-          <div className='airplane'></div>
-          <div className='sun'></div>
-          <div className='cloud cloud-left'></div>
-          <div className='cloud cloud-right'></div>
-          <div className='truck'></div>
-          <div className='car'></div>
-          <div className='street-signs'></div>
-        </section>
+        <ModelDistanceBg />
 
         {
           !isLoadingDistance && this.renderLanguages()

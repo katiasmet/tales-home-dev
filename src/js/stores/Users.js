@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter} from 'lodash';
+import {filter, find} from 'lodash';
 
 import {token, logout} from '../auth';
 import Models from './Models';
@@ -53,9 +53,9 @@ class Users  {
 
   handleFamilyLogOut = () => {
 
-    const family = filter(this.allUsers, user => {
+    const family = find(this.allUsers, user => {
       return user.familyId === token.content().sub;
-    })[0];
+    });
 
     if (token.content().scope === `family` && !family) {
       logout();

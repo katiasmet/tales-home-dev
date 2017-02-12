@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, capitalize, toUpper, includes} from 'lodash';
+import {filter, find, capitalize, toUpper, includes} from 'lodash';
 
 import {select} from '../api/Languages';
 import FormAddFamilyMember from './FormAddFamilyMember';
@@ -52,9 +52,9 @@ class Languages  {
     e.preventDefault();
 
     this.selectedLanguages.push(
-      filter(this.allLanguages, language => {
+      find(this.allLanguages, language => {
         if (language.nativeName === e.currentTarget.innerHTML) return language;
-      })[0]
+      })
     );
 
     this.handleChangeLanguagesInput();
@@ -103,9 +103,9 @@ class Languages  {
     const familyLanguages = [];
 
     languages.forEach(language => {
-      const familyLanguage = filter(this.allLanguages, availableLanguage => {
+      const familyLanguage = find(this.allLanguages, availableLanguage => {
         return availableLanguage.name === language;
-      })[0];
+      });
 
       if (familyLanguage) familyLanguages.push(familyLanguage.nativeName);
     });
