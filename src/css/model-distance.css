@@ -16,94 +16,7 @@ $blue: #26e2e9;
   padding: 0 3rem;
 }
 
-.model-distance-background {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  .airplane,
-  .cloud,
-  .truck,
-  .car,
-  .street-signs,
-  .sun {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .sun {
-    width: 10rem;
-    height: 10rem;
-    left: 42rem;
-    top: 15rem;
-
-    border-radius: 50%;
-
-    &::before {
-      @add-mixin before-after;
-      width: 110%;
-      height: 110%;
-      border-radius: 50%;
-      background: #35d8de;
-      top: -1rem;
-      left: -1rem;
-    }
-
-    &::after { /* to prevent z index issues and for animation */
-      @add-mixin before-after;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #90f0f3;
-    }
-  }
-
-  .airplane {
-    width: 5vw;
-    top: 27vh;
-    left: 58vw;
-  }
-
-  .truck {
-    left: 12vw;
-    top: auto;
-    bottom: 35vh;
-    width: 35vw;
-  }
-
-  .car {
-    left: auto;
-    right: 21vw;
-    top: auto;
-    bottom: 33vh;
-    width: 16.5vw;
-  }
-
-  .cloud-left {
-    top: 25vh;
-    left: 29vw;
-    width: 13rem;
-  }
-
-  .cloud-right {
-    left: auto;
-    right: 38vw;
-    top: 17vh;
-    width: 19rem;
-  }
-
-  .street-signs {
-    left: 46vw;
-    top: auto;
-    bottom: 40vh;
-    width: 45vw;
-  }
-}
+/* BACKGROUND SEE ILLUSTRATIONS */
 
 .active-notes .model-distance {
   width: calc(100% - 40rem);
@@ -122,6 +35,21 @@ $blue: #26e2e9;
   color: $darkblue;
   position: relative;
   width: 20rem;
+
+  &::after {
+    @add-mixin before-after;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 50%;
+    height: .8rem;
+    border-radius: 50%;
+    background: black;
+    opacity: .05;
+    filter: blur(2px);
+  }
 }
 
 .flag-flag {
@@ -138,7 +66,7 @@ $blue: #26e2e9;
   z-index: 1;
   font-weight: 500;
   text-align: center;
-  top: 5rem;
+  top: 5.5rem;
   left: 2.5rem;
   bottom: 0;
   right: 0;

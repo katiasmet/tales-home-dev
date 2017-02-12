@@ -39,6 +39,26 @@ $grey: #515151;
     background: white;
   }
 
+  .btn-handle-session .btn {
+    position: relative;
+
+    &::after,
+    &::before {
+      @add-mixin before-after;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: .1rem solid white;
+      filter: blur(.5px);
+
+      animation: radar 2s ease-in infinite;
+    }
+
+    &::after {
+      animation-delay: .5s;
+    }
+  }
+
   .btn-add-member {
     @add-mixin flex-center;
     color: white;
@@ -110,6 +130,7 @@ $grey: #515151;
 
   .action {
     margin-top: 1rem;
+    margin-left: 0;
     background: white;
     color: $bluenav;
   }
@@ -118,6 +139,8 @@ $grey: #515151;
     position: relative;
     display: block;
     margin-bottom: 1.5rem;
+
+    animation: float 2s ease-in infinite;
 
     &::after {
       @add-mixin before-after;
@@ -129,6 +152,8 @@ $grey: #515151;
       background: black;
       opacity: .05;
       filter: blur(2px);
+
+      animation: float-shadow 2s ease-in infinite;
     }
   }
 

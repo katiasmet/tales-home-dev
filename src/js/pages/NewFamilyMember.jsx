@@ -4,6 +4,7 @@ import {isEmpty} from 'lodash';
 
 import {Header} from '../components/';
 import {FamilyMemberAdd} from '../components/family/';
+import {FamilyBg} from '../components/illustrations';
 
 @inject(`languages`, `formAddFamilyMember`)
 @observer
@@ -28,9 +29,12 @@ class NewFamilyMember extends Component {
 
     return (
       <div className='page page-new-family-member'>
+        <FamilyBg />
+
         <Header pathname={pathname} />
 
         <main>
+          <FamilyBg />
           <FamilyMemberAdd edit={false} />
         </main>
       </div>

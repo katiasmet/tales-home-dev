@@ -16,4 +16,9 @@ export Car from './Car';
 export RoadSigns from './RoadSigns';
 export Truck from './Truck';
 
+export Bench from './Bench';
+export Tree from './Tree';
+export House from './House';
+
 export ModelDistanceBg from './ModelDistanceBg';
+export FamilyBg from './FamilyBg';

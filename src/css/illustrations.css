@@ -1,3 +1,179 @@
+.model-distance-background,
+.family-background {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 1;
+
+  /* width in rem, positioning in vw */
+
+  .airplane,
+  .cloud,
+  .truck,
+  .car,
+  .street-signs,
+  .sun,
+  .house,
+  .tree,
+  .bench {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .sun {
+    width: 10rem;
+    height: 10rem;
+    left: auto;
+    right: 50vw;
+    top: 11vh;
+
+    border-radius: 50%;
+
+    &::before {
+      @add-mixin before-after;
+      width: 115%;
+      height: 115%;
+      border-radius: 50%;
+      background: #35d8de;
+      top: -1rem;
+      left: -1rem;
+      animation: shine 1.5s ease-in infinite;
+    }
+
+    &::after { /* to prevent z index issues and for animation */
+      @add-mixin before-after;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #90f0f3;
+    }
+  }
+
+  .airplane {
+    width: 5rem;
+    top: 23vh;
+    left: auto;
+    right: 50vw;
+  }
+
+  .truck {
+    left: 10vw;
+    top: auto;
+    bottom: 34vh;
+    width: 42rem;
+
+    &::after {
+      @add-mixin before-after;
+      top: auto;
+      left: -15%;
+      bottom: 0;
+      width: 130%;
+      height: .8rem;
+      border-radius: 50%;
+      background: black;
+      opacity: .05;
+      filter: blur(2px);
+    }
+  }
+
+  .car {
+    left: auto;
+    right: 21vw;
+    top: auto;
+    bottom: 35vh;
+    width: 25rem;
+
+    &::after {
+      @add-mixin before-after;
+      top: auto;
+      left: -15%;
+      bottom: 0;
+      width: 130%;
+      height: .8rem;
+      border-radius: 50%;
+      background: black;
+      opacity: .05;
+      filter: blur(2px);
+    }
+  }
+
+  .cloud-left {
+    top: 25vh;
+    left: 29vw;
+    width: 13rem;
+  }
+
+  .cloud-right {
+    left: auto;
+    right: 40vw;
+    top: 15vh;
+    width: 19rem;
+  }
+
+  .street-signs {
+    left: 40vw;
+    top: auto;
+    bottom: 40vh;
+    width: 35rem;
+  }
+
+  .house {
+    top: auto;
+    left: 17vw;
+    bottom: 35vh;
+    width: 20rem;
+
+    &::after {
+      @add-mixin before-after;
+      top: auto;
+      left: -15%;
+      bottom: 0;
+      width: 130%;
+      height: .8rem;
+      border-radius: 50%;
+      background: black;
+      opacity: .05;
+      filter: blur(2px);
+    }
+  }
+
+  .bench {
+    top: auto;
+    left: auto;
+    right: 24vw;
+    bottom: 32vh;
+    width: 20rem;
+
+    &::after {
+      @add-mixin before-after;
+      top: auto;
+      left: -25%;
+      bottom: 0;
+      width: 150%;
+      height: .8rem;
+      border-radius: 50%;
+      background: black;
+      opacity: .05;
+      filter: blur(2px);
+    }
+  }
+
+  .tree {
+    top: auto;
+    left: auto;
+    right: 16vw;
+    bottom: 35vh;
+    width: 30rem;
+  }
+}
+
+/* SVG ILLUSTRATIONS */
 .chris-illustration {
 
   .st0,
@@ -699,5 +875,58 @@
 
   .st4 {
     fill: #00e2ea;
+  }
+}
+
+.bench-illustration {
+
+  .st0 {
+    fill: #1db0b6;
+  }
+
+  .st1 {
+    fill: #21c5cb;
+  }
+
+  .st2 {
+    fill: #24d8df;
+  }
+}
+
+.house-illustration {
+
+  .st0 {
+    fill: #24d8df;
+  }
+
+  .st1 {
+    fill: #21c5cb;
+  }
+
+  .st2 {
+    fill: #00e2ea;
+  }
+
+  .st3 {
+    fill: #00c9d0;
+  }
+
+  .st4 {
+    fill: #1db0b6;
+  }
+}
+
+.tree-illustration {
+
+  .st0 {
+    fill: #21c5cb;
+  }
+
+  .st1 {
+    fill: #24d8df;
+  }
+
+  .st2 {
+    fill: #56e7eb;
   }
 }

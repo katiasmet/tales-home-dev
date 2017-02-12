@@ -32,7 +32,6 @@ const ModelPreview = inject(`models`)(observer(({models}) => {
 }));
 
 const renderPreviewBackground = image => {
-  console.log(image);
   switch (image) {
   case `model-distance`:
     return (
@@ -45,11 +44,11 @@ const renderPreviewBackground = image => {
     );
   case `model-discussion`:
     return (
-        <img src='./assets/img/model_distance_previewimg.png' alt='Distance Model Preview' ></img>
+        <img src={`assets/img/models/${image}.png`} alt={image} ></img>
     );
   case `model-learning`:
     return (
-        <img src='./assets/img/model_distance_previewimg.png' alt='Distance Model Preview' ></img>
+        <img src={`assets/img/models/${image}.png`} alt={image} ></img>
     );
   }
 };

@@ -56,7 +56,7 @@ MODELSOVERVIEW
 
   &::after {
     width: 150%;
-    height: 50vh;
+    height: 40vh;
     top: auto;
     left: -25vw;
     bottom: 0;
@@ -64,6 +64,7 @@ MODELSOVERVIEW
     opacity: .05;
     border-radius: 45% / 50%;
     filter: blur(5px);
+    z-index: 0;
   }
 
   header,
@@ -83,6 +84,7 @@ MODELSOVERVIEW
 .models {
   @add-mixin flex-center;
   flex-direction: column;
+  justify-content: flex-start;
   color: white;
   text-align: center;
   width: 100%;
@@ -97,6 +99,11 @@ MODELSOVERVIEW
   p {
     max-width: 70rem;
   }
+}
+
+.models-navigation {
+  position: relative;
+  z-index: 5;
 }
 
 .model-nav-item {
@@ -242,7 +249,7 @@ MODELSOVERVIEW
 }
 
 .show-grid {
-  transform: translateY(-85vh);
+  transform: translateY(-90vh);
 
   .btn-show-grid {
     background: url(../assets/img/btn_close_grid.png) no-repeat center bottom;
@@ -567,7 +574,74 @@ MODELSOVERVIEW
 
 .preview-background {
 
+  height: 40vh;
+  position: relative;
+
+  margin-top: 7vh;
+  margin-bottom: 5vh;
+
+  .model-distance-background {
+    position: relative;
+    height: 100%;
+
+    .truck {
+      left: 7vw;
+      bottom: 5vh;
+      width: 30rem;
+    }
+
+    .airplane {
+      top: 6vh;
+      right: 20vw;
+    }
+
+    .car {
+      right: 5vw;
+      bottom: 5vh;
+      width: 15rem;
+    }
+
+    .sun {
+      width: 6rem;
+      height: 6rem;
+
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+
+      &::before {
+        top: -.5rem;
+        left: -.5rem;
+      }
+    }
+
+    .cloud-left {
+      left: 13vw;
+      top: 6vh;
+      width: 9rem;
+    }
+
+    .cloud-right {
+      right: 15vw;
+      top: 1vh;
+      width: 13rem;
+    }
+
+    .street-signs {
+      width: 30rem;
+      bottom: 6vh;
+      left: 30rem;
+    }
+  }
+
   .flag {
     width: 10rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
   }
 }

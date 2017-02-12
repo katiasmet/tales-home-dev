@@ -5,6 +5,7 @@ import {isEmpty} from 'lodash';
 
 import {Header, Loading} from '../components/';
 import {FamilyMembers} from '../components/family';
+import {FamilyBg} from '../components/illustrations';
 import {content} from '../auth/token';
 
 //familieside
@@ -29,9 +30,12 @@ class Family extends Component {
 
     return (
       <div className='page page-family'>
+        <FamilyBg />
+
         <Header pathname={pathname} />
 
         <main>
+
           {
             (isLoading === `familymembers`) ? (<Loading />)
             : <FamilyMembers />
