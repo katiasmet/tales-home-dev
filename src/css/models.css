@@ -590,6 +590,17 @@ MODELSOVERVIEW
       width: 30rem;
     }
 
+    .smoke-truck {
+      left: 7vw;
+      bottom: 13vh;
+    }
+
+    .smoke-car {
+      left: auto;
+      right: 15vw;
+      bottom: 12vh;
+    }
+
     .airplane {
       top: 6vh;
       right: 20vw;

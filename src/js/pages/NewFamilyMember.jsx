@@ -34,7 +34,6 @@ class NewFamilyMember extends Component {
         <Header pathname={pathname} />
 
         <main>
-          <FamilyBg />
           <FamilyMemberAdd edit={false} />
         </main>
       </div>

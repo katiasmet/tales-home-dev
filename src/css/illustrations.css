@@ -20,7 +20,8 @@
   .sun,
   .house,
   .tree,
-  .bench {
+  .bench,
+  .smoke {
     position: absolute;
     top: 0;
     left: 0;
@@ -183,6 +184,100 @@
     bottom: 35vh;
     width: 30rem;
   }
+
+  .smoke {
+
+    top: auto;
+    left: 19vw;
+    bottom: 61vh;
+
+    .smoke-cloud {
+      display: block;
+      position: absolute;
+      height: 4rem;
+      width: 4rem;
+      background: rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .smoke-cloud-1,
+    .smoke-cloud-3,
+    .smoke-cloud-5,
+    .smoke-cloud-7,
+    .smoke-cloud-9 {
+      animation: smoketopleft 10s ease-in 0s infinite;
+    }
+
+    .smoke-cloud-2,
+    .smoke-cloud-4,
+    .smoke-cloud-6,
+    .smoke-cloud-8 {
+      animation: smoketopright 10s ease-in 1s infinite;
+    }
+  }
+
+  .smoke-truck,
+  .smoke-car {
+
+    top: auto;
+    left: 10vw;
+    bottom: 44vh;
+    z-index: -1;
+
+    .smoke-cloud-1,
+    .smoke-cloud-3,
+    .smoke-cloud-5,
+    .smoke-cloud-7,
+    .smoke-cloud-9 {
+      animation: smokeleft 10s ease-in 0s infinite;
+    }
+
+    .smoke-cloud-2,
+    .smoke-cloud-4,
+    .smoke-cloud-6,
+    .smoke-cloud-8 {
+      animation: smokeright 10s ease-in 1s infinite;
+    }
+  }
+
+  .smoke-car {
+    left: auto;
+    right: 38vw;
+  }
+
+  .smoke .smoke-cloud-2 {
+    animation-delay: 1s;
+  }
+
+  .smoke .smoke-cloud-3 {
+    animation-delay: 2s;
+  }
+
+  .smoke .smoke-cloud-4 {
+    animation-delay: 3s;
+  }
+
+  .smoke .smoke-cloud-5 {
+    animation-delay: 4s;
+  }
+
+  .smoke .smoke-cloud-6 {
+    animation-delay: 5s;
+  }
+
+  .smoke .smoke-cloud-7 {
+    animation-delay: 6s;
+  }
+
+  .smoke .smoke-cloud-8 {
+    animation-delay: 7s;
+  }
+
+  .smoke .smoke-cloud-9 {
+    animation-delay: 8s;
+  }
+
 }
 
 /* SVG ILLUSTRATIONS */
@@ -931,6 +1026,11 @@
 }
 
 .tree-illustration {
+
+  .crown {
+    transform-origin: center bottom;
+    animation: wave 3s linear infinite;
+  }
 
   .st0 {
     fill: #21c5cb;

@@ -355,7 +355,7 @@ STARTSESSION POP-UP
 
   position: absolute;
   z-index: 10;
-  top: 8rem;
+  top: 7rem;
   left: 0;
   right: 0;
   margin: auto;
@@ -395,9 +395,9 @@ STARTSESSION POP-UP
     background-color: $purple;
     border-radius: 1rem;
     color: white;
-    padding: 1.5rem 3rem;
+    padding: 2rem 3rem;
     margin-bottom: 4rem;
-    font-size: 2rem;
+    font-size: 3rem;
     letter-spacing: .5rem;
   }
 
