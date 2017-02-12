@@ -416,13 +416,16 @@ STARTSESSION POP-UP
 
   .tablet-illustration {
     width: 10rem;
+    transform-origin: center center;
+    animation: shake 4s ease-in 2s infinite;
   }
 
   .dots {
     @add-mixin flex-center;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    z-index: -1;
     position: relative;
-    transform: translateX(-7rem);
+    transform: translateX(-7.5rem);
   }
 
   .dot {
@@ -465,35 +468,35 @@ STARTSESSION POP-UP
   }
 
   .dot-2 {
-    animation-delay: .15s;
+    animation-delay: .1s;
   }
 
   .dot-3 {
-    animation-delay: .3s;
+    animation-delay: .2s;
   }
 
   .dot-4 {
-    animation-delay: .45s;
+    animation-delay: .3s;
   }
 
   .dot-5 {
-    animation-delay: .6s;
+    animation-delay: .4s;
   }
 
   .dot-6 {
-    animation-delay: .75s;
+    animation-delay: .5s;
   }
 
   .dot-7 {
-    animation-delay: .9s;
+    animation-delay: .6s;
   }
 
   .dot-8 {
-    animation-delay: 1.05s;
+    animation-delay: .7s;
   }
 
   .dot-9 {
-    animation-delay: 1.2s;
+    animation-delay: .8s;
   }
 }
 
