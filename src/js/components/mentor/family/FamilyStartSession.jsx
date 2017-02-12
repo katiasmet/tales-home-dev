@@ -17,11 +17,15 @@ const StartSession = inject(`families`, `users`)(observer(({families, users}) =>
       <div className='session-illustration'>
         <Laptop />
         <ul className='dots'>
-          <li className='dot'></li>
-          <li className='dot'></li>
-          <li className='dot'></li>
-          <li className='dot'></li>
-          <li className='dot'></li>
+          <li className='dot dot-1'></li>
+          <li className='dot dot-2'></li>
+          <li className='dot dot-3'></li>
+          <li className='dot dot-4'></li>
+          <li className='dot dot-5'></li>
+          <li className='dot dot-6'></li>
+          <li className='dot dot-7'></li>
+          <li className='dot dot-8'></li>
+          <li className='dot dot-9'></li>
         </ul>
         <Tablet />
       </div>

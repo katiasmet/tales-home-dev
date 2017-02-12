@@ -60,6 +60,8 @@
     top: 23vh;
     left: auto;
     right: 50vw;
+
+    animation: flying 5s ease-in infinite;
   }
 
   .truck {
@@ -67,6 +69,9 @@
     top: auto;
     bottom: 34vh;
     width: 42rem;
+
+    transform-origin: bottom center;
+    animation: drive .5s ease-in infinite;
 
     &::after {
       @add-mixin before-after;
@@ -89,6 +94,9 @@
     bottom: 35vh;
     width: 25rem;
 
+    transform-origin: bottom center;
+    animation: drive .5s ease-in infinite;
+
     &::after {
       @add-mixin before-after;
       top: auto;
@@ -107,6 +115,8 @@
     top: 25vh;
     left: 29vw;
     width: 13rem;
+
+    animation: cloud-left 3s ease-in infinite;
   }
 
   .cloud-right {
@@ -114,6 +124,8 @@
     right: 40vw;
     top: 15vh;
     width: 19rem;
+
+    animation: cloud-right 3.5s ease-in infinite;
   }
 
   .street-signs {
@@ -772,6 +784,7 @@
 
   .st0 {
     fill: #90f0f3;
+    animation: cloud-left-back 3s ease-in infinite;
   }
 
   .st1 {
@@ -783,6 +796,7 @@
 
   .st0 {
     fill: #90f0f3;
+    animation: cloud-right-back 3.5s ease-in infinite;
   }
 
   .st1 {
