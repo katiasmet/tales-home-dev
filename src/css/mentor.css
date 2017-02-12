@@ -5,6 +5,7 @@ $lightpurple: ghostwhite;
 $midpurple: #dfd4f9; /* used on form focus */
 
 $grey: #515151;
+$lightgrey: #cfccc5;
 
 $lightblue: #dbe8fe;
 $blue: #26e2e9;
@@ -349,12 +350,12 @@ STARTSESSION POP-UP
   flex-direction: column;
   background-color: white;
   padding: 2rem;
-  border-radius: 10px;
-  max-width: 40rem;
+  border-radius: 1rem;
+  max-width: 50rem;
 
   position: absolute;
   z-index: 10;
-  top: 10rem;
+  top: 8rem;
   left: 0;
   right: 0;
   margin: auto;
@@ -398,6 +399,54 @@ STARTSESSION POP-UP
     margin-bottom: 4rem;
     font-size: 2rem;
     letter-spacing: .5rem;
+  }
+
+  .session-illustration {
+    @add-mixin flex-center;
+    justify-content: space-between;
+    margin-top: -6rem;
+    margin-bottom: 4rem;
+    padding: 0 4rem;
+    width: 100%;
+  }
+
+  .laptop-illustration {
+    width: 20rem;
+  }
+
+  .tablet-illustration {
+    width: 10rem;
+  }
+
+  .dots {
+    @add-mixin flex-center;
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
+
+  .dot {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: $lightgrey;
+    display: block;
+    border-radius: 50%;
+    margin: .5rem;
+
+    &:nth-child(2) {
+      transform: scale(.8);
+    }
+
+    &:nth-child(3) {
+      transform: scale(.6);
+    }
+
+    &:nth-child(4) {
+      transform: scale(.4);
+    }
+
+    &:nth-child(5) {
+      transform: scale(.2);
+    }
   }
 }
 

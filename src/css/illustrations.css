@@ -930,3 +930,49 @@
     fill: #56e7eb;
   }
 }
+
+.tablet-illustration {
+
+  .st0 {
+    fill: #faf9f3;
+  }
+
+  .st1 {
+    fill: #37e2e8;
+  }
+
+  .st2 {
+    fill: #a39f95;
+  }
+
+  .st3 {
+    fill: #5299ff;
+  }
+
+  .st4 {
+    fill: white;
+  }
+}
+
+.laptop-illustration {
+
+  .st0 {
+    fill: #dbe8fe;
+  }
+
+  .st1 {
+    fill: #5427aa;
+  }
+
+  .st2 {
+    fill: #cddff9;
+  }
+
+  .st3 {
+    fill: #eaeaea;
+  }
+
+  .st4 {
+    fill: #9b9b9b;
+  }
+}
