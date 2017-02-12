@@ -20,5 +20,8 @@ export Bench from './Bench';
 export Tree from './Tree';
 export House from './House';
 
+export Laptop from './Laptop';
+export Tablet from './Tablet';
+
 export ModelDistanceBg from './ModelDistanceBg';
 export FamilyBg from './FamilyBg';

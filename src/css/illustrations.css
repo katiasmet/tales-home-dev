@@ -60,6 +60,8 @@
     top: 23vh;
     left: auto;
     right: 50vw;
+
+    animation: flying 5s ease-in infinite;
   }
 
   .truck {
@@ -67,6 +69,9 @@
     top: auto;
     bottom: 34vh;
     width: 42rem;
+
+    transform-origin: bottom center;
+    animation: drive .5s ease-in infinite;
 
     &::after {
       @add-mixin before-after;
@@ -89,6 +94,9 @@
     bottom: 35vh;
     width: 25rem;
 
+    transform-origin: bottom center;
+    animation: drive .5s ease-in infinite;
+
     &::after {
       @add-mixin before-after;
       top: auto;
@@ -107,6 +115,8 @@
     top: 25vh;
     left: 29vw;
     width: 13rem;
+
+    animation: cloud-left 3s ease-in infinite;
   }
 
   .cloud-right {
@@ -114,6 +124,8 @@
     right: 40vw;
     top: 15vh;
     width: 19rem;
+
+    animation: cloud-right 3.5s ease-in infinite;
   }
 
   .street-signs {
@@ -772,6 +784,7 @@
 
   .st0 {
     fill: #90f0f3;
+    animation: cloud-left-back 3s ease-in infinite;
   }
 
   .st1 {
@@ -783,6 +796,7 @@
 
   .st0 {
     fill: #90f0f3;
+    animation: cloud-right-back 3.5s ease-in infinite;
   }
 
   .st1 {
@@ -928,5 +942,51 @@
 
   .st2 {
     fill: #56e7eb;
+  }
+}
+
+.tablet-illustration {
+
+  .st0 {
+    fill: #faf9f3;
+  }
+
+  .st1 {
+    fill: #37e2e8;
+  }
+
+  .st2 {
+    fill: #a39f95;
+  }
+
+  .st3 {
+    fill: #5299ff;
+  }
+
+  .st4 {
+    fill: white;
+  }
+}
+
+.laptop-illustration {
+
+  .st0 {
+    fill: #dbe8fe;
+  }
+
+  .st1 {
+    fill: #5427aa;
+  }
+
+  .st2 {
+    fill: #cddff9;
+  }
+
+  .st3 {
+    fill: #eaeaea;
+  }
+
+  .st4 {
+    fill: #9b9b9b;
   }
 }

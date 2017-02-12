@@ -204,6 +204,10 @@ $grey: #515151;
   main {
     min-height: calc(100vh - 8rem);
   }
+
+  .family-background {
+    z-index: -1;
+  }
 }
 
 .form-add-family-member,

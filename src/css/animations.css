@@ -151,3 +151,90 @@
     transform: scaleX(.7) translateY(1rem);
   }
 }
+
+@keyframes cloud-left {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-2rem);
+  }
+}
+
+@keyframes cloud-left-back {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(.25rem);
+  }
+}
+
+@keyframes cloud-right {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3rem);
+  }
+}
+
+@keyframes cloud-right-back {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-.5rem);
+  }
+}
+
+@keyframes drive {
+
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.02);
+  }
+}
+
+@keyframes flying {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+
+  50% {
+    transform: translate(1rem, -1rem) rotate(20deg);
+  }
+}
+
+@keyframes dotconnection {
+
+  0%,
+  15%,
+  85%,
+  100% {
+    transform: translateX(0);
+  }
+
+  35%,
+  65% {
+    transform: translateX(11rem);
+  }
+}
