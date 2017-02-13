@@ -61,8 +61,6 @@
     top: 23vh;
     left: auto;
     right: 50vw;
-
-    animation: flying 5s ease-in infinite;
   }
 
   .truck {

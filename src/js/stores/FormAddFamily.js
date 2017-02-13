@@ -10,7 +10,7 @@ class FormAddFamily extends Form {
       name: {
         value: ``,
         error: ``,
-        rule: `required|min:3`
+        rule: `required|min:2`
       },
       origins: {
         value: ``,

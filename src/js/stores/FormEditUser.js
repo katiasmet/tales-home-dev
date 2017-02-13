@@ -11,7 +11,7 @@ class FormEditUser extends Form {
       name: {
         value: content().name,
         error: ``,
-        rule: `required|min:3`
+        rule: `required|min:2`
       },
       email: {
         value: content().email,

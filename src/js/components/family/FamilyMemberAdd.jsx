@@ -22,6 +22,10 @@ class FamilyMemberAdd extends Component {
 
       <section className='form form-add-family-member'>
 
+        <Link to='/family' className='btn btn-close'>
+          <i className='fa fa-close'></i>
+        </Link>
+
         {
           redirect && <Redirect to={`/family`} />
         }
@@ -58,9 +62,6 @@ class FamilyMemberAdd extends Component {
             {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
             <div className='form-actions'>
-                <Link to='/family' className='btn'>
-                  <i className='fa fa-close'></i>
-                </Link>
                 <button type='submit' className='btn'><i className='fa fa-save'></i></button>
             </div>
 

@@ -88,6 +88,32 @@ $grey: #515151;
   }
 }
 
+.members-added {
+
+  .btn-add-member {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
+    margin-left: 10rem;
+
+    &::after,
+    &::before {
+      opacity: 0;
+      animation: none;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      opacity: 1;
+      animation: radar 2s ease-in infinite;
+    }
+
+    &:hover::after {
+      animation-delay: .5s;
+    }
+  }
+}
+
 /*
   FAMILY OVERVIEW
 */
@@ -109,6 +135,7 @@ $grey: #515151;
 
 .family-members {
   margin-bottom: 5rem;
+  padding-left: 15rem;
 
   &.no-members {
     margin-bottom: auto;
@@ -239,6 +266,35 @@ $grey: #515151;
 
   &::after {
     background: $blue;
+  }
+
+  .btn-close {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
+
+    align-self: flex-end;
+    margin: -4rem 0 4rem 0;
+    transform: translateX(41.5rem);
+
+    &:hover {
+      animation: none;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      @add-mixin before-after;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: .1rem solid $purple;
+
+      animation: radar 2s ease-in infinite;
+    }
+
+    &:hover::after {
+      animation-delay: .5s;
+    }
   }
 }
 
@@ -530,9 +586,9 @@ $grey: #515151;
   .btn {
     background: $bluenav;
     color: white;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.6rem;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.8rem;
     position: initial;
   }
 

@@ -1210,16 +1210,16 @@ header {
 }
 
 .logo {
-  height: 30px;
-  width: 69px;
-  padding: 40px;
+  height: 25.6px;
+  height: 1.6rem;
+  width: 144px;
+  width: 9rem;
+  padding: 64px;
+  padding: 4rem;
   padding: 40px;
   padding: 2.5rem;
-  margin-left: 40px;
-  margin-left: 40px;
-  margin-left: 2.5rem;
-  background-image: url(/assets/logo_talesathome.png);
-  background-repeat: no-repeat;
+  background-image: url(/assets/logo_talesathome.png) no-repeat center center;
+  background-size: contain;
 }
 
 nav,
@@ -2186,15 +2186,15 @@ MODELSOVERVIEW
 }
 
 .model-nav-item {
-  width: 24px;
-  width: 1.5rem;
-  height: 24px;
-  height: 1.5rem;
-  border-radius: 2rem;
+  width: 32px;
+  width: 2rem;
+  height: 32px;
+  height: 2rem;
+  border-radius: 3rem;
   background: white;
   display: block;
-  margin: 16px;
-  margin: 1rem;
+  margin: 24px;
+  margin: 1.5rem;
   cursor: pointer;
   position: relative;
 }
@@ -2283,13 +2283,17 @@ MODELSOVERVIEW
 
 .model-nav-item.active{
 
-  width: 48px;
+  width: 80px;
 
-  width: 3rem;
+  width: 5rem;
 
-  height: 48px;
+  height: 80px;
 
-  height: 3rem;
+  height: 5rem;
+
+  margin: 32px;
+
+  margin: 2rem;
 
   position: relative;
 
@@ -2427,12 +2431,46 @@ MODELSOVERVIEW
 }
 
 .theme {
-  background-color: #90f0f3;
-  padding: 8px 16px;
+  /*background-color: $accentlightblue;
   padding: .5rem 1rem;
-  margin-left: 16px;
-  margin-left: 1rem;
-  border-radius: 1rem;
+  border-radius: 1rem;*/
+  margin: 0 24px;
+  margin: 0 1.5rem;
+  position: relative
+}
+
+.theme::after{
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  display: block;
+
+  content: '-';
+
+  width: 100%;
+
+  height: 100%;
+
+  left: auto;
+
+  right: -32px;
+
+  right: -2rem;
+
+  text-align: right;
+
+}
+
+.theme:last-child::after{
+
+  content: none;
+
 }
 
 .btn-show-grid {
@@ -3353,6 +3391,20 @@ MODELSOVERVIEW
 .page-family .btn-add-member::after, .page-new-family-member .btn-add-member::after, .page-edit-family-member .btn-add-member::after {-webkit-animation-delay: .5s;animation-delay: .5s;
 }
 
+.members-added .btn-add-member {width: 48px;width: 3rem;height: 48px;height: 3rem;font-size: 25.6px;font-size: 1.6rem;margin-left: 160px;margin-left: 10rem
+}
+
+.members-added .btn-add-member::after,
+    .members-added .btn-add-member::before {opacity: 0;-webkit-animation: none;animation: none;
+}
+
+.members-added .btn-add-member:hover::after,
+    .members-added .btn-add-member:hover::before {opacity: 1;-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+}
+
+.members-added .btn-add-member:hover::after {-webkit-animation-delay: .5s;animation-delay: .5s;
+}
+
 /*
   FAMILY OVERVIEW
 */
@@ -3375,7 +3427,9 @@ MODELSOVERVIEW
 
 .family-members {
   margin-bottom: 80px;
-  margin-bottom: 5rem
+  margin-bottom: 5rem;
+  padding-left: 240px;
+  padding-left: 15rem
 }
 
 .family-members.no-members {margin-bottom: auto;margin-top: auto;
@@ -3474,6 +3528,21 @@ MODELSOVERVIEW
 }
 
 .form-add-family-member .btn:hover, .form-edit-family-member .btn:hover {background: #6e2bc8;color: white;-webkit-animation: hover .3s ease-in;animation: hover .3s ease-in;
+}
+
+.form-add-family-member .btn-close, .form-edit-family-member .btn-close {width: 48px;width: 3rem;height: 48px;height: 3rem;font-size: 25.6px;font-size: 1.6rem;-ms-flex-item-align: end;align-self: flex-end;margin: -64px 0 64px 0;margin: -4rem 0 4rem 0;-webkit-transform: translateX(41.5rem);transform: translateX(41.5rem)
+}
+
+.form-add-family-member .btn-close:hover, .form-edit-family-member .btn-close:hover {-webkit-animation: none;animation: none;
+}
+
+.form-add-family-member .btn-close:hover::after,
+    .form-add-family-member .btn-close:hover::before,
+    .form-edit-family-member .btn-close:hover::after,
+    .form-edit-family-member .btn-close:hover::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 50%;border: 1.6px solid #6e2bc8;border: .1rem solid #6e2bc8;-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+}
+
+.form-add-family-member .btn-close:hover::after, .form-edit-family-member .btn-close:hover::after {-webkit-animation-delay: .5s;animation-delay: .5s;
 }
 
 .form-add-family-member::after, .form-edit-family-member::after {background: #00e2ea;
@@ -3717,7 +3786,7 @@ MODELSOVERVIEW
 .form-add-family-member .form-languages h3 {margin-bottom: 0;
 }
 
-.form-add-family-member .form-languages .btn {background: #21c5cb;color: white;width: 48px;width: 3rem;height: 48px;height: 3rem;font-size: 25.6px;font-size: 1.6rem;position: static;position: initial;
+.form-add-family-member .form-languages .btn {background: #21c5cb;color: white;width: 64px;width: 4rem;height: 64px;height: 4rem;font-size: 28.8px;font-size: 1.8rem;position: static;position: initial;
 }
 
 .form-add-family-member .form-languages .languages {max-height: 320px;max-height: 20rem;width: calc(100% + 6rem);margin-left: -48px;margin-left: -3rem;border-radius: 2rem;margin-top: 16px;margin-top: 1rem;border: 16px solid white;border: 1rem solid white;overflow: scroll
@@ -3769,7 +3838,7 @@ MODELSOVERVIEW
   padding: 0 3rem;
 }
 
-.model-distance .btn-onboarding {position: relative;cursor: pointer;-webkit-animation: none;animation: none;z-index: 2
+.model-distance .btn-onboarding {position: relative;cursor: pointer;-webkit-animation: none;animation: none;z-index: 2;font-size: 48px;font-size: 3rem
 }
 
 .model-distance .btn-onboarding::after,
@@ -3820,7 +3889,7 @@ MODELSOVERVIEW
   z-index: 1
 }
 
-.flag::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;left: 0;right: 0;bottom: 0;margin: auto;width: 50%;height: 12.8px;height: .8rem;border-radius: 50%;background: black;opacity: .05;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');-webkit-filter: blur(2px);filter: blur(2px);
+.flag::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;left: -30%;right: 0;bottom: 0;margin: auto;width: 50%;height: 12.8px;height: .8rem;border-radius: 50%;background: black;opacity: .05;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');-webkit-filter: blur(2px);filter: blur(2px);
 }
 
 .flag-flag {
@@ -4071,8 +4140,6 @@ MODELSOVERVIEW
   top: 23vh;
   left: auto;
   right: 50vw;
-  -webkit-animation: flying 5s ease-in infinite;
-  animation: flying 5s ease-in infinite;
 
 }
 .model-distance-background .truck, .family-background .truck {

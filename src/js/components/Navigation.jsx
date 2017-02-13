@@ -73,20 +73,13 @@ class Navigation extends Component {
 
     const {pathname} = this.props;
 
-    if (includes(pathname, `models`) || includes(pathname, `member`)) {
+    if (includes(pathname, `models`)) {
       return (
         <ul className='navigation'>
           <NavigationItem link='/family' icon='fa-users' pathname={pathname} />
         </ul>
       );
-    } else {
-      return (
-        <ul className='navigation'>
-          <NavigationItem link='/newfamilymember' icon='fa-plus' pathname={pathname} />
-        </ul>
-      );
     }
-
   }
 
   setActive(link, pathname) {

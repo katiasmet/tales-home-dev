@@ -21,6 +21,7 @@ $purple: #6e2bc8;
     cursor: pointer;
     animation: none;
     z-index: 2;
+    font-size: 3rem;
 
     &::after,
     &::before {
@@ -81,7 +82,7 @@ $purple: #6e2bc8;
   &::after {
     @add-mixin before-after;
     top: auto;
-    left: 0;
+    left: -30%;
     right: 0;
     bottom: 0;
     margin: auto;

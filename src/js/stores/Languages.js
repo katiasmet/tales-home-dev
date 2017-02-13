@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import {filter, find, capitalize, toUpper, includes} from 'lodash';
+import {filter, find, capitalize, toUpper, includes, orderBy} from 'lodash';
 
 import {select} from '../api/Languages';
 import FormAddFamilyMember from './FormAddFamilyMember';
@@ -23,7 +23,7 @@ class Languages  {
 
     select()
     .then(languages => {
-      this.handleCapitalizeLanguages(languages);
+      this.handleLanguages(languages);
       this.isLoading = false;
     }).catch(err => {
       this.handleError(err);
@@ -35,12 +35,13 @@ class Languages  {
     this.error = error;
   }
 
-  handleCapitalizeLanguages = languages => {
+  handleLanguages = languages => {
     languages.forEach(language => {
       language.name = capitalize(language.name);
+      language.nativeName = capitalize(language.nativeName);
     });
 
-    this.allLanguages = languages;
+    this.allLanguages = orderBy(languages, [`nativeName`], [`asc`]);
     this.availableLanguages = this.allLanguages;
   }
 

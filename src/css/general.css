@@ -237,14 +237,12 @@ header {
 }
 
 .logo {
-  height: 30px;
-  width: 69px;
-  padding: 40px;
+  height: 1.6rem;
+  width: 9rem;
+  padding: 4rem;
   padding: 2.5rem;
-  margin-left: 40px;
-  margin-left: 2.5rem;
-  background-image: url(/assets/logo_talesathome.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/logo_talesathome.png) no-repeat center center;
+  background-size: contain;
 }
 
 nav,

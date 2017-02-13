@@ -12,7 +12,7 @@ class FormAddFamilyMember extends Form {
       firstName: {
         value: ``,
         error: ``,
-        rule: `required|min:3`
+        rule: `required|min:2`
       },
       languages: {
         value: ``,

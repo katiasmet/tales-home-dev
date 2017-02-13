@@ -22,7 +22,7 @@ class FormEditFamilyMember extends Form {
       firstName: {
         value: ``,
         error: ``,
-        rule: `min:3`
+        rule: `min:2`
       },
       languages: {
         value: [],
