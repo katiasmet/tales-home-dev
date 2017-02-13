@@ -349,11 +349,11 @@
 
   0%,
   100% {
-    transform: translateX(20vw);
+    transform: translateX(20rem);
   }
 
   50% {
-    transform: translateX(60vw);
+    transform: translateX(40rem);
   }
 
 }

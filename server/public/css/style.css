@@ -885,13 +885,13 @@ input:-webkit-autofill {
 
   0%,
   100% {
-    -webkit-transform: translateX(20vw);
-            transform: translateX(20vw);
+    -webkit-transform: translateX(20rem);
+            transform: translateX(20rem);
   }
 
   50% {
-    -webkit-transform: translateX(60vw);
-            transform: translateX(60vw);
+    -webkit-transform: translateX(40rem);
+            transform: translateX(40rem);
   }
 
 }
@@ -900,13 +900,13 @@ input:-webkit-autofill {
 
   0%,
   100% {
-    -webkit-transform: translateX(20vw);
-            transform: translateX(20vw);
+    -webkit-transform: translateX(20rem);
+            transform: translateX(20rem);
   }
 
   50% {
-    -webkit-transform: translateX(60vw);
-            transform: translateX(60vw);
+    -webkit-transform: translateX(40rem);
+            transform: translateX(40rem);
   }
 
 }
@@ -2284,10 +2284,6 @@ MODELSOVERVIEW
 
   margin: 2rem;
 
-  font-size: 32px;
-
-  font-size: 2rem;
-
   position: relative;
 
 }
@@ -2381,9 +2377,9 @@ MODELSOVERVIEW
 
   height: 100%;
 
-  font-size: 25.6px;
+  font-size: 32px;
 
-  font-size: 1.6rem;
+  font-size: 2rem;
 
   position: relative;
 
@@ -3840,7 +3836,7 @@ MODELSOVERVIEW
   padding: 0 3rem;
 }
 
-.model-distance .btn-onboarding {position: relative;cursor: pointer;-webkit-animation: none;animation: none;z-index: 2;font-size: 48px;font-size: 3rem
+.model-distance .btn-onboarding {position: relative;cursor: pointer;-webkit-animation: none;animation: none;z-index: 2;font-size: 32px;font-size: 2rem;font-weight: 300;-webkit-transition: all .3s ease-in;transition: all .3s ease-in;width: 80px;width: 5rem;height: 80px;height: 5rem
 }
 
 .model-distance .btn-onboarding::after,
@@ -3848,6 +3844,11 @@ MODELSOVERVIEW
 }
 
 .model-distance .btn-onboarding::after {-webkit-animation-delay: .5s;animation-delay: .5s;
+}
+
+.onboarding-done .btn-onboarding {
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 /* BACKGROUND SEE ILLUSTRATIONS */
@@ -4032,7 +4033,7 @@ MODELSOVERVIEW
 .timeline-character .member-bullet {width: 32px;width: 2rem;height: 32px;height: 2rem;border: 4.8px solid white;border: .3rem solid white;background: #26e2e9;display: block;margin: auto;margin-bottom: 16px;margin-bottom: 1rem;border-radius: 2rem;-webkit-transform: translateY(1rem);transform: translateY(1rem);
 }
 
-.timeline-character .member-name {-webkit-transform: translateY(2rem);transform: translateY(2rem);
+.timeline-character .member-name {-webkit-transform: translateY(1rem);transform: translateY(1rem);display: block;
 }
 
 .onboarding .drag-character {-webkit-animation: onboarding-distance 5s ease-in 3s infinite backwards;animation: onboarding-distance 5s ease-in 3s infinite backwards;
@@ -4047,7 +4048,7 @@ MODELSOVERVIEW
 .onboarding .timeline-character {-webkit-animation: onboarding-distance 5s ease-in 3s infinite backwards;animation: onboarding-distance 5s ease-in 3s infinite backwards;
 }
 
-.onboarding .onboarding-hand {position: absolute;z-index: 2;bottom: 240px;bottom: 15rem;left: calc(3rem + 20vw);
+.onboarding .onboarding-hand {position: absolute;z-index: 2;bottom: 240px;bottom: 15rem;left: 368px;left: 23rem;font-size: 80px;font-size: 5rem;text-align: center;
 }
 
 .onboarding .onboarding-hand .fa {-webkit-animation: onboarding-hand 3s ease-in forwards;animation: onboarding-hand 3s ease-in forwards;

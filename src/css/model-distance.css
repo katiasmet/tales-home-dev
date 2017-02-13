@@ -21,7 +21,12 @@ $purple: #6e2bc8;
     cursor: pointer;
     animation: none;
     z-index: 2;
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: 300;
+    transition: all .3s ease-in;
+
+    width: 6rem;
+    height: 6rem;
 
     &::after,
     &::before {
@@ -39,6 +44,10 @@ $purple: #6e2bc8;
       animation-delay: .5s;
     }
   }
+}
+
+.onboarding-done .btn-onboarding {
+  transform: scale(0);
 }
 
 /* BACKGROUND SEE ILLUSTRATIONS */
@@ -253,7 +262,8 @@ $purple: #6e2bc8;
   }
 
   .member-name {
-    transform: translateY(2rem);
+    transform: translateY(1rem);
+    display: block;
   }
 }
 
@@ -279,7 +289,9 @@ $purple: #6e2bc8;
     position: absolute;
     z-index: 2;
     bottom: 15rem;
-    left: calc(3rem + 20vw);
+    left: calc(3rem + 20rem);
+    font-size: 5rem;
+    text-align: center;
 
     .fa {
       animation: onboarding-hand 3s ease-in forwards;

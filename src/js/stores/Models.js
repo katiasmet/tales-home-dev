@@ -21,6 +21,7 @@ class Models  {
   /* distance */
   @observable isLoadingDistance = true;
   @observable onboarding = true;
+  @observable onboardingTimer = 5;
   @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
@@ -252,8 +253,8 @@ class Models  {
     return passed;
   }
 
-  @action handleOnboarding = () => {
-    this.onboarding = !this.onboarding;
+  handleOnboarding = () => {
+    this.onboarding = false;
 
     if (token.content().scope === `professional`) {
       this.socket.emit(`handleOnboarding`, Users.currentSocketId, `professional`, this.onboarding);
@@ -263,6 +264,21 @@ class Models  {
       this.socket.emit(`handleModel`, token.content().sub, `family`, this.draggableCharacters);
     }
 
+  }
+
+  @action handleOnboardingTimer = () => {
+    this.timer = window.setInterval(this.handleCount, 2000);
+  }
+
+  handleCount = () => {
+    console.log(`handle count`);
+    this.onboardingTimer--;
+
+    if (this.onboardingTimer === 0) {
+      this.handleOnboarding();
+      console.log(this.onboarding);
+      clearInterval(this.timer);
+    }
   }
 
 

@@ -53,10 +53,8 @@ class Users  {
   }
 
   handleOnboarding = () => {
-    console.log(`handle onboarding of users`);
     this.allUsers.forEach(user => {
       if (user.socketId === this.currentSocketId || (token.content().scope === `family` && user.familyId === token.content().sub)) {
-        console.log(`its a match`);
         Models.onboarding = user.onboarding;
       }
     });

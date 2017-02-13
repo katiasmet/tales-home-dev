@@ -45,8 +45,10 @@ class ModelDistanceCharacter extends Component {
     const {onboarding, handleMoveCharacter, handleDragCharacter, handleEndMoveCharacter} = this.props.models;
     const {_id, name, left} = this.props;
 
+    console.log(left);
+
     let transform = `translateX(${left}rem)`;
-    if (onboarding) transform = `translateX(20vw)`;
+    if (onboarding) transform = `translateX(20rem)`;
 
     const style = {
       transform,

@@ -5,7 +5,12 @@ import {ModelDistanceTimelineCharacter} from './';
 
 const ModelDistanceTimeline = inject(`models`)(observer(({models}) => {
 
-  const {familyLanguages, currentLanguage, draggableCharacters, onboarding} = models;
+  const {currentLanguage, onboarding} = models;
+  let {familyLanguages, draggableCharacters} = models;
+  if (onboarding) {
+    familyLanguages = [`English`];
+    draggableCharacters = [draggableCharacters[0]];
+  }
 
   return (
     <ul className='timeline'>
