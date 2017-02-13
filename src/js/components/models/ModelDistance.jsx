@@ -53,24 +53,28 @@ class ModelDistance extends Component {
 
   render() {
 
-    const {isLoadingDistance} = this.props.models;
+    const {isLoadingDistance, onboarding, handleOnboarding} = this.props.models;
 
     return (
-      <section className='model-distance'>
+      <section className={onboarding ? `model-distance onboarding` : `model-distance`}>
 
         <ModelDistanceBg />
 
         {
-          !isLoadingDistance && this.renderLanguages()
+          (!isLoadingDistance && !onboarding) && this.renderLanguages()
         }
 
         {
           isLoadingDistance ? <Loading />
-          : <ModelDistanceScene />
+        : <ModelDistanceScene />
         }
 
         {
           !isLoadingDistance && <ModelDistanceTimeline />
+        }
+
+        {
+          (!isLoadingDistance && onboarding) && <button className='btn btn-onboarding' onClick={handleOnboarding}><i className='fa fa-play'></i></button>
         }
 
       </section>
@@ -88,7 +92,9 @@ ModelDistance.propTypes = {
     draggableCharacters: PropTypes.array,
     isLoadingDistance: PropTypes.bool,
     handleNextLanguage: PropTypes.func,
-    handleIsPassedLanguage: PropTypes.func
+    handleIsPassedLanguage: PropTypes.func,
+    onboarding: PropTypes.bool,
+    handleOnboarding: PropTypes.func
   }),
   languages: PropTypes.shape({
     allLanguages: PropTypes.array,

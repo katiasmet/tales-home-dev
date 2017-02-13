@@ -344,3 +344,51 @@
     opacity: 0;
   }
 }
+
+@keyframes onboarding-distance {
+
+  0%,
+  100% {
+    transform: translateX(20vw);
+  }
+
+  30% {
+    transform: translateX(60vw);
+  }
+
+  60% {
+    transform: translateX(40vw);
+  }
+
+  80% {
+    transform: translateX(90vw);
+  }
+}
+
+@keyframes onboarding-hand {
+
+  0%, 20%, 40% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+
+  10%, 30% {
+    transform: translate(0, 1rem) rotate(0);
+    opacity: 1;
+  }
+
+  50%, 70% {
+    transform: translate(1rem, 0) rotate(-90deg);
+    opacity: 1;
+  }
+
+  60%, 80% {
+    transform: translate(0, 0) rotate(-90deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 0;
+  }
+}

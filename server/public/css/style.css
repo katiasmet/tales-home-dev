@@ -869,6 +869,120 @@ html {
     opacity: 0;
   }
 }
+
+@-webkit-keyframes onboarding-distance {
+
+  0%,
+  100% {
+    -webkit-transform: translateX(20vw);
+            transform: translateX(20vw);
+  }
+
+  30% {
+    -webkit-transform: translateX(60vw);
+            transform: translateX(60vw);
+  }
+
+  60% {
+    -webkit-transform: translateX(40vw);
+            transform: translateX(40vw);
+  }
+
+  80% {
+    -webkit-transform: translateX(90vw);
+            transform: translateX(90vw);
+  }
+}
+
+@keyframes onboarding-distance {
+
+  0%,
+  100% {
+    -webkit-transform: translateX(20vw);
+            transform: translateX(20vw);
+  }
+
+  30% {
+    -webkit-transform: translateX(60vw);
+            transform: translateX(60vw);
+  }
+
+  60% {
+    -webkit-transform: translateX(40vw);
+            transform: translateX(40vw);
+  }
+
+  80% {
+    -webkit-transform: translateX(90vw);
+            transform: translateX(90vw);
+  }
+}
+
+@-webkit-keyframes onboarding-hand {
+
+  0%, 20%, 40% {
+    -webkit-transform: translate(0, 0) rotate(0);
+            transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+
+  10%, 30% {
+    -webkit-transform: translate(0, 1rem) rotate(0);
+            transform: translate(0, 1rem) rotate(0);
+    opacity: 1;
+  }
+
+  50%, 70% {
+    -webkit-transform: translate(1rem, 0) rotate(-90deg);
+            transform: translate(1rem, 0) rotate(-90deg);
+    opacity: 1;
+  }
+
+  60%, 80% {
+    -webkit-transform: translate(0, 0) rotate(-90deg);
+            transform: translate(0, 0) rotate(-90deg);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translate(0, 0) rotate(0);
+            transform: translate(0, 0) rotate(0);
+    opacity: 0;
+  }
+}
+
+@keyframes onboarding-hand {
+
+  0%, 20%, 40% {
+    -webkit-transform: translate(0, 0) rotate(0);
+            transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+
+  10%, 30% {
+    -webkit-transform: translate(0, 1rem) rotate(0);
+            transform: translate(0, 1rem) rotate(0);
+    opacity: 1;
+  }
+
+  50%, 70% {
+    -webkit-transform: translate(1rem, 0) rotate(-90deg);
+            transform: translate(1rem, 0) rotate(-90deg);
+    opacity: 1;
+  }
+
+  60%, 80% {
+    -webkit-transform: translate(0, 0) rotate(-90deg);
+            transform: translate(0, 0) rotate(-90deg);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translate(0, 0) rotate(0);
+            transform: translate(0, 0) rotate(0);
+    opacity: 0;
+  }
+}
 /* for text */ /* for bg */ /* used on form focus */ /* languages */ /* themes */
 
 /* MIXINS */
@@ -3655,6 +3769,16 @@ MODELSOVERVIEW
   padding: 0 3rem;
 }
 
+.model-distance .btn-onboarding {position: relative;cursor: pointer;-webkit-animation: none;animation: none;z-index: 2
+}
+
+.model-distance .btn-onboarding::after,
+    .model-distance .btn-onboarding::before {content: '';position: absolute;top: 0;left: 0;display: block;width: 100%;height: 100%;border-radius: 50%;border: 1.6px solid #6e2bc8;border: .1rem solid #6e2bc8;z-index: 0;-webkit-animation: radar 2s ease-in infinite;animation: radar 2s ease-in infinite;
+}
+
+.model-distance .btn-onboarding::after {-webkit-animation-delay: .5s;animation-delay: .5s;
+}
+
 /* BACKGROUND SEE ILLUSTRATIONS */
 
 .active-notes .model-distance {
@@ -3701,8 +3825,6 @@ MODELSOVERVIEW
 
 .flag-flag {
   fill: white;
-
-
 }
 
 .flag-stick {
@@ -3748,6 +3870,10 @@ MODELSOVERVIEW
   height: 100%;
   -webkit-transform-origin: center center;
           transform-origin: center center;
+
+  -webkit-animation: float 2s ease-in infinite;
+
+          animation: float 2s ease-in infinite;
 }
 
 .timeline-scene .drag-character svg {display: block;cursor: move;
@@ -3836,6 +3962,24 @@ MODELSOVERVIEW
 }
 
 .timeline-character .member-name {-webkit-transform: translateY(2rem);transform: translateY(2rem);
+}
+
+.onboarding .drag-character {-webkit-animation: onboarding-distance 20s ease-in 3s infinite backwards;animation: onboarding-distance 20s ease-in 3s infinite backwards;
+}
+
+.onboarding .drag-character svg {-webkit-animation: float 2s ease-in infinite;animation: float 2s ease-in infinite;
+}
+
+.onboarding .drag-character::after {-webkit-animation: float-shadow 2s ease-in infinite;animation: float-shadow 2s ease-in infinite;
+}
+
+.onboarding .timeline-character {-webkit-animation: onboarding-distance 20s ease-in 3s infinite backwards;animation: onboarding-distance 20s ease-in 3s infinite backwards;
+}
+
+.onboarding .onboarding-hand {position: absolute;z-index: 2;bottom: 240px;bottom: 15rem;left: calc(3rem + 20vw);
+}
+
+.onboarding .onboarding-hand .fa {-webkit-animation: onboarding-hand 3s ease-in forwards;animation: onboarding-hand 3s ease-in forwards;
 }
 .model-distance-background,
 .family-background {
@@ -4102,7 +4246,7 @@ MODELSOVERVIEW
   height: 4rem;
   width: 64px;
   width: 4rem;
-  background: rgba(255, 255, 255, .3);
+  background: #90f0f3;
   border-radius: 50%;
   opacity: 0;
 

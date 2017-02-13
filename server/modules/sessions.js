@@ -14,6 +14,7 @@ module.exports.register = (server, options, next) => {
       professionalId: ``,
       familyId: ``,
       modelId: ``,
+      onboarding: true,
       currentLanguage: 0,
       modelInfo: [],
       isSessionStarted: ``
@@ -57,8 +58,10 @@ module.exports.register = (server, options, next) => {
       }
     });
 
-    socket.on(`handleModel`, (familyId, modelInfo) => {
-      const user = users.find(u => familyId === u.familyId);
+    socket.on(`handleModel`, (id, scope, modelInfo) => {
+      let user;
+      if (scope === `professional`) user = users.find(u => id === u.socketId);
+      else user = users.find(u => id === u.familyId);
       if (user) {
         user.modelInfo = modelInfo;
         socket.broadcast.emit(`recheck`, users);
@@ -77,6 +80,16 @@ module.exports.register = (server, options, next) => {
       const user = users.find(u => id === u.socketId);
       if (user) {
         user.currentLanguage = currentLanguage;
+        socket.broadcast.emit(`recheck`, users);
+      }
+    });
+
+    socket.on(`handleOnboarding`, (id, scope, onboarding) => {
+      let user;
+      if (scope === `professional`) user = users.find(u => id === u.socketId);
+      else user = users.find(u => id === u.familyId);
+      if (user) {
+        user.onboarding = onboarding;
         socket.broadcast.emit(`recheck`, users);
       }
     });

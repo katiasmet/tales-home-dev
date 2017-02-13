@@ -5,7 +5,10 @@ import {ModelDistanceCharacter} from './';
 import {Flag} from '../illustrations';
 
 const ModelDistanceScene = inject(`models`)(observer(({models}) => {
-  const {familyLanguages, currentLanguage, draggableCharacters} = models;
+  const {currentLanguage, draggableCharacters, onboarding} = models;
+  let {familyLanguages} = models;
+
+  if (onboarding) familyLanguages = [`English`];
 
   return (
     <section className='timeline-scene'>
@@ -14,6 +17,10 @@ const ModelDistanceScene = inject(`models`)(observer(({models}) => {
         <Flag />
         <span className='flag-language'>{familyLanguages[currentLanguage]}</span>
       </div>
+
+      {
+        onboarding && <div className='onboarding-hand'><i className='fa fa-hand-o-down'></i></div>
+      }
 
       {
         draggableCharacters.slice().map((character, i) => {
@@ -30,7 +37,8 @@ ModelDistanceScene.propTypes = {
     familyLanguages: PropTypes.array,
     currentLanguage: PropTypes.number,
     draggableCharacters: PropTypes.array,
-    handleMoveCharacter: PropTypes.func
+    handleMoveCharacter: PropTypes.func,
+    onboarding: PropTypes.bool
   }),
 };
 

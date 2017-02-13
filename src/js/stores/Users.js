@@ -18,6 +18,7 @@ class Users  {
     this.handleSessionStarted();
     this.handleCurrentModel();
     this.handleCurrentLanguage();
+    this.handleOnboarding();
     this.handleFamilyLogOut();
 
   }
@@ -47,6 +48,16 @@ class Users  {
     this.allUsers.forEach(user => {
       if (token.content().scope === `family` && user.familyId === token.content().sub) { /* FAMILY-SIDE */
         if (user.currentLanguage) Models.currentLanguage = user.currentLanguage;
+      }
+    });
+  }
+
+  handleOnboarding = () => {
+    console.log(`handle onboarding of users`);
+    this.allUsers.forEach(user => {
+      if (user.socketId === this.currentSocketId || (token.content().scope === `family` && user.familyId === token.content().sub)) {
+        console.log(`its a match`);
+        Models.onboarding = user.onboarding;
       }
     });
   }

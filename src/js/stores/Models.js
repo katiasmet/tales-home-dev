@@ -20,6 +20,7 @@ class Models  {
 
   /* distance */
   @observable isLoadingDistance = true;
+  @observable onboarding = true;
   @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
@@ -149,7 +150,6 @@ class Models  {
 
   @action handleMoveCharacter = (id, e) => {
     e.preventDefault();
-
     const xPos = e.touches[0].clientX;
 
     this.draggableCharacters.forEach(character => {
@@ -187,7 +187,7 @@ class Models  {
 
   @action handleEndMoveCharacter = e => {
     e.preventDefault();
-    this.socket.emit(`handleModel`, token.content().sub, this.draggableCharacters);
+    this.socket.emit(`handleModel`, token.content().sub, `family`, this.draggableCharacters);
   }
 
   @action handleNextLanguage = i => {
@@ -250,6 +250,19 @@ class Models  {
       if (result.language === language) passed = true;
     });
     return passed;
+  }
+
+  @action handleOnboarding = () => {
+    this.onboarding = !this.onboarding;
+
+    if (token.content().scope === `professional`) {
+      this.socket.emit(`handleOnboarding`, Users.currentSocketId, `professional`, this.onboarding);
+      this.socket.emit(`handleModel`, Users.currentSocketId, `professional`, this.draggableCharacters);
+    } else {
+      this.socket.emit(`handleOnboarding`, token.content().sub, `family`, this.onboarding);
+      this.socket.emit(`handleModel`, token.content().sub, `family`, this.draggableCharacters);
+    }
+
   }
 
 
