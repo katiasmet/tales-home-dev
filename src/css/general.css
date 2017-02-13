@@ -241,7 +241,7 @@ header {
   width: 9rem;
   padding: 4rem;
   padding: 2.5rem;
-  background-image: url(../assets/logo_talesathome.png) no-repeat center center;
+  background: url(../assets/logo_talesathome.png) no-repeat center center;
   background-size: contain;
 }
 
@@ -414,10 +414,6 @@ textarea {
     background: $lightpurple;
     z-index: 0;
   }
-}
-
-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
 input::placeholder {

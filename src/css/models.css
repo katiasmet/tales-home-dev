@@ -130,6 +130,7 @@ MODELSOVERVIEW
     width: 5rem;
     height: 5rem;
     margin: 2rem;
+    font-size: 2rem;
 
     position: relative;
 
@@ -195,7 +196,7 @@ MODELSOVERVIEW
 
     .model-name {
       opacity: 1;
-      transform: scaleX(1) translateY(3rem);
+      transform: scaleX(1) translateY(4rem);
     }
   }
 }

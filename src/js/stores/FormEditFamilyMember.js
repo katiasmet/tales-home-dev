@@ -44,8 +44,15 @@ class FormEditFamilyMember extends Form {
       isValid: true,
       error: ``
     },
-    redirect: false
+    redirect: ``
   });
+
+  submitButton = ``;
+  success = false;
+
+  @action handleSubmitButton = (e, button) => {
+    this.submitButton = button;
+  }
 
   @action getFamilyMember = id => {
 
@@ -97,7 +104,7 @@ class FormEditFamilyMember extends Form {
 
       update(familymember, this.activeMember._id)
         .then(() => {
-          this.form.redirect = true;
+          this.form.redirect = `families`;
         })
         .catch(error => {
           this.handleError(error.message);

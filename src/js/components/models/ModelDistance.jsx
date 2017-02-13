@@ -65,16 +65,16 @@ class ModelDistance extends Component {
         }
 
         {
+          (!isLoadingDistance && onboarding) && <button className='btn btn-onboarding' onClick={handleOnboarding}><i className='fa fa-play'></i></button>
+        }
+
+        {
           isLoadingDistance ? <Loading />
         : <ModelDistanceScene />
         }
 
         {
           !isLoadingDistance && <ModelDistanceTimeline />
-        }
-
-        {
-          (!isLoadingDistance && onboarding) && <button className='btn btn-onboarding' onClick={handleOnboarding}><i className='fa fa-play'></i></button>
         }
 
       </section>

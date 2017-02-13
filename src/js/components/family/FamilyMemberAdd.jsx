@@ -15,7 +15,8 @@ class FamilyMemberAdd extends Component {
     if (edit) this.formMember = this.props.formEditFamilyMember;
     else this.formMember = this.props.formAddFamilyMember;
 
-    const {form, handleChange, handleSubmit} = this.formMember;
+    const {form, handleChange, handleSubmit, success} = this.formMember;
+    const {handleSubmitButton} = this.formMember;
     const {fields, meta, redirect} = form;
 
     return (
@@ -27,12 +28,20 @@ class FamilyMemberAdd extends Component {
         </Link>
 
         {
-          redirect && <Redirect to={`/family`} />
+          (!isEmpty(redirect)) && <Redirect to={`/${redirect}`} />
         }
 
         {
           edit ? <h1>Edit a family member</h1>
           : <h1>Add a new family member</h1>
+        }
+
+        {
+          success && (
+            <section className='info info-success'>
+              <p>High five! You added a new family member. Let&#39;s add another one.</p>
+            </section>
+          )
         }
 
         <form
@@ -62,7 +71,10 @@ class FamilyMemberAdd extends Component {
             {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
             <div className='form-actions'>
-                <button type='submit' className='btn'><i className='fa fa-save'></i></button>
+                <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `save`)}><i className='fa fa-save'></i></button>
+                {
+                  (!edit) && <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `next`)}><i className='fa fa-plus'></i></button>
+                }
             </div>
 
           </fieldset>
@@ -78,6 +90,7 @@ FamilyMemberAdd.propTypes = {
   formAddFamilyMember: PropTypes.shape({
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    handleSubmitButton: PropTypes.func,
     form: PropTypes.shape({
       fields: PropTypes.objectOf(PropTypes.shape({
         value: PropTypes.any.isRequired,
@@ -102,7 +115,7 @@ FamilyMemberAdd.propTypes = {
         isValid: PropTypes.bool.isRequired,
         error: PropTypes.any
       }).isRequired,
-      redirect: PropTypes.bool
+      redirect: PropTypes.string
     })
   }),
   edit: PropTypes.bool

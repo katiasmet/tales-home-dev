@@ -146,6 +146,7 @@ $grey: #515151;
 .family-member {
   @add-mixin flex-center;
   flex-direction: column;
+  justify-content: flex-end;
   text-align: center;
 
   a {
@@ -165,7 +166,7 @@ $grey: #515151;
   .family-member-character {
     position: relative;
     display: block;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem;
 
     animation: float 2s ease-in infinite;
 
@@ -603,9 +604,9 @@ $grey: #515151;
 
     &::after {
       @add-mixin before-after;
-      top: 2rem;
+      top: 3rem;
       left: auto;
-      right: 0;
+      right: .5rem;
       border: solid transparent;
       height: 0;
       width: 0;
@@ -638,6 +639,17 @@ $grey: #515151;
     .form-input {
       display: inline-block;
       width: auto;
+    }
+
+    .fa-close {
+      margin-left: 1rem;
+      color: $bluenav;
+      cursor: pointer;
+      transition: all .3s ease-in;
+
+      &:hover {
+        opacity: .5;
+      }
     }
   }
 

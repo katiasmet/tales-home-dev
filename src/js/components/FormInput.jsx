@@ -7,7 +7,7 @@ const FormInput = ({id, label, type = `text`, name, value, error, onChange, plac
     <span className={isEmpty(error) ? `form-input` : `form-input form-error`}>
 
       {
-        label && <label htmlFor={id}>{label} {required && `*`}</label>
+        label && <label htmlFor={id}>{label} {!required && <span className='optional'>(optional)</span>}</label>
       }
 
       <input

@@ -84,6 +84,12 @@ class Languages  {
 
   }
 
+  @action handleRemove = nativeName => {
+    this.selectedLanguages = filter(this.selectedLanguages, language => {
+      return language.nativeName !== nativeName;
+    });
+  }
+
   @action handleSearch = (field, value) => {
     this.searchInput = value;
 

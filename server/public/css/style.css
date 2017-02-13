@@ -60,6 +60,17 @@ html {
 *, *::before, *::after { /* stylelint-disable-line */
   box-sizing: inherit;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+  margin: 0;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 100rem ghostwhite inset;
+}
 @-webkit-keyframes hover {
 
   0% {
@@ -878,20 +889,11 @@ html {
             transform: translateX(20vw);
   }
 
-  30% {
+  50% {
     -webkit-transform: translateX(60vw);
             transform: translateX(60vw);
   }
 
-  60% {
-    -webkit-transform: translateX(40vw);
-            transform: translateX(40vw);
-  }
-
-  80% {
-    -webkit-transform: translateX(90vw);
-            transform: translateX(90vw);
-  }
 }
 
 @keyframes onboarding-distance {
@@ -902,20 +904,11 @@ html {
             transform: translateX(20vw);
   }
 
-  30% {
+  50% {
     -webkit-transform: translateX(60vw);
             transform: translateX(60vw);
   }
 
-  60% {
-    -webkit-transform: translateX(40vw);
-            transform: translateX(40vw);
-  }
-
-  80% {
-    -webkit-transform: translateX(90vw);
-            transform: translateX(90vw);
-  }
 }
 
 @-webkit-keyframes onboarding-hand {
@@ -1218,7 +1211,7 @@ header {
   padding: 4rem;
   padding: 40px;
   padding: 2.5rem;
-  background-image: url(/assets/logo_talesathome.png) no-repeat center center;
+  background: url(/assets/logo_talesathome.png) no-repeat center center;
   background-size: contain;
 }
 
@@ -1393,10 +1386,6 @@ textarea {
 }
 
 .form-textarea::after {content: '';position: absolute;top: 0;left: 0;display: block;left: auto;right: -80px;right: -5rem;width: 100%;height: 100%;background: ghostwhite;z-index: 0;
-}
-
-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
 input::-webkit-input-placeholder {
@@ -2295,6 +2284,10 @@ MODELSOVERVIEW
 
   margin: 2rem;
 
+  font-size: 32px;
+
+  font-size: 2rem;
+
   position: relative;
 
 }
@@ -2410,9 +2403,9 @@ MODELSOVERVIEW
 
   opacity: 1;
 
-  -webkit-transform: scaleX(1) translateY(3rem);
+  -webkit-transform: scaleX(1) translateY(4rem);
 
-  transform: scaleX(1) translateY(3rem);
+  transform: scaleX(1) translateY(4rem);
 
 }
 
@@ -3449,6 +3442,9 @@ MODELSOVERVIEW
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   text-align: center;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');
 
 }
@@ -3459,7 +3455,7 @@ MODELSOVERVIEW
 .family-member .action {margin-top: 16px;margin-top: 1rem;margin-left: 0;background: white;color: #21c5cb;
 }
 
-.family-member .family-member-character {position: relative;display: block;margin-bottom: 24px;margin-bottom: 1.5rem;-webkit-animation: float 2s ease-in infinite;animation: float 2s ease-in infinite
+.family-member .family-member-character {position: relative;display: block;margin: 24px;margin: 1.5rem;-webkit-animation: float 2s ease-in infinite;animation: float 2s ease-in infinite
 }
 
 .family-member .family-member-character::after {content: '';position: absolute;top: 0;left: 0;display: block;top: auto;bottom: -16px;bottom: -1rem;width: 100%;height: 9.6px;height: .6rem;border-radius: 50%;background: black;opacity: .05;filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');-webkit-filter: blur(2px);filter: blur(2px);-webkit-animation: float-shadow 2s ease-in infinite;animation: float-shadow 2s ease-in infinite;
@@ -3792,7 +3788,7 @@ MODELSOVERVIEW
 .form-add-family-member .form-languages .languages {max-height: 320px;max-height: 20rem;width: calc(100% + 6rem);margin-left: -48px;margin-left: -3rem;border-radius: 2rem;margin-top: 16px;margin-top: 1rem;border: 16px solid white;border: 1rem solid white;overflow: scroll
 }
 
-.form-add-family-member .form-languages .languages::after {content: '';position: absolute;top: 0;left: 0;display: block;top: 32px;top: 2rem;left: auto;right: 0;border: solid transparent;height: 0;width: 0;border-bottom-color: rgba(0, 204, 198, .1);border-width: 24px;border-width: 1.5rem;margin-left: -24px;margin-left: -1.5rem;
+.form-add-family-member .form-languages .languages::after {content: '';position: absolute;top: 0;left: 0;display: block;top: 48px;top: 3rem;left: auto;right: 8px;right: .5rem;border: solid transparent;height: 0;width: 0;border-bottom-color: rgba(0, 204, 198, .1);border-width: 24px;border-width: 1.5rem;margin-left: -24px;margin-left: -1.5rem;
 }
 
 .form-add-family-member .form-languages .language {color: #21c5cb;padding: 16px 32px;padding: 1rem 2rem;cursor: pointer;background: rgba(0, 204, 198, .1);-webkit-transition: all .3s ease-in;transition: all .3s ease-in
@@ -3808,6 +3804,12 @@ MODELSOVERVIEW
 }
 
 .form-add-family-member .form-languages .member-languages .form-input {display: inline-block;width: auto;
+}
+
+.form-add-family-member .form-languages .member-languages .fa-close {margin-left: 16px;margin-left: 1rem;color: #21c5cb;cursor: pointer;-webkit-transition: all .3s ease-in;transition: all .3s ease-in
+}
+
+.form-add-family-member .form-languages .member-languages .fa-close:hover {opacity: .5;
 }
 
 .form-add-family-member .form-languages .member-language {background: rgba(0, 204, 198, .1);padding: 8px 16px;padding: .5rem 1rem;margin-right: 16px;margin-right: 1rem;border-radius: 1rem;font-weight: 300;color: #515151;
@@ -4033,7 +4035,7 @@ MODELSOVERVIEW
 .timeline-character .member-name {-webkit-transform: translateY(2rem);transform: translateY(2rem);
 }
 
-.onboarding .drag-character {-webkit-animation: onboarding-distance 20s ease-in 3s infinite backwards;animation: onboarding-distance 20s ease-in 3s infinite backwards;
+.onboarding .drag-character {-webkit-animation: onboarding-distance 5s ease-in 3s infinite backwards;animation: onboarding-distance 5s ease-in 3s infinite backwards;
 }
 
 .onboarding .drag-character svg {-webkit-animation: float 2s ease-in infinite;animation: float 2s ease-in infinite;
@@ -4042,7 +4044,7 @@ MODELSOVERVIEW
 .onboarding .drag-character::after {-webkit-animation: float-shadow 2s ease-in infinite;animation: float-shadow 2s ease-in infinite;
 }
 
-.onboarding .timeline-character {-webkit-animation: onboarding-distance 20s ease-in 3s infinite backwards;animation: onboarding-distance 20s ease-in 3s infinite backwards;
+.onboarding .timeline-character {-webkit-animation: onboarding-distance 5s ease-in 3s infinite backwards;animation: onboarding-distance 5s ease-in 3s infinite backwards;
 }
 
 .onboarding .onboarding-hand {position: absolute;z-index: 2;bottom: 240px;bottom: 15rem;left: calc(3rem + 20vw);

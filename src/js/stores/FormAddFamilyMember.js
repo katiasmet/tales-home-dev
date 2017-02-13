@@ -34,11 +34,17 @@ class FormAddFamilyMember extends Form {
       isValid: true,
       error: ``
     },
-    redirect: false
+    redirect: ``
   });
 
+  submitButton = ``;
+  success = false;
+
+  @action handleSubmitButton = (e, button) => {
+    this.submitButton = button;
+  }
+
   @action handleEmptyValues = () => {
-    console.log(`handle empty values`);
     this.form.fields.firstName.value = ``;
     this.form.fields.languages.value = ``;
     this.form.fields.character.value = `kiki`;
@@ -60,7 +66,13 @@ class FormAddFamilyMember extends Form {
 
       insert(familymember)
         .then(() => {
-          this.form.redirect = true;
+          if (this.submitButton === `save`) {
+            this.form.redirect = `families`;
+          } else {
+            this.form.redirect = `newfamilymember`;
+            this.success = true;
+            this.handleEmptyValues();
+          }
         })
         .catch(error => {
           this.handleError(error.message);

@@ -260,7 +260,7 @@ $purple: #6e2bc8;
 .onboarding {
 
   .drag-character {
-    animation: onboarding-distance 20s ease-in 3s infinite backwards;
+    animation: onboarding-distance 5s ease-in 3s infinite backwards;
 
     svg {
       animation: float 2s ease-in infinite;
@@ -272,7 +272,7 @@ $purple: #6e2bc8;
   }
 
   .timeline-character {
-    animation: onboarding-distance 20s ease-in 3s infinite backwards;
+    animation: onboarding-distance 5s ease-in 3s infinite backwards;
   }
 
   .onboarding-hand {

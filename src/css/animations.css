@@ -352,17 +352,10 @@
     transform: translateX(20vw);
   }
 
-  30% {
+  50% {
     transform: translateX(60vw);
   }
 
-  60% {
-    transform: translateX(40vw);
-  }
-
-  80% {
-    transform: translateX(90vw);
-  }
 }
 
 @keyframes onboarding-hand {
