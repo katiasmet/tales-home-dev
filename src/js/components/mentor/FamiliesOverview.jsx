@@ -5,7 +5,7 @@ import {isEmpty} from 'lodash';
 
 import {Loading} from '../';
 import {FamilyItem} from './family';
-import {ProfessorEmptyFamilies, ProfessorSearch} from '../illustrations';
+import {ProfessorEmptyFamilies, ProfessorSearch, CharacterChrisFather} from '../illustrations';
 
 const renderFamilies = families => {
   return families.slice().map((family, i) => {
@@ -57,6 +57,10 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
   return (
     <section className='families-overview'>
+
+      <div className='figure'>
+        <CharacterChrisFather />
+      </div>
 
       <h1>Families</h1>
 

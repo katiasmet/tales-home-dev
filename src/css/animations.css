@@ -105,11 +105,53 @@
   0%,
   10%,
   100% {
-    transform: scale(.3, 0);
+    transform: scale(.5, 0);
   }
 
   5% {
     transform: scale(1, 1);
+  }
+
+}
+
+@keyframes looking {
+
+  0%,
+  100% {
+    transform: rotate(0) translate(0, 0);
+  }
+
+  25% {
+    transform: rotate(20deg) translate(-.1rem, -.2rem);
+  }
+
+  50% {
+    transform: rotate(10deg) translate(.1rem, .1rem);
+  }
+
+  75% {
+    transform: rotate(-10deg) translate(0, 0);
+  }
+
+}
+
+@keyframes looking-alt {
+
+  0%,
+  100% {
+    transform: rotate(0) translate(0, 0);
+  }
+
+  25% {
+    transform: rotate(10deg) translate(-.1rem, .1rem);
+  }
+
+  50% {
+    transform: rotate(7deg) translate(-.2rem, -.1rem);
+  }
+
+  75% {
+    transform: rotate(-5deg) translate(0, 0);
   }
 
 }
@@ -427,4 +469,96 @@
     transform: scale(1);
     opacity: 0;
   }
+}
+
+@keyframes head-shake {
+
+  0%,
+  50%,
+  55%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(-3deg);
+  }
+
+  35% {
+    transform: rotate(4deg);
+  }
+
+  60% {
+    transform: rotate(2deg);
+  }
+
+  80% {
+    transform: rotate(-1deg);
+  }
+}
+
+@keyframes arms-shake {
+
+  0%,
+  50%,
+  55%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(2deg);
+  }
+
+  35% {
+    transform: rotate(-1deg);
+  }
+
+  60% {
+    transform: rotate(-2deg);
+  }
+
+  80% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes legs-jump {
+
+  0%,
+  10%,
+  100% {
+    transform: scaleX(1) translateY(0);
+  }
+
+  5% {
+    transform: scaleX(1.1) translateY(-1rem);
+  }
+}
+
+@keyframes legs-jump-alt {
+
+  0%,
+  10%,
+  100% {
+    transform: scaleX(1) translateY(0);
+  }
+
+  5% {
+    transform: scaleX(1.2) translateY(-2rem);
+  }
+}
+
+@keyframes eyelashes {
+
+  0%,
+  10%,
+  100% {
+    transform: translateY(0);
+  }
+
+  5% {
+    transform: translateY(.5rem);
+  }
+
 }

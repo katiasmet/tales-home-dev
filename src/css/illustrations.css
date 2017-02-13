@@ -1,3 +1,7 @@
+.figure {
+  width: 20rem;
+}
+
 .model-distance-background,
 .family-background {
   width: 100%;
@@ -278,6 +282,28 @@
 
 }
 
+.eyelid {
+  transform: scale(.6, 0);
+  animation: wink 5s ease-in 2s infinite forwards;
+}
+
+.eyelid-top,
+.eyelid-left-top,
+.eyelid-right-top {
+  transform-origin: top center;
+}
+
+.eyelid-bottom,
+.eyelid-left-bottom,
+.eyelid-right-bottom {
+  transform-origin: bottom center;
+}
+
+.pupil {
+  transform-origin: center center;
+  animation: looking 3s ease-in infinite forwards;
+}
+
 /* SVG ILLUSTRATIONS */
 .chris-illustration {
 
@@ -335,6 +361,71 @@
   .st12 {
     fill: #721952;
   }
+}
+
+.chris-father-illustration {
+
+  .left-eye {
+    transform-origin: center center;
+    transform: rotate(-20deg) translate(-1.2rem, 1.5rem);
+  }
+
+  .right-eye {
+    transform-origin: center center;
+    transform: rotate(20deg) translate(.1rem, .1rem);
+  }
+
+  .st0 {
+    fill: #9c1265;
+  }
+
+  .st1 {
+    fill: #ffe9f7;
+    stroke: #9c1265;
+    stroke-width: 4.9;
+    stroke-miterlimit: 10;
+  }
+
+  .st2 {
+    fill: #353535;
+  }
+
+  .st3 {
+    fill: white;
+  }
+
+  .st4 {
+    fill: #8e1161;
+  }
+
+  .st5 {
+    fill: #88115e;
+  }
+
+  .st6 {
+    fill: #89115e;
+  }
+
+  .st7 {
+    fill: #9c1365;
+  }
+
+  .st8 {
+    fill: #961568;
+  }
+
+  .st9 {
+    fill: #282628;
+  }
+
+  .st10 {
+    fill: #a51b74;
+  }
+
+  .st11 {
+    fill: #721952;
+  }
+
 }
 
 .kiki-illustration {
@@ -396,6 +487,67 @@
   }
 }
 
+.kiki-child-illustration {
+
+  .st0 {
+    fill: #aa4343;
+  }
+
+  .st1 {
+    fill: #a34848;
+  }
+
+  .st2 {
+    fill: none;
+  }
+
+  .st3 {
+    fill: #bc4d4d;
+  }
+
+  .st4 {
+    fill: #e26969;
+  }
+
+  .st5 {
+    opacity: .6;
+    fill: #c64f4f;
+    enable-background: new;
+  }
+
+  .st6 {
+    fill: #fdeed8;
+  }
+
+  .st7 {
+    fill: #231f20;
+  }
+
+  .st8 {
+    fill: white;
+  }
+
+  .st9 {
+    fill: #913237;
+  }
+
+  .st10 {
+    fill: #e2002b;
+  }
+
+  .st11 {
+    fill: #c14c4c;
+  }
+
+  .st12 {
+    fill: #933135;
+  }
+
+  .eyelid {
+    fill: #bc4d4d;
+  }
+}
+
 .gigi-illustration {
 
   .st0 {
@@ -454,6 +606,100 @@
 
   .st12 {
     clip-path: url(#svgid_4_);
+    fill: #37379b;
+  }
+}
+
+.gigi-mother-illustration {
+
+  .st0 {
+    fill: #5050ea;
+  }
+
+  .st1 {
+    clip-path: url(#svgid_2_);
+    fill: #5050ea;
+  }
+
+  .st2 {
+    clip-path: url(#svgid_4_);
+    fill: #5050ea;
+  }
+
+  .st3 {
+    fill: #4444ea;
+  }
+
+  .st4 {
+    fill: #212193;
+  }
+
+  .st5 {
+    fill: #272791;
+  }
+
+  .st6 {
+    fill: #7400e0;
+  }
+
+  .st7 {
+    fill: none;
+  }
+
+  .st8 {
+    fill: #a4e3ff;
+  }
+
+  .head {
+    transform-origin: center center;
+    animation: head-shake 5s ease-in infinite;
+  }
+
+  .pupil {
+    transform-origin: center center;
+    animation: looking-alt 3s ease-in infinite forwards;
+  }
+
+  .arms {
+    transform-origin: center center;
+    animation: arms-shake 5s ease-in infinite;
+  }
+
+  .eyelashes {
+    transform-origin: bottom right;
+    animation: eyelashes 5s ease-in 2s infinite forwards;
+  }
+
+  .leg-left {
+    transform-origin: bottom center;
+    animation: legs-jump 8s ease-in 5s infinite;
+  }
+
+  .leg-right {
+    transform-origin: bottom center;
+    animation: legs-jump 8s ease-in 6s infinite;
+  }
+
+  .st9 {
+    fill: #212193;
+  }
+
+  .eyeball {
+    fill: #f4f4f4;
+    stroke: #f4f4f4;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+  }
+
+  .st10 {
+    fill: #f4f4f4;
+  }
+
+  .st11 {
+    fill: #3c3caa;
+  }
+
+  .st12 {
     fill: #37379b;
   }
 }
@@ -574,18 +820,6 @@
 
   .eyelid {
     fill: #4885ff;
-    transform: scale(.6, 0);
-    animation: wink 5s ease-in 3s infinite forwards;
-  }
-
-  .eyelid-left-top,
-  .eyelid-right-top {
-    transform-origin: top center;
-  }
-
-  .eyelid-left-bottom,
-  .eyelid-right-bottom {
-    transform-origin: bottom center;
   }
 
   .tentacle {

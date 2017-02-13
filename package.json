@@ -67,6 +67,7 @@
     "react-router": "next",
     "react-router-dom": "next",
     "rimraf": "^2.5.4",
+    "snapsvg-cjs": "^0.0.4",
     "style-loader": "^0.13.1",
     "stylelint": "^7.5.0",
     "stylelint-config-devine": "^1.0.0",

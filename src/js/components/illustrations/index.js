@@ -1,8 +1,11 @@
 export Flag from './Flag';
 
 export CharacterChris from './CharacterChris';
+export CharacterChrisFather from './CharacterChrisFather';
 export CharacterKiki from './CharacterKiki';
+export CharacterKikiChild from './CharacterKikiChild';
 export CharacterGigi from './CharacterGigi';
+export CharacterGigiMother from './CharacterGigiMother';
 
 export Professor from './Professor';
 export ProfessorOverlay from './ProfessorOverlay';
