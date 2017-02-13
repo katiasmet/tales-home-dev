@@ -69,7 +69,8 @@ const UserEdit = inject(`formEditUser`)(observer(({formEditUser}) => {
             value={fields.password.value}
             error={fields.password.error}
             onChange={handleChange}
-            placeholder='your password' />
+            placeholder='your password'
+            autofocus={true} />
 
             <FormInput
               id='edit-form-new-password'

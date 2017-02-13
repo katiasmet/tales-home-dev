@@ -48,7 +48,8 @@ class FamilyMemberAdd extends Component {
               value={fields.firstName.value}
               error={fields.firstName.error}
               onChange={handleChange}
-              placeholder='f.e. Harry' />
+              placeholder='f.e. Harry'
+              autofocus={true} />
 
             <FamilyMemberAddRoles handleChange={handleChange} value={fields.role.value} character={fields.character.value} />
 
@@ -60,7 +61,7 @@ class FamilyMemberAdd extends Component {
                 <Link to='/family' className='btn'>
                   <i className='fa fa-close'></i>
                 </Link>
-                <button type='submit' className='btn'><i className='fa fa-play'></i></button>
+                <button type='submit' className='btn'><i className='fa fa-save'></i></button>
             </div>
 
           </fieldset>

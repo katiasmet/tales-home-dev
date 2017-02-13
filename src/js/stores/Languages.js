@@ -51,6 +51,8 @@ class Languages  {
   @action handleSelectLanguage = e => {
     e.preventDefault();
 
+    this.handleSearch(`searchInput`, ``);
+
     this.selectedLanguages.push(
       find(this.allLanguages, language => {
         if (language.nativeName === e.currentTarget.innerHTML) return language;

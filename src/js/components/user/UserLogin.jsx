@@ -38,7 +38,8 @@ const UserLogin = inject(`formLogin`)(observer(({formLogin}) => {
                 value={fields.email.value}
                 error={fields.email.error}
                 onChange={handleChange}
-                placeholder='example@example.com' />
+                placeholder='example@example.com'
+                autofocus={true} />
 
               <FormInput
                 id='login-form-password'
