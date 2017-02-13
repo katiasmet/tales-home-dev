@@ -14,8 +14,8 @@ $blue: #26e2e9;
 $accentblue: #cddefe; /* languages */
 $accentlightblue: #90f0f3; /* themes */
 $bluenav: #21c5cb;
-$green: #36cc12;
-$red: crimson;
+$green: #7fd44e;
+$red: #e2352e;
 
 /* MIXINS */
 @define-mixin before-after {
@@ -609,7 +609,84 @@ input::placeholder {
   line-height: 2rem;
 }
 
+/* Loader */
 .loading {
   @add-mixin flex-center;
   height: 100%;
+  max-height: calc(100vh - 8rem);
+
+  .loader {
+    width: 6rem;
+    height: 6rem;
+    position: relative;
+  }
+
+  .loader-bullet {
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    background: $purple;
+
+    animation: loading-scale 3s ease-in infinite;
+  }
+
+  .loader-bullet-2 {
+    width: 1rem;
+    height: 1rem;
+    opacity: .7;
+    animation: loading-spin 3s linear infinite;
+  }
+
+  .loader-bullet-3 {
+    animation: loading-scale-background 3s ease-in infinite;
+  }
+
+  /*.loader-bullet {
+    width: 1rem;
+    height: 1rem;
+
+    border-radius: 50%;
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    background: $purple;
+
+    animation: loading-position .3s ease-in forwards, loading-spin 2s linear .3s forwards infinite;
+  }
+
+  .loader-bullet-2 {
+    animation: loading-position-reverse .3s ease-in forwards, loading-spin-reverse 2s linear .3s forwards infinite;
+  }*/
+
+  /*.loader-bullet-2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: .5;
+
+    animation: loading-2 3s ease-in infinite;
+  }
+
+  .loader-bullet-3 {
+    width: 1rem;
+    height: 1rem;
+    opacity: .3;
+
+    animation: loading-3 1s ease-in infinite;
+  }*/
 }
