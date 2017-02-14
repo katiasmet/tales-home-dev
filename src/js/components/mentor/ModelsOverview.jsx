@@ -7,8 +7,8 @@ const ModelsOverview = () => {
 
   return (
     <section className='models models-overview'>
-      <ModelsNavigation />
       <ModelPreview />
+      <ModelsNavigation />
     </section>
   );
 };

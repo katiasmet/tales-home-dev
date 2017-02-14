@@ -81,7 +81,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().min(3).required(),
+          name: Joi.string().min(2).required(),
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
           organisation: Joi.string().allow(``),
@@ -143,7 +143,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().min(3).required(),
+          name: Joi.string().min(2).required(),
           email: Joi.string().email().required(),
           password: Joi.string().min(3).required(),
           newpassword: Joi.string().min(3).allow(``),

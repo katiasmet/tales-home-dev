@@ -5,6 +5,7 @@ import {isEmpty} from 'lodash';
 
 import {Loading} from '../';
 import {FamilyItem} from './family';
+import {ProfessorEmptyFamilies, ProfessorSearch} from '../illustrations';
 
 const renderFamilies = families => {
   return families.slice().map((family, i) => {
@@ -12,16 +13,35 @@ const renderFamilies = families => {
   });
 };
 
-const handleFamilies = (families, activeFamilies, searchInput) => {
+const handleFamilies = (families, activeFamilies) => {
   if (isEmpty(families)) {
     return (
-        <p> Hello there! Looks like you didn't analyse any families yet.
-            Start by <Link to='/newfamily'>adding a family</Link>.</p>
+      <div className='info info-empty'>
+        <p className='text-balloon'>
+          Well Hello,<br />
+          Are you new here? I’ll show you where to <Link to='/newfamily'>add your families</Link>!
+        </p>
+        <figure className='info-image'>
+          <div className='info-image-bg'></div>
+          <ProfessorEmptyFamilies />
+        </figure>
+      </div>
+
     );
   } else {
     if (isEmpty(activeFamilies)) {
       return (
-        <p>There are no families where the name, origins or location contain {`"${searchInput}"`}.</p>
+        <div className='info info-search'>
+          <p className='text-balloon'>
+            Hmmmm,
+            <br />Looks like there is no family called that way.
+            <br />Are you sure about the writing?
+          </p>
+          <figure className='info-image'>
+            <div className='info-image-bg'></div>
+            <ProfessorSearch />
+          </figure>
+        </div>
       );
     } else {
       return renderFamilies(activeFamilies);
@@ -33,7 +53,7 @@ const handleFamilies = (families, activeFamilies, searchInput) => {
 
 const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
-  const {allFamilies, activeFamilies, searchInput, isLoading} = families;
+  const {allFamilies, activeFamilies, isLoading} = families;
 
   return (
     <section className='families-overview'>
@@ -42,7 +62,7 @@ const FamiliesOverview = inject(`families`)(observer(({families}) => {
 
       {
         (isLoading === `families`) ? (<Loading />)
-        : handleFamilies(allFamilies, activeFamilies, searchInput)
+        : handleFamilies(allFamilies, activeFamilies)
       }
 
     </section>
@@ -53,7 +73,6 @@ FamiliesOverview.propTypes = {
   families: PropTypes.shape({
     allFamilies: PropTypes.array,
     activeFamilies: PropTypes.array,
-    searchInput: PropTypes.string,
     isLoading: PropTypes.string,
     error: PropTypes.string
   })

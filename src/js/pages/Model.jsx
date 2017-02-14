@@ -13,6 +13,11 @@ import {ModelDistance, ModelLearning, ModelSituationDiscussion} from '../compone
 
 class Model extends Component {
 
+  componentDidMount() {
+    const {activeFamily} = this.props.families;
+    if (!activeFamily.name) this.redirect = true;
+  }
+
   renderModelView() {
     const model = upperFirst(camelCase(this.props.match.params.id));
 
@@ -58,8 +63,12 @@ class Model extends Component {
 
     return (
       <div className='page page-model '>
-        <Header pathname={pathname} model={true} />
 
+        {
+          this.redirect && <Redirect to='/' />
+        }
+
+        <Header pathname={pathname} model={true} />
         <section className={(token.content().scope === `professional` && showNotes) ? `model active-notes`  : `model`}>
 
           {
@@ -91,7 +100,8 @@ Model.propTypes = {
   }),
   families: PropTypes.shape({
     isLoading: PropTypes.string,
-    activeFamilyModel: PropTypes.object
+    activeFamilyModel: PropTypes.object,
+    activeFamily: PropTypes.object
   }),
   models: PropTypes.shape({
     isLoading: PropTypes.bool

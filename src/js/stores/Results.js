@@ -1,5 +1,6 @@
 import {observable, action} from 'mobx';
 import {find, isEmpty} from 'lodash';
+import jsPDF from 'jsPDF';
 
 import {selectByProfessional, insert, update} from '../api/results';
 import {token} from '../auth';
@@ -35,6 +36,7 @@ class Results  {
 
       if (result) {
         this.activeResult = result._id;
+        Models.currentResult = result;
       }
     }
 
@@ -42,8 +44,6 @@ class Results  {
 
 
   @action handleSubmit = () => {
-
-    console.log(Models.currentResult);
 
     if (isEmpty(this.activeResult)) {
       insert({familyModelId: Families.activeFamilyModel._id, result: Models.currentResult})
@@ -69,6 +69,16 @@ class Results  {
 
   @action handleError = error => {
     this.error = error;
+  }
+
+  @action handleDownload = () => {
+    console.log(`handle download`);
+    const doc = new jsPDF();
+
+    console.log(doc);
+
+    doc.text(`Hello world!`, 10, 10);
+    doc.save(`a4.pdf`);
   }
 
 

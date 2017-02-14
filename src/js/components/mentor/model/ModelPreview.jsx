@@ -25,6 +25,7 @@ const ModelPreview = inject(`models`)(observer(({models}) => {
             })
           }
         </ul>
+
       </div>
 
     </section>
@@ -52,6 +53,14 @@ const renderPreviewBackground = image => {
     );
   }
 };
+
+/*<ul className='model-preview-themes'>
+  {
+    themes.map((theme, i) => {
+      return <li className='theme' key={i}>{theme}</li>;
+    })
+  }
+</ul>*/
 
 ModelPreview.propTypes = {
   models: PropTypes.shape({

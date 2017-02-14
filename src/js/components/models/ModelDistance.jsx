@@ -11,11 +11,12 @@ import {ModelDistanceBg} from '../illustrations';
 class ModelDistance extends Component {
 
   componentDidMount() {
-    const {getFamiliesLanguages, getDraggableCharacters} = this.props.models;
+    const {getFamiliesLanguages, getDraggableCharacters, handleOnboardingTimer, onboarding} = this.props.models;
     const {allLanguages, getLanguages} = this.props.languages;
     if (isEmpty(allLanguages)) getLanguages();
     getFamiliesLanguages();
     getDraggableCharacters();
+    if (onboarding) handleOnboardingTimer();
   }
 
   handleClick(e, i) {
@@ -53,20 +54,22 @@ class ModelDistance extends Component {
 
   render() {
 
-    const {isLoadingDistance} = this.props.models;
+    const {isLoadingDistance, onboarding, onboardingTimer} = this.props.models;
 
     return (
-      <section className='model-distance'>
+      <section className={onboarding ? `model-distance onboarding` : `model-distance onboarding-done`}>
 
         <ModelDistanceBg />
 
         {
-          !isLoadingDistance && this.renderLanguages()
+          (!isLoadingDistance && !onboarding) && this.renderLanguages()
         }
+
+        <button className='btn btn-onboarding'>{onboardingTimer}</button>
 
         {
           isLoadingDistance ? <Loading />
-          : <ModelDistanceScene />
+        : <ModelDistanceScene />
         }
 
         {
@@ -88,7 +91,10 @@ ModelDistance.propTypes = {
     draggableCharacters: PropTypes.array,
     isLoadingDistance: PropTypes.bool,
     handleNextLanguage: PropTypes.func,
-    handleIsPassedLanguage: PropTypes.func
+    handleIsPassedLanguage: PropTypes.func,
+    onboarding: PropTypes.bool,
+    onboardingTimer: PropTypes.number,
+    handleOnboardingTimer: PropTypes.func
   }),
   languages: PropTypes.shape({
     allLanguages: PropTypes.array,

@@ -130,7 +130,6 @@ MENTOR FAMILIES
         height: 100%;
         border-radius: 50%;
         border: .1rem solid $purple;
-        filter: blur(.5px);
 
         animation: radar 2s ease-in infinite;
       }
@@ -252,6 +251,100 @@ MENTOR FAMILIES
 
 }
 
+.info-empty,
+.info-search {
+  @add-mixin flex-center;
+  flex-direction: column;
+}
+
+.text-balloon {
+  font-weight: 300;
+  padding: 3rem 4rem;
+  border-radius: 1rem;
+  display: block;
+  font-size: 2rem;
+  line-height: 130%;
+
+  max-width: 50rem;
+  background: white;
+
+  color: $darkpurple;
+
+  position: relative;
+  z-index: 2;
+
+  &::before {
+    @add-mixin before-after;
+    width: 3rem;
+    height: 1.5rem;
+    top: auto;
+    bottom: -.7rem;
+    background: url(../assets/img/arrow_white.png) no-repeat center center;
+    background-size: contain;
+  }
+}
+
+.info-image {
+  display: block;
+  border-radius: 0 0 1rem 1rem;
+  position: relative;
+  overflow-y: hidden;
+  width: 30rem;
+  height: 26rem;
+
+  transform: translate(-5rem, -4rem);
+  z-index: 2;
+
+  .info-image-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25rem;
+    height: 22rem;
+    overflow: hidden;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 0;
+    background: $purple;
+
+    &::before,
+    &::after {
+      @add-mixin before-after;
+      width: 130%;
+      height: 200%;
+      background: $darkpurple;
+
+      top: 1rem;
+      left: auto;
+      right: -13rem;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      width: 5%;
+      right: 17rem;
+      top: -10rem;
+    }
+  }
+
+  .professor-empty-families-illustration,
+  .professor-search-illustration {
+    position: absolute;
+    right: 0;
+    bottom: -11.5rem;
+    z-index: 2;
+    width: 25rem;
+  }
+
+  .professor-search-illustration {
+    bottom: -14rem;
+  }
+}
+
+.info-empty .info-image {
+  width: 31rem;
+  transform: translate(-3rem, -4rem);
+}
+
 .family-info {
   padding: 3rem 12rem 3rem 4rem;
   font-weight: 300;
@@ -355,7 +448,7 @@ STARTSESSION POP-UP
 
   position: absolute;
   z-index: 10;
-  top: 8rem;
+  top: 7rem;
   left: 0;
   right: 0;
   margin: auto;
@@ -380,7 +473,6 @@ STARTSESSION POP-UP
       height: 100%;
       border-radius: 50%;
       border: .1rem solid $purple;
-      filter: blur(.5px);
 
       animation: radar 2s ease-in infinite;
     }
@@ -395,9 +487,9 @@ STARTSESSION POP-UP
     background-color: $purple;
     border-radius: 1rem;
     color: white;
-    padding: 1.5rem 3rem;
+    padding: 2rem 3rem;
     margin-bottom: 4rem;
-    font-size: 2rem;
+    font-size: 3rem;
     letter-spacing: .5rem;
   }
 
@@ -531,7 +623,6 @@ STARTSESSION POP-UP
       height: 100%;
       border-radius: 50%;
       border: .1rem solid white;
-      filter: blur(.5px);
 
       animation: radar 2s ease-in infinite;
     }

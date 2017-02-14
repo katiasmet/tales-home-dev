@@ -3,7 +3,7 @@ import {inject, observer} from 'mobx-react';
 import {isEmpty, filter} from 'lodash';
 
 import {ModelMemberInfo} from './';
-import {CharacterGigi, CharacterKiki, CharacterChris} from '../../illustrations';
+import {CharacterGigiMother, CharacterKikiChild, CharacterChrisFather} from '../../illustrations';
 
 const ModelMembers = inject(`families`)(observer(({families}) => {
 
@@ -37,11 +37,11 @@ const ModelMembers = inject(`families`)(observer(({families}) => {
 
 const renderCharacter = (character, id, handleActiveFamilyMember) => {
   if (character === `kiki`) {
-    return <CharacterKiki onClick={() => handleActiveFamilyMember(id)} />;
+    return <CharacterKikiChild onClick={() => handleActiveFamilyMember(id)} />;
   } else if (character === `chris`) {
-    return <CharacterChris onClick={() => handleActiveFamilyMember(id)} />;
+    return <CharacterChrisFather onClick={() => handleActiveFamilyMember(id)} />;
   } else {
-    return <CharacterGigi onClick={() => handleActiveFamilyMember(id)} />;
+    return <CharacterGigiMother onClick={() => handleActiveFamilyMember(id)} />;
   }
 };
 

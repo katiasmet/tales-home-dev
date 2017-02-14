@@ -1,13 +1,19 @@
 export Flag from './Flag';
 
 export CharacterChris from './CharacterChris';
+export CharacterChrisFather from './CharacterChrisFather';
 export CharacterKiki from './CharacterKiki';
+export CharacterKikiChild from './CharacterKikiChild';
 export CharacterGigi from './CharacterGigi';
+export CharacterGigiMother from './CharacterGigiMother';
 
 export Professor from './Professor';
 export ProfessorOverlay from './ProfessorOverlay';
 export NewProfessor from './NewProfessor';
 export Family from './Family';
+
+export ProfessorEmptyFamilies from './ProfessorEmptyFamilies';
+export ProfessorSearch from './ProfessorSearch';
 
 export Airplane from './Airplane';
 export Cloud from './Cloud';

@@ -16,7 +16,8 @@ const Languages = inject(`languages`)(observer(({languages}) => {
           name='search'
           value={searchInput}
           onChange={handleSearch}
-          placeholder='Search language' />
+          placeholder='Search language'
+          autofocus={true} />
       </li>
 
       {

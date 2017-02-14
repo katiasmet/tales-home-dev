@@ -63,7 +63,6 @@ MODELSOVERVIEW
     background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0) 100%);
     opacity: .05;
     border-radius: 45% / 50%;
-    filter: blur(5px);
     z-index: 0;
   }
 
@@ -107,12 +106,12 @@ MODELSOVERVIEW
 }
 
 .model-nav-item {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 2rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3rem;
   background: white;
   display: block;
-  margin: 1rem;
+  margin: 1.5rem;
   cursor: pointer;
   position: relative;
 
@@ -127,8 +126,9 @@ MODELSOVERVIEW
   }
 
   &.active {
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
+    margin: 2rem;
 
     position: relative;
 
@@ -139,7 +139,6 @@ MODELSOVERVIEW
       height: 100%;
       border-radius: 50%;
       border: .1rem solid white;
-      filter: blur(.5px);
 
       animation: radar 2s ease-in infinite;
     }
@@ -163,7 +162,7 @@ MODELSOVERVIEW
     color: $bluenav;
     width: 100%;
     height: 100%;
-    font-size: 1.6rem;
+    font-size: 2rem;
     position: relative;
     z-index: 5;
   }
@@ -194,7 +193,7 @@ MODELSOVERVIEW
 
     .model-name {
       opacity: 1;
-      transform: scaleX(1) translateY(3rem);
+      transform: scaleX(1) translateY(4rem);
     }
   }
 }
@@ -205,10 +204,25 @@ MODELSOVERVIEW
 }
 
 .theme {
-  background-color: $accentlightblue;
+  /*background-color: $accentlightblue;
   padding: .5rem 1rem;
-  margin-left: 1rem;
-  border-radius: 1rem;
+  border-radius: 1rem;*/
+  margin: 0 1.5rem;
+  position: relative;
+
+  &::after {
+    @add-mixin before-after;
+    content: '-';
+    width: 100%;
+    height: 100%;
+    left: auto;
+    right: -2rem;
+    text-align: right;
+  }
+
+  &:last-child::after {
+    content: none;
+  }
 }
 
 .btn-show-grid {
@@ -422,15 +436,31 @@ MODELSOVERVIEW
 }
 
 .model-member {
-  max-width: 5rem;
   margin-right: 3rem;
   display: block;
   cursor: pointer;
   opacity: .5;
   transition: opacity .3s ease-in;
+  width: 3.5rem;
+
+  .chris-father-illustration {
+    padding: 0 .5rem;
+  }
 
   svg {
     height: 100%;
+  }
+
+  &.chris {
+    width: 4.5rem;
+  }
+
+  &.kiki {
+    width: 2.4rem;
+  }
+
+  &.gigi {
+    width: 3.5rem;
   }
 
   &.active,
@@ -588,6 +618,17 @@ MODELSOVERVIEW
       left: 7vw;
       bottom: 5vh;
       width: 30rem;
+    }
+
+    .smoke-truck {
+      left: 7vw;
+      bottom: 13vh;
+    }
+
+    .smoke-car {
+      left: auto;
+      right: 15vw;
+      bottom: 12vh;
     }
 
     .airplane {

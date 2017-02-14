@@ -35,7 +35,8 @@ const FamilyAdd = inject(`formAddFamily`)(observer(({formAddFamily}) => {
             value={fields.name.value}
             error={fields.name.error}
             onChange={handleChange}
-            placeholder='f.e. Johnson' />
+            placeholder='f.e. Johnson'
+            autofocus={true} />
 
           <FormInput
             id='family-form-origins'

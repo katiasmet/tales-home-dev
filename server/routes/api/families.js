@@ -90,7 +90,7 @@ module.exports = [
         },
 
         payload: {
-          name: Joi.string().min(3).required(),
+          name: Joi.string().min(2).required(),
           origins: Joi.string().allow(``),
           homeLocation: Joi.string().allow(``),
           isActive: Joi.boolean()

@@ -6,7 +6,7 @@ import {FamilyMemberAddLanguage} from './';
 
 const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
 
-  const {handleShowLanguages, showDropDown, selectedLanguages} = languages;
+  const {handleShowLanguages, showDropDown, selectedLanguages, handleRemove} = languages;
 
   return (
     <section className='form-languages'>
@@ -24,7 +24,7 @@ const FamilyMemberAddLanguages = inject(`languages`)(observer(({languages}) => {
 
         {
           selectedLanguages.slice().map((language, i) => {
-            return <FamilyMemberAddLanguage {...language} key={i} />;
+            return <FamilyMemberAddLanguage {...language} key={i} handleRemove={handleRemove} />;
           })
         }
 

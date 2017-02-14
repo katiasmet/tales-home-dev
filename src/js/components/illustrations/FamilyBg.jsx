@@ -11,6 +11,17 @@ const FamilyBg = () => {
       <div className='cloud cloud-right'><Cloud2 /></div>
       <div className='tree'><Tree /></div>
       <div className='bench'><Bench /></div>
+      <div className='smoke'>
+        <div className='smoke-cloud smoke-cloud-1'></div>
+        <div className='smoke-cloud smoke-cloud-2'></div>
+        <div className='smoke-cloud smoke-cloud-3'></div>
+        <div className='smoke-cloud smoke-cloud-4'></div>
+        <div className='smoke-cloud smoke-cloud-5'></div>
+        <div className='smoke-cloud smoke-cloud-6'></div>
+        <div className='smoke-cloud smoke-cloud-7'></div>
+        <div className='smoke-cloud smoke-cloud-8'></div>
+        <div className='smoke-cloud smoke-cloud-9'></div>
+      </div>
       <div className='house'><House /></div>
     </section>
   );

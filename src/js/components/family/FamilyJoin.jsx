@@ -33,12 +33,14 @@ const FamilyJoin = inject(`formJoin`)(observer(({formJoin}) => {
           <FormInput
             id='join-form-code'
             label='Your family code'
+            type='number'
             name='sessionId'
             value={fields.sessionId.value}
             error={fields.sessionId.error}
             onChange={handleChange}
             placeholder='0000'
-            maxlength='4' />
+            maxlength='4'
+            autofocus={true} />
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
