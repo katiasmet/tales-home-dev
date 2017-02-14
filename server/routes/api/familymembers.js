@@ -91,7 +91,7 @@ module.exports = [
 
         payload: {
           familyId: Joi.string().alphanum().min(3).required(),
-          firstName: Joi.string().alphanum().min(3).required(),
+          firstName: Joi.string().alphanum().min(2).required(),
           languages: Joi.array().items(Joi.string()).required(),
           character: Joi.string().min(3).required(),
           role: Joi.string().min(3).alphanum().required(),
@@ -148,7 +148,7 @@ module.exports = [
         },
 
         payload: {
-          firstName: Joi.string().alphanum().min(3),
+          firstName: Joi.string().alphanum().min(2),
           languages: Joi.array().items(Joi.string()),
           character: Joi.string().min(3),
           role: Joi.string().min(3).alphanum()

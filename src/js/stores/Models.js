@@ -20,6 +20,8 @@ class Models  {
 
   /* distance */
   @observable isLoadingDistance = true;
+  @observable onboarding = true;
+  @observable onboardingTimer = 5;
   @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
@@ -133,11 +135,11 @@ class Models  {
       character.left = 0;
 
       if (character.name === `chris`) {
-        character.width = 20;
+        character.width = 180; /* in px */
       } else if (character.name === `gigi`) {
-        character.width = 14;
+        character.width = 140;
       } else {
-        character.width = 7;
+        character.width = 65;
       }
 
       this.draggableCharacters.push(character);
@@ -150,12 +152,16 @@ class Models  {
   @action handleMoveCharacter = (id, e) => {
     e.preventDefault();
 
+    /* left is a relative number (%) to the window size of the user */
+    const scene = document.querySelector(`.model-distance`);
+    const clientWidth = scene.clientWidth;
     const xPos = e.touches[0].clientX;
 
     this.draggableCharacters.forEach(character => {
       if (character._id === id) {
-        let left = ((xPos / 10) - (character.width / 2));
-        if (left > 75) left = 75;
+        let left = (((xPos - (character.width / 2)) / clientWidth) * 100);
+        console.log(left);
+        if (left > 100) left = 100;
         if (left < 0) left = 0;
         character.left = left;
       }
@@ -171,13 +177,16 @@ class Models  {
     document.body.appendChild(dragImgEl);
     e.dataTransfer.setDragImage(dragImgEl, 0, 0);*/
     /*e.dataTransfer.setDragImage(0, 0, 0);*/
+    const scene = document.querySelector(`.model-distance`);
+    const clientWidth = scene.clientWidth;
     const xPos = e.clientX;
 
     this.draggableCharacters.forEach(character => {
       if (character._id === id) {
         if (xPos !== 0) {
-          let left = ((xPos / 10) - (character.width / 2));
-          if (left > 75) left = 75;
+          let left = (((xPos - (character.width / 2)) / clientWidth) * 100);
+          console.log(left);
+          if (left > 99) left = 99;
           if (left < 0) left = 0;
           character.left = left;
         }
@@ -187,7 +196,7 @@ class Models  {
 
   @action handleEndMoveCharacter = e => {
     e.preventDefault();
-    this.socket.emit(`handleModel`, token.content().sub, this.draggableCharacters);
+    this.socket.emit(`handleModel`, token.content().sub, `family`, this.draggableCharacters);
   }
 
   @action handleNextLanguage = i => {
@@ -234,7 +243,6 @@ class Models  {
       this.draggableCharacters = result.results;
     } else {
       console.log(`language not in results`);
-      console.log(this.draggableCharacters);
       this.draggableCharacters.forEach(character => {
         character.left = 0;
       });
@@ -250,6 +258,30 @@ class Models  {
       if (result.language === language) passed = true;
     });
     return passed;
+  }
+
+  handleOnboarding = () => {
+    this.onboarding = false;
+
+    if (token.content().scope === `professional`) {
+      this.socket.emit(`handleOnboarding`, Users.currentSocketId, `professional`, this.onboarding, this.draggableCharacters);
+    } else {
+      this.socket.emit(`handleOnboarding`, token.content().sub, `family`, this.onboarding, this.draggableCharacters);
+    }
+
+  }
+
+  @action handleOnboardingTimer = () => {
+    this.timer = window.setInterval(this.handleCount, 2000);
+  }
+
+  handleCount = () => {
+    this.onboardingTimer--;
+
+    if (this.onboardingTimer === 0) {
+      this.handleOnboarding();
+      clearInterval(this.timer);
+    }
   }
 
 

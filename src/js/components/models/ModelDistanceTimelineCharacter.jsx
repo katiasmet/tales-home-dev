@@ -1,11 +1,12 @@
 import React, {PropTypes} from 'react';
 
-const ModelDistanceTimelineCharacter = ({firstname, left, name, width}) => {
-  const transform = `translateX(${left}rem)`;
-  const fixedWidth = `${width}rem`;
+const ModelDistanceTimelineCharacter = ({firstname, left, name, width, onboarding}) => {
+  let transform = `translateX(${left}%)`;
+  const fixedWidth = `${width / 10}rem`;
 
   let opacity = 0;
-  if (left !== 0) opacity = 1;
+  if (left !== 0 || onboarding) opacity = 1;
+  if (onboarding) transform = `translateX(20rem)`;
 
   const style = {
     width: fixedWidth,
@@ -26,7 +27,8 @@ ModelDistanceTimelineCharacter.propTypes = {
   name: PropTypes.string,
   width: PropTypes.number,
   left: PropTypes.number,
-  firstname: PropTypes.string
+  firstname: PropTypes.string,
+  onboarding: PropTypes.bool
 };
 
 export default ModelDistanceTimelineCharacter;

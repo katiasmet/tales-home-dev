@@ -37,7 +37,8 @@ const UserRegister = inject(`formRegister`)(observer(({formRegister}) => {
             value={fields.name.value}
             error={fields.name.error}
             onChange={handleChange}
-            placeholder='f.e. Emma Johnson' />
+            placeholder='f.e. Emma Johnson'
+            autofocus={true} />
 
           <FormInput
             id='register-form-email'

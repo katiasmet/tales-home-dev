@@ -14,8 +14,8 @@ $blue: #26e2e9;
 $accentblue: #cddefe; /* languages */
 $accentlightblue: #90f0f3; /* themes */
 $bluenav: #21c5cb;
-$green: #36cc12;
-$red: crimson;
+$green: #7fd44e;
+$red: #e2352e;
 
 /* MIXINS */
 @define-mixin before-after {
@@ -237,14 +237,12 @@ header {
 }
 
 .logo {
-  height: 30px;
-  width: 69px;
-  padding: 40px;
+  height: 1.6rem;
+  width: 9rem;
+  padding: 4rem;
   padding: 2.5rem;
-  margin-left: 40px;
-  margin-left: 2.5rem;
-  background-image: url(/assets/logo_talesathome.png);
-  background-repeat: no-repeat;
+  background: url(../assets/logo_talesathome.png) no-repeat center center;
+  background-size: contain;
 }
 
 nav,
@@ -416,10 +414,6 @@ textarea {
     background: $lightpurple;
     z-index: 0;
   }
-}
-
-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px ghostwhite inset;
 }
 
 input::placeholder {
@@ -615,7 +609,84 @@ input::placeholder {
   line-height: 2rem;
 }
 
+/* Loader */
 .loading {
   @add-mixin flex-center;
   height: 100%;
+  max-height: calc(100vh - 8rem);
+
+  .loader {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+  }
+
+  .loader-bullet {
+    width: 1rem;
+    height: 1rem;
+
+    border-radius: 50%;
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    background: $purple;
+
+    animation: loading-scale 3s ease-in infinite;
+  }
+
+  .loader-bullet-2 {
+    width: .5rem;
+    height: .5rem;
+    opacity: .7;
+    animation: loading-spin 3s linear infinite;
+  }
+
+  .loader-bullet-3 {
+    animation: loading-scale-background 3s ease-in infinite;
+  }
+
+  /*.loader-bullet {
+    width: 1rem;
+    height: 1rem;
+
+    border-radius: 50%;
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    background: $purple;
+
+    animation: loading-position .3s ease-in forwards, loading-spin 2s linear .3s forwards infinite;
+  }
+
+  .loader-bullet-2 {
+    animation: loading-position-reverse .3s ease-in forwards, loading-spin-reverse 2s linear .3s forwards infinite;
+  }*/
+
+  /*.loader-bullet-2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: .5;
+
+    animation: loading-2 3s ease-in infinite;
+  }
+
+  .loader-bullet-3 {
+    width: 1rem;
+    height: 1rem;
+    opacity: .3;
+
+    animation: loading-3 1s ease-in infinite;
+  }*/
 }

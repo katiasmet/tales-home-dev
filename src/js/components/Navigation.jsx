@@ -34,7 +34,7 @@ class Navigation extends Component {
           {
             model && (
               <li onClick={handleOpenNotes} className='nav-item'>
-                <i className='fa fa-align-justify'></i>
+                <i className='fa fa-pencil'></i>
               </li>
             )
           }
@@ -62,7 +62,7 @@ class Navigation extends Component {
 
           <NavigationItem link='/families' icon='fa-list-ul' pathname={pathname} />
           <NavigationItem link='/editprofile' icon='fa-user' pathname={pathname} />
-          <NavigationItem link='/newfamily' icon='fa-plus' pathname={pathname} />
+          <NavigationItem link='/newfamily' icon='fa-user-plus' pathname={pathname} />
         </ul>
       );
     }
@@ -73,20 +73,13 @@ class Navigation extends Component {
 
     const {pathname} = this.props;
 
-    if (includes(pathname, `models`) || includes(pathname, `member`)) {
+    if (includes(pathname, `models`)) {
       return (
         <ul className='navigation'>
           <NavigationItem link='/family' icon='fa-users' pathname={pathname} />
         </ul>
       );
-    } else {
-      return (
-        <ul className='navigation'>
-          <NavigationItem link='/newfamilymember' icon='fa-plus' pathname={pathname} />
-        </ul>
-      );
     }
-
   }
 
   setActive(link, pathname) {

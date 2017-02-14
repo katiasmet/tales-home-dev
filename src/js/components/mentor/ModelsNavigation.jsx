@@ -4,28 +4,30 @@ import {inject, observer} from 'mobx-react';
 import {kebabCase} from 'lodash';
 
 const handleNavItem = (model, i, handleModelPreview, modelPreview, handleStartModel, handleIsPassed) => {
+  const isPassed = handleIsPassed(model._id);
+
   if (model._id === modelPreview._id) {
 
     const pathname = kebabCase(model.name);
 
     return (
-      <li className={handleIsPassed(model._id) ? `model-nav-item active done` : `model-nav-item active done`}
+      <li className={isPassed ? `model-nav-item active done` : `model-nav-item active done`}
           key={i}
           onClick={() => handleStartModel(model._id)}>
         <Link to={`/models/${pathname}`}>
           <i className='fa fa-play'></i>
         </Link>
-        {handleIsPassed(model._id) && <i className='fa fa-check'></i>}
+        {isPassed && <i className='fa fa-check'></i>}
       </li>
     );
 
   } else {
 
     return (
-      <li className={handleIsPassed(model._id) ? `model-nav-item done` : `model-nav-item`}
+      <li className={isPassed ? `model-nav-item done` : `model-nav-item`}
           key={i}
           onClick={() => handleModelPreview(model._id)}>
-          {handleIsPassed(model._id) && <i className='fa fa-check'></i>}
+          {isPassed && <i className='fa fa-check'></i>}
           <span className='model-name'>{model.name}</span>
       </li>
     );

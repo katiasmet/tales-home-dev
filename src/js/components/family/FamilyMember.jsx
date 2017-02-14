@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 
-import {CharacterGigi, CharacterKiki, CharacterChris} from '../illustrations';
+import {CharacterGigiMother, CharacterKikiChild, CharacterChrisFather} from '../illustrations';
 import {Actions} from '../';
 
 @inject(`families`) @observer
@@ -49,11 +49,11 @@ class FamilyMember extends Component {
   renderCharacter(character) {
 
     if (character === `kiki`) {
-      return <CharacterKiki />;
+      return <CharacterKikiChild />;
     } else if (character === `chris`) {
-      return <CharacterChris />;
+      return <CharacterChrisFather />;
     } else {
-      return <CharacterGigi />;
+      return <CharacterGigiMother />;
     }
   }
 
@@ -63,7 +63,7 @@ class FamilyMember extends Component {
     this.handleActions();
 
     return (
-      <article className='family-member'>
+      <article className={`family-member ${character}`}>
 
         <Link to={`/editfamilymember/${_id}`}>
 

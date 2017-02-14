@@ -18,6 +18,8 @@ class Models extends Component {
       this.props.notes.handleRedirect();
 
       const {getFamilyMembers, activeFamily} = this.props.families;
+      if (!activeFamily.name) this.redirect = true;
+
       getFamilyMembers(activeFamily._id);
     } else {
       const {handleFamilyMembersVisites} = this.props.families;
@@ -54,6 +56,10 @@ class Models extends Component {
 
   }
 
+  handleRedirect() {
+    console.log(`redirect it`);
+  }
+
   render() {
 
     const {pathname} = this.props.location;
@@ -62,6 +68,10 @@ class Models extends Component {
     return (
       <div className='page page-models'>
         <Header pathname={pathname} />
+
+        {
+          this.redirect && <Redirect to='/' />
+        }
 
         {
           (token.content().scope === `professional` && !isLoading) ? (

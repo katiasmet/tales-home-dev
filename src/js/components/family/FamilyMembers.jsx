@@ -13,18 +13,17 @@ const FamilyMembers = inject(`families`)(observer(({families}) => {
   if (!isEmpty(familymembers) && overviewVisites === 1) handleStartSession();
 
   return (
-    <section className={(isEmpty(familymembers)) ? `family-members no-members` : `family-members`}>
+    <section className={(isEmpty(familymembers)) ? `family-members no-members` : `family-members members-added`}>
 
       {
         (!isEmpty(familymembers) && overviewVisites === 1) && (<Redirect to='/models' />)
       }
 
       {
-
-        (isEmpty(familymembers)) ? <Link to='newfamilymember' className='btn-add-member'><i className='fa fa-plus'></i></Link>
-        : handleFamilyMembers(familymembers)
-
+        (!isEmpty(familymembers)) && handleFamilyMembers(familymembers)
       }
+
+      <Link to='newfamilymember' className='btn-add-member'><i className='fa fa-plus'></i></Link>
 
     </section>
   );
