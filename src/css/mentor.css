@@ -130,7 +130,6 @@ MENTOR FAMILIES
         height: 100%;
         border-radius: 50%;
         border: .1rem solid $purple;
-        filter: blur(.5px);
 
         animation: radar 2s ease-in infinite;
       }
@@ -474,7 +473,6 @@ STARTSESSION POP-UP
       height: 100%;
       border-radius: 50%;
       border: .1rem solid $purple;
-      filter: blur(.5px);
 
       animation: radar 2s ease-in infinite;
     }
@@ -625,7 +623,6 @@ STARTSESSION POP-UP
       height: 100%;
       border-radius: 50%;
       border: .1rem solid white;
-      filter: blur(.5px);
 
       animation: radar 2s ease-in infinite;
     }

@@ -30,7 +30,7 @@ const FormInput = ({id, label, type = `text`, name, value, error, onChange, plac
 FormInput.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.oneOf([`text`, `email`, `password`]),
+  type: PropTypes.oneOf([`text`, `email`, `password`, `number`]),
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   error: PropTypes.string,

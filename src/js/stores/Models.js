@@ -111,6 +111,8 @@ class Models  {
     this.isLoadingDistance = true;
 
     const familyLanguages = [];
+    console.log(`get family languages`);
+    console.log(Families.activeFamily);
     Families.activeFamily.familymembers.forEach(familymember => {
       familymember.languages.forEach(language => familyLanguages.push(language));
     });
@@ -125,6 +127,8 @@ class Models  {
 
   @action getDraggableCharacters = () => {
 
+    console.log(`get draggable characters`);
+
     this.isLoadingDistance = true;
 
     Families.activeFamily.familymembers.forEach(familymember => {
@@ -134,12 +138,14 @@ class Models  {
       character.firstname = familymember.firstName;
       character.left = 0;
 
+      console.log(character);
+
       if (character.name === `chris`) {
-        character.width = 20;
+        character.width = 18;
       } else if (character.name === `gigi`) {
         character.width = 14;
       } else {
-        character.width = 7;
+        character.width = 6.5;
       }
 
       this.draggableCharacters.push(character);
@@ -152,6 +158,9 @@ class Models  {
   @action handleMoveCharacter = (id, e) => {
     e.preventDefault();
     const xPos = e.touches[0].clientX;
+
+    /* left is a relative number (%) to the window size of the user */
+    console.log(e.touches[0]);
 
     this.draggableCharacters.forEach(character => {
       if (character._id === id) {
@@ -235,7 +244,6 @@ class Models  {
       this.draggableCharacters = result.results;
     } else {
       console.log(`language not in results`);
-      console.log(this.draggableCharacters);
       this.draggableCharacters.forEach(character => {
         character.left = 0;
       });
@@ -257,11 +265,9 @@ class Models  {
     this.onboarding = false;
 
     if (token.content().scope === `professional`) {
-      this.socket.emit(`handleOnboarding`, Users.currentSocketId, `professional`, this.onboarding);
-      this.socket.emit(`handleModel`, Users.currentSocketId, `professional`, this.draggableCharacters);
+      this.socket.emit(`handleOnboarding`, Users.currentSocketId, `professional`, this.onboarding, this.draggableCharacters);
     } else {
-      this.socket.emit(`handleOnboarding`, token.content().sub, `family`, this.onboarding);
-      this.socket.emit(`handleModel`, token.content().sub, `family`, this.draggableCharacters);
+      this.socket.emit(`handleOnboarding`, token.content().sub, `family`, this.onboarding, this.draggableCharacters);
     }
 
   }
@@ -271,12 +277,10 @@ class Models  {
   }
 
   handleCount = () => {
-    console.log(`handle count`);
     this.onboardingTimer--;
 
     if (this.onboardingTimer === 0) {
       this.handleOnboarding();
-      console.log(this.onboarding);
       clearInterval(this.timer);
     }
   }

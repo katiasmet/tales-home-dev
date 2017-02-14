@@ -55,7 +55,6 @@ class ModelDistance extends Component {
   render() {
 
     const {isLoadingDistance, onboarding, onboardingTimer} = this.props.models;
-    console.log(onboarding);
 
     return (
       <section className={onboarding ? `model-distance onboarding` : `model-distance onboarding-done`}>

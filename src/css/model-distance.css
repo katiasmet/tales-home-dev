@@ -138,11 +138,8 @@ $purple: #6e2bc8;
   left: 0;
   bottom: 0;
 
-  width: 7rem;
   height: 100%;
   transform-origin: center center;
-
-  animation: float 2s ease-in infinite;
 
   &::after {
     @add-mixin before-after;
@@ -182,11 +179,16 @@ $purple: #6e2bc8;
   }
 
   &.chris {
-    width: 20rem;
+    max-width: 18rem;
   }
 
-  &.gigi {
-    width: 14rem;
+  &.kiki {
+    max-width: 6.5rem;
+  }
+
+  &.gigi,
+  &.eddy {
+    max-width: 14rem;
   }
 }
 
@@ -271,14 +273,6 @@ $purple: #6e2bc8;
 
   .drag-character {
     animation: onboarding-distance 5s ease-in 3s infinite backwards;
-
-    svg {
-      animation: float 2s ease-in infinite;
-    }
-
-    &::after {
-      animation: float-shadow 2s ease-in infinite;
-    }
   }
 
   .timeline-character {
@@ -290,11 +284,12 @@ $purple: #6e2bc8;
     z-index: 2;
     bottom: 15rem;
     left: calc(3rem + 20rem);
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
 
     .fa {
       animation: onboarding-hand 3s ease-in forwards;
+      animation-iteration-count: 2;
     }
   }
 }

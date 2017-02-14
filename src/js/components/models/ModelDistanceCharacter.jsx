@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {inject, observer} from 'mobx-react';
 
-import {CharacterGigi, CharacterKiki, CharacterChris} from '../illustrations';
+import {CharacterGigiMother, CharacterKikiChild, CharacterChrisFather} from '../illustrations';
 
 @inject(`models`) @observer
 class ModelDistanceCharacter extends Component {
@@ -9,11 +9,11 @@ class ModelDistanceCharacter extends Component {
   renderCharacter(name) {
 
     if (name === `kiki`) {
-      return <CharacterKiki />;
+      return <CharacterKikiChild />;
     } else if (name === `chris`) {
-      return <CharacterChris />;
+      return <CharacterChrisFather />;
     } else {
-      return <CharacterGigi />;
+      return <CharacterGigiMother />;
     }
   }
 
@@ -40,20 +40,9 @@ class ModelDistanceCharacter extends Component {
     if (!onboarding) handleEndMoveCharacter();
   }
 
-
   render() {
     const {onboarding, handleMoveCharacter, handleDragCharacter, handleEndMoveCharacter} = this.props.models;
     const {_id, name, left} = this.props;
-
-    console.log(left);
-
-    let transform = `translateX(${left}rem)`;
-    if (onboarding) transform = `translateX(20rem)`;
-
-    const style = {
-      transform,
-      WebkitTransform: transform,
-    };
 
     if (onboarding) {
       return (
@@ -65,32 +54,43 @@ class ModelDistanceCharacter extends Component {
       );
     }
 
+    let transform = `translateX(${left}rem)`;
+    if (onboarding) transform = `translateX(20rem)`;
+    const style = {
+      transform,
+      WebkitTransform: transform,
+    };
+
     return (
-      <div  className={`drag-character ${name}`}
-            onTouchMove={e => handleMoveCharacter(_id, e)}
-            onTouchEnd={e => handleEndMoveCharacter(e)}
-            draggable='true'
-            onDrag={e => handleDragCharacter(_id, e)}
-            onDragEnd={e => handleEndMoveCharacter(e)}
-            onDrop={e => handleEndMoveCharacter(e)}
-            style={style}
-      >
-        {this.renderCharacter(name)}
+      <div>
+        {
+          onboarding ? (
+            <div  className={`drag-character ${name}`}
+                  style={style}
+            >
+              {this.renderCharacter(name)}
+            </div>
+          )
+          : (
+            <div  className={`drag-character ${name}`}
+                  onTouchMove={e => handleMoveCharacter(_id, e)}
+                  onTouchEnd={e => handleEndMoveCharacter(e)}
+                  draggable='true'
+                  onDrag={e => handleDragCharacter(_id, e)}
+                  onDragEnd={e => handleEndMoveCharacter(e)}
+                  onDrop={e => handleEndMoveCharacter(e)}
+                  style={style}
+            >
+              {this.renderCharacter(name)}
+            </div>
+          )
+        }
       </div>
+
     );
   }
 
 }
-
-/*<div  className={`drag-character ${name}`}
-      onTouchMove={e => handleMoveCharacter(_id, e)}
-      onTouchEnd={e => handleEndMoveCharacter(e)}
-      draggable='true'
-      onDrag={e => handleDragCharacter(_id, e)}
-      onDragEnd={e => handleEndMoveCharacter(e)}
-      onDrop={e => handleEndMoveCharacter(e)}
-      style={style}
->*/
 
 ModelDistanceCharacter.propTypes = {
   _id: PropTypes.string,

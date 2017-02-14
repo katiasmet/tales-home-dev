@@ -5,26 +5,24 @@ import {ModelDistanceCharacter} from './';
 import {Flag} from '../illustrations';
 
 const ModelDistanceScene = inject(`models`)(observer(({models}) => {
-  const {currentLanguage, onboarding} = models;
-  let {draggableCharacters, familyLanguages} = models;
-
-  if (onboarding) {
-    familyLanguages = [`English`];
-    draggableCharacters = [draggableCharacters[0]];
-  }
+  const {draggableCharacters, currentLanguage, onboarding, familyLanguages} = models;
 
   const left = `${draggableCharacters[0].width / 2 + 20}rem`;
   const boardingHandPosition = {
     left
   };
 
-
   return (
     <section className='timeline-scene'>
 
       <div className='flag'>
         <Flag />
-        <span className='flag-language'>{familyLanguages[currentLanguage]}</span>
+        <span className='flag-language'>
+          {
+            onboarding ? `English`
+            : familyLanguages[currentLanguage]
+          }
+        </span>
       </div>
 
       {
@@ -32,9 +30,14 @@ const ModelDistanceScene = inject(`models`)(observer(({models}) => {
       }
 
       {
-        draggableCharacters.slice().map((character, i) => {
-          return <ModelDistanceCharacter {...character} key={i} />;
-        })
+
+        onboarding ? (<ModelDistanceCharacter {...draggableCharacters[0]} />)
+        : (
+          draggableCharacters.slice().map((character, i) => {
+            return <ModelDistanceCharacter {...character} key={i} />;
+          })
+        )
+
       }
 
     </section>

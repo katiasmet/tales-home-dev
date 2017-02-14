@@ -84,12 +84,13 @@ module.exports.register = (server, options, next) => {
       }
     });
 
-    socket.on(`handleOnboarding`, (id, scope, onboarding) => {
+    socket.on(`handleOnboarding`, (id, scope, onboarding, modelInfo) => {
       let user;
       if (scope === `professional`) user = users.find(u => id === u.socketId);
       else user = users.find(u => id === u.familyId);
       if (user) {
         user.onboarding = onboarding;
+        user.modelInfo = modelInfo;
         socket.broadcast.emit(`recheck`, users);
       }
     });
