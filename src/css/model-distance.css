@@ -253,11 +253,22 @@ $purple: #6e2bc8;
   z-index: 7;
 }
 
+.timeline-character-wrapper {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
 .timeline-character {
   display: block;
   text-align: center;
   position: absolute;
-  transform-origin: center center;
   left: 0;
   top: 0;
   bottom: 0;
