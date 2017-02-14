@@ -10,15 +10,20 @@ const ModelDistanceTimelineCharacter = ({firstname, left, name, width, onboardin
 
   const style = {
     width: fixedWidth,
-    opacity,
+    opacity
+  };
+
+  const transformStyle = {
     transform,
     WebkitTransform: transform
   };
 
   return (
-    <li className={`timeline-character ${name}`} style={style}>
-      <span className='member-bullet'></span>
-      <span className='member-name'>{firstname}</span>
+    <li className='timeline-character-wrapper' style={transformStyle}>
+      <span className={`timeline-character ${name}`} style={style}>
+        <span className='member-bullet'></span>
+        <span className='member-name'>{firstname}</span>
+      </span>
     </li>
   );
 };
