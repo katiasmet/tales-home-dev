@@ -58,14 +58,14 @@ class Model extends Component {
 
   render() {
     const {pathname} = this.props.location;
-    const {isLoading} = this.props.families;
+    const {isLoading, activeFamily} = this.props.families;
     const {showNotes} = this.props.notes;
 
     return (
       <div className='page page-model '>
 
         {
-          this.redirect && <Redirect to='/' />
+          (!activeFamily.name && token.content().scope === `professional`) && <Redirect to='/' />
         }
 
         <Header pathname={pathname} model={true} />
