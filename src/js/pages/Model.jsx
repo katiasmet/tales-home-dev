@@ -13,6 +13,11 @@ import {ModelDistance, ModelLearning, ModelSituationDiscussion} from '../compone
 
 class Model extends Component {
 
+  componentDidMount() {
+    const {activeFamily} = this.props.families;
+    if (!activeFamily.name) this.redirect = true;
+  }
+
   renderModelView() {
     const model = upperFirst(camelCase(this.props.match.params.id));
 
