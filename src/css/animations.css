@@ -315,6 +315,24 @@
 
 }
 
+@keyframes wave-alt {
+
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20% {
+    transform: rotate(-5deg);
+  }
+
+  40% {
+    transform: rotate(7deg);
+  }
+
+}
+
 @keyframes smoketopleft {
 
   0% {
@@ -546,6 +564,23 @@
 
   5% {
     transform: scaleX(1.2) translateY(-2rem);
+  }
+}
+
+@keyframes legs-tripplejump {
+
+  0%,
+  4%,
+  8%,
+  12%,
+  100% {
+    transform: scaleX(1) translateY(0);
+  }
+
+  2%,
+  6%,
+  10% {
+    transform: scaleX(1.05) translateY(-.5rem);
   }
 }
 

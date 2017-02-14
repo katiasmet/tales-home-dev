@@ -365,6 +365,8 @@
 
 .chris-father-illustration {
 
+  padding: 0 5rem;
+
   .left-eye {
     transform-origin: center center;
     transform: rotate(-20deg) translate(-1.2rem, 1.5rem);
@@ -372,7 +374,41 @@
 
   .right-eye {
     transform-origin: center center;
-    transform: rotate(20deg) translate(.1rem, .1rem);
+  }
+
+  .full-left-eye,
+  .full-right-eye {
+    transform-origin: center bottom;
+    animation: wave 2s linear infinite;
+  }
+
+  .full-right-eye {
+    animation-direction: reverse;
+  }
+
+  .leg-left-left,
+  .leg-left-right,
+  .leg-right-left,
+  .leg-right-right {
+    display: block;
+    transform-origin: top center;
+    /*animation: legs-tripple 2s linear infinite;*/
+    animation: legs-tripplejump 3s ease-in 1s infinite;
+  }
+
+  .leg-left-right,
+  .leg-right-left {
+    animation-delay: 1.5s;
+  }
+
+  .arm-left,
+  .arm-right {
+    transform-origin: bottom right;
+    animation: wave-alt 5s ease-in infinite;
+  }
+
+  .arm-right {
+    transform-origin: bottom left;
   }
 
   .st0 {
