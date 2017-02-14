@@ -1,8 +1,10 @@
 import React, {Component, PropTypes} from 'react';
+import {inject, observer} from 'mobx-react';
 import moment from 'moment';
 
 import {Actions} from '../../';
 
+@inject(`results`) @observer
 class FamilyInfoResult extends Component {
 
   actions = [
