@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 
 const ModelDistanceTimelineCharacter = ({firstname, left, name, width, onboarding}) => {
-  let transform = `translateX(${left}rem)`;
-  const fixedWidth = `${width}rem`;
+  let transform = `translateX(${left}%)`;
+  const fixedWidth = `${width / 10}rem`;
 
   let opacity = 0;
   if (left !== 0 || onboarding) opacity = 1;

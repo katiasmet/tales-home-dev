@@ -54,7 +54,7 @@ class ModelDistanceCharacter extends Component {
       );
     }
 
-    let transform = `translateX(${left}rem)`;
+    let transform = `translateX(${left}%)`;
     if (onboarding) transform = `translateX(20rem)`;
     const style = {
       transform,
@@ -62,7 +62,7 @@ class ModelDistanceCharacter extends Component {
     };
 
     return (
-      <div>
+      <div className='drag-wrapper' style={style}>
         {
           onboarding ? (
             <div  className={`drag-character ${name}`}
@@ -79,7 +79,6 @@ class ModelDistanceCharacter extends Component {
                   onDrag={e => handleDragCharacter(_id, e)}
                   onDragEnd={e => handleEndMoveCharacter(e)}
                   onDrop={e => handleEndMoveCharacter(e)}
-                  style={style}
             >
               {this.renderCharacter(name)}
             </div>

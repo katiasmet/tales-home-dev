@@ -38,6 +38,7 @@ module.exports.register = (server, options, next) => {
       if (user) {
         user.familyId = familyId;
         user.sessionId = sessionId;
+        user.pageRefreshed = false;
         socket.broadcast.emit(`recheck`, users);
       }
     });

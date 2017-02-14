@@ -1,11 +1,13 @@
 import {observable, action} from 'mobx';
 import {filter, find} from 'lodash';
+import io from 'socket.io-client';
 
 import {token, logout} from '../auth';
 import Models from './Models';
 
 class Users  {
 
+  socket = io(`/`);
   @observable allUsers = [];
   @observable currentSocketId = ``;
   @observable isSessionStarted = false;
@@ -24,11 +26,13 @@ class Users  {
   }
 
   handleSessionStarted = () => {
-    this.allUsers.forEach(user => {
-      if (user.socketId === this.currentSocketId) {
-        this.isSessionStarted = user.isSessionStarted;
-      }
+
+    const user = find(this.allUsers, user => {
+      return user.socketId === this.currentSocketId;
     });
+
+    if (user) this.isSessionStarted = user.isSessionStarted;
+
   }
 
   handleCurrentModel = () => {
@@ -62,6 +66,7 @@ class Users  {
 
   handleFamilyLogOut = () => {
 
+    /* if professional refreshes page, force to start a new session by redirecting */
     const family = find(this.allUsers, user => {
       return user.familyId === token.content().sub;
     });
@@ -69,8 +74,8 @@ class Users  {
     if (token.content().scope === `family` && !family) {
       logout();
       window.location.href = `/`;
+      this.socket.emit(`handlePageRefresh`, token.content().sub);
     }
-
   }
 
   @action handleJoinUser = user => {
