@@ -85,8 +85,6 @@ class Results  {
 
     if (Notes.notesInput) {
       doc.setFont(`helvetica`);
-      /*doc.addFont(`Rubik`, `Rubik`, 300);
-      doc.setFont(`Rubik`);*/
       doc.setTextColor(84, 39, 170);
       doc.setFontSize(20);
       doc.setFontType(`bold`);
