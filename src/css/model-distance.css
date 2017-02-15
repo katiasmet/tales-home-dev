@@ -299,7 +299,7 @@ $purple: #6e2bc8;
     animation: onboarding-distance 5s ease-in 3s infinite backwards;
   }
 
-  .timeline-character {
+  .timeline-character-wrapper {
     animation: onboarding-distance 5s ease-in 3s infinite backwards;
   }
 

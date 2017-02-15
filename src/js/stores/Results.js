@@ -1,11 +1,13 @@
 import {observable, action} from 'mobx';
-import {find, isEmpty} from 'lodash';
+import {find, isEmpty, snakeCase} from 'lodash';
 import jsPDF from 'jsPDF';
+import moment from 'moment';
 
 import {selectByProfessional, insert, update} from '../api/results';
 import {token} from '../auth';
 import Models from './Models';
 import Families from './Families';
+import Notes from './Notes';
 
 class Results  {
 
@@ -71,14 +73,39 @@ class Results  {
     this.error = error;
   }
 
-  @action handleDownload = () => {
+  @action handleDownload = id => {
     console.log(`handle download`);
     const doc = new jsPDF();
+    Notes.getNote(id);
 
-    console.log(doc);
+    const familyModel = find(Families.activeFamily.familymodels, familymodel => {
+      return familymodel._id === id;
+    });
+    const resultDate = moment(familyModel.created).format(`D M YYYY`);
 
-    doc.text(`Hello world!`, 10, 10);
-    doc.save(`a4.pdf`);
+    if (Notes.notesInput) {
+      doc.setFont(`helvetica`);
+      /*doc.addFont(`Rubik`, `Rubik`, 300);
+      doc.setFont(`Rubik`);*/
+      doc.setTextColor(84, 39, 170);
+      doc.setFontSize(20);
+      doc.setFontType(`bold`);
+      doc.text(`Results - ${Families.activeFamily.name}`, 15, 20);
+
+      doc.setTextColor(168, 168, 168);
+      doc.setFontSize(10);
+      doc.setFontType(`italic`);
+      doc.text(`Model: ${familyModel.name} - ${resultDate}`, 15, 30);
+
+      doc.setTextColor(51, 33, 127);
+      doc.setFontSize(10);
+      doc.setFontType(`normal`);
+      doc.text(`${Notes.notesInput}`, 15, 40);
+
+
+      const name = snakeCase(`${Families.activeFamily.name}_${familyModel.name}_${resultDate}`);
+      doc.save(`${name}.pdf`);
+    }
   }
 
 

@@ -9,25 +9,21 @@ class FamilyInfoResult extends Component {
 
   actions = [
     {
-      id: this.props._id,
+      _id: this.props._id,
       icon: `fa-align-justify`,
       handleAction: this.handleNotes
     },
     {
-      id: this.props._id,
+      _id: this.props._id,
       icon: `fa-download`,
-      handleAction: this.handleDownload
+      handleAction: this.props.results.handleDownload
     },
     {
-      id: this.props._id,
+      _id: this.props._id,
       icon: `fa-trash`,
       handleAction: this.handleRemove
     }
   ];
-
-  handleDownload() {
-    console.log(`download`);
-  }
 
   handleNotes() {
     console.log(`notes`);
@@ -40,9 +36,7 @@ class FamilyInfoResult extends Component {
   render() {
 
     const {name, created} = this.props;
-
     const resultDate = moment(created).format(`D MMMM YYYY`);
-    console.log(name);
 
     return (
       <li className='family-info-result'>
@@ -61,7 +55,10 @@ class FamilyInfoResult extends Component {
 FamilyInfoResult.propTypes = {
   _id: PropTypes.string,
   name: PropTypes.string,
-  created: PropTypes.string
+  created: PropTypes.string,
+  results: PropTypes.shape({
+    handleDownload: PropTypes.func
+  })
 };
 
 export default FamilyInfoResult;
