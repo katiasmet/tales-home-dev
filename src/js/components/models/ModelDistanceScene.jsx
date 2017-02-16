@@ -6,6 +6,7 @@ import {Flag} from '../illustrations';
 
 const ModelDistanceScene = inject(`models`)(observer(({models}) => {
   const {draggableCharacters, currentLanguage, onboarding, familyLanguages} = models;
+  console.log(draggableCharacters[0]);
   const leftPos = (draggableCharacters[0].width / 10) / 2 + 20;
 
   const left = `${leftPos}rem`;

@@ -64,6 +64,7 @@ class Families  {
   }
 
   @action getFamilyMembers = (familyId, familySide = false) => {
+
     this.isLoading = `familymembers`;
 
     selectFamilyMembers({familyId: familyId})
@@ -247,9 +248,11 @@ class Families  {
     //get familymodelid else insert
     selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
+
         if (familymodel.familyModel.length !== 0) {
           this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
+
           Notes.getNote();
           Results.getResult();
 
@@ -258,10 +261,14 @@ class Families  {
           insert({familyId: this.activeFamily._id, modelId: id})
             .then(familymodel => {
               this.activeFamilyModel._id = familymodel._id;
-              this.activeFamily.familymodels.push(familymodel.FamilyModel[0]);
-              this.isLoading = ``;
+
               Notes.getNote();
               Results.getResult();
+
+              this.isLoading = ``;
+
+              this.activeFamily.familymodels.push(familymodel.FamilyModel[0]);
+
             })
             .catch(err => {
               this.handleError(err);

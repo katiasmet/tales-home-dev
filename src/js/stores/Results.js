@@ -38,7 +38,7 @@ class Results  {
 
       if (result) {
         this.activeResult = result._id;
-        Models.currentResult = result;
+        /*Models.currentResult = result;*/
       }
     }
 
@@ -48,6 +48,9 @@ class Results  {
   @action handleSubmit = () => {
 
     if (isEmpty(this.activeResult)) {
+
+      console.log(`insert result`);
+
       insert({familyModelId: Families.activeFamilyModel._id, result: Models.currentResult})
         .then(result => {
           this.allResults.push(result);
@@ -56,6 +59,10 @@ class Results  {
           this.handleError(error.message);
         });
     } else {
+
+      console.log(Models.currentResult);
+
+      console.log(`update result`);
       update({result: Models.currentResult}, this.activeResult)
         .then(result => {
           this.allResults.forEach(availableResult => {

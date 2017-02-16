@@ -55,7 +55,7 @@ class ModelDistanceCharacter extends Component {
     }
 
     let transform = `translateX(${left}%)`;
-    if (onboarding) transform = `translateX(20rem)`;
+    if (onboarding) transform = `translateX(30%)`;
     const style = {
       transform,
       WebkitTransform: transform,

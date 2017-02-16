@@ -56,10 +56,6 @@ class Models extends Component {
 
   }
 
-  handleRedirect() {
-    console.log(`redirect it`);
-  }
-
   render() {
 
     const {pathname} = this.props.location;

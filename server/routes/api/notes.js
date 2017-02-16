@@ -155,7 +155,7 @@ module.exports = [
         },
 
         payload: {
-          notes: Joi.string().min(3).allow(``)
+          notes: Joi.string().allow(``)
         }
 
       }

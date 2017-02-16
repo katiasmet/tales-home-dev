@@ -49,8 +49,6 @@ export const insert = data => {
 
 export const update = (data, id) => {
 
-  console.log(data);
-
   const method = `PUT`;
   const headers = new Headers({Authorization: `Bearer ${token.get()}`});
   const body = buildBody(data, whitelist.PUT, {});

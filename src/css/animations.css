@@ -408,11 +408,11 @@
 @keyframes onboarding-distance {
 
   0% {
-    transform: translateX(20rem);
+    transform: translateX(30%);
   }
 
   100% {
-    transform: translateX(40rem);
+    transform: translateX(60%);
   }
 
 }

@@ -66,7 +66,7 @@ class FormAddFamilyMember extends Form {
       familymember.familyId = content().sub;
 
       insert(familymember)
-        .then(() => {
+        .then(familymember => {
           if (this.submitButton === `save`) {
             this.form.redirect = `families`;
           } else {

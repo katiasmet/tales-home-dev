@@ -25,7 +25,7 @@ class Models  {
   @observable draggableCharacters = [];
   @observable familyLanguages = [];
   @observable currentLanguage = 0;
-  @observable currentResult = [{}];
+  @observable currentResult = [];
 
   @action getModels = () => {
     this.isLoading = true;
@@ -46,14 +46,28 @@ class Models  {
 
     this.isLoading = true;
 
-    select(id)
-    .then(models => {
-      Users.currentModelId = models.model[0]._id;
-      Families.activeFamilyModel.name = kebabCase(models.model[0].name);
+    if (token.content().scope === `professional`) {
+      const model = find(this.allModels, model => {
+        model._id === id;
+      });
+
+      Users.currentModelId = model._id;
+      Families.activeFamilyModel.name = kebabCase(model.name);
       this.isLoading = false;
-    }).catch(err => {
-      this.handleError(err);
-    });
+
+    } else {
+
+      select(id)
+      .then(models => {
+        Users.currentModelId = models.model[0]._id;
+        Families.activeFamilyModel.name = kebabCase(models.model[0].name);
+        this.isLoading = false;
+      }).catch(err => {
+        this.handleError(err);
+      });
+
+    }
+
   }
 
   @action handleModelPreview = id => {
@@ -185,7 +199,6 @@ class Models  {
       if (character._id === id) {
         if (xPos !== 0) {
           let left = (((xPos - (character.width / 2)) / clientWidth) * 100);
-          console.log(left);
           if (left > 99) left = 99;
           if (left < 0) left = 0;
           character.left = left;
@@ -272,7 +285,7 @@ class Models  {
   }
 
   @action handleOnboardingTimer = () => {
-    this.timer = window.setInterval(this.handleCount, 2000);
+    this.timer = window.setInterval(this.handleCount, 1500);
   }
 
   handleCount = () => {

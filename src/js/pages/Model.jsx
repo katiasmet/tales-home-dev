@@ -101,7 +101,8 @@ Model.propTypes = {
   families: PropTypes.shape({
     isLoading: PropTypes.string,
     activeFamilyModel: PropTypes.object,
-    activeFamily: PropTypes.object
+    activeFamily: PropTypes.object,
+    getFamilyMembers: PropTypes.func
   }),
   models: PropTypes.shape({
     isLoading: PropTypes.bool
