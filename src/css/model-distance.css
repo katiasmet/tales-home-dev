@@ -3,6 +3,20 @@ $midblue: #21cbc5;
 $blue: #26e2e9;
 $purple: #6e2bc8;
 
+@define-mixin before-after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@define-mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .model-distance {
   display: flex;
   flex-direction: column;
@@ -297,12 +311,12 @@ $purple: #6e2bc8;
 
 .onboarding {
 
-  .drag-character {
-    animation: onboarding-distance 4s ease-in 3s infinite backwards;
+  .drag-wrapper {
+    animation: onboarding-distance 4s ease-in 3s infinite forwards;
   }
 
   .timeline-character-wrapper {
-    animation: onboarding-distance 4s ease-in 3s infinite backwards;
+    animation: onboarding-distance 4s ease-in 3s infinite forwards;
   }
 
   .onboarding-hand {
