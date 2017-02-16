@@ -46,11 +46,14 @@ class ModelDistanceCharacter extends Component {
 
     if (onboarding) {
       return (
-       <div  className={`drag-character ${name}`}
-             style={style}
-       >
-         {this.renderCharacter(name)}
-       </div>
+        <div className='drag-wrapper'>
+          <div  className={`drag-character ${name}`}
+                style={style}
+          >
+            {this.renderCharacter(name)}
+          </div>
+        </div>
+
       );
     }
 
