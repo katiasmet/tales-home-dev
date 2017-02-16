@@ -6,7 +6,7 @@ const ModelDistanceTimelineCharacter = ({firstname, left, name, width, onboardin
 
   let opacity = 0;
   if (left !== 0 || onboarding) opacity = 1;
-  if (onboarding) transform = `translateX(20rem)`;
+  if (onboarding) transform = `translateX(30%)`;
 
   const style = {
     width: fixedWidth,

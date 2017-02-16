@@ -140,6 +140,8 @@ $purple: #6e2bc8;
   right: 0;
   bottom: 0;
   margin: auto;
+
+  z-index: 20;
 }
 
 .timeline-scene .drag-character {
