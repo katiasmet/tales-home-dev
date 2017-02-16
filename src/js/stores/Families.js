@@ -168,6 +168,10 @@ class Families  {
       this.activeFamily = {};
       this.showInfo = ``;
     }
+
+    /* fetch notes and results already */
+    if (isEmpty(Notes.allNotes)) Notes.getNotes();
+    if (isEmpty(Results.allResults)) Results.getResults();
   }
 
   findActiveFamily = id => {
@@ -254,6 +258,7 @@ class Families  {
           insert({familyId: this.activeFamily._id, modelId: id})
             .then(familymodel => {
               this.activeFamilyModel._id = familymodel._id;
+              this.activeFamily.familymodels.push(familymodel.FamilyModel[0]);
               this.isLoading = ``;
               Notes.getNote();
               Results.getResult();

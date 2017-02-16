@@ -296,11 +296,11 @@ $purple: #6e2bc8;
 .onboarding {
 
   .drag-character {
-    animation: onboarding-distance 5s ease-in 3s infinite backwards;
+    animation: onboarding-distance 3s ease-in 3s infinite backwards;
   }
 
-  .timeline-character {
-    animation: onboarding-distance 5s ease-in 3s infinite backwards;
+  .timeline-character-wrapper {
+    animation: onboarding-distance 3s ease-in 3s infinite backwards;
   }
 
   .onboarding-hand {

@@ -36,29 +36,24 @@ class Notes  {
       });
   }
 
-  @action getNote = () => {
+  @action getNote = id => {
 
     this.isLoadingNotes = true;
 
-    console.log(`get note`);
-
-    console.log(this.allNotes);
-    console.log(Families.activeFamilyModel._id);
+    let familyModelId;
+    if (id) familyModelId = id;
+    else Families.activeFamilyModel._id;
 
     if (this.allNotes.length > 0) {
       const note = find(this.allNotes, note => {
-        return note.familyModelId === Families.activeFamilyModel._id;
+        return note.familyModelId === familyModelId;
       });
-
-      console.log(note);
 
       if (note) {
         this.activeNote = note._id;
         this.notesInput = note.notes;
       }
     }
-
-    console.log(this.activeNote);
 
     this.isLoadingNotes = false;
 

@@ -4,6 +4,7 @@ import Form from './Form';
 import {insert} from '../api/familymembers';
 import {content} from '../auth/token';
 import Languages from './Languages';
+import Families from './Families';
 
 class FormAddFamilyMember extends Form {
 
@@ -73,6 +74,8 @@ class FormAddFamilyMember extends Form {
             this.success = true;
             this.handleEmptyValues();
           }
+
+          Families.activeFamily.familymembers.push(familymember);
         })
         .catch(error => {
           this.handleError(error.message);
