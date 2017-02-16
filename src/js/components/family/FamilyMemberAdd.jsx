@@ -61,8 +61,7 @@ class FamilyMemberAdd extends Component {
               value={fields.firstName.value}
               error={fields.firstName.error}
               onChange={handleChange}
-              placeholder='f.e. Harry'
-              autofocus={true} />
+              placeholder='f.e. Harry' />
 
             <FamilyMemberAddRoles handleChange={handleChange} value={fields.role.value} character={fields.character.value} />
 
@@ -72,9 +71,6 @@ class FamilyMemberAdd extends Component {
 
             <div className='form-actions'>
                 <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `save`)}><i className='fa fa-save'></i></button>
-                {
-                  (!edit) && <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `next`)}><i className='fa fa-plus'></i></button>
-                }
             </div>
 
           </fieldset>
@@ -85,6 +81,10 @@ class FamilyMemberAdd extends Component {
   }
 
 }
+
+/*{
+  (!edit) && <button type='submit' className='btn' disabled={!meta.isValid} onClick={e => handleSubmitButton(e, `next`)}><i className='fa fa-plus'></i></button>
+}*/
 
 FamilyMemberAdd.propTypes = {
   formAddFamilyMember: PropTypes.shape({

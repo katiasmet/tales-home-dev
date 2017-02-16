@@ -525,6 +525,13 @@
 
 .kiki-child-illustration {
 
+  padding-left: 1rem;
+
+  .head {
+    transform-origin: center bottom;
+    animation: head-shake-alt 4s ease-in infinite;
+  }
+
   .st0 {
     fill: #aa4343;
   }

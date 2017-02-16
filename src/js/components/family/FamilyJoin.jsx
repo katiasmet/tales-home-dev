@@ -39,8 +39,7 @@ const FamilyJoin = inject(`formJoin`)(observer(({formJoin}) => {
             error={fields.sessionId.error}
             onChange={handleChange}
             placeholder='0000'
-            maxlength='4'
-            autofocus={true} />
+            maxlength='4' />
 
           {!isEmpty(meta.error) && <div className='error'>{meta.error}</div>}
 
