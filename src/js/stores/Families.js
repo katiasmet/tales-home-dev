@@ -64,6 +64,7 @@ class Families  {
   }
 
   @action getFamilyMembers = (familyId, familySide = false) => {
+
     this.isLoading = `familymembers`;
 
     selectFamilyMembers({familyId: familyId})
@@ -248,10 +249,7 @@ class Families  {
     selectFamilyModel({familyId: this.activeFamily._id, modelId: id})
       .then(familymodel => {
 
-        console.log(familymodel);
-
         if (familymodel.familyModel.length !== 0) {
-          console.log(`update`);
           this.activeFamilyModel._id = familymodel.familyModel[0]._id;
           this.isLoading = ``;
 
@@ -260,18 +258,16 @@ class Families  {
 
         } else {
 
-          console.log(`insert`);
-
           insert({familyId: this.activeFamily._id, modelId: id})
             .then(familymodel => {
-              console.log(familymodel);
               this.activeFamilyModel._id = familymodel._id;
-              this.activeFamily.familymodels.push(familymodel.FamilyModel[0]);
-              this.isLoading = ``;
-              console.log(this.isLoading);
 
               Notes.getNote();
               Results.getResult();
+
+              this.isLoading = ``;
+
+              this.activeFamily.familymodels.push(familymodel.FamilyModel[0]);
 
             })
             .catch(err => {
@@ -282,7 +278,6 @@ class Families  {
       .catch(err => {
         this.handleError(err);
       });
-    console.log(this.isLoading);
   }
 
   @action handleFamilyRemove = id => {

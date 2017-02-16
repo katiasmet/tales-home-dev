@@ -16,8 +16,6 @@ class Model extends Component {
   componentDidMount() {
     const {activeFamily} = this.props.families;
     if (!activeFamily.name) this.redirect = true;
-
-    if (token.content().scope === `professional`) this.props.families.getFamilyMembers(activeFamily._id);
   }
 
   renderModelView() {
@@ -35,12 +33,9 @@ class Model extends Component {
 
   renderNotes() {
 
-    console.log(`render notes`);
-
     if (token.content().scope === `professional`) {
 
       const {isLoadingNotes, redirect, showNotes} = this.props.notes;
-      console.log(isLoadingNotes);
       if (isLoadingNotes) return (<Loading />);
       if (redirect) return <Redirect to='/models' />;
       if (showNotes) return <ModelNotes />;
@@ -65,8 +60,6 @@ class Model extends Component {
     const {pathname} = this.props.location;
     const {isLoading, activeFamily} = this.props.families;
     const {showNotes} = this.props.notes;
-
-    console.log(isLoading);
 
     return (
       <div className='page page-model '>

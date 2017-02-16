@@ -51,9 +51,6 @@ class Models  {
         model._id === id;
       });
 
-      console.log(`get model`);
-      console.log(model);
-
       Users.currentModelId = model._id;
       Families.activeFamilyModel.name = kebabCase(model.name);
       this.isLoading = false;
@@ -202,7 +199,6 @@ class Models  {
       if (character._id === id) {
         if (xPos !== 0) {
           let left = (((xPos - (character.width / 2)) / clientWidth) * 100);
-          console.log(left);
           if (left > 99) left = 99;
           if (left < 0) left = 0;
           character.left = left;

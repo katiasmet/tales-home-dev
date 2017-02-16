@@ -1026,13 +1026,13 @@ input:-webkit-autofill {
 @-webkit-keyframes onboarding-distance {
 
   0% {
-    -webkit-transform: translateX(20rem);
-            transform: translateX(20rem);
+    -webkit-transform: translateX(30%);
+            transform: translateX(30%);
   }
 
   100% {
-    -webkit-transform: translateX(40rem);
-            transform: translateX(40rem);
+    -webkit-transform: translateX(60%);
+            transform: translateX(60%);
   }
 
 }
@@ -1040,13 +1040,13 @@ input:-webkit-autofill {
 @keyframes onboarding-distance {
 
   0% {
-    -webkit-transform: translateX(20rem);
-            transform: translateX(20rem);
+    -webkit-transform: translateX(30%);
+            transform: translateX(30%);
   }
 
   100% {
-    -webkit-transform: translateX(40rem);
-            transform: translateX(40rem);
+    -webkit-transform: translateX(60%);
+            transform: translateX(60%);
   }
 
 }
@@ -4614,6 +4614,7 @@ MODELSOVERVIEW
   width: 100%;
 
   position: relative;
+  z-index: 20;
 }
 
 .flag {
@@ -4662,7 +4663,6 @@ MODELSOVERVIEW
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 10;
 }
 
 .timeline-scene .drag-character {
@@ -4787,16 +4787,13 @@ MODELSOVERVIEW
 .timeline-character .member-name {-webkit-transform: translateY(1rem);transform: translateY(1rem);display: block;
 }
 
-.onboarding .drag-wrapper {z-index: 20;
-}
-
 .onboarding .drag-character {-webkit-animation: onboarding-distance 4s ease-in 3s infinite backwards;animation: onboarding-distance 4s ease-in 3s infinite backwards;
 }
 
 .onboarding .timeline-character-wrapper {-webkit-animation: onboarding-distance 4s ease-in 3s infinite backwards;animation: onboarding-distance 4s ease-in 3s infinite backwards;
 }
 
-.onboarding .onboarding-hand {position: absolute;z-index: 2;bottom: 240px;bottom: 15rem;left: 368px;left: 23rem;font-size: 64px;font-size: 4rem;text-align: center;
+.onboarding .onboarding-hand {position: absolute;z-index: 2;bottom: 240px;bottom: 15rem;left: calc(3rem + 30%);font-size: 64px;font-size: 4rem;text-align: center;
 }
 
 .onboarding .onboarding-hand .fa {-webkit-animation: onboarding-hand 3s ease-in forwards;animation: onboarding-hand 3s ease-in forwards;
