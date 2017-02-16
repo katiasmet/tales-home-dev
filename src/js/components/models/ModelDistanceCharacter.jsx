@@ -56,7 +56,6 @@ class ModelDistanceCharacter extends Component {
         {
           onboarding ? (
             <div  className={`drag-character ${name}`}
-                  style={style}
             >
               {this.renderCharacter(name)}
             </div>
