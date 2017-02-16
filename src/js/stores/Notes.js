@@ -66,8 +66,6 @@ class Notes  {
   @action handleSubmit = e => {
 
     e.preventDefault();
-
-    Results.handleSubmit();
     if (isEmpty(this.activeNote)) {
 
       console.log(this.notesInput);
@@ -82,6 +80,11 @@ class Notes  {
         });
     } else {
 
+      console.log(this.activeNote);
+      console.log(`update`);
+
+      console.log(this.notesInput);
+
       update({notes: this.notesInput}, this.activeNote)
         .then(note => {
           this.allNotes.forEach(availableNote => {
@@ -94,6 +97,7 @@ class Notes  {
         });
     }
 
+    Results.handleSubmit();
     Families.handleConfirmation();
 
     this.socket.emit(`stopModel`, Users.currentSocketId);

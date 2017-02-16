@@ -139,7 +139,7 @@ $purple: #6e2bc8;
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 5;
+  z-index: 10;
 }
 
 .timeline-scene .drag-character {
@@ -295,12 +295,16 @@ $purple: #6e2bc8;
 
 .onboarding {
 
+  .drag-wrapper {
+    z-index: 20;
+  }
+
   .drag-character {
-    animation: onboarding-distance 3s ease-in 3s infinite backwards;
+    animation: onboarding-distance 4s ease-in 3s infinite backwards;
   }
 
   .timeline-character-wrapper {
-    animation: onboarding-distance 3s ease-in 3s infinite backwards;
+    animation: onboarding-distance 4s ease-in 3s infinite backwards;
   }
 
   .onboarding-hand {

@@ -55,6 +55,8 @@ export const update = (data, id) => {
   const headers = new Headers({Authorization: `Bearer ${token.get()}`});
   const body = buildBody(data, whitelist.PUT, {});
 
+  console.log(body);
+
   return fetch(`${base}/${id}`, {method, body, headers})
     .then(checkStatus);
 
