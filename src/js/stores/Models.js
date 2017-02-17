@@ -292,7 +292,7 @@ class Models  {
     this.onboardingTimer--;
 
     if (this.onboardingTimer === 0) {
-      this.handleOnboarding();
+      /*this.handleOnboarding();*/
       clearInterval(this.timer);
     }
   }

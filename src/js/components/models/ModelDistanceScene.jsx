@@ -6,9 +6,9 @@ import {Flag} from '../illustrations';
 
 const ModelDistanceScene = inject(`models`)(observer(({models}) => {
   const {draggableCharacters, currentLanguage, onboarding, familyLanguages} = models;
-  const leftPos = (draggableCharacters[0].width / 10) / 2 + 30;
+  const leftPos = (draggableCharacters[0].width / 10) / 2;
 
-  const left = `${leftPos}%`;
+  const left = `calc(${leftPos}rem + 30%)`;
   const boardingHandPosition = {
     left
   };

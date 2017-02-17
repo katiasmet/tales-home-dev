@@ -312,18 +312,17 @@ $purple: #6e2bc8;
 .onboarding {
 
   .drag-wrapper {
-    animation: onboarding-distance 4s ease-in 3s infinite forwards;
+    animation: onboarding-distance 4s ease-in 3s forwards;
   }
 
   .timeline-character-wrapper {
-    animation: onboarding-distance 4s ease-in 3s infinite forwards;
+    animation: onboarding-distance 4s ease-in 3s forwards;
   }
 
   .onboarding-hand {
     position: absolute;
     z-index: 2;
     bottom: 15rem;
-    left: calc(3rem + 30%);
     font-size: 4rem;
     text-align: center;
 
